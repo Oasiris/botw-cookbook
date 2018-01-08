@@ -325,7 +325,7 @@
   },
   {
     "idx": 20,
-    "name": "Iron shroom",
+    "name": "Iron Shroom",
     "price": 5,
     "price_mon": null,
     "hp": 4,
@@ -774,10 +774,9 @@
     "crit_chance": 0,
     "type": "Nut",
     "families": [
-      "Fruit",
       "Nut"
     ],
-    "usage": "Food",
+    "usage": "Additive",
     "hp_raw": 1
   },
   {
@@ -793,10 +792,9 @@
     "crit_chance": 0,
     "type": "Nut",
     "families": [
-      "Fruit",
       "Nut"
     ],
-    "usage": "Food",
+    "usage": "Additive",
     "hp_raw": 1
   },
   {
@@ -820,7 +818,7 @@
   },
   {
     "idx": 47,
-    "name": "Tabantha Weat",
+    "name": "Tabantha Wheat",
     "price": 3,
     "price_mon": null,
     "hp": 8,

@@ -5,7 +5,12 @@
 const R = require('ramda');
 
 const materialsList = require('./materials.json');
+const recipeList = require('./recipes.json');
 
+const additiveRecipeNo = [3, 4, 5, 28, 55, 70, 84, 113];
+const additiveOnlyRecipes = recipeList.filter(r => additiveRecipeNo.includes(Number(r.idx)));
+
+console.log(additiveOnlyRecipes);
 
 // =============================================================================
 // - Global Constants ----------------------------------------------------------
@@ -226,13 +231,29 @@ const MAT_EFFECTS = {
 // - Helpers -------------------------------------------------------------------
 // =============================================================================
 
-// In: Array<String> of material names
-// Out: Array<Object> of material objects
+let funcFunc = (a) => a + 5;
+
+let funcFuncFunc = (a) => {
+  return a + 5;
+}
+
+// In: Array<String> or String; JSON
+// Out: input type, but as Array<Object> or Object containing the looked up values
 // Mapped function: find the material whose property "name" is equal to s
 //    from materialsList.
 
-let findMatData = sArr => R.map(s => R.find(R.propEq('name', s))(materialsList), sArr);
-
+let findData = (arg, dict) => {
+  if (typeof arg == 'object') {
+    let out = R.map(s => R.find(R.propEq('name', s), dict), arg);
+    return out;
+  } else if (typeof arg == 'string') {
+    let out = R.find(R.propEq('name', arg), dict);
+    return out;
+  }
+}
+// Abbreviation for 'lookup'
+let lm = v => findData(v, materialsList);
+let lr = v => findData(v, recipeList);
 
 // In: Array<Object> of material objects
 // Out: String representing the name of the effect to be used
@@ -261,8 +282,8 @@ function calcRupeePrice(mats) {
   console.log(`Sum is ${sum} rupees. Total price is ${price} rupees.`);
 }
 
-calcRupeePrice(findMatData(['Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat']));
-calcRupeePrice(findMatData(['Chickaloo Tree Nut']));
+calcRupeePrice(lm(['Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat']));
+calcRupeePrice(lm(['Chickaloo Tree Nut']));
 
 
 
@@ -315,15 +336,15 @@ function getDishEffectDetails(mats, fxName = calcFx(mats)) {
   }
 }
 
-// getDishEffectDetails(findMatData(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Apple']));
-// getDishEffectDetails(findMatData(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Hearty Truffle']));
-getDishEffectDetails(findMatData(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
-getDishEffectDetails(findMatData(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
-getDishEffectDetails(findMatData(['Fleet-Lotus Seeds', 'Rushroom', 'Fleet-Lotus Seeds']));
-getDishEffectDetails(findMatData(['Fleet-Lotus Seeds', 'Rushroom', 'Mighty Bananas']));
-getDishEffectDetails(findMatData(['Spicy Pepper', 'Spicy Pepper', 'Sunshroom', 'Sizzlefin Trout']));
-getDishEffectDetails(findMatData(['Hightail Lizard', 'Bokoblin Fang', 'Keese Wing']));
-getDishEffectDetails(findMatData(['Electric Darner', 'Electric Darner', 'Lizalfos Horn']));
+// getDishEffectDetails(lm(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Apple']));
+// getDishEffectDetails(lm(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Hearty Truffle']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Rushroom', 'Fleet-Lotus Seeds']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Rushroom', 'Mighty Bananas']));
+getDishEffectDetails(lm(['Spicy Pepper', 'Spicy Pepper', 'Sunshroom', 'Sizzlefin Trout']));
+getDishEffectDetails(lm(['Hightail Lizard', 'Bokoblin Fang', 'Keese Wing']));
+getDishEffectDetails(lm(['Electric Darner', 'Electric Darner', 'Lizalfos Horn']));
 
 function getTimedTier(potency, tiers) {
   if (tiers[2] && potency > tiers[2]) {
@@ -347,11 +368,11 @@ let getHpRestore = (mats) =>
     ? "Full recovery" 
     : mats.reduce((sum, m) => sum + m.hp, 0);
 
-// let ex1_getHpRestore = getHpRestore(findMatData(['Wildberry', 'Hyrule Herb', 'Hyrule Bass', 'Mighty Bananas']));
+// let ex1_getHpRestore = getHpRestore(lm(['Wildberry', 'Hyrule Herb', 'Hyrule Bass', 'Mighty Bananas']));
 // console.log(ex1_getHpRestore);
-// let ex2_getHpRestore = getHpRestore(findMatData(['Wildberry', 'Hyrule Herb', 'Hearty Truffle', 'Mighty Bananas']));
+// let ex2_getHpRestore = getHpRestore(lm(['Wildberry', 'Hyrule Herb', 'Hearty Truffle', 'Mighty Bananas']));
 // console.log(ex2_getHpRestore);
-// let ex3_getHpRestore = getHpRestore(findMatData(['Armored Carp', 'Armored Carp', 'Ironshell Crab', 'Ironshell Crab']));
+// let ex3_getHpRestore = getHpRestore(lm(['Armored Carp', 'Armored Carp', 'Ironshell Crab', 'Ironshell Crab']));
 // console.log(ex3_getHpRestore);
 
 // Returns all permutations of an array. Meant to be used w/ max 5 values.
@@ -381,6 +402,106 @@ var permArr = [],
 // console.log(R.uniq(c));
 
 // =============================================================================
+// - Recipe Functions -----------------------------------------------------------------
+// =============================================================================
+
+/**
+ * In: Array of material objects
+ * Out: Either false, 'Dubious Food', or 'Rock-Hard Food'
+ * Note: Dubious Food and Rock-Hard Food always sell for 2 rupees
+ */
+function hasBadMats(mats) {
+  // Contains wood or mineral (higher priority than Dubious Food)
+  if (mats.filter(m => ['Mineral', 'Wood'].includes(m.type)).length > 0)
+    return 'Rock-Hard Food';
+
+  // Has monster part(s) but no critter, or vice versa
+  let e = 0;
+  if (mats.filter(R.propEq('usage', 'Critter')).length > 0)
+    e++;
+  if (mats.filter(R.propEq('usage', 'Monster Part')).length > 0)
+    e++;
+  if (e == 1) return 'Dubious Food';
+
+  // Has monster part + critter, but ingredients have conflicting effects
+  if (e == 2) {
+    // calcFx returns 'none' if NO effect OR conflicting effect, but since
+    //   all critters have an effect, we know 'none' == conflicting effect.
+    if (calcFx(mats) == 'none') {
+      return 'Dubious Food';
+    } else {
+      // If it has a monster part + critter and produces a valid effect,
+      //   it passes, even if it has bad seasoning combos.
+      return false;
+    }
+  }
+
+  // Materials are fine + has a Nutrition ingredient
+  if (mats.filter(R.propEq('usage', 'Food')).length > 0)
+    return false;
+ 
+  // Combos hereon out: no monster parts, critters, minerals, wood, or food. 
+  // All combos from hereon have _only_ additives.
+  // Contains bad seasoning combos
+  // TODO
+
+  // All looks good
+  return false;
+}
+
+
+console.log(hasBadMats(lm(['Acorn', 'Apple', 'Bokoblin Horn'])));
+
+
+// In: Recipe obj, Array of material obj
+// Out: Boolean
+
+function canCookInto(rcp, mats) {
+  let ms = R.clone(mats);
+
+  if (mats.length < rcp.ingredients.length) {
+    return false; // Mats has less # of mats than recipe calls for
+  }
+
+  // console.log(`Recipe calls for ${rcp.ingredients.length} ingred`);
+  // console.log(`Given ingred: ${mats.length}`);
+
+  return R.all(R.__, rcp.ingredients)((el) => {
+    let sIdx;
+    if (el[0] == 'name') {
+      sIdx = ms.findIndex(m => m.name == el[1]);
+    } else { // == 'family'
+      sIdx = ms.findIndex(m => m.families.includes(el[1]));
+    }
+    if (sIdx == -1) {
+      return false;
+    }
+    ms = ms.slice(0, sIdx).concat(ms.slice(sIdx + 1));
+    return true;
+  });
+}
+
+console.log(canCookInto(
+  lr('Clam Chowder'), 
+  lm(['Fresh Milk', 'Tabantha Wheat', 'Goat Butter', 'Hearty Blueshell Snail'])));
+
+
+console.log(canCookInto(
+  lr('Prime Meat Stew'), 
+  lm(['Goat Butter', 'Fresh Milk', 'Raw Bird Thigh', 'Tabantha Wheat'])));
+
+console.log(canCookInto(
+  lr('Prime Meat Stew'), 
+  lm(['Goat Butter', 'Apple', 'Fresh Milk', 'Raw Gourmet Meat', 'Tabantha Wheat'])));
+
+console.log(canCookInto(
+  lr('Fruitcake'), 
+  lm(['Hearty Durian', 'Sugar Cane', 'Apple', 'Tabantha Wheat'])));
+
+
+
+
+// =============================================================================
 // - Functions -----------------------------------------------------------------
 // =============================================================================
 
@@ -393,7 +514,7 @@ var permArr = [],
 
 
 function cook(matStrings) {
-  let matArr = findMatData(matStrings);
+  let matArr = lm(matStrings);
   let effectName = calcFx(matArr);
   // console.log(mArr);
   // console.log(fx);
