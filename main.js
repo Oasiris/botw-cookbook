@@ -14,6 +14,11 @@ const XTRA_RCP_DICT = RCP_DICT.filter(r => additiveRecipeNo.includes(Number(r.id
 // - Global Constants ----------------------------------------------------------
 // =============================================================================
 
+const ENERGIZING_LEVELS = [  0, 0.2, 0.4, 0.8, 1.0, 1.4, 1.6, 1.8, 2.2, 2.4, 2.8, 3.0];
+
+// last index is 20. this is the cap
+const ENDURING_LEVELS =   [  0, 0.2, 0.2, 0.2, 0.4, 0.4, 0.6, 0.6, 0.8, 0.8, 1.0, 1.0, 1.2, 1.2, 1.4, 1.4, 1.6, 1.6, 1.8, 1.8, 2.0];
+
 const REAGANT_TIERS = [40, 80, 160];
 
 // Source: https://gaming.stackexchange.com/questions/302414/what-are-the-most-profitable-meals-and-elixirs-i-can-cook
@@ -302,11 +307,19 @@ function getDishEffectDetails(mats, fxName = calcFx(mats)) {
 
   switch(fx.fxType) {
     case 'points':
-      fx.fxData.points = fxCausers.reduce(
+      let points = fxCausers.reduce(
         (sum, m) => (m.potency) ? sum + m.potency : sum
         , 0);
-      console.log(`Sum of points is ${fx.fxData.points}.`);
-      // console.log(fx);
+      fx.fxData.points = points;
+
+      if (fxName == 'Hearty') {
+        fx.fxData.xtraHearts = points;
+      } else if (fxName == 'Energizing') {
+        fx.fxData.stm = ENERGIZING_LEVELS[points];
+      } else if (fxName == 'Enduring') {
+        // Effect maxes out at 20 points
+        fx.fxData.xtraStm = ENDURING_LEVELS[R.min(points, 20)];
+      }
       break;
     case 'timed':
       console.log('Timed');
@@ -319,24 +332,23 @@ function getDishEffectDetails(mats, fxName = calcFx(mats)) {
       fx.fxData.tierName = tierName;
       fx.fxData.time = (30*mats.length) + (fx.fxMD.baseTimeInc*fxCausers.length);
       fx.fxData.time += foodTimeBoost + reagantTimeBoost;
-      console.log(fx);
-
-
       break;
     default:
       console.error("Something went wrong (getDishEffectDetails)");
-  }
+  } // end of switch statement
+
+  console.log(fx);
 }
 
-// getDishEffectDetails(lm(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Apple']));
-// getDishEffectDetails(lm(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Hearty Truffle']));
-// getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
-// getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
-// getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Rushroom', 'Fleet-Lotus Seeds']));
-// getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Rushroom', 'Mighty Bananas']));
-// getDishEffectDetails(lm(['Spicy Pepper', 'Spicy Pepper', 'Sunshroom', 'Sizzlefin Trout']));
-// getDishEffectDetails(lm(['Hightail Lizard', 'Bokoblin Fang', 'Keese Wing']));
-// getDishEffectDetails(lm(['Electric Darner', 'Electric Darner', 'Lizalfos Horn']));
+getDishEffectDetails(lm(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Apple']));
+getDishEffectDetails(lm(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Hearty Truffle']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds', 'Fleet-Lotus Seeds']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Rushroom', 'Fleet-Lotus Seeds']));
+getDishEffectDetails(lm(['Fleet-Lotus Seeds', 'Rushroom', 'Mighty Bananas']));
+getDishEffectDetails(lm(['Spicy Pepper', 'Spicy Pepper', 'Sunshroom', 'Sizzlefin Trout']));
+getDishEffectDetails(lm(['Hightail Lizard', 'Bokoblin Fang', 'Keese Wing']));
+getDishEffectDetails(lm(['Electric Darner', 'Electric Darner', 'Lizalfos Horn']));
 
 function getTimedTier(potency, tiers) {
   if (tiers[2] && potency > tiers[2]) {
