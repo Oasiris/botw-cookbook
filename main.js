@@ -4,182 +4,22 @@
 
 const R = require('ramda');
 
-const MAT_DICT = require('./data/materials.json');
-const RCP_DICT = require('./data/recipes.json');
-
-const additiveRecipeNo = [3, 4, 5, 28, 55, 70, 84, 113];
-const XTRA_RCP_DICT = RCP_DICT.filter(r => additiveRecipeNo.includes(Number(r.idx)));
-
-const MAT_DESC_DICT = require('./data/matDesc.json');
-const RCP_DESC_DICT = require('./data/recipeDesc.json');
-
 // =============================================================================
 // - Global Constants ----------------------------------------------------------
 // =============================================================================
 
-const ENERGIZING_LEVELS = [  0, 0.2, 0.4, 0.8, 1.0, 1.4, 1.6, 1.8, 2.2, 2.4, 2.8, 3.0];
-
-// last index is 20. this is the cap
-const ENDURING_LEVELS =   [  0, 0.2, 0.2, 0.2, 0.4, 0.4, 0.6, 0.6, 0.8, 0.8, 1.0, 1.0, 1.2, 1.2, 1.4, 1.4, 1.6, 1.6, 1.8, 1.8, 2.0];
-
-const REAGANT_TIERS = [40, 80, 160];
-
-// Source: https://gaming.stackexchange.com/questions/302414/what-are-the-most-profitable-meals-and-elixirs-i-can-cook
-const PRICE_MULTIPLIER = [1.5, 1.75, 2.05, 2.4, 2.8];
-
-const EFFECT_DESC = {
-  hearty: {
-    foodDesc: 'Restores your health and temporarily increases your maximum hearts.',
-    elixirDesc: 'Restores you to full health and increases your maximum hearts. The additional hearts are lost as you take damage.'
-  }, 
-  energizing: {
-    foodDesc: 'Instantly refills some of your Stamina Wheel.',
-    elixirDesc: 'Restores your Stamina, which is used when performing physical actions such as climbing walls and swimming.'
-  },
-  enduring: {
-    foodDesc: 'Restores and overfills your Stamina Wheel.',
-    elixirDesc: 'Restores stamina and temporarily extends your Stamina Wheel. The additional stamina will disappear as it\'s used.'
-  },
-  sneaky: {
-    foodDesc: 'Grants a %s-level stealth boost.',
-    elixirDesc: 'Grants a %s-level stealth effect, which calms the nerves and silences footfalls. Allows you to move about undetected by monsters and animals.',
-  },
-  hasty: {
-    foodDesc: 'Grants a %s-level movement-speed boost.',
-    elixirDesc: 'Grants a %s-level haste effect, which boosts your movement speed while running, swimming, or climbing.',
-  },
-  mighty: {
-    foodDesc: 'Grants a %s-level attack-power boost.',
-    elixirDesc: 'Grants a %s-level might effect, which strengthens your body and mind to boost your attack power with all weapons.',
-  },
-  tough: {
-    foodDesc: 'Grants a %s-level defense boost.',
-    elixirDesc: 'Grants a %s-level toughness effect, which fortifies your bones to strengthen your defense. Best to use before facing off against hard-hitting enemies.',
-  },
-  spicy: {
-    foodDesc: 'Grants %s-level cold resistance.',
-    elixirDesc: 'Warms your body from its core, increasing your resistance to cold environments. Very useful in the snow-covered mountains.',
-  },
-  chilly: {
-    foodDesc: 'Grants %s-level heat resistance.',
-    elixirDesc: 'Grants a %s-level cooling effect, raising your body\'s resistance to heat. Crucial for long journeys through the desert.',
-  },
-  electro: {
-    foodDesc: 'Grants %s-level electricity resistance.',
-    elixirDesc: 'Grants a %s-level resistance to electricity. Useful against enemies with electrical attacks.',
-  },
-  fireproof: {
-    foodDesc: '(This should never appear.)',
-    elixirDesc: 'Grants a fireproof effect, which prevents your body from catching fire. Be sure to pack this when venturing out to explore Death Mountain.',
-  }
-};
-
-
-const MAT_EFFECTS = {
-  hearty: {
-    prefix: 'Hearty',
-    fxType: 'points',
-  },
-  energizing: {
-    prefix: 'Energizing',
-    fxType: 'points',
-  },
-  enduring: {
-    prefix: 'Enduring',
-    fxType: 'points',
-  },
-  sneaky: {
-    prefix: 'Sneaky',
-    fxType: 'timed',
-    title: 'Stealth Up',
-    fxMD: {
-      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
-      potencyLevels: [5, 10, 15], // rank 1 mat: 5, rank 2 mat: 10, rank 3 mat: 15
-      baseTimeInc: 90, // in seconds
-    }
-  },
-  hasty: {
-    prefix: 'Hasty',
-    fxType: 'timed',
-    title: 'Speed Up',
-    fxMD: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [7, 14],
-      baseTimeInc: 30, // in seconds
-    }
-  },
-  mighty: {
-    prefix: 'Mighty',
-    fxType: 'timed',
-    title: 'Attack Up',
-    fxMD: {
-      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
-      potencyLevels: [7, 14, 21],  
-      baseTimeInc: 20, // in seconds
-    }
-  },
-  tough: {
-    prefix: 'Tough',
-    fxType: 'timed',
-    title: 'Defense Up',
-    fxMD: {
-      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
-      potencyLevels: [7, 14, 21],
-      baseTimeInc: 20, // in seconds
-    }
-  },
-  spicy: {
-    prefix: 'Spicy',
-    fxType: 'timed',
-    title: 'Cold Resistance',
-    fxMD: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [5, 10, 15],
-      baseTimeInc: 120, // in seconds
-    }
-  },
-  chilly: {
-    prefix: 'Chilly',
-    fxType: 'timed',
-    title: 'Heat Resistance',
-    fxMD: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [5, 10, 15],
-      baseTimeInc: 120, // in seconds
-    }
-  },
-  electro: {
-    prefix: 'Electro',
-    fxType: 'timed',
-    title: 'Shock Resistance',
-    fxMD: {
-      tierBps: [0, 30, 45], // breakpoints for low & mid
-      potencyLevels: [8, 16, 24],
-      baseTimeInc: 120, // in seconds
-    }
-  },
-  fireproof: {
-    prefix: 'Fireproof',
-    fxType: 'timed',
-    title: 'Fireproof',
-    fxMD: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [4, 9],
-      baseTimeInc: 120, // in seconds
-    }
-  }
-};
+const C = require('./constants');
 
 // =============================================================================
 // - Helpers -------------------------------------------------------------------
 // =============================================================================
 
 // In: Array<String> or String; JSON
-// Out: input type, but as Array<Object> or Object containing the looked up values
+// Out: corresponding Array<Object> or Object containing the looked up values
 // Mapped function: find the material whose property "name" is equal to s
-//    from MAT_DICT.
+//    from C.matDict.
 
-let findData = (arg, dict = MAT_DICT) => {
+let findData = (arg, dict = C.matDict) => {
   if (typeof arg == 'object') {
     let out = R.map(s => R.find(R.propEq('name', s), dict), arg);
     return out;
@@ -189,13 +29,13 @@ let findData = (arg, dict = MAT_DICT) => {
   }
 }
 // Abbreviation for 'lookup'
-let lm = v => findData(v, MAT_DICT);
-let lr = v => findData(v, RCP_DICT);
+let lm = v => findData(v, C.matDict);
+let lr = v => findData(v, C.rcpDict);
 
-let findFxData = fxName => MAT_EFFECTS[fxName.toLowerCase()];
+let findFxData = fxName => C.matFx[fxName.toLowerCase()];
 
 let getFxDesc = (fxName, tierName = 'low', rcpType = 'food') => 
-  EFFECT_DESC[fxName.toLowerCase()][rcpType + 'Desc'].replace('%s', tierName);
+  C.fxDesc[fxName.toLowerCase()][rcpType + 'Desc'].replace('%s', tierName);
 
 console.log(getFxDesc('Hearty', 'mid', 'elixir'));
 console.log(getFxDesc('Tough', 'mid', 'food'));
@@ -222,11 +62,11 @@ function calcFx(mats) {
  */
 
 function calcRupeePrice(mats) {
-  if (mats == ['Acorn']) {  // TODO: see Jason's test for Chickaloo Tree Nut
+  if (mats.length == 1 && mats[0].name == 'Acorn') {
     return 8;
   }
   let sum = R.sum(mats.map(m => m.price));
-  let price = (sum * PRICE_MULTIPLIER[mats.length - 1]); // Unrounded price
+  let price = (sum * C.priceMultiplier[mats.length - 1]); // Unrounded price
   price = Math.ceil(price / 10) * 10;
   return price;
   // console.log(`Sum is ${sum} rupees. Total price is ${price} rupees.`);
@@ -250,8 +90,6 @@ function getDishEffectDetails(
 
   if (fxName == 'none') return null;
 
-  // let fx = MAT_EFFECTS[fxName.toLowerCase()];
-  // let fx = findFxData(fxName);
   fx.fxData = {};
   let fxCausers = mats.filter(R.propEq('effect', fxName));
   // Food
@@ -260,7 +98,7 @@ function getDishEffectDetails(
     .reduce(R.add, 0);
 
   let reagantTimeBoost = mats.filter(m => m.usage == 'Monster Part')
-    .map(m => REAGANT_TIERS[m.rank - 1])
+    .map(m => C.reagantTiers[m.rank - 1])
     .reduce(R.add, 0);
 
 
@@ -274,10 +112,10 @@ function getDishEffectDetails(
       if (fxName == 'Hearty') {
         fx.fxData.xtraHearts = points;
       } else if (fxName == 'Energizing') {
-        fx.fxData.stm = ENERGIZING_LEVELS[points];
+        fx.fxData.stm = C.energizingLvls[points];
       } else if (fxName == 'Enduring') {
         // Effect maxes out at 20 points
-        fx.fxData.xtraStm = ENDURING_LEVELS[R.min(points, 20)];
+        fx.fxData.xtraStm = C.enduringLvls[R.min(points, 20)];
       }
       break;
 
@@ -299,6 +137,7 @@ function getDishEffectDetails(
   } // end of switch statement
 
   console.log(fx);
+  return fx;
 }
 
 getDishEffectDetails(lm(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Apple']));
@@ -427,10 +266,19 @@ function hasBadMats(mats) {
   // Combos hereon out: no monster parts, critters, minerals, wood, or food. 
   // All combos from hereon have _only_ additives.
 
+  // console.log('Additive-only mats');
+
   // Will return if it matches one of the additive-only recipes
-  for (const rcp of XTRA_RCP_DICT) {
-    if (canCookInto(rcp, mats, true)) 
-      return {type: 'data', data: rcp};
+  for (const rcp of C.xtraRcpDict) {
+    if (canCookInto(rcp, mats)) {  // Monster extract dishes don't need to be exact
+      if (rcp.name.indexOf('Monster') !== -1) {
+        return {type: 'data', data: rcp};
+      } else {
+        if (canCookInto(rcp, mats, true)) {  // All others do
+          return {type: 'data', data: rcp};
+        }
+      }
+    }
   }
   
   // Must be Dubious Food
@@ -457,7 +305,7 @@ console.log(hasBadMats(lm(['Rock Salt', 'Sugar Cane', 'Monster Extract', 'Tabant
 function getFoodResult(mats) {
   // TODO: specific optimization.
 
-  for (const rcp of RCP_DICT) {
+  for (const rcp of C.rcpDict) {
     if (canCookInto(rcp, mats)) return rcp;
   }
   return null; // Signifies that none of the recipes worked.
@@ -549,8 +397,8 @@ console.log(
 // =============================================================================
 
 function getMatDesc(matName) {
-  let i = MAT_DESC_DICT.findIndex(m => m[0] == matName);
-  if (i !== -1) return MAT_DESC_DICT[i][1];
+  let i = C.matDescDict.findIndex(m => m[0] == matName);
+  if (i !== -1) return C.matDescDict[i][1];
   return null;
 }
 
@@ -558,8 +406,8 @@ console.log(['Apple', 'Acorn', 'Warm Safflina', 'Hearty Bass', 'Big Hearty Radis
 
 // For foods only -- no elixirs
 function getRecipeBaseDesc(rcpName) {
-  let i = RCP_DESC_DICT[2].data.findIndex(r => r[0] == rcpName);
-  if (i !== -1) return RCP_DESC_DICT[2].data[i][1];
+  let i = C.rcpDescDict[2].data.findIndex(r => r[0] == rcpName);
+  if (i !== -1) return C.rcpDescDict[2].data[i][1];
   return null;
 }
 
@@ -611,12 +459,13 @@ function cook(matStrings) {
   if (glance.type == 'name') {
     if (glance.data == 'Rock-Hard Food') {
       return ROCK_HARD;
-    } else if (glance.data == 'Dubious') {
+    } else if (glance.data == 'Dubious Food') {
       out = DUBIOUS;
       out.heal = getHpHeal(mats, false) / 2;
       return out;
     } else {
-      let errStr = 'hasBadMats returned result w/ type name, but name isn\'t' +
+      // console.log(glance);
+      let errStr = 'hasBadMats returned result w/ type name, but name isn\'t ' +
         'Dubious Food or Rock-Hard Food';
       throw new Error(errStr);
     }
@@ -639,14 +488,17 @@ function cook(matStrings) {
     out.name = recipeData.name;
     out.desc = getRecipeBaseDesc(out.name);
     if (fxName !== 'none') {
+      console.log(fxName);
       out.fx = getDishEffectDetails(mats, fxName);
+      out.name = out.fx.prefix + ' ' + out.name;
       out.desc = getFxDesc(fxName, out.fx.fxData.tierName, 'food') + 
-        ' ' + out.name;
+        ' ' + out.desc;
     }
   }
   out.price = calcRupeePrice(mats);
   out.matS = matStrings;
-  out.heal = getHpHeal(mats);
+  out.heal = getHpHeal(mats, false);
+  if (out.fx && out.fx.prefix == 'Hearty') out.heal = 'Full recovery';
   return out;
 }
 
@@ -657,12 +509,17 @@ function cook(matStrings) {
 // TEST FUNCTION
 let TEST_MAT_LISTS = [
   ['Apple'],
-  ['Apple', 'Acorn', 'Warm Safflina', 'Hearty Bass', 'Big Hearty Radish'],
-  []
+  ['Hightail Lizard'],
+  ['Apple', 'Acorn', 'Warm Safflina', 'Hearty Bass', 'Hearty Radish'],
+  ['Acorn', 'Hearty Bass', 'Hearty Truffle', 'Big Hearty Radish', 'Hylian Rice'],
+  ['Rock Salt', 'Sugar Cane', 'Monster Extract', 'Tabantha Wheat', 'Goat Butter']
 
 ]
 
-console.log(cook(['Apple']));
+TEST_MAT_LISTS.forEach(e => console.log(cook(e)));
+
+
+// console.log(cook(['Apple']));
 
 // cook(['Hearty Durian', 'Apple', 'Apple', 'Bird Egg', 'Rock Salt']);
 // cook(['Fresh Milk', 'Sugar Cane']);
