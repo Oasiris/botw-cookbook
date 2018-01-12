@@ -4,11 +4,14 @@
 
 const R = require('ramda');
 
-const MAT_DICT = require('./materials.json');
-const RCP_DICT = require('./recipes.json');
+const MAT_DICT = require('./data/materials.json');
+const RCP_DICT = require('./data/recipes.json');
 
 const additiveRecipeNo = [3, 4, 5, 28, 55, 70, 84, 113];
 const XTRA_RCP_DICT = RCP_DICT.filter(r => additiveRecipeNo.includes(Number(r.idx)));
+
+const MAT_DESC_DICT = require('./data/matDesc.json');
+const RCP_DESC_DICT = require('./data/recipeDesc.json');
 
 // =============================================================================
 // - Global Constants ----------------------------------------------------------
@@ -24,208 +27,145 @@ const REAGANT_TIERS = [40, 80, 160];
 // Source: https://gaming.stackexchange.com/questions/302414/what-are-the-most-profitable-meals-and-elixirs-i-can-cook
 const PRICE_MULTIPLIER = [1.5, 1.75, 2.05, 2.4, 2.8];
 
-const ICONS = {
-  hearty: '...',
-  energizing: '...',
-  enduring: '...',
-  sneaky: '...',
-  hasty: '...',
-  mighty: '...',
-  tough: '...',
-  spicy: '...',
-  chilly: '...',
-  electro: '...',
-  fireproof: '...'
-  // ... finish this soon
+const EFFECT_DESC = {
+  hearty: {
+    foodDesc: 'Restores your health and temporarily increases your maximum hearts.',
+    elixirDesc: 'Restores you to full health and increases your maximum hearts. The additional hearts are lost as you take damage.'
+  }, 
+  energizing: {
+    foodDesc: 'Instantly refills some of your Stamina Wheel.',
+    elixirDesc: 'Restores your Stamina, which is used when performing physical actions such as climbing walls and swimming.'
+  },
+  enduring: {
+    foodDesc: 'Restores and overfills your Stamina Wheel.',
+    elixirDesc: 'Restores stamina and temporarily extends your Stamina Wheel. The additional stamina will disappear as it\'s used.'
+  },
+  sneaky: {
+    foodDesc: 'Grants a %s-level stealth boost.',
+    elixirDesc: 'Grants a %s-level stealth effect, which calms the nerves and silences footfalls. Allows you to move about undetected by monsters and animals.',
+  },
+  hasty: {
+    foodDesc: 'Grants a %s-level movement-speed boost.',
+    elixirDesc: 'Grants a %s-level haste effect, which boosts your movement speed while running, swimming, or climbing.',
+  },
+  mighty: {
+    foodDesc: 'Grants a %s-level attack-power boost.',
+    elixirDesc: 'Grants a %s-level might effect, which strengthens your body and mind to boost your attack power with all weapons.',
+  },
+  tough: {
+    foodDesc: 'Grants a %s-level defense boost.',
+    elixirDesc: 'Grants a %s-level toughness effect, which fortifies your bones to strengthen your defense. Best to use before facing off against hard-hitting enemies.',
+  },
+  spicy: {
+    foodDesc: 'Grants %s-level cold resistance.',
+    elixirDesc: 'Warms your body from its core, increasing your resistance to cold environments. Very useful in the snow-covered mountains.',
+  },
+  chilly: {
+    foodDesc: 'Grants %s-level heat resistance.',
+    elixirDesc: 'Grants a %s-level cooling effect, raising your body\'s resistance to heat. Crucial for long journeys through the desert.',
+  },
+  electro: {
+    foodDesc: 'Grants %s-level electricity resistance.',
+    elixirDesc: 'Grants a %s-level resistance to electricity. Useful against enemies with electrical attacks.',
+  },
+  fireproof: {
+    foodDesc: '(This should never appear.)',
+    elixirDesc: 'Grants a fireproof effect, which prevents your body from catching fire. Be sure to pack this when venturing out to explore Death Mountain.',
+  }
 };
+
 
 const MAT_EFFECTS = {
   hearty: {
     prefix: 'Hearty',
     fxType: 'points',
-    fxMD: {
-      icon: ICONS.hearty,
-      foodDesc: 'Restores your health and temporarily increases your maximum hearts.',
-      elixirDesc: 'Restores you to full health and increases your maximum hearts. The additional hearts are lost as you take damage.'
-    },
-    fxData: {
-      points: undefined
-    }
   },
   energizing: {
     prefix: 'Energizing',
     fxType: 'points',
-    fxMD: {
-      icon: ICONS.energizing,
-      foodDesc: 'Instantly refills some of your Stamina Wheel.',
-      elixirDesc: 'Restores your Stamina, which is used when performing physical actions such as climbing walls and swimming.'
-    },
-    fxData: {
-      points: undefined
-    }
   },
   enduring: {
     prefix: 'Enduring',
     fxType: 'points',
-    fxMD: {
-      icon: ICONS.enduring,
-      foodDesc: 'Restores and overfills your Stamina Wheel.',
-      elixirDesc: 'Restores stamina and temporarily extends your Stamina Wheel. The additional stamina will disappear as it\'s used.'
-    },
-    fxData: {
-      points: undefined
-    }
   },
   sneaky: {
     prefix: 'Sneaky',
     fxType: 'timed',
+    title: 'Stealth Up',
     fxMD: {
-      icon: ICONS.sneaky,
-      title: 'Stealth Up',
       tierBps: [0, 30, 45], // breakpoints for low, mid, & high
       potencyLevels: [5, 10, 15], // rank 1 mat: 5, rank 2 mat: 10, rank 3 mat: 15
-      foodDesc: 'Grants a %s-level stealth boost.',
-      elixirDesc: 'Grants a %s-level stealth effect, which calms the nerves and silences footfalls. Allows you to move about undetected by monsters and animals.',
       baseTimeInc: 90, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   },
   hasty: {
     prefix: 'Hasty',
     fxType: 'timed',
+    title: 'Speed Up',
     fxMD: {
-      icon: ICONS.hasty,
-      title: 'Speed Up',
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [7, 14],
-      foodDesc: 'Grants a %s-level movement-speed boost.',
-      elixirDesc: 'Grants a %s-level haste effect, which boosts your movement speed while running, swimming, or climbing.',
       baseTimeInc: 30, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   },
   mighty: {
     prefix: 'Mighty',
     fxType: 'timed',
+    title: 'Attack Up',
     fxMD: {
-      icon: ICONS.mighty,
-      title: 'Attack Up',
       tierBps: [0, 30, 45], // breakpoints for low, mid, & high
       potencyLevels: [7, 14, 21],  
-      foodDesc: 'Grants a %s-level attack-power boost.',
-      elixirDesc: 'Grants a %s-level might effect, which strengthens your body and mind to boost your attack power with all weapons.',
       baseTimeInc: 20, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   },
   tough: {
     prefix: 'Tough',
     fxType: 'timed',
+    title: 'Defense Up',
     fxMD: {
-      icon: ICONS.tough,
-      title: 'Defense Up',
       tierBps: [0, 30, 45], // breakpoints for low, mid, & high
       potencyLevels: [7, 14, 21],
-      foodDesc: 'Grants a %s-level defense boost.',
-      elixirDesc: 'Grants a %s-level toughness effect, which fortifies your bones to strengthen your defense. Best to use before facing off against hard-hitting enemies.',
       baseTimeInc: 20, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   },
   spicy: {
     prefix: 'Spicy',
     fxType: 'timed',
+    title: 'Cold Resistance',
     fxMD: {
-      icon: ICONS.spicy,
-      title: 'Cold Resistance',
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [5, 10, 15],
-      foodDesc: 'Grants %s-level cold resistance.',
-      elixirDesc: 'Warms your body from its core, increasing your resistance to cold environments. Very useful in the snow-covered mountains.',
       baseTimeInc: 120, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   },
   chilly: {
     prefix: 'Chilly',
     fxType: 'timed',
+    title: 'Heat Resistance',
     fxMD: {
-      icon: ICONS.chilly,
-      title: 'Heat Resistance',
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [5, 10, 15],
-      foodDesc: 'Grants %s-level heat resistance.',
-      elixirDesc: 'Grants a %s-level cooling effect, raising your body\'s resistance to heat. Crucial for long journeys through the desert.',
       baseTimeInc: 120, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   },
   electro: {
     prefix: 'Electro',
     fxType: 'timed',
+    title: 'Shock Resistance',
     fxMD: {
-      icon: ICONS.electro,
-      title: 'Shock Resistance',
       tierBps: [0, 30, 45], // breakpoints for low & mid
       potencyLevels: [8, 16, 24],
-      foodDesc: 'Grants %s-level electricity resistance.',
-      elixirDesc: 'Grants a %s-level resistance to electricity. Useful against enemies with electrical attacks.',
       baseTimeInc: 120, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   },
   fireproof: {
     prefix: 'Fireproof',
     fxType: 'timed',
+    title: 'Fireproof',
     fxMD: {
-      icon: ICONS.fireproof,
-      title: 'Fireproof',
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [4, 9],
-      foodDesc: '(This should never appear.)',
-      elixirDesc: 'Grants a fireproof effect, which prevents your body from catching fire. Be sure to pack this when venturing out to explore Death Mountain.',
       baseTimeInc: 120, // in seconds
-    },
-    fxData: {
-      totPotency: undefined,
-      tierNumber: undefined,
-      tierName: undefined,
-      time: undefined
     }
   }
 };
@@ -239,7 +179,7 @@ const MAT_EFFECTS = {
 // Mapped function: find the material whose property "name" is equal to s
 //    from MAT_DICT.
 
-let findData = (arg, dict) => {
+let findData = (arg, dict = MAT_DICT) => {
   if (typeof arg == 'object') {
     let out = R.map(s => R.find(R.propEq('name', s), dict), arg);
     return out;
@@ -251,6 +191,18 @@ let findData = (arg, dict) => {
 // Abbreviation for 'lookup'
 let lm = v => findData(v, MAT_DICT);
 let lr = v => findData(v, RCP_DICT);
+
+let findFxData = fxName => MAT_EFFECTS[fxName.toLowerCase()];
+
+let getFxDesc = (fxName, tierName = 'low', rcpType = 'food') => 
+  EFFECT_DESC[fxName.toLowerCase()][rcpType + 'Desc'].replace('%s', tierName);
+
+console.log(getFxDesc('Hearty', 'mid', 'elixir'));
+console.log(getFxDesc('Tough', 'mid', 'food'));
+console.log(getFxDesc('Sneaky', 'high', 'food'));
+console.log(getFxDesc('Sneaky', 'low', 'elixir'));
+console.log(getFxDesc('Fireproof', 'mid', 'elixir'));
+
 
 // In: Array<Object> of material objects
 // Out: String representing the name of the effect to be used
@@ -276,7 +228,8 @@ function calcRupeePrice(mats) {
   let sum = R.sum(mats.map(m => m.price));
   let price = (sum * PRICE_MULTIPLIER[mats.length - 1]); // Unrounded price
   price = Math.ceil(price / 10) * 10;
-  console.log(`Sum is ${sum} rupees. Total price is ${price} rupees.`);
+  return price;
+  // console.log(`Sum is ${sum} rupees. Total price is ${price} rupees.`);
 }
 
 calcRupeePrice(lm(['Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat']));
@@ -290,10 +243,16 @@ calcRupeePrice(lm(['Chickaloo Tree Nut']));
  * Out: (insert some properties of the thing here)
  */ 
 
-function getDishEffectDetails(mats, fxName = calcFx(mats)) {
+function getDishEffectDetails(
+    mats, 
+    fxName = calcFx(mats), 
+    fx = findFxData(fxName)) {
+
   if (fxName == 'none') return null;
 
-  let fx = MAT_EFFECTS[fxName.toLowerCase()];
+  // let fx = MAT_EFFECTS[fxName.toLowerCase()];
+  // let fx = findFxData(fxName);
+  fx.fxData = {};
   let fxCausers = mats.filter(R.propEq('effect', fxName));
   // Food
   let foodTimeBoost = mats.filter(m => (m.time_boost != undefined))
@@ -321,20 +280,22 @@ function getDishEffectDetails(mats, fxName = calcFx(mats)) {
         fx.fxData.xtraStm = ENDURING_LEVELS[R.min(points, 20)];
       }
       break;
+
     case 'timed':
       console.log('Timed');
-      fx.fxData.totPotency = fxCausers.reduce((sum, m) => 
+      fx.fxMD.totPotency = fxCausers.reduce((sum, m) => 
           (m.potency) ? sum + fx.fxMD.potencyLevels[m.potency - 1] : sum
           , 0);
-      let tierNum = getTimedTier(fx.fxData.totPotency, fx.fxMD.tierBps);
+      let tierNum = getTimedTier(fx.fxMD.totPotency, fx.fxMD.tierBps);
       let tierName = (tierNum == 3) ? 'high' : ((tierNum == 2) ? 'mid' : 'low');
       fx.fxData.tierNumber = tierNum;
       fx.fxData.tierName = tierName;
       fx.fxData.time = (30*mats.length) + (fx.fxMD.baseTimeInc*fxCausers.length);
       fx.fxData.time += foodTimeBoost + reagantTimeBoost;
       break;
+
     default:
-      console.error("Something went wrong (getDishEffectDetails)");
+      throw new Error('effect with type other than "timed" or "points"');
   } // end of switch statement
 
   console.log(fx);
@@ -367,17 +328,17 @@ function getTimedTier(potency, tiers) {
  * Out: Number of hearts that the cooked material will restore, OR the String
  * "Full recovery".
  */ 
-let getHpRestore = (mats) => 
-  (mats.filter(m => m.effect == "Hearty").length != 0) 
+let getHpHeal = (mats, isHeartyAware = true) => 
+  (isHeartyAware && mats.filter(m => m.effect == "Hearty").length != 0) 
     ? "Full recovery" 
     : mats.reduce((sum, m) => sum + m.hp, 0);
 
-// let ex1_getHpRestore = getHpRestore(lm(['Wildberry', 'Hyrule Herb', 'Hyrule Bass', 'Mighty Bananas']));
-// console.log(ex1_getHpRestore);
-// let ex2_getHpRestore = getHpRestore(lm(['Wildberry', 'Hyrule Herb', 'Hearty Truffle', 'Mighty Bananas']));
-// console.log(ex2_getHpRestore);
-// let ex3_getHpRestore = getHpRestore(lm(['Armored Carp', 'Armored Carp', 'Ironshell Crab', 'Ironshell Crab']));
-// console.log(ex3_getHpRestore);
+// let ex1_getHpHeal = getHpHeal(lm(['Wildberry', 'Hyrule Herb', 'Hyrule Bass', 'Mighty Bananas']));
+// console.log(ex1_getHpHeal);
+// let ex2_getHpHeal = getHpHeal(lm(['Wildberry', 'Hyrule Herb', 'Hearty Truffle', 'Mighty Bananas']));
+// console.log(ex2_getHpHeal);
+// let ex3_getHpHeal = getHpHeal(lm(['Armored Carp', 'Armored Carp', 'Ironshell Crab', 'Ironshell Crab']));
+// console.log(ex3_getHpHeal);
 
 // Returns all permutations of an array. Meant to be used w/ max 5 values.
 function getPermutations(arr = []) {
@@ -406,7 +367,7 @@ var permArr = [],
 // console.log(R.uniq(c));
 
 // =============================================================================
-// - Recipe Functions -----------------------------------------------------------------
+// - Recipe Functions ----------------------------------------------------------
 // =============================================================================
 
 function validateMats(mats) {
@@ -549,7 +510,9 @@ function canCookInto(rcp, mats, mustBeExact = false) {
         break;
       default:
         sIdx = -1;
-        console.error("[ERROR] canCookInto unexpected error");
+        let errStr = 'canCookInto unexpected error: ingredient in' +
+          'recipes.json has categ in 0th index other than name or family';
+        throw new Error(errStr);
     }
 
     if (sIdx == -1) {
@@ -581,12 +544,34 @@ console.log(
     lm(['Hearty Durian', 'Sugar Cane', 'Apple', 'Tabantha Wheat']))
   );
 
+// =============================================================================
+// - Desc Functions ------------------------------------------------------------
+// =============================================================================
 
+function getMatDesc(matName) {
+  let i = MAT_DESC_DICT.findIndex(m => m[0] == matName);
+  if (i !== -1) return MAT_DESC_DICT[i][1];
+  return null;
+}
 
+console.log(['Apple', 'Acorn', 'Warm Safflina', 'Hearty Bass', 'Big Hearty Radish'].map(m => getMatDesc(m)));
+
+// For foods only -- no elixirs
+function getRecipeBaseDesc(rcpName) {
+  let i = RCP_DESC_DICT[2].data.findIndex(r => r[0] == rcpName);
+  if (i !== -1) return RCP_DESC_DICT[2].data[i][1];
+  return null;
+}
+
+console.log(['Fruitcake', 'Monster Soup', 'Copious Simmered Fruit', 'Honey Candy', 'Rock-Hard Food', 'Dubious Food'].map(r => getRecipeBaseDesc(r)));
 
 // =============================================================================
 // - Functions -----------------------------------------------------------------
 // =============================================================================
+
+
+
+
 
 // Main function
 // In: an array of up to 5 strings representing material objects
@@ -597,14 +582,87 @@ console.log(
 
 
 function cook(matStrings) {
-  let matArr = lm(matStrings);
-  let effectName = calcFx(matArr);
-  // console.log(mArr);
-  // console.log(fx);
+  if (matStrings.length == 0) {
+    return {};
+  }
 
-  // mArr = R.map(s => R.find(R.propEq('name', s))(MAT_DICT), mArr);
-  // let fx = R.reduce(R.concat, [], )
+  const ROCK_HARD = {
+    name: 'Rock-Hard Food',
+    description: getRecipeBaseDesc('Rock-Hard Food'),
+    price: 2,
+    price_mon: null,
+    matS: matStrings,
+    heal: 1,
+    fx: null
+  };
+  let DUBIOUS = {
+    name: 'Dubious Food',
+    description: getRecipeBaseDesc('Dubious Food'),
+    price: 2,
+    price_mon: null,
+    matS: matStrings,
+    heal: undefined,
+    fx: null
+  };
+  let mats = lm(matStrings);
+  let out = {};
+  
+  let glance = hasBadMats(mats);
+  if (glance.type == 'name') {
+    if (glance.data == 'Rock-Hard Food') {
+      return ROCK_HARD;
+    } else if (glance.data == 'Dubious') {
+      out = DUBIOUS;
+      out.heal = getHpHeal(mats, false) / 2;
+      return out;
+    } else {
+      let errStr = 'hasBadMats returned result w/ type name, but name isn\'t' +
+        'Dubious Food or Rock-Hard Food';
+      throw new Error(errStr);
+    }
+  }
+
+  let fxName = calcFx(mats);
+  if (glance.type == 'categ' && glance.data == 'elixir') {
+    if (fxName == 'none') {
+      out = DUBIOUS;
+      out.heal = getHpHeal(mats, false) / 2;
+      return out;
+    } else {
+      out.name = `${fxName} Elixir`;
+      out.fx = getDishEffectDetails(mats, fxName);
+      // If no tier name, it ends up working out ok anyway
+      out.desc = getFxDesc(fxName, out.fx.fxData.tierName, 'elixir');
+    }
+  } else {
+    let recipeData = (glance.type == 'data') ? glance.data : getFoodResult(mats);
+    out.name = recipeData.name;
+    out.desc = getRecipeBaseDesc(out.name);
+    if (fxName !== 'none') {
+      out.fx = getDishEffectDetails(mats, fxName);
+      out.desc = getFxDesc(fxName, out.fx.fxData.tierName, 'food') + 
+        ' ' + out.name;
+    }
+  }
+  out.price = calcRupeePrice(mats);
+  out.matS = matStrings;
+  out.heal = getHpHeal(mats);
+  return out;
 }
+
+
+
+
+
+// TEST FUNCTION
+let TEST_MAT_LISTS = [
+  ['Apple'],
+  ['Apple', 'Acorn', 'Warm Safflina', 'Hearty Bass', 'Big Hearty Radish'],
+  []
+
+]
+
+console.log(cook(['Apple']));
 
 // cook(['Hearty Durian', 'Apple', 'Apple', 'Bird Egg', 'Rock Salt']);
 // cook(['Fresh Milk', 'Sugar Cane']);
