@@ -1,0 +1,2645 @@
+[
+  {
+    "idx": 1,
+    "name": "Hearty Durian",
+    "price": 15,
+    "price_mon": null,
+    "hp": 24,
+    "effect": "Hearty",
+    "rank": "B",
+    "potency": 4, "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 12
+  },
+  {
+    "idx": 2,
+    "name": "Palm Fruit",
+    "price": 4,
+    "price_mon": null,
+    "hp": 8,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 3,
+    "name": "Apple",
+    "price": 3,
+    "price_mon": null,
+    "hp": 4,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit",
+      "Cakey Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 4,
+    "name": "Wildberry",
+    "price": 3,
+    "price_mon": null,
+    "hp": 4,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit",
+      "Cakey Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 5,
+    "name": "Hydromelon",
+    "price": 4,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Chilly",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 6,
+    "name": "Spicy Pepper",
+    "price": 3,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Spicy",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 7,
+    "name": "Voltfruit",
+    "price": 4,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Electro",
+    "rank": "D",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 8,
+    "name": "Fleet-Lotus Seeds",
+    "price": 5,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Hasty",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 9,
+    "name": "Mighty Bananas",
+    "price": 5,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Mighty",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Fruit",
+    "families": [
+      "Fruit"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 10,
+    "name": "Big Hearty Truffle",
+    "price": 15,
+    "price_mon": null,
+    "hp": 24,
+    "effect": "Hearty",
+    "rank": "B",
+    "potency": 4,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 12
+  },
+  {
+    "idx": 11,
+    "name": "Hearty Truffle",
+    "price": 6,
+    "price_mon": null,
+    "hp": 16,
+    "effect": "Hearty",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 8
+  },
+  {
+    "idx": 12,
+    "name": "Hylian Shroom",
+    "price": 3,
+    "price_mon": null,
+    "hp": 4,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 13,
+    "name": "Endura Shroom",
+    "price": 6,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Enduring",
+    "rank": "C",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 14,
+    "name": "Stamella Shroom",
+    "price": 5,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Energizing",
+    "rank": "C",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 15,
+    "name": "Chillshroom",
+    "price": 4,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Chilly",
+    "rank": "C",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 16,
+    "name": "Sunshroom",
+    "price": 4,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Spicy",
+    "rank": "C",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 17,
+    "name": "Zapshroom",
+    "price": 4,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Electro",
+    "rank": "A",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 18,
+    "name": "Rushroom",
+    "price": 3,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Hasty",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 19,
+    "name": "Razorshroom",
+    "price": 5,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Mighty",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 20,
+    "name": "Iron Shroom",
+    "price": 5,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Tough",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 21,
+    "name": "Silent Shroom",
+    "price": 3,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Sneaky",
+    "rank": "C",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Shroom",
+    "families": [
+      "Shroom"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 22,
+    "name": "Big Hearty Radish",
+    "price": 15,
+    "price_mon": null,
+    "hp": 32,
+    "effect": "Hearty",
+    "rank": "A",
+    "potency": 5,
+    "crit_chance": 0,
+    "type": "Radish",
+    "families": [
+      "Green",
+      "Radish"
+    ],
+    "usage": "Food",
+    "hp_raw": 16
+  },
+  {
+    "idx": 23,
+    "name": "Hearty Radish",
+    "price": 8,
+    "price_mon": null,
+    "hp": 20,
+    "effect": "Hearty",
+    "rank": "C",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Radish",
+    "families": [
+      "Green",
+      "Radish"
+    ],
+    "usage": "Food",
+    "hp_raw": 10
+  },
+  {
+    "idx": 24,
+    "name": "Endura Carrot",
+    "price": 30,
+    "price_mon": null,
+    "hp": 16,
+    "effect": "Enduring",
+    "rank": "A",
+    "potency": 4,
+    "crit_chance": 0,
+    "type": "Carrot",
+    "families": [
+      "Green",
+      "Veggie",
+      "Carrot"
+    ],
+    "usage": "Food",
+    "hp_raw": 8
+  },
+  {
+    "idx": 25,
+    "name": "Hyrule Herb",
+    "price": 3,
+    "price_mon": null,
+    "hp": 8,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Herb",
+    "families": [
+      "Green",
+      "Herb"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 26,
+    "name": "Swift Carrot",
+    "price": 4,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Hasty",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Carrot",
+    "families": [
+      "Green",
+      "Veggie",
+      "Carrot"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 27,
+    "name": "Fortified Pumpkin",
+    "price": 5,
+    "price_mon": null,
+    "hp": 4,
+    "effect": "Tough",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Veggie",
+    "families": [
+      "Green",
+      "Veggie"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 28,
+    "name": "Cool Safflina",
+    "price": 3,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Chilly",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Herb",
+    "families": [
+      "Green",
+      "Herb"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 29,
+    "name": "Warm Safflina",
+    "price": 3,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Spicy",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Herb",
+    "families": [
+      "Green",
+      "Herb"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 30,
+    "name": "Electric Safflina",
+    "price": 3,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Electro",
+    "rank": "D",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Herb",
+    "families": [
+      "Green",
+      "Herb"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 31,
+    "name": "Swift Violet",
+    "price": 10,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Hasty",
+    "rank": "A",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Flower",
+    "families": [
+      "Green",
+      "Flower"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 32,
+    "name": "Mighty Thistle",
+    "price": 5,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Mighty",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Flower",
+    "families": [
+      "Green",
+      "Flower"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 33,
+    "name": "Armoranth",
+    "price": 5,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Tough",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Flower",
+    "families": [
+      "Green",
+      "Flower"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 34,
+    "name": "Blue Nightshade",
+    "price": 4,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Sneaky",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Flower",
+    "families": [
+      "Green",
+      "Flower"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 35,
+    "name": "Silent Princess",
+    "price": 10,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Sneaky",
+    "rank": "A",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Flower",
+    "families": [
+      "Green",
+      "Flower"
+    ],
+    "usage": "Food",
+    "hp_raw": 0
+  },
+  {
+    "idx": 36,
+    "name": "Raw Gourmet Meat",
+    "price": 35,
+    "price_mon": null,
+    "hp": 24,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Red Meat++",
+    "families": [
+      "Meat",
+      "Red Meat",
+      "Gourmet Meat"
+    ],
+    "usage": "Food",
+    "hp_raw": 12
+  },
+  {
+    "idx": 37,
+    "name": "Raw Whole Bird",
+    "price": 35,
+    "price_mon": null,
+    "hp": 24,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Bird Meat++",
+    "families": [
+      "Meat",
+      "Bird Meat",
+      "Gourmet Meat"
+    ],
+    "usage": "Food",
+    "hp_raw": 12
+  },
+  {
+    "idx": 38,
+    "name": "Raw Prime Meat",
+    "price": 15,
+    "price_mon": null,
+    "hp": 12,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Red Meat+",
+    "families": [
+      "Meat",
+      "Red Meat",
+      "Prime Meat"
+    ],
+    "usage": "Food",
+    "hp_raw": 6
+  },
+  {
+    "idx": 39,
+    "name": "Raw Bird Thigh",
+    "price": 15,
+    "price_mon": null,
+    "hp": 12,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Bird Meat+",
+    "families": [
+      "Meat",
+      "Bird Meat",
+      "Prime Meat"
+    ],
+    "usage": "Food",
+    "hp_raw": 6
+  },
+  {
+    "idx": 40,
+    "name": "Raw Meat",
+    "price": 8,
+    "price_mon": null,
+    "hp": 8,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Red Meat",
+    "families": [
+      "Meat",
+      "Red Meat",
+      "Regular Meat"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 41,
+    "name": "Raw Bird Drumstick",
+    "price": 8,
+    "price_mon": null,
+    "hp": 8,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Bird Meat",
+    "families": [
+      "Meat",
+      "Bird Meat",
+      "Regular Meat"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 42,
+    "name": "Courser Bee Honey",
+    "price": 10,
+    "price_mon": null,
+    "hp": 16,
+    "effect": "Energizing",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Honey",
+    "families": [
+      "Ingredient",
+      "Honey"
+    ],
+    "usage": "Food",
+    "hp_raw": 8
+  },
+  {
+    "idx": 43,
+    "name": "Hylian Rice",
+    "price": 3,
+    "price_mon": null,
+    "hp": 8,
+    "time_boost": 30,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Ingredient",
+    "families": [
+      "Ingredient"
+    ],
+    "usage": "Additive",
+    "hp_raw": 4
+  },
+  {
+    "idx": 44,
+    "name": "Acorn",
+    "price": 3,
+    "price_mon": null,
+    "hp": 2,
+    "time_boost": 20,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Nut",
+    "families": [
+      "Nut"
+    ],
+    "usage": "Additive",
+    "hp_raw": 1
+  },
+  {
+    "idx": 45,
+    "name": "Chickaloo Tree Nut",
+    "price": 3,
+    "price_mon": null,
+    "hp": 2,
+    "time_boost": 10,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Nut",
+    "families": [
+      "Nut"
+    ],
+    "usage": "Additive",
+    "hp_raw": 1
+  },
+  {
+    "idx": 46,
+    "name": "Bird Egg",
+    "price": 3,
+    "price_mon": null,
+    "hp": 8,
+    "time_boost": 60,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Egg",
+    "families": [
+      "Ingredient",
+      "Egg"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 47,
+    "name": "Tabantha Wheat",
+    "price": 3,
+    "price_mon": null,
+    "hp": 8,
+    "time_boost": 30,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Ingredient",
+    "families": [
+      "Ingredient"
+    ],
+    "usage": "Additive",
+    "hp_raw": 4
+  },
+  {
+    "idx": 48,
+    "name": "Fresh Milk",
+    "price": 3,
+    "price_mon": null,
+    "hp": 4,
+    "time_boost": 50,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Milk",
+    "families": [
+      "Ingredient",
+      "Milk"
+    ],
+    "usage": "Food",
+    "hp_raw": 2
+  },
+  {
+    "idx": 49,
+    "name": "Sugar Cane",
+    "price": 3,
+    "price_mon": null,
+    "hp": 0,
+    "time_boost": 50,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Ingredient",
+    "families": [
+      "Ingredient"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 50,
+    "name": "Goat Butter",
+    "price": 3,
+    "price_mon": null,
+    "hp": 0,
+    "time_boost": 50,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Ingredient",
+    "families": [
+      "Ingredient"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 51,
+    "name": "Goron Spice",
+    "price": 4,
+    "price_mon": null,
+    "hp": 0,
+    "time_boost": 60,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Ingredient",
+    "families": [
+      "Ingredient"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 52,
+    "name": "Rock Salt",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "time_boost": 30,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Ingredient",
+    "families": [
+      "Ingredient"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 53,
+    "name": "Monster Extract",
+    "price": 3,
+    "price_mon": 2,
+    "hp": 0,
+    "FIELD9": "R",
+    "effect": null,
+    "rank": "R",
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Ingredient",
+    "families": [
+      "Ingredient"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 54,
+    "name": "Star Fragment",
+    "price": 300,
+    "price_mon": null,
+    "hp": 0,
+    "time_boost": 60,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Star Fragment",
+    "families": [
+      "Star Fragment"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 55,
+    "name": "Dinraal's Scale",
+    "price": 150,
+    "price_mon": 60,
+    "hp": 5,
+    "time_boost": 60,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 56,
+    "name": "Dinraal's Claw",
+    "price": 180,
+    "price_mon": null,
+    "hp": 8,
+    "time_boost": 180,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 57,
+    "name": "Dinraal's Fang",
+    "price": 250,
+    "price_mon": 110,
+    "hp": 10,
+    "time_boost": 600,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 58,
+    "name": "Dinraal's Horn",
+    "price": 300,
+    "price_mon": 200,
+    "hp": 15,
+    "time_boost": 1800,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 59,
+    "name": "Naydra's Scale",
+    "price": 150,
+    "price_mon": 60,
+    "hp": 5,
+    "time_boost": 60,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 60,
+    "name": "Naydra's Claw",
+    "price": 180,
+    "price_mon": null,
+    "hp": 8,
+    "time_boost": 180,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 61,
+    "name": "Naydra's Fang",
+    "price": 250,
+    "price_mon": 110,
+    "hp": 10,
+    "time_boost": 600,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 62,
+    "name": "Naydra's Horn",
+    "price": 300,
+    "price_mon": 200,
+    "hp": 15,
+    "time_boost": 1800,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 63,
+    "name": "Farosh's Scale",
+    "price": 150,
+    "price_mon": 60,
+    "hp": 5,
+    "time_boost": 60,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 64,
+    "name": "Farosh's Claw",
+    "price": 180,
+    "price_mon": null,
+    "hp": 8,
+    "time_boost": 180,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 65,
+    "name": "Farosh's Fang",
+    "price": 250,
+    "price_mon": 110,
+    "hp": 10,
+    "time_boost": 600,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 66,
+    "name": "Farosh's Horn",
+    "price": 300,
+    "price_mon": 200,
+    "hp": 15,
+    "time_boost": 1800,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 100,
+    "type": "Dragon part",
+    "families": [
+      "Dragon part"
+    ],
+    "usage": "Additive",
+    "hp_raw": 0
+  },
+  {
+    "idx": 67,
+    "name": "Hearty Salmon",
+    "price": 10,
+    "price_mon": null,
+    "hp": 32,
+    "effect": "Hearty",
+    "rank": "B",
+    "potency": 4,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 16
+  },
+  {
+    "idx": 68,
+    "name": "Hearty Bass",
+    "price": 18,
+    "price_mon": null,
+    "hp": 16,
+    "effect": "Hearty",
+    "rank": "D",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 8
+  },
+  {
+    "idx": 69,
+    "name": "Hyrule Bass",
+    "price": 6,
+    "price_mon": null,
+    "hp": 8,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 70,
+    "name": "Staminoka Bass",
+    "price": 18,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Energizing",
+    "rank": "A",
+    "potency": 4,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 71,
+    "name": "Chillfin Trout",
+    "price": 6,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Chilly",
+    "rank": "C",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 72,
+    "name": "Sizzlefin Trout",
+    "price": 6,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Spicy",
+    "rank": "C",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 73,
+    "name": "Voltfin Trout",
+    "price": 6,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Electro",
+    "rank": "A",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 74,
+    "name": "Stealthfin Trout",
+    "price": 10,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Sneaky",
+    "rank": "C",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 75,
+    "name": "Mighty Carp",
+    "price": 10,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Mighty",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 76,
+    "name": "Armored Carp",
+    "price": 10,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Tough",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 77,
+    "name": "Sanke Carp",
+    "price": 20,
+    "price_mon": null,
+    "hp": 8,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Fish",
+    "families": [
+      "Seafood",
+      "Fish"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 78,
+    "name": "Mighty Porgy",
+    "price": 10,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Mighty",
+    "rank": "A",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Porgy",
+    "families": [
+      "Seafood",
+      "Fish",
+      "Porgy"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 79,
+    "name": "Armored Porgy",
+    "price": 10,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Tough",
+    "rank": "A",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Porgy",
+    "families": [
+      "Seafood",
+      "Fish",
+      "Porgy"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 80,
+    "name": "Sneaky River Snail",
+    "price": 6,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Sneaky",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Seafood",
+    "families": [
+      "Seafood",
+      "Snail"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 81,
+    "name": "Hearty Blueshell Snail",
+    "price": 15,
+    "price_mon": null,
+    "hp": 24,
+    "effect": "Hearty",
+    "rank": "C",
+    "potency": 3,
+    "crit_chance": 0,
+    "type": "Seafood",
+    "families": [
+      "Seafood",
+      "Blueshell",
+      "Snail"
+    ],
+    "usage": "Food",
+    "hp_raw": 12
+  },
+  {
+    "idx": 82,
+    "name": "Razorclaw Crab",
+    "price": 8,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Mighty",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Crab",
+    "families": [
+      "Seafood",
+      "Crab"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 83,
+    "name": "Ironshell Crab",
+    "price": 8,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Tough",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Crab",
+    "families": [
+      "Seafood",
+      "Crab"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 84,
+    "name": "Bright-Eyed Crab",
+    "price": 10,
+    "price_mon": null,
+    "hp": 8,
+    "effect": "Energizing",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Crab",
+    "families": [
+      "Seafood",
+      "Crab"
+    ],
+    "usage": "Food",
+    "hp_raw": 4
+  },
+  {
+    "idx": 85,
+    "name": "Fairy",
+    "price": 2,
+    "price_mon": null,
+    "hp": 40,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Fairy",
+    "families": [
+      "Fairy"
+    ],
+    "usage": "Additive",
+    "hp_raw": 20
+  },
+  {
+    "idx": 86,
+    "name": "Winterwing Butterfly",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Chilly",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Butterfly",
+    "families": [
+      "Critter",
+      "Insect",
+      "Butterfly"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 87,
+    "name": "Summerwing Butterfly",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Spicy",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Butterfly",
+    "families": [
+      "Critter",
+      "Insect",
+      "Butterfly"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 88,
+    "name": "Thunderwing Butterfly",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Electro",
+    "rank": "D",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Butterfly",
+    "families": [
+      "Critter",
+      "Insect",
+      "Butterfly"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 89,
+    "name": "Smotherwing Butterfly",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Fireproof",
+    "rank": "D",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Butterfly",
+    "families": [
+      "Critter",
+      "Insect",
+      "Butterfly"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 90,
+    "name": "Cold Darner",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Chilly",
+    "rank": "C",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Darner",
+    "families": [
+      "Critter",
+      "Insect",
+      "Darner"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 91,
+    "name": "Warm Darner",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Spicy",
+    "rank": "C",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Darner",
+    "families": [
+      "Critter",
+      "Insect",
+      "Darner"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 92,
+    "name": "Electric Darner",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Electro",
+    "rank": "A",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Darner",
+    "families": [
+      "Critter",
+      "Insect",
+      "Darner"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 93,
+    "name": "Restless Cricket",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Energizing",
+    "rank": "D",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Insect",
+    "families": [
+      "Critter",
+      "Insect"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 94,
+    "name": "Bladed Rhino Beetle",
+    "price": 4,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Mighty",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Beetle",
+    "families": [
+      "Critter",
+      "Insect",
+      "Beetle"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 95,
+    "name": "Rugged Rhino Beetle",
+    "price": 4,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Tough",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Beetle",
+    "families": [
+      "Critter",
+      "Insect",
+      "Beetle"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 96,
+    "name": "Energetic Rhino Beetle",
+    "price": 30,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Energizing",
+    "rank": "A",
+    "potency": 6,
+    "crit_chance": 0,
+    "type": "Beetle",
+    "families": [
+      "Critter",
+      "Insect",
+      "Beetle"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 97,
+    "name": "Sunset Firefly",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Sneaky",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Insect",
+    "families": [
+      "Critter",
+      "Insect"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 98,
+    "name": "Hot-Footed Frog",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Hasty",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Frog",
+    "families": [
+      "Critter",
+      "Frog"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 99,
+    "name": "Tireless Frog",
+    "price": 20,
+    "price_mon": null,
+    "hp": 16,
+    "effect": "Enduring",
+    "rank": "B",
+    "potency": 2,
+    "crit_chance": 0,
+    "type": "Frog",
+    "families": [
+      "Critter",
+      "Frog"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 100,
+    "name": "Hightail Lizard",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Hasty",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Lizard",
+    "families": [
+      "Critter",
+      "Lizard"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 101,
+    "name": "Hearty Lizard",
+    "price": 20,
+    "price_mon": null,
+    "hp": null,
+    "effect": "Hearty",
+    "rank": "B",
+    "potency": 4,
+    "crit_chance": 0,
+    "type": "Lizard",
+    "families": [
+      "Critter",
+      "Lizard"
+    ],
+    "usage": "Critter",
+    "hp_raw": null
+  },
+  {
+    "idx": 102,
+    "name": "Fireproof Lizard",
+    "price": 5,
+    "price_mon": null,
+    "hp": 0,
+    "effect": "Fireproof",
+    "rank": "E",
+    "potency": 1,
+    "crit_chance": 0,
+    "type": "Lizard",
+    "families": [
+      "Critter",
+      "Lizard"
+    ],
+    "usage": "Critter",
+    "hp_raw": 0
+  },
+  {
+    "idx": 103,
+    "name": "Silex",
+    "price": 5,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 104,
+    "name": "Amber",
+    "price": 30,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 105,
+    "name": "Opal",
+    "price": 60,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 106,
+    "name": "Luminous Stone",
+    "price": 70,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 107,
+    "name": "Topaz",
+    "price": 180,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 108,
+    "name": "Ruby",
+    "price": 210,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 109,
+    "name": "Sapphire",
+    "price": 260,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 110,
+    "name": "Diamond",
+    "price": 500,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Mineral",
+    "families": [
+      "Mineral"
+    ],
+    "usage": "Not cooking!",
+    "hp_raw": 0
+  },
+  {
+    "idx": 111,
+    "name": "Bokoblin Horn",
+    "price": 3,
+    "price_mon": 3,
+    "hp": 0,
+    "effect": null,
+    "rank": "1",
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 112,
+    "name": "Bokoblin Fang",
+    "price": 8,
+    "price_mon": 5,
+    "hp": 0,
+    "effect": null,
+    "rank": "2",
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 113,
+    "name": "Bokoblin Guts",
+    "price": 20,
+    "price_mon": 10,
+    "hp": 0,
+    "effect": null,
+    "rank": "3",
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 114,
+    "name": "Moblin Horn",
+    "price": 2,
+    "price_mon": 2,
+    "hp": 0,
+    "effect": null,
+    "rank": "1",
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 115,
+    "name": "Moblin Fang",
+    "price": 12,
+    "price_mon": 6,
+    "hp": 0,
+    "effect": null,
+    "rank": "2",
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 116,
+    "name": "Moblin Guts",
+    "price": 25,
+    "price_mon": 12,
+    "hp": 0,
+    "effect": null,
+    "rank": "3",
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 117,
+    "name": "Lizalfos Horn",
+    "price": 10,
+    "price_mon": 5,
+    "hp": 0,
+    "effect": null,
+    "rank": "1",
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 118,
+    "name": "Lizalfos Talon",
+    "price": 15,
+    "price_mon": 8,
+    "hp": 0,
+    "effect": null,
+    "rank": "2",
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 119,
+    "name": "Lizalfos Tail",
+    "price": 28,
+    "price_mon": 12,
+    "hp": 0,
+    "effect": null,
+    "rank": "3",
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 120,
+    "name": "Icy Lizalfos Tail",
+    "price": 35,
+    "price_mon": 16,
+    "hp": 0,
+    "effect": null,
+    "rank": "3",
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 121,
+    "name": "Red Lizalfos Tail",
+    "price": 35,
+    "price_mon": 16,
+    "hp": 0,
+    "effect": null,
+    "rank": "3",
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 122,
+    "name": "Electric Lizalfos Tail",
+    "price": 35,
+    "price_mon": 16,
+    "hp": 0,
+    "effect": null,
+    "rank": "3",
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 123,
+    "name": "Lynel Horn",
+    "price": 40,
+    "price_mon": 20,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 124,
+    "name": "Lynel Hoof",
+    "price": 50,
+    "price_mon": 30,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 125,
+    "name": "Lynel Guts",
+    "price": 200,
+    "price_mon": 100,
+    "hp": 0,
+    "effect": null,
+    "rank": 3,
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 126,
+    "name": "Chuchu Jelly",
+    "price": 5,
+    "price_mon": 3,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 127,
+    "name": "White Chuchu Jelly",
+    "price": 10,
+    "price_mon": 5,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 128,
+    "name": "Red Chuchu Jelly",
+    "price": 10,
+    "price_mon": 5,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 129,
+    "name": "Yellow Chuchu Jelly",
+    "price": 10,
+    "price_mon": 5,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 130,
+    "name": "Keese Wing",
+    "price": 2,
+    "price_mon": 2,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 131,
+    "name": "Ice Keese Wing",
+    "price": 6,
+    "price_mon": 6,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 132,
+    "name": "Fire Keese Wing",
+    "price": 6,
+    "price_mon": 6,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 133,
+    "name": "Electric Keese Wing",
+    "price": 6,
+    "price_mon": 6,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 134,
+    "name": "Keese Eyeball",
+    "price": 20,
+    "price_mon": 10,
+    "hp": 0,
+    "effect": null,
+    "rank": 3,
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 135,
+    "name": "Octorok Tentacle",
+    "price": 10,
+    "price_mon": 5,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 136,
+    "name": "Octorok Eyeball",
+    "price": 25,
+    "price_mon": 13,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 137,
+    "name": "Octorok Balloon",
+    "price": 5,
+    "price_mon": 1,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 138,
+    "name": "Molduga Fin",
+    "price": 30,
+    "price_mon": 15,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 139,
+    "name": "Molduga Guts",
+    "price": 110,
+    "price_mon": 12,
+    "hp": 0,
+    "effect": null,
+    "rank": 3,
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 140,
+    "name": "Hinox Toenail",
+    "price": 20,
+    "price_mon": 15,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 141,
+    "name": "Hinox Tooth",
+    "price": 35,
+    "price_mon": 18,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 142,
+    "name": "Hinox Guts",
+    "price": 80,
+    "price_mon": 40,
+    "hp": 0,
+    "effect": null,
+    "rank": 3,
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Monster Part",
+    "families": [
+      "Monster Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 143,
+    "name": "Ancient Screw",
+    "price": 12,
+    "price_mon": 2,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Ancient Part",
+    "families": [
+      "Monster Part",
+      "Ancient Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 144,
+    "name": "Ancient Spring",
+    "price": 15,
+    "price_mon": 5,
+    "hp": 0,
+    "effect": null,
+    "rank": 1,
+    "potency": null,
+    "crit_chance": 0,
+    "type": "Ancient Part",
+    "families": [
+      "Monster Part",
+      "Ancient Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 145,
+    "name": "Ancient Gear",
+    "price": 30,
+    "price_mon": 10,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Ancient Part",
+    "families": [
+      "Monster Part",
+      "Ancient Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 146,
+    "name": "Ancient Shaft",
+    "price": 40,
+    "price_mon": 20,
+    "hp": 0,
+    "effect": null,
+    "rank": 2,
+    "potency": null,
+    "crit_chance": 10,
+    "type": "Ancient Part",
+    "families": [
+      "Monster Part",
+      "Ancient Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 147,
+    "name": "Ancient Core",
+    "price": 80,
+    "price_mon": 40,
+    "hp": 0,
+    "effect": null,
+    "rank": 3,
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Ancient Part",
+    "families": [
+      "Monster Part",
+      "Ancient Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 148,
+    "name": "Giant Ancient Core",
+    "price": 200,
+    "price_mon": 100,
+    "hp": 0,
+    "effect": null,
+    "rank": 3,
+    "potency": null,
+    "crit_chance": 30,
+    "type": "Ancient Part",
+    "families": [
+      "Monster Part",
+      "Ancient Part"
+    ],
+    "usage": "Monster Part",
+    "hp_raw": 0
+  },
+  {
+    "idx": 149,
+    "name": "Wood",
+    "price": 2,
+    "price_mon": null,
+    "hp": 0,
+    "effect": null,
+    "rank": null,
+    "potency": null,
+    "crit_chance": null,
+    "type": "Wood",
+    "families": [
+      "Wood"
+    ],
+    "usage": "Lit fire!",
+    "hp_raw": 0
+  }
+]
