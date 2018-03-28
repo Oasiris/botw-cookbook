@@ -11,8 +11,13 @@ const R = require('ramda');
 const C = require('./constants');
 
 // =============================================================================
-// - Helpers -------------------------------------------------------------------
+// - Base Helpers --------------------------------------------------------------
 // =============================================================================
+
+let makeProperN = s => s
+  .split(' ')
+  .map(s => s.length > 0 ? s[0].toUpperCase() + s.slice(1) : s)
+  .join(' ');
 
 // In: Array<String> or String; JSON
 // Out: corresponding Array<Object> or Object containing the looked up values
@@ -21,43 +26,26 @@ const C = require('./constants');
 
 let findData = (arg, dict = C.matDict) => {
   if (typeof arg == 'object') {
-    let out = R.map(s => R.find(R.propEq('name', s), dict), arg);
+    let out = R.map(s => R.find(R.propEq('name', makeProperN(s)), dict), arg);
     return out;
   } else if (typeof arg == 'string') {
-    let out = R.find(R.propEq('name', arg), dict);
+    let out = R.find(R.propEq('name', makeProperN(arg)), dict);
     return out;
   }
 }
+
 // Abbreviation for 'lookup'
 let lm = v => findData(v, C.matDict);
 let lr = v => findData(v, C.rcpDict);
 
-let findFxData = fxName => C.matFx[fxName.toLowerCase()];
 
-let getFxDesc = (fxName, tierName = 'low', rcpType = 'food') => 
-  C.fxDesc[fxName.toLowerCase()][rcpType + 'Desc'].replace('%s', tierName);
-
-console.log(getFxDesc('Hearty', 'mid', 'elixir'));
-console.log(getFxDesc('Tough', 'mid', 'food'));
-console.log(getFxDesc('Sneaky', 'high', 'food'));
-console.log(getFxDesc('Sneaky', 'low', 'elixir'));
-console.log(getFxDesc('Fireproof', 'mid', 'elixir'));
-
-
-// In: Array<Object> of material objects
-// Out: String representing the name of the effect to be used
-// Could use some reworking
-
-function calcFx(mats) {
-  let fx = R.uniq(mats.map(m => m.effect)); // Get list of effects
-  fx = fx.filter(el => (el));  // Filters out null/undefined/false/0
-  if (fx.length == 1) return fx[0]; // If exactly one effect type, return it
-  return "none";  // If zero effect types/clashing effect types, return none
-}
-
+// =============================================================================
+// - Misc. Helpers -------------------------------------------------------------
+// =============================================================================
 
 /**
- * In: Array of material objects. Assumes the result is not Dubious Food or Rock-Hard Food.
+ * In: Array of material objects. Assumes the result is not Dubious Food 
+ *       or Rock-Hard Food.
  * Out: Numeric price in rupees. 
  */
 
@@ -72,10 +60,60 @@ function calcRupeePrice(mats) {
   // console.log(`Sum is ${sum} rupees. Total price is ${price} rupees.`);
 }
 
-calcRupeePrice(lm(['Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat', 'Raw Gourmet Meat']));
-calcRupeePrice(lm(['Chickaloo Tree Nut']));
+/**
+ * In: Non-empty array of material objects that do NOT form into Dubious Food.
+ * Out: Number of hearts that the cooked material will restore, OR the String
+ * "Full recovery".
+ */ 
+let getHpHeal = (mats, isHeartyAware = true, usesNutRule = true) => {
+  let out = 0;
+  // "The Nut Rule"
+  // +2HP if nut is present & there are ingredients present other than that nut
+  if (usesNutRule) {
+    for (let nut of ['Acorn', 'Chickaloo Tree Nut']) {
+      if (R.any(m => m.name == nut)(mats) && 
+         (mats.filter(m => m.name != nut).length > 0)) {
+        out += 2;
+      }
+    }
+  }
+  
+  // Main heart calc
+  out += (isHeartyAware && mats.filter(m => m.fx == "Hearty").length != 0) 
+    ? "Full recovery" 
+    : mats.reduce((sum, m) => sum + m.hp, 0);
+  return out; 
+}
 
 
+// Boolean function
+function validateMats(mats) {
+  return R.all(R.__, mats)(m => (m !== undefined));
+}
+
+// error: no such thing as Hylian Herb, only Hyrule Herb
+console.log("> validateMats test (should return false): " + 
+  validateMats(lm(['Raw Prime Meat', 'Apple', 'Hylian Herb', 'Bird Egg'])));
+
+// =============================================================================
+// - Effect (FX) Helpers -------------------------------------------------------
+// =============================================================================
+
+let findFxData = fxName => C.matFx[fxName.toLowerCase()];
+
+let getFxDesc = (fxName, tierName = 'low', rcpType = 'food') => 
+  C.fxDesc[fxName.toLowerCase()][rcpType + 'Desc'].replace('%s', tierName);
+
+// In: Array<Object> of material objects
+// Out: String representing the name of the effect to be used
+// Could use some reworking
+
+function calcFx(mats) {
+  let fx = R.uniq(mats.map(m => m.effect)); // Get list of effects
+  fx = fx.filter(el => (el));  // Filters out null/undefined/false/0
+  if (fx.length == 1) return fx[0]; // If exactly one effect type, return it
+  return "none";  // If zero effect types/clashing effect types, return none
+}
 
 /**
  * In: Non-empty array of material objects, all w/ no effect or same effect;
@@ -108,7 +146,6 @@ function getDishEffectDetails(
         (sum, m) => (m.potency) ? sum + m.potency : sum
         , 0);
       fx.fxData.points = points;
-
       if (fxName == 'Hearty') {
         fx.fxData.xtraHearts = points;
       } else if (fxName == 'Energizing') {
@@ -120,7 +157,7 @@ function getDishEffectDetails(
       break;
 
     case 'timed':
-      console.log('Timed');
+      // console.log('Timed');
       fx.fxMD.totPotency = fxCausers.reduce((sum, m) => 
           (m.potency) ? sum + fx.fxMD.potencyLevels[m.potency - 1] : sum
           , 0);
@@ -136,7 +173,7 @@ function getDishEffectDetails(
       throw new Error('effect with type other than "timed" or "points"');
   } // end of switch statement
 
-  console.log(fx);
+  // console.log(fx);
   return fx;
 }
 
@@ -162,61 +199,9 @@ function getTimedTier(potency, tiers) {
   }
 }
 
-/**
- * In: Non-empty array of material objects that do NOT form into Dubious Food.
- * Out: Number of hearts that the cooked material will restore, OR the String
- * "Full recovery".
- */ 
-let getHpHeal = (mats, isHeartyAware = true) => 
-  (isHeartyAware && mats.filter(m => m.effect == "Hearty").length != 0) 
-    ? "Full recovery" 
-    : mats.reduce((sum, m) => sum + m.hp, 0);
-
-// let ex1_getHpHeal = getHpHeal(lm(['Wildberry', 'Hyrule Herb', 'Hyrule Bass', 'Mighty Bananas']));
-// console.log(ex1_getHpHeal);
-// let ex2_getHpHeal = getHpHeal(lm(['Wildberry', 'Hyrule Herb', 'Hearty Truffle', 'Mighty Bananas']));
-// console.log(ex2_getHpHeal);
-// let ex3_getHpHeal = getHpHeal(lm(['Armored Carp', 'Armored Carp', 'Ironshell Crab', 'Ironshell Crab']));
-// console.log(ex3_getHpHeal);
-
-// Returns all permutations of an array. Meant to be used w/ max 5 values.
-function getPermutations(arr = []) {
-var permArr = [],
-  usedChars = [];
-
-  function permute(input) {
-    var i, ch;
-    for (let i = 0; i < input.length; i++) {
-      ch = input.splice(i, 1)[0];
-      usedChars.push(ch);
-      if (input.length == 0) {
-        permArr.push(usedChars.slice());
-      }
-      permute(input);
-      input.splice(i, 0, ch);
-      usedChars.pop();
-    }
-    return permArr;
-  };
-
-  return permute(arr);
-}
-
-// let c = getPermutations(['Hearty Durian', 'Hearty Durian', 'Hearty Truffle', 'Hearty Truffle', 'Apple']);
-// console.log(R.uniq(c));
-
 // =============================================================================
 // - Recipe Functions ----------------------------------------------------------
 // =============================================================================
-
-function validateMats(mats) {
-  return R.all(R.__, mats)(m => (m !== undefined));
-}
-
-// error: no such thing as Hylian Herb, only Hyrule Herb
-console.log("> validateMats test (should return false): " + 
-  validateMats(lm(['Raw Prime Meat', 'Apple', 'Hylian Herb', 'Bird Egg'])));
-
 
 /**
  * IN: Array of material objects
@@ -285,22 +270,17 @@ function hasBadMats(mats) {
   return DUBIOUS;
 }
 
-
 console.log(hasBadMats(lm(['Acorn', 'Apple', 'Bokoblin Horn'])));
 console.log(hasBadMats(lm(['Acorn', 'Apple', 'Bokoblin Horn', 'Tireless Frog'])));
 console.log(hasBadMats(lm(['Acorn', 'Apple'])));
 console.log(hasBadMats(lm(['Acorn'])));
-console.log(hasBadMats(lm(['Sugar Cane', 'Monster Extract', 'Tabantha Wheat', 'Goat Butter'])));
+console.log(hasBadMats(lm(['Cane Sugar', 'Monster Extract', 'Tabantha Wheat', 'Goat Butter'])));
 console.log(hasBadMats(lm(['Acorn', 'Rock Salt'])));
 console.log(hasBadMats(lm(['Hylian Rice'])));
 
-
-
 // I NEED TO KNOW WHETHER THIS SHOULD PRINT 'TRUE' OR 'FALSE'
 // TOOD: Get Jason's reply
-console.log(hasBadMats(lm(['Rock Salt', 'Sugar Cane', 'Monster Extract', 'Tabantha Wheat', 'Goat Butter'])));
-
-
+console.log(hasBadMats(lm(['Rock Salt', 'Cane Sugar', 'Monster Extract', 'Tabantha Wheat', 'Goat Butter'])));
 
 function getFoodResult(mats) {
   // TODO: specific optimization.
@@ -309,12 +289,11 @@ function getFoodResult(mats) {
     if (canCookInto(rcp, mats)) return rcp;
   }
   return null; // Signifies that none of the recipes worked.
-  // NOTE: list excludes 
 }
 
 console.log(getFoodResult(lm(['Acorn', 'Apple', 'Wildberry'])));
 console.log(getFoodResult(lm(['Raw Prime Meat', 'Apple', 'Hyrule Herb', 'Bird Egg'])));
-console.log(getFoodResult(lm(['Apple', 'Wildberry', 'Sugar Cane'])));
+console.log(getFoodResult(lm(['Apple', 'Wildberry', 'Cane Sugar'])));
 console.log(getFoodResult(lm(['Apple', 'Wildberry', 'Hearty Durian', 'Spicy Pepper'])));
 console.log(getFoodResult(lm(['Apple', 'Spicy Pepper', 'Hearty Durian', 'Spicy Pepper'])));
 
@@ -389,7 +368,7 @@ console.log(
   '\nT 4 output (expect true):',
   canCookInto(
     lr('Fruitcake'), 
-    lm(['Hearty Durian', 'Sugar Cane', 'Apple', 'Tabantha Wheat']))
+    lm(['Hearty Durian', 'Cane Sugar', 'Apple', 'Tabantha Wheat']))
   );
 
 // =============================================================================
@@ -453,6 +432,7 @@ function cook(matStrings) {
     fx: null
   };
   let mats = lm(matStrings);
+  if (!validateMats(mats)) throw new Error(`Invalid mats: ${matStrings}`);
   let out = {};
   
   let glance = hasBadMats(mats);
@@ -461,7 +441,7 @@ function cook(matStrings) {
       return ROCK_HARD;
     } else if (glance.data == 'Dubious Food') {
       out = DUBIOUS;
-      out.heal = getHpHeal(mats, false) / 2;
+      out.heal = getHpHeal(mats, false, false) / 2;
       return out;
     } else {
       // console.log(glance);
@@ -475,7 +455,7 @@ function cook(matStrings) {
   if (glance.type == 'categ' && glance.data == 'elixir') {
     if (fxName == 'none') {
       out = DUBIOUS;
-      out.heal = getHpHeal(mats, false) / 2;
+      out.heal = getHpHeal(mats, false, false) / 2;
       return out;
     } else {
       out.name = `${fxName} Elixir`;
@@ -512,7 +492,7 @@ let TEST_MAT_LISTS = [
   ['Hightail Lizard'],
   ['Apple', 'Acorn', 'Warm Safflina', 'Hearty Bass', 'Hearty Radish'],
   ['Acorn', 'Hearty Bass', 'Hearty Truffle', 'Big Hearty Radish', 'Hylian Rice'],
-  ['Rock Salt', 'Sugar Cane', 'Monster Extract', 'Tabantha Wheat', 'Goat Butter']
+  ['Rock Salt', 'Cane Sugar', 'Monster Extract', 'Tabantha Wheat', 'Goat Butter']
 
 ]
 
@@ -522,6 +502,14 @@ TEST_MAT_LISTS.forEach(e => console.log(cook(e)));
 // console.log(cook(['Apple']));
 
 // cook(['Hearty Durian', 'Apple', 'Apple', 'Bird Egg', 'Rock Salt']);
-// cook(['Fresh Milk', 'Sugar Cane']);
+// cook(['Fresh Milk', 'Cane Sugar']);
 // cook(['Hearty Durian', 'Hearty Truffle']);
 
+module.exports = {
+  makeProperN, lm, lr, 
+  calcRupeePrice, getHpHeal, validateMats, 
+  findFxData, getFxDesc, calcFx, getDishEffectDetails, getTimedTier, 
+  hasBadMats, canCookInto, 
+  getMatDesc, getRecipeBaseDesc, 
+  cook
+};

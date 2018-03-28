@@ -42,55 +42,55 @@ const EFFECT_DESC = {
   }, 
   energizing: {
     foodDesc: 'Instantly refills some of your Stamina Wheel.',
-    elixirDesc: 'Restores your Stamina, which is used when performing' +
+    elixirDesc: 'Restores your Stamina, which is used when performing ' +
       'physical actions such as climbing walls and swimming.'
   },
   enduring: {
     foodDesc: 'Restores and overfills your Stamina Wheel.',
-    elixirDesc: 'Restores stamina and temporarily extends your Stamina Wheel.' +
-      'The additional stamina will disappear as it\'s used.'
+    elixirDesc: 'Restores stamina and temporarily extends your Stamina ' +
+      'Wheel. The additional stamina will disappear as it\'s used.'
   },
   sneaky: {
     foodDesc: 'Grants a %s-level stealth boost.',
-    elixirDesc: 'Grants a %s-level stealth effect, which calms the nerves' +
-      'and silences footfalls. Allows you to move about undetected by' +
+    elixirDesc: 'Grants a %s-level stealth effect, which calms the nerves ' +
+      'and silences footfalls. Allows you to move about undetected by ' +
       'monsters and animals.',
   },
   hasty: {
     foodDesc: 'Grants a %s-level movement-speed boost.',
-    elixirDesc: 'Grants a %s-level haste effect, which boosts your movement' +
+    elixirDesc: 'Grants a %s-level haste effect, which boosts your movement ' +
       'speed while running, swimming, or climbing.',
   },
   mighty: {
     foodDesc: 'Grants a %s-level attack-power boost.',
-    elixirDesc: 'Grants a %s-level might effect, which strengthens your body' +
+    elixirDesc: 'Grants a %s-level might effect, which strengthens your body ' +
       'and mind to boost your attack power with all weapons.',
   },
   tough: {
     foodDesc: 'Grants a %s-level defense boost.',
-    elixirDesc: 'Grants a %s-level toughness effect, which fortifies your' +
-      'bones to strengthen your defense. Best to use before facing off' +
+    elixirDesc: 'Grants a %s-level toughness effect, which fortifies your ' +
+      'bones to strengthen your defense. Best to use before facing off ' +
       'against hard-hitting enemies.',
   },
   spicy: {
     foodDesc: 'Grants %s-level cold resistance.',
-    elixirDesc: 'Warms your body from its core, increasing your resistance' +
+    elixirDesc: 'Warms your body from its core, increasing your resistance ' +
       'to cold environments. Very useful in the snow-covered mountains.',
   },
   chilly: {
     foodDesc: 'Grants %s-level heat resistance.',
-    elixirDesc: 'Grants a %s-level cooling effect, raising your body\'s' +
+    elixirDesc: 'Grants a %s-level cooling effect, raising your body\'s ' +
       'resistance to heat. Crucial for long journeys through the desert.',
   },
   electro: {
     foodDesc: 'Grants %s-level electricity resistance.',
-    elixirDesc: 'Grants a %s-level resistance to electricity. Useful against' +
+    elixirDesc: 'Grants a %s-level resistance to electricity. Useful against ' +
       'enemies with electrical attacks.',
   },
   fireproof: {
     foodDesc: '(This should never appear.)',
-    elixirDesc: 'Grants a fireproof effect, which prevents your body from' +
-      'catching fire. Be sure to pack this when venturing out to explore' +
+    elixirDesc: 'Grants a fireproof effect, which prevents your body from ' +
+      'catching fire. Be sure to pack this when venturing out to explore ' +
       'Death Mountain.',
   }
 };
@@ -208,7 +208,7 @@ module.exports = {
   reagantTiers: REAGANT_TIERS,
   fxDesc: EFFECT_DESC,
   matFx: MAT_EFFECTS
-  
+
   // MAT_DICT: matDict,
   // RCP_DICT: rcpDict,
   // XTRA_RCP_DICT: xtraRcpDict,
