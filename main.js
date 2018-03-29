@@ -48,7 +48,6 @@ let lr = v => findData(v, C.rcpDict);
  *       or Rock-Hard Food.
  * Out: Numeric price in rupees. 
  */
-
 function calcRupeePrice(mats) {
   if (mats.length == 1 && mats[0].name == 'Acorn') {
     return 8;
