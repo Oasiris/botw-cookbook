@@ -8,7 +8,7 @@
  */
 let properNounify = s => s
   .split(' ')
-  .map(s => s.length > 0 ? s[0].toUpperCase() + s.slice(1) : s)
+  .map(s => s.length > 0 ? s[0].toUpperCase() + s.slice(1).toLowerCase() : s)
   .join(' ');
 
 // Exports

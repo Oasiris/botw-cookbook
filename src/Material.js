@@ -1,6 +1,11 @@
 /**
  * The Material class.
  */
+
+/* NPM Dependencies */
+const R = require('ramda');
+
+
 /* Dependencies */
 const C = require('./../constants');
 const U = require('./util');
@@ -46,7 +51,7 @@ class Material {
    */
   static queryByName(name) {
     let parsedName = U.properNounify(name); // proper-noun-ifies
-    return R.find(R.propEq('name', parsedName), C.MATEIRALS);
+    return R.find(R.propEq('name', parsedName), C.MATERIALS);
   }
 
   // TODO: "ofName" method
@@ -56,5 +61,10 @@ class Material {
 
 
 }
+
+// Test
+console.log(Material.queryByName('Apple'));
+
+// Exports
 
 module.exports = Material;
