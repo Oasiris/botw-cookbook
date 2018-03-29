@@ -54,6 +54,19 @@ class Material {
     return R.find(R.propEq('name', parsedName), C.MATERIALS);
   }
 
+  /**
+   * Looks up the material's data and returns it as JSObj. 
+   * @param {Number|String} id The ID of the material.
+   * @return {Object} JSObj containing metadata for a material.
+   */
+  static queryById(id) {
+    // eliminates trailing zeroes and whatnot
+    if (typeof id === 'string') {
+      id = parseInt(id);
+    }
+    return R.find(R.propEq('idx', id), C.MATERIALS);
+  }
+
   // TODO: "ofName" method
   // TODO: "ofId" method
 
@@ -64,6 +77,7 @@ class Material {
 
 // Test
 console.log(Material.queryByName('Apple'));
+console.log(Material.queryById('0040'));
 
 // Exports
 

@@ -30,10 +30,9 @@ const Material = require(`./../src/Material.js`);
 //   });
 // });
 
-
+/* ——— static queryByName ——— */
 
 ddd('static queryByName', () => {
-  
   // Basic test
   it('basic', () => {
     const actual = Material.queryByName('Apple');
@@ -72,4 +71,49 @@ ddd('static queryByName', () => {
       Material.queryByName('Hearty Durian')
     );
   });
+});
+
+/* ——— static queryById ——— */
+
+ddd('static queryById', () => {
+  // Basic test
+  it('basic', () => {
+    const actual = Material.queryById(3);
+    const expected = {
+      "idx": 3,
+      "name": "Apple",
+      "price": 3,
+      "price_mon": null,
+      "hp": 4,
+      "effect": null,
+      "rank": null,
+      "potency": null,
+      "crit_chance": 0,
+      "type": "Fruit",
+      "families": [
+        "Fruit",
+        "Cakey Fruit"
+      ],
+      "usage": "Food",
+      "hp_raw": 2
+    };
+    assert.deepEqual(expected, actual);
+  });
+
+  // String vs number input
+  it('string vs number input', () => {
+    assert.deepEqual(
+      Material.queryById('7'),
+      Material.queryById(7)
+    );
+  });
+
+  // Trailing zeroes
+  it('trailing zeroes input', () => {
+    assert.deepEqual(
+      Material.queryById(40),
+      Material.queryById('0040')
+    )
+  })
+
 });
