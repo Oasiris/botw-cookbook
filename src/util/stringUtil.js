@@ -6,7 +6,7 @@
  * characters, or consecutive whitespace characters, will not exhibit 
  * the intended behavior.
  */
-let toProper = s => s
+let properNounify = s => s
   .split(' ')
   .map(s => s.length > 0 ? s[0].toUpperCase() + s.slice(1) : s)
   .join(' ');
@@ -14,5 +14,5 @@ let toProper = s => s
 // Exports
 
 module.exports = {
-  toProper: toProper
+  properNounify
 };

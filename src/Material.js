@@ -40,11 +40,13 @@ class Material {
   /* Factory methods */
 
   /**
-   * Looks up the material's data 
+   * Looks up the material's data and returns it as JSObj. 
    * @param {String} name The name of the material.
+   * @return {Object} JSObj containing metadata for a material.
    */
   static queryByName(name) {
-
+    let parsedName = U.properNounify(name); // proper-noun-ifies
+    return R.find(R.propEq('name', parsedName), C.MATEIRALS);
   }
 
   // TODO: "ofName" method
