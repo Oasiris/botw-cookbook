@@ -15,18 +15,19 @@ import data from '../data/'
 
 export default class Material extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { showText: true };
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   static propTypes = {
     name: PropTypes.string.isRequired,
     // imgSrc: PropTypes.string.isRequired
-    imgSrc: PropTypes.string
+    imgSrc: PropTypes.string,
+    showText: PropTypes.bool
   }
 
   static defaultProps = {
+    showText: true
   }
 
   render() {
@@ -49,7 +50,7 @@ export default class Material extends Component {
             </div>
 
             {
-              this.state.showText && 
+              this.props.showText && 
               <div className="mat-name-wrapper">
                 <div className="mat-name">
                   {this.props.name}
@@ -71,17 +72,28 @@ export class MaterialList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortBy: 'default'
+      sortBy: 'default',
+      showText: true
     };
+    this.toggleShowText = this.toggleShowText.bind(this);
   }
 
   static propTypes = {
     materials: PropTypes.arrayOf(PropTypes.object).isRequired
   }
 
+  toggleShowText() {
+    this.setState((prevState, props) => {
+      console.log(prevState);
+      return {
+        showText: !prevState.showText
+      };
+    });
+  }
+
   render() {
     const { materials } = this.props;
-    const { sortBy } = this.state;
+    const { sortBy, showText } = this.state;
     if (sortBy !== 'default') {
       console.log('TODO');
     }
@@ -92,12 +104,16 @@ export class MaterialList extends Component {
           <Material
           name={name}
           imgSrc={thumb ? `img/thumb/tiny/${thumb}` : undefined}
-          key={idx} />
+          key={idx}
+          showText={showText} />
         ))
       }
     </div>;
 
-    return materialsDiv;
+    return <div>
+      <button onClick={this.toggleShowText}>Toggle Show Text</button>
+      {materialsDiv}
+    </div>;
   }
 }
 
