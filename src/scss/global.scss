@@ -2,6 +2,9 @@
 
 @import 'colors';
 
+$font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+
 .grow { transition: all .0625s ease-in-out; }
 .grow:hover { transform: scale(1.075); }
 
@@ -19,4 +22,33 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+
+// —————————————————————————————————————
+// Buttons
+// —————————————————————————————————————
+
+button {
+  padding: 17.5px 22.5px;
+  font-family: $font-stack;
+  font-weight: bold;
+  font-size: 18px;
+  
+  border: 0;
+  border-radius: 2px;
+
+  background: $bkgd;
+  color: white;
+
+  transition: background-color 0.1s, box-shadow 0.2s;
+
+  &:hover {
+    background: rgba($bkgd, 0.8);
+    box-shadow: 0 0 10px rgba($pale-light, 1);
+  }
+
+  &:active {
+    background: rgba($bkgd, 1.0);
+  }
 }
