@@ -31,8 +31,8 @@ export default class App extends Component {
         
           {/* <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />         */}
           {/* <ThumbedMaterials /> */}
-          <MaterialList materials={data.materials} />
-          {/* <ThumbedMaterials /> */}
+          {/* <MaterialList materials={data.materials} /> */}
+          <ThumbedMaterials />
         </div>
         
         <Footer />
@@ -54,7 +54,7 @@ export class Footer extends Component {
           Franchise owned by Nintendo. Thumbnails and screenshots not mine.
         </div>
         <div className="footer-text-block">
-          Created in 2018. Powered by React.
+          David Hong. Created in 2018. Powered by React.
         </div>
         <div className="footer-icon">
           <a href="https://github.com/Oasiris/botw-cookbook" target="_blank" rel="noopener noreferrer" alt="View in GitHub">

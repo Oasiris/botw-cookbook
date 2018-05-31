@@ -14,8 +14,34 @@
 // Bundle the JSONs in this folder for exporting
 let materials = require('./materials')
 let recipes = require('./recipes')
-const matDescs = require('./matDesc')
-const recipeDescs = require('./recipeDesc')
+
+// ——————————————————————————————————————————————————————————————————————————
+// Adding descriptions
+// ——————————————————————————————————————————————————————————————————————————
+
+{
+  const matDescs = require('./matDesc')
+  const recipeDescs = require('./recipeDesc')
+  
+  matDescs.forEach(([ matName, desc ]) => {
+    for (let i in materials) {
+      if (materials[i].name === matName) {
+        materials[i] = { ...materials[i], desc };
+        break;
+      }
+    }
+  });
+
+  recipeDescs['2'].data.forEach(([ recName, desc ]) => {
+    for (let i in recipes) {
+      if (recipes[i].name === recName) {
+        recipes[i] = { ...recipes[i], desc };
+        break;
+      }
+    }
+  });
+
+}
 
 // ——————————————————————————————————————————————————————————————————————————
 // Adding thumbnail sources
@@ -27,22 +53,35 @@ const recipeDescs = require('./recipeDesc')
   thumbs.forEach(el => {
     if (el.name === '???') return;
     if (el.type === 'material') {
-      materials.forEach((mat, i) => {
-        if (mat.name === el.name) {
+      for (let i in materials) {
+        if (materials[i].name === el.name) {
           materials[i] = { ...materials[i], thumb: el.thumb };
+          break;
         }
-      });
+      }
+      // materials.forEach((mat, i) => {
+      //   if (mat.name === el.name) {
+      //     materials[i] = { ...materials[i], thumb: el.thumb };
+      //   }
+      // });
     } else if (el.type === 'recipe') {
-      recipes.forEach((mat, i) => {
-        if (mat.name === el.name) {
+      for (let i in recipes) {
+        if (recipes[i].name === el.name) {
           recipes[i] = { ...recipes[i], thumb: el.thumb };
+          break;
         }
-      });
+      }
+      // recipes.forEach((mat, i) => {
+      //   if (mat.name === el.name) {
+      //     recipes[i] = { ...recipes[i], thumb: el.thumb };
+      //   }
+      // });
+
       // recipes = recipes
       //   .filter(obj => obj.name === el.name)
       //   .map(obj => ({ ...obj, thumb: el.thumb }));
     }
-  });
+  }); 
 }
 
 // ——————————————————————————————————————————————————————————————————————————
@@ -324,8 +363,8 @@ const effectData = {
 module.exports = {
   materials,
   recipes,
-  matDescs,
-  recipeDescs,
+  // matDescs,
+  // recipeDescs,
   additiveOnlyRecipes,
   energizingLevels,
   enduringLevels,
