@@ -305,4 +305,4 @@ module.exports = {
   priceMultipliers,
   effectDescriptions,
   effectData
-}
+};
