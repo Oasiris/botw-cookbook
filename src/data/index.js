@@ -12,10 +12,38 @@
 // ——————————————————————————————————————————————————————————————————————————
 
 // Bundle the JSONs in this folder for exporting
-const materials = require('./materials')
-const recipes = require('./recipes')
+let materials = require('./materials')
+let recipes = require('./recipes')
 const matDescs = require('./matDesc')
 const recipeDescs = require('./recipeDesc')
+
+// ——————————————————————————————————————————————————————————————————————————
+// Adding thumbnail sources
+// ——————————————————————————————————————————————————————————————————————————
+
+{
+  const thumbs = require('./thumbs')
+
+  thumbs.forEach(el => {
+    if (el.name === '???') return;
+    if (el.type === 'material') {
+      materials.forEach((mat, i) => {
+        if (mat.name === el.name) {
+          materials[i] = { ...materials[i], thumb: el.thumb };
+        }
+      });
+    } else if (el.type === 'recipe') {
+      recipes.forEach((mat, i) => {
+        if (mat.name === el.name) {
+          recipes[i] = { ...recipes[i], thumb: el.thumb };
+        }
+      });
+      // recipes = recipes
+      //   .filter(obj => obj.name === el.name)
+      //   .map(obj => ({ ...obj, thumb: el.thumb }));
+    }
+  });
+}
 
 // ——————————————————————————————————————————————————————————————————————————
 // Other

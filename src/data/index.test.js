@@ -27,3 +27,25 @@ describe('additiveOnlyRecipes', () => {
     expect(index.additiveOnlyRecipes.length).toBe(aoRecipeNames.length);
   });
 });
+
+describe('thumbs', () => {
+  it('thumbs works -- material -- Hightail Lizard', () => {
+    const ele = index.materials.filter(m => m.name === 'Hightail Lizard');
+    expect(ele.length).toBe(1);
+    expect(ele[0].thumb).toBe('thumb-0-18.png');
+  });
+
+  it('thumbs works -- recipe -- Salt-Grilled Greens', () => {
+    const ele = index.recipes.filter(m => m.name === 'Salt-Grilled Greens');
+    expect(ele.length).toBe(1);
+    expect(ele[0].thumb).toBe('thumb-3-8.png');
+  });
+
+  it('thumbs works -- recipe -- Herb Sauté', () => {
+    const ele = index.recipes.filter(m => m.name === 'Herb Sauté');
+    expect(ele.length).toBe(1);
+    expect(ele[0].thumb).toBe('thumb-5-14.png');
+  });
+});
+
+// console.log(index.recipes.filter(m => m.name.indexOf('é') !== -1))
