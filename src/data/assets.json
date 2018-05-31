@@ -72,422 +72,372 @@
   {
     "thumb": "thumb-0-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Rugged Rhino Beetle"
   }, 
   {
     "thumb": "thumb-0-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Summerwing Butterfly"
   }, 
   {
     "thumb": "thumb-0-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Thunderwing Butterfly"
   }, 
   {
     "thumb": "thumb-0-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Hightail Lizard"
+  },
+  {
+    "thumb": "thumb-1-0.png",
+    "type": "roastedFood",
+    "name": "Roasted Acorn"
   },
   {
     "thumb": "thumb-1-1.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedFood",
+    "name": "Toasted Big Hearty Truffle"
   },
   {
     "thumb": "thumb-1-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedFood",
+    "name": "Roasted Endura Carrot"
   },
   {
     "thumb": "thumb-1-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedFood",
+    "name": "Campfire Egg"
   },
   {
     "thumb": "thumb-1-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedFood",
+    "name": "Roasted Tree Nut"
   },
   {
     "thumb": "thumb-1-5.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-6.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-7.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-8.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-9.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-10.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-11.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-12.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-13.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedFood",
+    "name": "Toasty Endura Shroom"
   },
   {
     "thumb": "thumb-1-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Courser Bee Honey"
   },
   {
-    "thumb": "thumb-1-16.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-17.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-1-18.png",
-    "type": "material",
-    "name": "???"
+    "thumb": "thumb-2-0.png",
+    "type": "frozenFood",
+    "name": "Frozen Whole Bird"
   },
   {
     "thumb": "thumb-2-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Mushroom Skewer"
   },
   {
     "thumb": "thumb-2-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Steamed Mushrooms"
   },
   {
     "thumb": "thumb-2-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Steamed Fruit"
   },
   {
     "thumb": "thumb-2-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Steamed Fish"
   },
   {
     "thumb": "thumb-2-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Steamed Meat"
   },
   {
     "thumb": "thumb-2-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fruit and Mushroom Mix"
   },
   {
     "thumb": "thumb-2-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fish and Mushroom Skewer"
   },
   {
     "thumb": "thumb-2-8.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Meat and Mushroom Skewer"
   },
   {
     "thumb": "thumb-2-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Omelet"
   },
   {
     "thumb": "thumb-2-10.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Glazed Mushrooms"
   },
   {
     "thumb": "thumb-2-11.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Glazed Meat"
   },
   {
     "thumb": "thumb-2-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Glazed Seafood"
   },
   {
     "thumb": "thumb-2-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Glazed Veggies"
   },
   {
     "thumb": "thumb-2-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fried Wild Greens"
   },
   {
     "thumb": "thumb-2-15.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-2-16.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-2-17.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Simmered Fruit"
   },
   {
     "thumb": "thumb-2-18.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fish Skewer"
+  },
+  {
+    "thumb": "thumb-3-0.png",
+    "type": "elixir",
+    "name": "Fireproof Elixir"
   },
   {
     "thumb": "thumb-3-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "elixir",
+    "name": "Energizing Elixir"
   },
   {
     "thumb": "thumb-3-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "elixir",
+    "name": "Hearty Elixir"
   },
   {
     "thumb": "thumb-3-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "elixir",
+    "name": "Sneaky Elixir"
   },
   {
     "thumb": "thumb-3-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "elixir",
+    "name": "Spicy Elixir"
   },
   {
     "thumb": "thumb-3-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "elixir",
+    "name": "Electro Elixir"
   },
   {
     "thumb": "thumb-3-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "elixir",
+    "name": "Chilly Elixir"
   },
   {
     "thumb": "thumb-3-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fragrant Mushroom Sauté"
   },
   {
     "thumb": "thumb-3-8.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Salt-Grilled Greens"
   },
   {
     "thumb": "thumb-3-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Salt-Grilled Fish"
   },
   {
     "thumb": "thumb-3-10.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Salt-Grilled Meat"
   },
   {
     "thumb": "thumb-3-11.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Salt-Grilled Prime Meat"
   },
   {
     "thumb": "thumb-3-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Salt-Grilled Gourmet Meat"
   },
   {
     "thumb": "thumb-3-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Pepper Steak"
   },
   {
     "thumb": "thumb-3-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Spicy Peppered Seafood"
   },
   {
     "thumb": "thumb-3-15.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Salt-Grilled Crab"
   },
   {
     "thumb": "thumb-3-16.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Crab Stir-Fry"
   },
   {
     "thumb": "thumb-3-17.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Poultry Pilaf"
   },
   {
     "thumb": "thumb-3-18.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Prime Poultry Pilaf"
+  },
+  {
+    "thumb": "thumb-4-0.png",
+    "type": "recipe",
+    "name": "Crab Omelet with Rice"
   },
   {
     "thumb": "thumb-4-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Crab Risotto"
   },
   {
     "thumb": "thumb-4-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Seafood Meuniere"
   },
   {
     "thumb": "thumb-4-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Porgy Meuniere"
   },
   {
     "thumb": "thumb-4-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Salmon Meuniere"
   },
   {
     "thumb": "thumb-4-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fruit Pie"
   },
   {
     "thumb": "thumb-4-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Apple Pie"
   },
   {
     "thumb": "thumb-4-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Egg Tart"
   },
   {
     "thumb": "thumb-4-8.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Meat Pie"
   },
   {
     "thumb": "thumb-4-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Carrot Cake"
   },
   {
     "thumb": "thumb-4-10.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Pumpkin Pie"
   },
   {
     "thumb": "thumb-4-11.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Hot Buttered Apple"
   },
   {
     "thumb": "thumb-4-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Honeyed Apple"
   },
   {
     "thumb": "thumb-4-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Honeyed Fruits"
   },
   {
     "thumb": "thumb-4-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Plain Crepe"
   },
   {
     "thumb": "thumb-4-15.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Wildberry Crepe"
   },
   {
     "thumb": "thumb-4-16.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Nutcake"
   },
   {
     "thumb": "thumb-4-17.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fried Bananas"
   },
   {
     "thumb": "thumb-4-18.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Egg Pudding"
+  },
+  {
+    "thumb": "thumb-5-0.png",
+    "type": "recipe",
+    "name": "Warm Milk"
   },
   {
     "thumb": "thumb-5-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Monster Stew"
   },
   {
     "thumb": "thumb-5-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Monster Soup"
   },
   {
     "thumb": "thumb-5-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Monster Cake"
   },
   {
     "thumb": "thumb-5-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Monster Rice Balls"
   },
   {
     "thumb": "thumb-5-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Monster Curry"
   },
   {
     "thumb": "thumb-5-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Wheat Bread"
   },
   {
     "thumb": "thumb-5-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Seafood Paella"
   },
   {
     "thumb": "thumb-5-8.png",
@@ -496,78 +446,83 @@
   },
   {
     "thumb": "thumb-5-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Vegetable Omelet"
   },
   {
     "thumb": "thumb-5-10.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Mushroom Omelet"
   },
   {
     "thumb": "thumb-5-11.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Dubious Food"
   },
   {
     "thumb": "thumb-5-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Rock-Hard Food"
   },
   {
     "thumb": "thumb-5-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Fragrant Mushroom Sauté"
   },
   {
     "thumb": "thumb-5-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Herb Sauté"
   },
   {
     "thumb": "thumb-5-15.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Spiced Meat Skewer"
   },
   {
     "thumb": "thumb-5-16.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Prime Spiced Meat Skewer"
   },
   {
     "thumb": "thumb-5-17.png",
-    "type": "material",
-    "name": "???"
+    "type": "recipe",
+    "name": "Gourmet Spiced Meat Skewer"
   },
   {
     "thumb": "thumb-5-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Bokoblin Horn"
+  },
+  {
+    "thumb": "thumb-6-0.png",
+    "type": "material",
+    "name": "Ancient Gear"
   },
   {
     "thumb": "thumb-6-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Ancient Screw"
   },
   {
     "thumb": "thumb-6-2.png",
     "type": "material",
-    "name": "???"
+    "name": "Ancient Spring"
   },
   {
     "thumb": "thumb-6-3.png",
     "type": "material",
-    "name": "???"
+    "name": "Ancient Shaft"
   },
   {
     "thumb": "thumb-6-4.png",
     "type": "material",
-    "name": "???"
+    "name": "Ancient Core"
   },
   {
     "thumb": "thumb-6-5.png",
     "type": "material",
-    "name": "???"
+    "name": "Giant Ancient Core"
   },
   {
     "thumb": "thumb-6-6.png",
@@ -587,142 +542,137 @@
   {
     "thumb": "thumb-6-9.png",
     "type": "material",
-    "name": "???"
+    "name": "Dinraal's Scale"
   },
   {
     "thumb": "thumb-6-10.png",
     "type": "material",
-    "name": "???"
+    "name": "Dinraal's Claw"
   },
   {
     "thumb": "thumb-6-11.png",
     "type": "material",
-    "name": "???"
+    "name": "Chuchu Jelly"
   },
   {
     "thumb": "thumb-6-12.png",
     "type": "material",
-    "name": "???"
+    "name": "Red Lizalfos Tail"
   },
   {
     "thumb": "thumb-6-13.png",
     "type": "material",
-    "name": "???"
+    "name": "Icy Lizalfos Tail"
   },
   {
     "thumb": "thumb-6-14.png",
     "type": "material",
-    "name": "???"
+    "name": "Yellow Lizalfos Tail"
   },
   {
     "thumb": "thumb-6-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Fire Keese Wing"
   },
   {
     "thumb": "thumb-6-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Electric Keese Wing"
   },
   {
     "thumb": "thumb-6-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Ice Keese Wing"
   },
   {
     "thumb": "thumb-6-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Shard of Dinraal's Fang"
+  },
+  {
+    "thumb": "thumb-7-0.png",
+    "type": "material",
+    "name": "Sizzlefin Trout"
   },
   {
     "thumb": "thumb-7-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Hearty Blueshell Snail"
   },
   {
     "thumb": "thumb-7-2.png",
     "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-7-3.png",
-    "type": "material",
-    "name": "???"
+    "name": "Staminoka Bass"
   },
   {
     "thumb": "thumb-7-4.png",
     "type": "material",
-    "name": "???"
+    "name": "Sneaky River Snail"
   },
   {
     "thumb": "thumb-7-5.png",
     "type": "material",
-    "name": "???"
+    "name": "Stealthfin Trout"
   },
   {
     "thumb": "thumb-7-6.png",
     "type": "material",
-    "name": "???"
+    "name": "Mighty Carp"
   },
   {
     "thumb": "thumb-7-7.png",
     "type": "material",
-    "name": "???"
+    "name": "Apple"
   },
   {
     "thumb": "thumb-7-8.png",
     "type": "material",
-    "name": "???"
+    "name": "Wildberry"
   },
   {
     "thumb": "thumb-7-9.png",
     "type": "material",
-    "name": "???"
+    "name": "Voltfruit"
   },
   {
     "thumb": "thumb-7-10.png",
     "type": "material",
-    "name": "???"
+    "name": "Hearty Durian"
   },
   {
     "thumb": "thumb-7-11.png",
     "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-7-12.png",
-    "type": "material",
-    "name": "???"
+    "name": "Fleet-Lotus Seeds"
   },
   {
     "thumb": "thumb-7-13.png",
     "type": "material",
-    "name": "???"
+    "name": "Hydromelon"
   },
   {
     "thumb": "thumb-7-14.png",
     "type": "material",
-    "name": "???"
+    "name": "Palm Fruit"
   },
   {
     "thumb": "thumb-7-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Mighty Bananas"
   },
   {
     "thumb": "thumb-7-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Spicy Pepper"
   },
   {
     "thumb": "thumb-7-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Fortified Pumpkin"
   },
   {
     "thumb": "thumb-7-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Acorn"
   },
   {
     "thumb": "thumb-8-1.png",
@@ -905,812 +855,812 @@
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-1.png",
+    "thumb": "thumb-10-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-2.png",
+    "thumb": "thumb-10-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-3.png",
+    "thumb": "thumb-10-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-4.png",
+    "thumb": "thumb-10-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-5.png",
+    "thumb": "thumb-10-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-6.png",
+    "thumb": "thumb-10-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-7.png",
+    "thumb": "thumb-10-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-8.png",
+    "thumb": "thumb-10-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-9.png",
+    "thumb": "thumb-10-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-10.png",
+    "thumb": "thumb-10-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-11.png",
+    "thumb": "thumb-10-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-12.png",
+    "thumb": "thumb-10-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-13.png",
+    "thumb": "thumb-10-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-14.png",
+    "thumb": "thumb-10-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-15.png",
+    "thumb": "thumb-10-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-16.png",
+    "thumb": "thumb-10-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-17.png",
+    "thumb": "thumb-10-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543210-18.png",
+    "thumb": "thumb-10-18.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-1.png",
+    "thumb": "thumb-11-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-2.png",
+    "thumb": "thumb-11-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-3.png",
+    "thumb": "thumb-11-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-4.png",
+    "thumb": "thumb-11-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-5.png",
+    "thumb": "thumb-11-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-6.png",
+    "thumb": "thumb-11-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-7.png",
+    "thumb": "thumb-11-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-8.png",
+    "thumb": "thumb-11-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-9.png",
+    "thumb": "thumb-11-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-10.png",
+    "thumb": "thumb-11-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-11.png",
+    "thumb": "thumb-11-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-12.png",
+    "thumb": "thumb-11-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-13.png",
+    "thumb": "thumb-11-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-14.png",
+    "thumb": "thumb-11-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-15.png",
+    "thumb": "thumb-11-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-16.png",
+    "thumb": "thumb-11-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-17.png",
+    "thumb": "thumb-11-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654321-18.png",
+    "thumb": "thumb-11-18.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-1.png",
+    "thumb": "thumb-12-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-2.png",
+    "thumb": "thumb-12-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-3.png",
+    "thumb": "thumb-12-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-4.png",
+    "thumb": "thumb-12-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-5.png",
+    "thumb": "thumb-12-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-6.png",
+    "thumb": "thumb-12-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-7.png",
+    "thumb": "thumb-12-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-8.png",
+    "thumb": "thumb-12-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-9.png",
+    "thumb": "thumb-12-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-10.png",
+    "thumb": "thumb-12-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-11.png",
+    "thumb": "thumb-12-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-12.png",
+    "thumb": "thumb-12-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-13.png",
+    "thumb": "thumb-12-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-14.png",
+    "thumb": "thumb-12-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-15.png",
+    "thumb": "thumb-12-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765432-16.png",
-    "type": "material",
-    "name": "???"
+    "thumb": "thumb-12-16.png",
+    "type": "elixir",
+    "name": "Hasty Elixir"
   },
   {
-    "thumb": "thumb-198765432-17.png",
-    "type": "material",
-    "name": "???"
+    "thumb": "thumb-12-17.png",
+    "type": "elixir",
+    "name": "Mighty Elixir"
   },
   {
-    "thumb": "thumb-198765432-18.png",
-    "type": "material",
-    "name": "???"
+    "thumb": "thumb-12-18.png",
+    "type": "elixir",
+    "name": "Tough Elixir"
   },
   {
-    "thumb": "thumb-19876543-1.png",
-    "type": "material",
-    "name": "???"
+    "thumb": "thumb-13-1.png",
+    "type": "elixir",
+    "name": "Enduring Elixir"
   },
   {
-    "thumb": "thumb-19876543-2.png",
+    "thumb": "thumb-13-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-3.png",
+    "thumb": "thumb-13-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-4.png",
+    "thumb": "thumb-13-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-5.png",
+    "thumb": "thumb-13-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-6.png",
+    "thumb": "thumb-13-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-7.png",
+    "thumb": "thumb-13-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-8.png",
+    "thumb": "thumb-13-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-9.png",
+    "thumb": "thumb-13-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-10.png",
+    "thumb": "thumb-13-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-11.png",
+    "thumb": "thumb-13-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-12.png",
+    "thumb": "thumb-13-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-13.png",
+    "thumb": "thumb-13-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-14.png",
+    "thumb": "thumb-13-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-15.png",
+    "thumb": "thumb-13-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-16.png",
+    "thumb": "thumb-13-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-17.png",
+    "thumb": "thumb-13-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876543-18.png",
+    "thumb": "thumb-13-18.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-1.png",
+    "thumb": "thumb-14-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-2.png",
+    "thumb": "thumb-14-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-3.png",
+    "thumb": "thumb-14-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-4.png",
+    "thumb": "thumb-14-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-5.png",
+    "thumb": "thumb-14-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-6.png",
+    "thumb": "thumb-14-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-7.png",
+    "thumb": "thumb-14-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-8.png",
+    "thumb": "thumb-14-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-9.png",
+    "thumb": "thumb-14-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-10.png",
+    "thumb": "thumb-14-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-11.png",
+    "thumb": "thumb-14-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-12.png",
+    "thumb": "thumb-14-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-13.png",
+    "thumb": "thumb-14-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-14.png",
+    "thumb": "thumb-14-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-15.png",
+    "thumb": "thumb-14-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-16.png",
+    "thumb": "thumb-14-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-17.png",
+    "thumb": "thumb-14-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987654-18.png",
+    "thumb": "thumb-14-18.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-1.png",
+    "thumb": "thumb-15-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-2.png",
+    "thumb": "thumb-15-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-3.png",
+    "thumb": "thumb-15-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-4.png",
+    "thumb": "thumb-15-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-5.png",
+    "thumb": "thumb-15-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-6.png",
+    "thumb": "thumb-15-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-7.png",
+    "thumb": "thumb-15-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-8.png",
+    "thumb": "thumb-15-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-9.png",
+    "thumb": "thumb-15-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-10.png",
+    "thumb": "thumb-15-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-11.png",
+    "thumb": "thumb-15-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-12.png",
+    "thumb": "thumb-15-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-13.png",
+    "thumb": "thumb-15-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-14.png",
+    "thumb": "thumb-15-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-15.png",
+    "thumb": "thumb-15-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-16.png",
+    "thumb": "thumb-15-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-17.png",
+    "thumb": "thumb-15-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198765-18.png",
+    "thumb": "thumb-15-18.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-1.png",
+    "thumb": "thumb-16-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-2.png",
+    "thumb": "thumb-16-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-3.png",
+    "thumb": "thumb-16-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-4.png",
+    "thumb": "thumb-16-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-5.png",
+    "thumb": "thumb-16-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-6.png",
+    "thumb": "thumb-16-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-7.png",
+    "thumb": "thumb-16-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-8.png",
+    "thumb": "thumb-16-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-9.png",
+    "thumb": "thumb-16-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-10.png",
+    "thumb": "thumb-16-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-11.png",
+    "thumb": "thumb-16-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-12.png",
+    "thumb": "thumb-16-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-13.png",
+    "thumb": "thumb-16-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-14.png",
+    "thumb": "thumb-16-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-15.png",
+    "thumb": "thumb-16-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-16.png",
+    "thumb": "thumb-16-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-17.png",
+    "thumb": "thumb-16-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-19876-18.png",
+    "thumb": "thumb-16-18.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-1.png",
+    "thumb": "thumb-17-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-2.png",
+    "thumb": "thumb-17-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-3.png",
+    "thumb": "thumb-17-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-4.png",
+    "thumb": "thumb-17-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-5.png",
+    "thumb": "thumb-17-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-6.png",
+    "thumb": "thumb-17-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-7.png",
+    "thumb": "thumb-17-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-8.png",
+    "thumb": "thumb-17-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-9.png",
+    "thumb": "thumb-17-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-10.png",
+    "thumb": "thumb-17-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-11.png",
+    "thumb": "thumb-17-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-12.png",
+    "thumb": "thumb-17-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-13.png",
+    "thumb": "thumb-17-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-14.png",
+    "thumb": "thumb-17-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-15.png",
+    "thumb": "thumb-17-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-16.png",
+    "thumb": "thumb-17-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-17.png",
+    "thumb": "thumb-17-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-1987-18.png",
+    "thumb": "thumb-17-18.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-1.png",
+    "thumb": "thumb-18-1.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-2.png",
+    "thumb": "thumb-18-2.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-3.png",
+    "thumb": "thumb-18-3.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-4.png",
+    "thumb": "thumb-18-4.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-5.png",
+    "thumb": "thumb-18-5.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-6.png",
+    "thumb": "thumb-18-6.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-7.png",
+    "thumb": "thumb-18-7.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-8.png",
+    "thumb": "thumb-18-8.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-9.png",
+    "thumb": "thumb-18-9.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-10.png",
+    "thumb": "thumb-18-10.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-11.png",
+    "thumb": "thumb-18-11.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-12.png",
+    "thumb": "thumb-18-12.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-13.png",
+    "thumb": "thumb-18-13.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-14.png",
+    "thumb": "thumb-18-14.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-15.png",
+    "thumb": "thumb-18-15.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-16.png",
+    "thumb": "thumb-18-16.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-17.png",
+    "thumb": "thumb-18-17.png",
     "type": "material",
     "name": "???"
   },
   {
-    "thumb": "thumb-198-18.png",
+    "thumb": "thumb-18-18.png",
     "type": "material",
     "name": "???"
   },
