@@ -30,25 +30,27 @@ $font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
 // —————————————————————————————————————
 
 button {
-  padding: 17.5px 22.5px;
+  padding: 20px 26.25px;
   font-family: $font-stack;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   
   border: 0;
   border-radius: 2px;
 
-  background: $bkgd;
+  background: $button-color;
   color: white;
 
   transition: background-color 0.1s, box-shadow 0.2s;
 
   &:hover {
-    background: rgba($bkgd, 0.8);
-    box-shadow: 0 0 10px rgba($pale-light, 1);
+    background: $button-hover-color;
+    box-shadow: 0 0 15px rgba($pale-light, 1);
   }
 
   &:active {
-    background: rgba($bkgd, 1.0);
+    background: $button-active-color;
+    transition: background-color 0s;
+    
   }
 }

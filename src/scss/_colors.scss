@@ -11,8 +11,14 @@ $selection-color: #bbb;
 $bkgd-color: rgb(5, 5, 5);
 $bkgd: rgba($bkgd-color, 0.7);
 
+$softer-grey: #666;
 
 $text-pop-color: rgb(255, 217, 0);
 $text-pop-darker-color: rgb(173, 155, 48);
 
 $pale-light: rgb(255, 255, 233);
+
+$button-color: $bkgd;
+$button-hover-color: rgba($bkgd, 0.825);
+$button-active-color: rgba(white, 0.7);
+$button-toggled-color: rgba($softer-grey, 0.825);

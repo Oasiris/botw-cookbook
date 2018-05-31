@@ -4,8 +4,11 @@ import './../styles/App.css';
 import './../styles/global.css';
 import './../static/css/fontello.css';
 
-import Material, { ThumbedMaterials } from './Material';
+import Material, { ThumbedMaterials, MaterialList } from './Material';
 import Button from './Button';
+
+import data from '../data/'
+
 
 export default class App extends Component {
   render() {
@@ -27,7 +30,9 @@ export default class App extends Component {
           {/* <Button onClick={() => alert('hey')}>asdfghjfdsfgh</Button> */}
         
           {/* <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />         */}
-          <ThumbedMaterials />
+          {/* <ThumbedMaterials /> */}
+          <MaterialList materials={data.materials} />
+          {/* <ThumbedMaterials /> */}
         </div>
         
         <Footer />
