@@ -1,3 +1,7 @@
+.container {
+  max-width: 1000px;
+  margin: 10px auto; }
+
 .App {
   text-align: center; }
   .App .App-header {
