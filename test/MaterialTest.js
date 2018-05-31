@@ -30,12 +30,12 @@ const Material = require(`./../src/Material.js`);
 //   });
 // });
 
-/* ——— static queryByName ——— */
+/* ——— static queryDataByName ——— */
 
-ddd('static queryByName', () => {
+ddd('static queryDataByName', () => {
   // Basic test
   it('basic', () => {
-    const actual = Material.queryByName('Apple');
+    const actual = Material.queryDataByName('Apple');
     const expected = {
       "idx": 3,
       "name": "Apple",
@@ -61,24 +61,24 @@ ddd('static queryByName', () => {
   it('capitalization works properly', () => {
     // uncap
     assert.deepEqual(
-      Material.queryByName('Acorn'),
-      Material.queryByName('acorn')
+      Material.queryDataByName('Acorn'),
+      Material.queryDataByName('acorn')
     );
     
     // decap and overcap
     assert.deepEqual(
-      Material.queryByName('hearty DURIAN'), 
-      Material.queryByName('Hearty Durian')
+      Material.queryDataByName('hearty DURIAN'),
+      Material.queryDataByName('Hearty Durian')
     );
   });
 });
 
-/* ——— static queryById ——— */
+/* ——— static queryDataById ——— */
 
-ddd('static queryById', () => {
+ddd('static queryDataById', () => {
   // Basic test
   it('basic', () => {
-    const actual = Material.queryById(3);
+    const actual = Material.queryDataById(3);
     const expected = {
       "idx": 3,
       "name": "Apple",
@@ -103,17 +103,22 @@ ddd('static queryById', () => {
   // String vs number input
   it('string vs number input', () => {
     assert.deepEqual(
-      Material.queryById('7'),
-      Material.queryById(7)
+      Material.queryDataById('7'),
+      Material.queryDataById(7)
     );
   });
 
   // Trailing zeroes
   it('trailing zeroes input', () => {
     assert.deepEqual(
-      Material.queryById(40),
-      Material.queryById('0040')
+      Material.queryDataById(40),
+      Material.queryDataById('0040')
     )
   })
-
 });
+
+/* ——— constructor ——— */
+
+
+
+// end of tests
