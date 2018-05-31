@@ -1,5 +1,6 @@
-$bkgd-color: rgb(16, 16, 16);
-$bkgd: rgba($bkgd-color, 0.75);
+@import 'colors';
+
+
 
 .fancy-card-outer {
   // border: 3px double black;

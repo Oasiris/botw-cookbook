@@ -5,7 +5,8 @@
 .App {
   text-align: center; }
   .App .App-header {
-    background-color: #333;
+    background-color: rgba(10, 10, 10, 0.7625);
+    border-bottom: 2px double rgba(10, 10, 10, 0.7625);
     padding: 20px;
     color: white; }
     .App .App-header .App-logo {
