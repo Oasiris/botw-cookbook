@@ -55,3 +55,35 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+// —————————————————————————————————————
+// Footer
+// —————————————————————————————————————
+
+.footer {
+  margin-top: 50px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+
+  background: $bkgd;
+  color: white;
+  line-height: 1.375;
+
+  div {
+    margin-top: 12.5px;
+    margin-bottom: 12.5px;
+  }
+
+  div.footer-icon {
+    font-size: 40px;
+    color: white;
+    transition: color 1s;
+
+    :hover {
+      color: $text-pop-color;
+    }
+    :active {
+      color: $text-pop-darker-color;
+    }
+  }
+}

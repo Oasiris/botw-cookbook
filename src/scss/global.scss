@@ -1,7 +1,22 @@
 // Global styles.
 
+@import 'colors';
+
 .grow { transition: all .0625s ease-in-out; }
 .grow:hover { transform: scale(1.075); }
 
 .grow-slight { transition: all .0625s ease-in-out; }
 .grow-slight:hover { transform: scale(1.03); }
+
+.text-pop {
+  color: $text-pop-color;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
