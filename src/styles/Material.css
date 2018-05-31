@@ -1,5 +1,7 @@
 .mat-card-wrapper {
-  max-width: 250px; }
+  width: calc(250px - 2px - 2px);
+  display: inline-block;
+  margin: 2px; }
 
 .mat-card {
   border-radius: 2px;

@@ -4,6 +4,8 @@ import '../styles/Material.css'
 
 import FancyCard from './FancyCard';
 
+import data from '../data/'
+
 export default class Material extends Component {
   render() {
     return (
@@ -30,3 +32,22 @@ Material.propTypes = {
   name: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired
 }
+
+// ——————————————————————————————————————————————————————————————————————————
+
+export class ThumbedMaterials extends Component {
+  render() {
+    console.log(data);
+    return (
+      <div>
+        {data.materials.filter(mat => mat.thumb).map(mat => (
+          <Material 
+            name={mat.name} 
+            imgSrc={`img/thumb/tiny/${mat.thumb}`} 
+            key={mat.idx} />
+        ))}
+      </div>
+    );
+  }
+}
+

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './../styles/App.css';
 
-import Material from './Material.js';
+import Material, { ThumbedMaterials } from './Material.js';
 
 
 class App extends Component {
@@ -20,7 +20,8 @@ class App extends Component {
         {/* </p> */}
 
         <div className="container">
-          <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />        
+          {/* <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />         */}
+          <ThumbedMaterials />
         </div>
         
       </div>
