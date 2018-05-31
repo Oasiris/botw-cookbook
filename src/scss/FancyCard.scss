@@ -1,0 +1,16 @@
+$bkgd-color: rgb(16, 16, 16);
+$bkgd: rgba($bkgd-color, 0.75);
+
+.fancy-card-outer {
+  // border: 3px double black;
+  border: 2px solid $bkgd;
+  padding: 1px;
+  border-radius: 3px;
+  // background-color: yellow;
+}
+
+.fancy-card-inner {
+  background-color: $bkgd;
+
+  color: white;
+}

@@ -1,0 +1,11 @@
+.grow {
+  transition: all .0875s ease-in-out; }
+
+.grow:hover {
+  transform: scale(1.075); }
+
+.grow-slight {
+  transition: all .0875s ease-in-out; }
+
+.grow-slight:hover {
+  transform: scale(1.03); }
