@@ -2,11 +2,11 @@
 
 This is a work-in-progress web application and cooking companion to _The Legend of Zelda: Breath of the Wild_.
 
-Predict the full data, effects, and selling price of any recipe! Just pick 1-5 ingredients and click "Cook!".
+Predict the full data, effects, and selling price of any recipe! Just pick 1-5 ingredients and click "Cook!"
 
 ## Getting Started
 
-You'll need Node.js, version 8 or higher, and Yarn.
+You'll need Node.js v8+ and Yarn.
 
 Clone the repo and navigate to the repo's root directory. Then, enter the following commands:
 
@@ -42,4 +42,4 @@ The app is ready to be deployed!
 
 ## Contributing
 
-I'm not accepting contributions at this time! This was always intended to be a solo project to develop and show off my skills in ES6, React, and web development.
+This is intended to be a solo project to develop and show off my skills in ES6, React, and web development. For this reason, I'm currently not accepting contributions.

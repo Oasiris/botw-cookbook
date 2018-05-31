@@ -1,4 +1,4 @@
-# Docs
+# Documentation
 
 Welcome to the `Oasiris/botw-cookbook` documentation directory.
 
