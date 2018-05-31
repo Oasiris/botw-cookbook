@@ -11,7 +11,7 @@ import '../styles/global.css'
 
 import FancyCard from './FancyCard';
 
-import data from '../data/'
+import data from '../data/all'
 
 export default class Material extends Component {
 

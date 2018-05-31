@@ -7,7 +7,7 @@ import './../static/css/fontello.css';
 import Material, { ThumbedMaterials, MaterialList } from './Material';
 import Button from './Button';
 
-import data from '../data/'
+import data from '../data/all'
 
 
 export default class App extends Component {
