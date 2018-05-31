@@ -4,8 +4,8 @@ import './../styles/App.css';
 import './../styles/global.css';
 import './../static/css/fontello.css';
 
-import Material, { ThumbedMaterials } from './Material.js';
-
+import Material, { ThumbedMaterials } from './Material';
+import Button from './Button';
 
 export default class App extends Component {
   render() {
@@ -13,15 +13,19 @@ export default class App extends Component {
       <div className="App">
       
         <header className="App-header">
-          <h1 className="App-title">Breath of the Wild Cookbook</h1>
+          <h1 className="App-title unselectable">Breath of the Wild Cookbook</h1>
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
+
         {/* <p className="App-intro"> */}
           {/* To get started, edit <code>src/App.js</code> and save to reload. */}
         {/* </p> */}
 
         <div className="container">
+
+          {/* <Button onClick={() => alert('hey')}>asdfghjfdsfgh</Button> */}
+        
           {/* <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />         */}
           <ThumbedMaterials />
         </div>
@@ -48,7 +52,7 @@ export class Footer extends Component {
           Created in 2018. Powered by React.
         </div>
         <div className="footer-icon">
-          <a href="http://github.com/Oasiris" target="_blank" rel="noopener noreferrer" alt="Click here to go to my GitHub">
+          <a href="https://github.com/Oasiris/botw-cookbook" target="_blank" rel="noopener noreferrer" alt="View in GitHub">
             <i className="icon-github-circled"></i>            
           </a>
         </div>

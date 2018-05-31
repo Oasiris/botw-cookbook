@@ -27,6 +27,10 @@ body {
   background-color: $selection-color;
 }
 
+// —————————————————————————————————————
+// Links
+// —————————————————————————————————————
+
 a {
   color: inherit;
   // text-decoration: none;
@@ -34,4 +38,21 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+
+// —————————————————————————————————————
+// Buttons
+// —————————————————————————————————————
+
+button {
+  padding: 17.5px 22.5px;
+  font-family: $font-stack;
+  font-weight: bold;
+  font-size: 18px;
+  
+  border: 0;
+  border-radius: 2px;
+
+  background: $bkgd;
+  color: white;
 }

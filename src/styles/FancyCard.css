@@ -1,8 +1,13 @@
 .fancy-card-outer {
   border: 2px solid rgba(5, 5, 5, 0.7);
+  margin: 0;
   padding: 1px;
-  border-radius: 3px; }
+  border-radius: 3px;
+  display: flex;
+  height: 100%; }
 
 .fancy-card-inner {
   background-color: rgba(5, 5, 5, 0.7);
-  color: white; }
+  color: white;
+  margin: 0;
+  display: inline-block; }

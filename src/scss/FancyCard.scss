@@ -5,13 +5,20 @@
 .fancy-card-outer {
   // border: 3px double black;
   border: 2px solid $bkgd;
+  margin: 0;
   padding: 1px;
   border-radius: 3px;
   // background-color: yellow;
+  display: flex;
+  // display: inline-block;
+  height: 100%;
 }
 
 .fancy-card-inner {
   background-color: $bkgd;
 
   color: white;
+  margin: 0;
+
+  display: inline-block;
 }
