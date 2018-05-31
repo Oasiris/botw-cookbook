@@ -84,23 +84,38 @@ export class MaterialList extends Component {
 
   toggleShowText() {
     this.setState((prevState, props) => {
-      console.log(prevState);
+      // console.log(prevState);
       return {
         showText: !prevState.showText
       };
     });
   }
 
+  sortBy(criteria) {
+    this.setState(prevState => ({
+      sortBy: criteria
+    }));
+  }
+
   render() {
     const { materials } = this.props;
     const { sortBy, showText } = this.state;
-    if (sortBy !== 'default') {
-      console.log('TODO');
+    
+    let sortedMaterials;
+    if (sortBy === 'default') {
+      sortedMaterials = [ ...materials ];
+    } else if (sortBy === 'name') {
+      sortedMaterials = [ ...materials ];
+      sortedMaterials.sort((m1, m2) => {
+        return (m1.name > m2.name ? 1 : (m1.name === m2.name ? 0 : -1));
+      });
+      
     }
+
 
     const materialsDiv = <div>
       {
-        materials.map(({ name, thumb, idx }) => (
+        sortedMaterials.map(({ name, thumb, idx }) => (
           <Material
           name={name}
           imgSrc={thumb ? `img/thumb/tiny/${thumb}` : undefined}
@@ -112,6 +127,8 @@ export class MaterialList extends Component {
 
     return <div>
       <button onClick={this.toggleShowText}>Toggle Show Text</button>
+      <button onClick={() => this.sortBy('name')}>Sort By: Name</button>
+      <button onClick={() => this.sortBy('default')}>Sort By: Default</button>
       {materialsDiv}
     </div>;
   }
