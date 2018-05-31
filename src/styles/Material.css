@@ -1,3 +1,25 @@
+.mat-card-wrapper {
+  max-width: 250px; }
+
 .mat-card {
   border: 1px solid grey;
-  padding: 10px; }
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  min-width: 200px; }
+  .mat-card div {
+    display: inline-block; }
+  .mat-card div.mat-icon-wrapper {
+    height: 96px;
+    width: 96px; }
+    .mat-card div.mat-icon-wrapper img.mat-icon {
+      width: 96px;
+      height: auto; }
+  .mat-card div.mat-name-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px; }
+    .mat-card div.mat-name-wrapper div.mat-name {
+      font-size: 20px;
+      padding-right: 5px; }

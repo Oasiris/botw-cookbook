@@ -1,4 +1,40 @@
+.mat-card-wrapper {
+  max-width: 250px;
+}
+
 .mat-card {
   border: 1px solid grey;
-  padding: 10px;
+  border-radius: 2px;
+
+  // padding: 5px;
+
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+
+  div {
+    display: inline-block;
+  }
+
+  div.mat-icon-wrapper {
+    height: 96px;
+    width: 96px;
+    img.mat-icon {
+      width: 96px;
+      height: auto;
+    }
+  }
+
+  div.mat-name-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    div.mat-name {
+      font-size: 20px;
+      padding-right: 5px;
+    }
+  }
+  
 }

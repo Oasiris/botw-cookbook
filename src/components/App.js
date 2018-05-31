@@ -20,7 +20,7 @@ class App extends Component {
         {/* </p> */}
 
         <div className="container">
-          <Material />        
+          <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />        
         </div>
         
       </div>
