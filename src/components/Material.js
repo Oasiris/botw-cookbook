@@ -20,9 +20,9 @@ export default class Material extends Component {
   // }
 
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    // name: PropTypes.string.isRequired,
     // imgSrc: PropTypes.string.isRequired
-    imgSrc: PropTypes.string,
+    // imgSrc: PropTypes.string,
     showText: PropTypes.bool
   }
 
@@ -40,9 +40,9 @@ export default class Material extends Component {
           <div className="mat-card">
             <div className="mat-icon-wrapper">
               {
-                this.props.imgSrc &&
+                this.props.data.thumb &&
                 <img 
-                  src={this.props.imgSrc} 
+                  src={"img/thumb/tiny/" + this.props.data.thumb}
                   className="mat-icon unselectable"
                   alt="" />
               }
@@ -53,7 +53,7 @@ export default class Material extends Component {
               this.props.showText && 
               <div className="mat-name-wrapper">
                 <div className="mat-name">
-                  {this.props.name}
+                  {this.props.data.name}
                 </div>
               </div>
             }
@@ -115,11 +115,13 @@ export class MaterialList extends Component {
 
     const materialsDiv = <div>
       {
-        sortedMaterials.map(({ name, thumb, idx }) => (
+        // sortedMaterials.map(({ name, thumb, idx }) => (
+        sortedMaterials.map(mat => (
           <Material
-          name={name}
-          imgSrc={thumb ? `img/thumb/tiny/${thumb}` : undefined}
-          key={idx}
+          data={mat}
+          // name={name}
+          // imgSrc={thumb ? `img/thumb/tiny/${thumb}` : undefined}
+          key={mat.idx}
           showText={showText} />
         ))
       }

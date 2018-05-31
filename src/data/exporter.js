@@ -4,7 +4,6 @@ const fs = require('fs')
 // Bundle
 
 const json = JSON.stringify(data)
-// const json = 'hi'
 
 console.log(__dirname)
 
