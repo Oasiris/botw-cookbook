@@ -1,3 +1,7 @@
+/**
+ * A place to test functions and logic in JavaScript.
+ */
+
 import R, { curry, compose, __ } from 'ramda'
 
 

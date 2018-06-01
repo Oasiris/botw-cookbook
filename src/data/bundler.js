@@ -157,7 +157,7 @@ const reagantDurationBonuses = [ 40, 80, 160 ];
  * This means that the more ingredients are used in a single recipe, the more
  * profitable the resulting recipe.
  */
-const priceMultipliers = [ undefined, 1.5, 1.75, 2.05, 2.4, 2.8 ];
+const priceMultipliers = [ 1, 1.5, 1.75, 2.05, 2.4, 2.8 ];
 
 // —————————————————————————————————————
 

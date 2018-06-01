@@ -1,14 +1,13 @@
 import CookingUtil, { Mat } from './CookingUtil'
 import R from 'ramda'
 
-it(`sandbox`, () => {
-  // console.log(CookingUtil)
-  // console.log(CookingUtil.getRupeePrice)
-  // console.log(Mat)
-  // console.log(Mat.ofName('Acorn'))
-  // Mat.ofName('dsfghn')
-  Mat.ofId(4)
+it('sandbox', () => {
+  const m20 = Mat.ofId(20);
+  const m40 = Mat.ofId(40);
+  const price = CookingUtil.getRupeePrice([m20, m40]);
+  console.log(price);
 });
+
 
 describe('Mat', () => {
 
@@ -43,7 +42,7 @@ describe('Mat', () => {
     });
 
     it('ofId fails for misspelled input', () => {
-      try {
+      try { 
         const x = Mat.ofId("not quite a number");
       } catch (err) {
         expect(true).toBe(true);
@@ -52,6 +51,6 @@ describe('Mat', () => {
   });
   // ——————————————————————————————————————————————————————————————————————————
 
+});
 
 
-})

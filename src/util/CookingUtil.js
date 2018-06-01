@@ -2,7 +2,10 @@
 // Dependencies
 // ——————————————————————————————————————————————————————————————————————————
 
-import data from '../data/all';
+/**
+ * C for 'Constants'.
+ */
+import C from '../data/all';
 import isNumber from 'isnumber';
 import R, { curry, compose, __ } from 'ramda';
 
@@ -16,9 +19,6 @@ function exists(x) {
   return (x !== undefined) && (x !== null);
 }
 
-// ——————————————————————————————————————————————————————————————————————————
-// Logic
-// ——————————————————————————————————————————————————————————————————————————
 
 /**
  * Class representing a material (abbreviated to avoid a naming conflict with
@@ -50,7 +50,7 @@ export class Mat {
    * @param {string} name Material's name.
    */
   static ofName(name) {
-    const found = R.find(R.propEq('name', name))(data.materials);
+    const found = R.find(R.propEq('name', name))(C.materials);
     if (exists(found)) {
       return new Mat({ ...found, filled: true })
     }
@@ -66,7 +66,7 @@ export class Mat {
   static ofId(id) {
     if (!isNumber(id)) throw new Error(`id "${id}" is NaN`);
     const idAsInteger = parseInt(id, 10);
-    const found = R.find(R.propEq('idx', idAsInteger))(data.materials);
+    const found = R.find(R.propEq('idx', idAsInteger))(C.materials);
     if (!exists(found)) {
       throw new Error(`Can't create Mat from id "${idAsInteger}"`);
     }
@@ -74,18 +74,33 @@ export class Mat {
   }
 }
 
+// ——————————————————————————————————————————————————————————————————————————
+// Logic
+// ——————————————————————————————————————————————————————————————————————————
+
 export default class CookingUtil {
 
   /**
+   * TODO: Test
    * 
    * @param {Material[]} mats 
    * @return {number} Numeric price in Rupees.
    */
   static getRupeePrice(mats) {
     if (mats.length === 1 && mats[0].name === 'Acorn') return 8;
-    // let sum = 
-    let sum = compose(R.sum, R.map(R.prop('a')), mats);
-    console.log(sum);
+    // Sum of materials' prices
+    const priceSum = compose(R.sum, R.map(R.prop('price')))(mats);
+    // Multiplier, which increases w/ number of ingredients in recipe
+    const multiplier = C.priceMultipliers[mats.length];
+    // Round to highest 10 rupees
+    return Math.ceil(priceSum * multiplier / 10) * 10;
+  }
+
+  /**
+   * 
+   */
+  static getHpRestore(mats) {
+
   }
 }
 
