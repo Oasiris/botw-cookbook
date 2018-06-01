@@ -9,15 +9,13 @@ import C from '../data/all';
 import isNumber from 'isnumber';
 import R, { curry, compose, __ } from 'ramda';
 
+import { exists } from './utility';
+
 // module.exports = {};
 
 // ——————————————————————————————————————————————————————————————————————————
 // Helpers
 // ——————————————————————————————————————————————————————————————————————————
-
-function exists(x) {
-  return (x !== undefined) && (x !== null);
-}
 
 
 /**
@@ -83,10 +81,11 @@ export default class CookingUtil {
   /**
    * TODO: Test
    * 
-   * @param {Material[]} mats 
+   * @param {Mat[]} mats 
    * @return {number} Numeric price in Rupees.
    */
   static getRupeePrice(mats) {
+    // Exception: a recipe of a single acorn sells for 8, oddly enough.
     if (mats.length === 1 && mats[0].name === 'Acorn') return 8;
     // Sum of materials' prices
     const priceSum = compose(R.sum, R.map(R.prop('price')))(mats);
@@ -97,10 +96,36 @@ export default class CookingUtil {
   }
 
   /**
-   * 
+   * @param {Mat[]} mats
+   * @return {number} Number of heart pieces (each being 1/4 of a full heart) 
+   *   that the cooked material will restore.
+   *   Can be Infinity ("Full recovery").
    */
   static getHpRestore(mats) {
+    /*
+     * "Hearty rule": if materials include any hearty ingredients, they provide
+     *  full recovery, indicated by a return value of Infinity.
+     */
+    const hasHearty = R.any(R.propEq('effect', 'Hearty'))(mats);
+    if (hasHearty) return Infinity;
 
+    let base = 0,
+        bonus = 0;
+    /* 
+     * "nut bonus" = 4 HP, if the materials include both types of nut
+     *             = 2 HP, if the materials include one type of nut
+     *                and at least one non-nut materials
+     *             = 0, otherwise
+     */
+    const uniqueNuts = compose(R.uniq, R.filter(mat => mat.families.includes('Nut')))(mats).length;
+    const justOneNut = uniqueNuts === 1;
+    const hasNonNut = R.any(mat => !mat.families.includes('Nut'))(mats);
+    bonus += (uniqueNuts === 2) ? 4 : ((justOneNut && hasNonNut) ? 2 : 0);
+
+    // Normal calculation: sum heart bonuses from each item.
+    base = R.sum(R.map(m => exists(m.hp) ? m.hp : 0)(mats));
+    
+    return base + bonus;
   }
 }
 
