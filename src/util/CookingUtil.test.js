@@ -1,4 +1,13 @@
-import CookingUtil, { Mat } from './CookingUtil'
+/**
+ * Big testing file for CookingUtil.
+ */
+
+// —————————————————————————————————————
+// Dependencies
+// —————————————————————————————————————
+
+import CookingUtil, { Mat, Rcp } from './CookingUtil'
+
 import R from 'ramda'
 
 import { exists } from './utility'
@@ -13,6 +22,10 @@ import { exists } from './utility'
  * @param {number} numHearts
  */
 const hearts = (numHearts) => 4 * numHearts;
+
+// —————————————————————————————————————
+// Testing Data
+// —————————————————————————————————————
 
 /**
  * This is a big ol' array of inputs and expected outputs.
@@ -154,6 +167,10 @@ const matSets = [
   }
 ];
 
+// —————————————————————————————————————
+// Tests: Drivers
+// —————————————————————————————————————
+
 
 it('sandbox', () => {
   const m20 = Mat.ofId(20);
@@ -164,7 +181,7 @@ it('sandbox', () => {
 
 describe('Mat', () => {
 
-  // ——————————————————————————————————————————————————————————————————————————
+  // —————————————————————————————————————
   describe('Instantiation/construction', () => {
     it('ofName: acorn', () => {
       const acorn = Mat.ofName('Acorn');
@@ -180,7 +197,7 @@ describe('Mat', () => {
       }
     });
 
-    // ——————————————————————————————————————————————
+      // —————————————————————————————————————
 
     it('ofId: Naydra\'s Horn (id: 62)', () => {
       const naydrasHorn = Mat.ofId(62);
@@ -202,10 +219,68 @@ describe('Mat', () => {
       }
     });
   });
-  // ——————————————————————————————————————————————————————————————————————————
+  // —————————————————————————————————————
 
 });
 
+describe('Rcp', () => {
+
+  it('TODO', () => {
+    expect(true).toBe(true);
+  });
+
+  // —————————————————————————————————————
+  describe('Instantiation/construction', () => {
+    it('ofName: Fried Wild Greens', () => {
+      const wildGreens = Rcp.ofName('Fried Wild Greens');
+      expect(R.is(Rcp, wildGreens)).toBe(true);
+      expect(wildGreens.name).toEqual('Fried Wild Greens');
+
+      expect(wildGreens.idx).toEqual(expect.anything());
+      expect(wildGreens.notes).toEqual(expect.anything());
+      expect(wildGreens.ingredients).toEqual(expect.anything());
+    });
+
+  //   it('ofName fails for misspelled input', () => {
+  //     try {
+  //       const x = Mat.ofName('oogey boogey ;)');
+  //     } catch (err) {
+  //       expect(true).toBe(true);
+  //     }
+  //   });
+
+  //   // —————————————————————————————————————
+
+  //   it('ofId: Naydra\'s Horn (id: 62)', () => {
+  //     const naydrasHorn = Mat.ofId(62);
+  //     expect(R.is(Mat, naydrasHorn)).toBe(true);
+  //     expect(naydrasHorn.name).toEqual('Naydra\'s Horn');
+  //   });
+
+  //   it('ofId: Naydra\'s Horn w/ input "62"', () => {
+  //     const naydrasHorn = Mat.ofId('62');
+  //     expect(R.is(Mat, naydrasHorn)).toBe(true);
+  //     expect(naydrasHorn.name).toEqual('Naydra\'s Horn');
+  //   });
+
+  //   it('ofId fails for misspelled input', () => {
+  //     try {
+  //       const x = Mat.ofId("not quite a number");
+  //     } catch (err) {
+  //       expect(true).toBe(true);
+  //     }
+  //   });
+  });
+  // // —————————————————————————————————————
+
+});
+
+/**
+ * 
+ * @param {string} testingProp 
+ * @param {Function} testingFunc 
+ * @sig (string, (Mats[] -> any)) -> null
+ */
 const testA = (testingProp, testingFunc) => {
   // Get all matSets which have expected values for the specified prop
   R.filter(set => exists(set[testingProp]))(matSets)

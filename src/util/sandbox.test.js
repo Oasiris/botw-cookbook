@@ -29,4 +29,22 @@ describe('ramda tests', () => {
     const result3 = compose(R.sum, R.map(R.prop('a')))(arr);
     expect(result3).toEqual(expected);
   });
+
+  it('test: R.cond', () => {
+    const inputs = [
+      [true, false],
+      [true, true],
+      [false, true],
+      [true, false]
+    ];
+    // const fn1 = R.cond([
+    //   [
+
+    //   ], [
+
+    //   ]
+
+    // ]);
+  });
 });
+
