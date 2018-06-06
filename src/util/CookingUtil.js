@@ -207,7 +207,13 @@ export default class CookingUtil {
       return (getDishEffect(mats) === 'no effect') ? DUBIOUS : ELIXIR;
     }
     if (!hasCritter && !hasMonsterPart) {
-      
+      // If includes a Nutrition ingredient (usage: Food)
+      if (R.any(R.propEq('usage', 'Food'))(mats)) {
+        return FOOD;
+      } else { // If NO Food ingredients (basically, has only additives now)
+
+        
+      }
     }
     
   }
@@ -224,7 +230,16 @@ export default class CookingUtil {
     return (uniqueEffects.length === 1) ? uniqueEffects[0] : 'no effect';
   }
 
-  static canCookInto(mats, recipe) {
+  /**
+   * 
+   * @param {Mat[]} mats 
+   * @param {Rcp} recipe
+   * @param {{ exact?: boolean }} options Options object. The `exact` property 
+   *  determines whether or not the materials must exactly match the recipe.
+   * @return {boolean} Whether or not the materials could cook into the given
+   *  recipe.
+   */
+  static canCookInto(mats, recipe, options) {
 
   }
 

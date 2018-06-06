@@ -1,6 +1,6 @@
 [
    {
-      "idx": "1",
+      "idx": 1,
       "name": "Fruitcake",
       "notes": "",
       "ingredients": [
@@ -23,7 +23,7 @@
       ]
    },
    {
-      "idx": "2",
+      "idx": 2,
       "name": "Seafood Paella",
       "notes": "",
       "ingredients": [
@@ -50,7 +50,7 @@
       ]
    },
    {
-      "idx": "3",
+      "idx": 3,
       "name": "Monster Curry",
       "notes": "",
       "ingredients": [
@@ -69,7 +69,7 @@
       ]
    },
    {
-      "idx": "4",
+      "idx": 4,
       "name": "Monster Rice Balls",
       "notes": "",
       "ingredients": [
@@ -88,7 +88,7 @@
       ]
    },
    {
-      "idx": "5",
+      "idx": 5,
       "name": "Monster Cake",
       "notes": "",
       "ingredients": [
@@ -111,7 +111,7 @@
       ]
    },
    {
-      "idx": "6",
+      "idx": 6,
       "name": "Monster Soup",
       "notes": "",
       "ingredients": [
@@ -134,7 +134,7 @@
       ]
    },
    {
-      "idx": "7",
+      "idx": 7,
       "name": "Monster Stew",
       "notes": "",
       "ingredients": [
@@ -153,7 +153,7 @@
       ]
    },
    {
-      "idx": "8",
+      "idx": 8,
       "name": "Creamy Heart Soup",
       "notes": "",
       "ingredients": [
@@ -176,7 +176,7 @@
       ]
    },
    {
-      "idx": "9",
+      "idx": 9,
       "name": "Clam Chowder",
       "notes": "",
       "ingredients": [
@@ -199,7 +199,7 @@
       ]
    },
    {
-      "idx": "10",
+      "idx": 10,
       "name": "Pumpkin Stew",
       "notes": "",
       "ingredients": [
@@ -222,7 +222,7 @@
       ]
    },
    {
-      "idx": "11",
+      "idx": 11,
       "name": "Gourmet Meat Stew",
       "notes": "",
       "ingredients": [
@@ -245,7 +245,7 @@
       ]
    },
    {
-      "idx": "12",
+      "idx": 12,
       "name": "Prime Meat Stew",
       "notes": "",
       "ingredients": [
@@ -268,7 +268,7 @@
       ]
    },
    {
-      "idx": "13",
+      "idx": 13,
       "name": "Meat Stew",
       "notes": "",
       "ingredients": [
@@ -291,7 +291,7 @@
       ]
    },
    {
-      "idx": "14",
+      "idx": 14,
       "name": "Gourmet Meat Curry",
       "notes": "",
       "ingredients": [
@@ -310,7 +310,7 @@
       ]
    },
    {
-      "idx": "15",
+      "idx": 15,
       "name": "Gourmet Poultry Curry",
       "notes": "",
       "ingredients": [
@@ -329,7 +329,7 @@
       ]
    },
    {
-      "idx": "16",
+      "idx": 16,
       "name": "Prime Meat Curry",
       "notes": "",
       "ingredients": [
@@ -348,7 +348,7 @@
       ]
    },
    {
-      "idx": "17",
+      "idx": 17,
       "name": "Prime Poultry Curry",
       "notes": "",
       "ingredients": [
@@ -367,7 +367,7 @@
       ]
    },
    {
-      "idx": "18",
+      "idx": 18,
       "name": "Meat Curry",
       "notes": "",
       "ingredients": [
@@ -386,7 +386,7 @@
       ]
    },
    {
-      "idx": "19",
+      "idx": 19,
       "name": "Poultry Curry",
       "notes": "",
       "ingredients": [
@@ -405,7 +405,7 @@
       ]
    },
    {
-      "idx": "20",
+      "idx": 20,
       "name": "Seafood Curry",
       "notes": "",
       "ingredients": [
@@ -424,7 +424,7 @@
       ]
    },
    {
-      "idx": "21",
+      "idx": 21,
       "name": "Vegetable Curry",
       "notes": "",
       "ingredients": [
@@ -443,7 +443,7 @@
       ]
    },
    {
-      "idx": "22",
+      "idx": 22,
       "name": "Pumpkin Pie",
       "notes": "",
       "ingredients": [
@@ -466,7 +466,7 @@
       ]
    },
    {
-      "idx": "23",
+      "idx": 23,
       "name": "Carrot Cake",
       "notes": "",
       "ingredients": [
@@ -489,7 +489,7 @@
       ]
    },
    {
-      "idx": "24",
+      "idx": 24,
       "name": "Wildberry Crepe",
       "notes": "",
       "ingredients": [
@@ -516,7 +516,7 @@
       ]
    },
    {
-      "idx": "25",
+      "idx": 25,
       "name": "Honey Crepe",
       "notes": "",
       "ingredients": [
@@ -543,7 +543,7 @@
       ]
    },
    {
-      "idx": "26",
+      "idx": 26,
       "name": "Plain Crepe",
       "notes": "",
       "ingredients": [
@@ -566,7 +566,7 @@
       ]
    },
    {
-      "idx": "27",
+      "idx": 27,
       "name": "Apple Pie",
       "notes": "",
       "ingredients": [
@@ -589,7 +589,7 @@
       ]
    },
    {
-      "idx": "28",
+      "idx": 28,
       "name": "Nutcake",
       "notes": "",
       "ingredients": [
@@ -612,7 +612,7 @@
       ]
    },
    {
-      "idx": "29",
+      "idx": 29,
       "name": "Egg Tart",
       "notes": "",
       "ingredients": [
@@ -635,7 +635,7 @@
       ]
    },
    {
-      "idx": "30",
+      "idx": 30,
       "name": "Egg Pudding",
       "notes": "",
       "ingredients": [
@@ -654,7 +654,7 @@
       ]
    },
    {
-      "idx": "31",
+      "idx": 31,
       "name": "Fried Bananas",
       "notes": "",
       "ingredients": [
@@ -673,7 +673,7 @@
       ]
    },
    {
-      "idx": "32",
+      "idx": 32,
       "name": "Fruit Pie",
       "notes": "",
       "ingredients": [
@@ -696,7 +696,7 @@
       ]
    },
    {
-      "idx": "33",
+      "idx": 33,
       "name": "Meat Pie",
       "notes": "",
       "ingredients": [
@@ -719,7 +719,7 @@
       ]
    },
    {
-      "idx": "34",
+      "idx": 34,
       "name": "Fish Pie",
       "notes": "",
       "ingredients": [
@@ -742,7 +742,7 @@
       ]
    },
    {
-      "idx": "35",
+      "idx": 35,
       "name": "Salmon Meunière",
       "notes": "",
       "ingredients": [
@@ -761,7 +761,7 @@
       ]
    },
    {
-      "idx": "36",
+      "idx": 36,
       "name": "Salmon Risotto",
       "notes": "",
       "ingredients": [
@@ -784,7 +784,7 @@
       ]
    },
    {
-      "idx": "37",
+      "idx": 37,
       "name": "Crab Risotto",
       "notes": "",
       "ingredients": [
@@ -807,7 +807,7 @@
       ]
    },
    {
-      "idx": "38",
+      "idx": 38,
       "name": "Vegetable Risotto",
       "notes": "",
       "ingredients": [
@@ -830,7 +830,7 @@
       ]
    },
    {
-      "idx": "39",
+      "idx": 39,
       "name": "Mushroom Risotto",
       "notes": "",
       "ingredients": [
@@ -853,7 +853,7 @@
       ]
    },
    {
-      "idx": "40",
+      "idx": 40,
       "name": "Cream of Mushroom Soup",
       "notes": "",
       "ingredients": [
@@ -876,7 +876,7 @@
       ]
    },
    {
-      "idx": "41",
+      "idx": 41,
       "name": "Veggie Cream Soup",
       "notes": "",
       "ingredients": [
@@ -895,7 +895,7 @@
       ]
    },
    {
-      "idx": "42",
+      "idx": 42,
       "name": "Creamy Meat Soup",
       "notes": "",
       "ingredients": [
@@ -918,7 +918,7 @@
       ]
    },
    {
-      "idx": "43",
+      "idx": 43,
       "name": "Creamy Seafood Soup",
       "notes": "",
       "ingredients": [
@@ -941,7 +941,7 @@
       ]
    },
    {
-      "idx": "44",
+      "idx": 44,
       "name": "Cream of Vegetable Soup",
       "notes": "",
       "ingredients": [
@@ -960,7 +960,7 @@
       ]
    },
    {
-      "idx": "45",
+      "idx": 45,
       "name": "Carrot Stew",
       "notes": "",
       "ingredients": [
@@ -983,7 +983,7 @@
       ]
    },
    {
-      "idx": "46",
+      "idx": 46,
       "name": "Mushroom Omelet",
       "notes": "",
       "ingredients": [
@@ -1006,7 +1006,7 @@
       ]
    },
    {
-      "idx": "47",
+      "idx": 47,
       "name": "Crab Omelet with Rice",
       "notes": "",
       "ingredients": [
@@ -1029,7 +1029,7 @@
       ]
    },
    {
-      "idx": "48",
+      "idx": 48,
       "name": "Gourmet Poultry Pilaf",
       "notes": "",
       "ingredients": [
@@ -1052,7 +1052,7 @@
       ]
    },
    {
-      "idx": "49",
+      "idx": 49,
       "name": "Prime Poultry Pilaf",
       "notes": "",
       "ingredients": [
@@ -1075,7 +1075,7 @@
       ]
    },
    {
-      "idx": "50",
+      "idx": 50,
       "name": "Poultry Pilaf",
       "notes": "",
       "ingredients": [
@@ -1098,7 +1098,7 @@
       ]
    },
    {
-      "idx": "51",
+      "idx": 51,
       "name": "Vegetable Omelet",
       "notes": "",
       "ingredients": [
@@ -1126,7 +1126,7 @@
       ]
    },
    {
-      "idx": "52",
+      "idx": 52,
       "name": "Porgy Meunière",
       "notes": "",
       "ingredients": [
@@ -1145,7 +1145,7 @@
       ]
    },
    {
-      "idx": "53",
+      "idx": 53,
       "name": "Fish Meunière",
       "notes": "",
       "ingredients": [
@@ -1164,7 +1164,7 @@
       ]
    },
    {
-      "idx": "54",
+      "idx": 54,
       "name": "Seafood Fried Rice",
       "notes": "",
       "ingredients": [
@@ -1183,7 +1183,7 @@
       ]
    },
    {
-      "idx": "55",
+      "idx": 55,
       "name": "Curry Pilaf",
       "notes": "",
       "ingredients": [
@@ -1202,7 +1202,7 @@
       ]
    },
    {
-      "idx": "56",
+      "idx": 56,
       "name": "Gourmet Meat and Rice Bowl",
       "notes": "",
       "ingredients": [
@@ -1221,7 +1221,7 @@
       ]
    },
    {
-      "idx": "57",
+      "idx": 57,
       "name": "Prime Meat and Rice Bowl",
       "notes": "",
       "ingredients": [
@@ -1240,7 +1240,7 @@
       ]
    },
    {
-      "idx": "58",
+      "idx": 58,
       "name": "Meat and Rice Bowl",
       "notes": "",
       "ingredients": [
@@ -1259,7 +1259,7 @@
       ]
    },
    {
-      "idx": "59",
+      "idx": 59,
       "name": "Fried Egg and Rice",
       "notes": "",
       "ingredients": [
@@ -1274,7 +1274,7 @@
       ]
    },
    {
-      "idx": "60",
+      "idx": 60,
       "name": "Meaty Rice Balls",
       "notes": "",
       "ingredients": [
@@ -1289,7 +1289,7 @@
       ]
    },
    {
-      "idx": "61",
+      "idx": 61,
       "name": "Seafood Rice Balls",
       "notes": "",
       "ingredients": [
@@ -1304,7 +1304,7 @@
       ]
    },
    {
-      "idx": "62",
+      "idx": 62,
       "name": "Mushroom Rice Balls",
       "notes": "",
       "ingredients": [
@@ -1319,7 +1319,7 @@
       ]
    },
    {
-      "idx": "63",
+      "idx": 63,
       "name": "Veggie Rice Balls",
       "notes": "",
       "ingredients": [
@@ -1334,7 +1334,7 @@
       ]
    },
    {
-      "idx": "64",
+      "idx": 64,
       "name": "Hot Buttered Apple",
       "notes": "",
       "ingredients": [
@@ -1349,7 +1349,7 @@
       ]
    },
    {
-      "idx": "65",
+      "idx": 65,
       "name": "Meat-Stuffed Pumpkin",
       "notes": "",
       "ingredients": [
@@ -1364,7 +1364,7 @@
       ]
    },
    {
-      "idx": "66",
+      "idx": 66,
       "name": "Glazed Meat",
       "notes": "",
       "ingredients": [
@@ -1379,7 +1379,7 @@
       ]
    },
    {
-      "idx": "67",
+      "idx": 67,
       "name": "Glazed Seafood",
       "notes": "",
       "ingredients": [
@@ -1394,7 +1394,7 @@
       ]
    },
    {
-      "idx": "68",
+      "idx": 68,
       "name": "Glazed Mushrooms",
       "notes": "",
       "ingredients": [
@@ -1409,7 +1409,7 @@
       ]
    },
    {
-      "idx": "69",
+      "idx": 69,
       "name": "Glazed Veggies",
       "notes": "",
       "ingredients": [
@@ -1424,7 +1424,7 @@
       ]
    },
    {
-      "idx": "70",
+      "idx": 70,
       "name": "Curry Rice",
       "notes": "",
       "ingredients": [
@@ -1439,7 +1439,7 @@
       ]
    },
    {
-      "idx": "71",
+      "idx": 71,
       "name": "Honeyed Apple",
       "notes": "",
       "ingredients": [
@@ -1454,7 +1454,7 @@
       ]
    },
    {
-      "idx": "72",
+      "idx": 72,
       "name": "Honeyed Fruits",
       "notes": "",
       "ingredients": [
@@ -1469,7 +1469,7 @@
       ]
    },
    {
-      "idx": "73",
+      "idx": 73,
       "name": "Gourmet Spiced Meat Skewer",
       "notes": "",
       "ingredients": [
@@ -1484,7 +1484,7 @@
       ]
    },
    {
-      "idx": "74",
+      "idx": 74,
       "name": "Prime Spiced Meat Skewer",
       "notes": "",
       "ingredients": [
@@ -1499,7 +1499,7 @@
       ]
    },
    {
-      "idx": "75",
+      "idx": 75,
       "name": "Spiced Meat Skewer",
       "notes": "",
       "ingredients": [
@@ -1514,7 +1514,7 @@
       ]
    },
    {
-      "idx": "76",
+      "idx": 76,
       "name": "Fragrant Mushroom Sauté",
       "notes": "",
       "ingredients": [
@@ -1529,7 +1529,7 @@
       ]
    },
    {
-      "idx": "77",
+      "idx": 77,
       "name": "Herb Sauté",
       "notes": "",
       "ingredients": [
@@ -1544,7 +1544,7 @@
       ]
    },
    {
-      "idx": "78",
+      "idx": 78,
       "name": "Salt-Grilled Gourmet Meat",
       "notes": "",
       "ingredients": [
@@ -1559,7 +1559,7 @@
       ]
    },
    {
-      "idx": "79",
+      "idx": 79,
       "name": "Salt-Grilled Prime Meat",
       "notes": "",
       "ingredients": [
@@ -1574,7 +1574,7 @@
       ]
    },
    {
-      "idx": "80",
+      "idx": 80,
       "name": "Salt-Grilled Meat",
       "notes": "",
       "ingredients": [
@@ -1589,7 +1589,7 @@
       ]
    },
    {
-      "idx": "81",
+      "idx": 81,
       "name": "Crab Stir-Fry",
       "notes": "",
       "ingredients": [
@@ -1604,7 +1604,7 @@
       ]
    },
    {
-      "idx": "82",
+      "idx": 82,
       "name": "Salt-Grilled Crab",
       "notes": "",
       "ingredients": [
@@ -1619,7 +1619,7 @@
       ]
    },
    {
-      "idx": "83",
+      "idx": 83,
       "name": "Salt-Grilled Fish",
       "notes": "",
       "ingredients": [
@@ -1634,7 +1634,7 @@
       ]
    },
    {
-      "idx": "84",
+      "idx": 84,
       "name": "Wheat Bread",
       "notes": "",
       "ingredients": [
@@ -1649,7 +1649,7 @@
       ]
    },
    {
-      "idx": "85",
+      "idx": 85,
       "name": "Salt-Grilled Greens",
       "notes": "",
       "ingredients": [
@@ -1664,7 +1664,7 @@
       ]
    },
    {
-      "idx": "86",
+      "idx": 86,
       "name": "Salt-Grilled Mushrooms",
       "notes": "",
       "ingredients": [
@@ -1679,7 +1679,7 @@
       ]
    },
    {
-      "idx": "87",
+      "idx": 87,
       "name": "Copious Meat Skewer",
       "uniq_ingred": true,
       "ingredients": [
@@ -1702,7 +1702,7 @@
       ]
    },
    {
-      "idx": "88",
+      "idx": 88,
       "name": "Copious Fried Wild Greens",
       "uniq_ingred": true,
       "ingredients": [
@@ -1725,7 +1725,7 @@
       ]
    },
    {
-      "idx": "89",
+      "idx": 89,
       "name": "Copious Simmered Fruit",
       "uniq_ingred": true,
       "ingredients": [
@@ -1748,7 +1748,7 @@
       ]
    },
    {
-      "idx": "90",
+      "idx": 90,
       "name": "Copious Mushroom Skewer",
       "uniq_ingred": true,
       "ingredients": [
@@ -1771,7 +1771,7 @@
       ]
    },
    {
-      "idx": "91",
+      "idx": 91,
       "name": "Copious Fish Skewers",
       "uniq_ingred": true,
       "ingredients": [
@@ -1794,7 +1794,7 @@
       ]
    },
    {
-      "idx": "92",
+      "idx": 92,
       "name": "Fried Wild Greens",
       "notes": "",
       "ingredients": [
@@ -1809,7 +1809,7 @@
       ]
    },
    {
-      "idx": "93",
+      "idx": 93,
       "name": "Gourmet Meat and Seafood Fry",
       "notes": "",
       "ingredients": [
@@ -1824,7 +1824,7 @@
       ]
    },
    {
-      "idx": "94",
+      "idx": 94,
       "name": "Prime Meat and Seafood Fry",
       "notes": "",
       "ingredients": [
@@ -1839,7 +1839,7 @@
       ]
    },
    {
-      "idx": "95",
+      "idx": 95,
       "name": "Meat and Seafood Fry",
       "notes": "",
       "ingredients": [
@@ -1854,7 +1854,7 @@
       ]
    },
    {
-      "idx": "96",
+      "idx": 96,
       "name": "Spicy Pepper Steak",
       "notes": "",
       "ingredients": [
@@ -1869,7 +1869,7 @@
       ]
    },
    {
-      "idx": "97",
+      "idx": 97,
       "name": "Spicy Pepper Seafood",
       "notes": "",
       "ingredients": [
@@ -1884,7 +1884,7 @@
       ]
    },
    {
-      "idx": "98",
+      "idx": 98,
       "name": "Steamed Meat",
       "notes": "",
       "ingredients": [
@@ -1899,7 +1899,7 @@
       ]
    },
    {
-      "idx": "99",
+      "idx": 99,
       "name": "Steamed Fish",
       "notes": "",
       "ingredients": [
@@ -1914,7 +1914,7 @@
       ]
    },
    {
-      "idx": "100",
+      "idx": 100,
       "name": "Steamed Mushrooms",
       "notes": "",
       "ingredients": [
@@ -1929,7 +1929,7 @@
       ]
    },
    {
-      "idx": "101",
+      "idx": 101,
       "name": "Steamed Fruit",
       "notes": "",
       "ingredients": [
@@ -1944,7 +1944,7 @@
       ]
    },
    {
-      "idx": "102",
+      "idx": 102,
       "name": "Fish and Mushroom Skewer",
       "notes": "",
       "ingredients": [
@@ -1959,7 +1959,7 @@
       ]
    },
    {
-      "idx": "103",
+      "idx": 103,
       "name": "Meat and Mushroom Skewer",
       "notes": "",
       "ingredients": [
@@ -1974,7 +1974,7 @@
       ]
    },
    {
-      "idx": "104",
+      "idx": 104,
       "name": "Fruit and Mushroom Mix",
       "notes": "",
       "ingredients": [
@@ -1989,7 +1989,7 @@
       ]
    },
    {
-      "idx": "105",
+      "idx": 105,
       "name": "Meat Skewer",
       "notes": "",
       "ingredients": [
@@ -2000,7 +2000,7 @@
       ]
    },
    {
-      "idx": "106",
+      "idx": 106,
       "name": "Seafood Skewer",
       "notes": "",
       "ingredients": [
@@ -2011,7 +2011,7 @@
       ]
    },
    {
-      "idx": "107",
+      "idx": 107,
       "name": "Fish Skewer",
       "notes": "",
       "ingredients": [
@@ -2022,7 +2022,7 @@
       ]
    },
    {
-      "idx": "108",
+      "idx": 108,
       "name": "Omelet",
       "notes": "",
       "ingredients": [
@@ -2033,7 +2033,7 @@
       ]
    },
    {
-      "idx": "109",
+      "idx": 109,
       "name": "Milk",
       "notes": "",
       "ingredients": [
@@ -2044,7 +2044,7 @@
       ]
    },
    {
-      "idx": "110",
+      "idx": 110,
       "name": "Mushroom Skewer",
       "notes": "",
       "ingredients": [
@@ -2055,7 +2055,7 @@
       ]
    },
    {
-      "idx": "111",
+      "idx": 111,
       "name": "Fried Wild Greens",
       "notes": "",
       "ingredients": [
@@ -2066,7 +2066,7 @@
       ]
    },
    {
-      "idx": "112",
+      "idx": 112,
       "name": "Simmered Fruit",
       "notes": "",
       "ingredients": [
@@ -2077,7 +2077,7 @@
       ]
    },
    {
-      "idx": "113",
+      "idx": 113,
       "name": "Sautéed Nuts",
       "notes": "",
       "ingredients": [
@@ -2088,7 +2088,7 @@
       ]
    },
    {
-      "idx": "114",
+      "idx": 114,
       "name": "Fairy Tonic",
       "notes": "",
       "ingredients": [
@@ -2099,7 +2099,7 @@
       ]
    },
    {
-      "idx": "115",
+      "idx": 115,
       "name": "Fairy Tonic",
       "notes": "",
       "ingredients": [
@@ -2122,7 +2122,7 @@
       ]
    },
    {
-      "idx": "116",
+      "idx": 116,
       "name": "Fairy Tonic",
       "notes": "",
       "ingredients": [
@@ -2141,7 +2141,7 @@
       ]
    },
    {
-      "idx": "117",
+      "idx": 117,
       "name": "Fairy Tonic",
       "notes": "",
       "ingredients": [
@@ -2160,7 +2160,7 @@
       ]
    },
    {
-      "idx": "118",
+      "idx": 118,
       "name": "Sautéed Peppers",
       "notes": "",
       "ingredients": [
@@ -2171,7 +2171,7 @@
       ]
    },
    {
-      "idx": "119",
+      "idx": 119,
       "name": "Honey Candy",
       "notes": "",
       "ingredients": [
@@ -2182,7 +2182,7 @@
       ]
    },
    {
-      "idx": "120",
+      "idx": 120,
       "name": "Rock-Hard Food",
       "price": 2,
       "notes": "",
