@@ -46,5 +46,12 @@ describe('ramda tests', () => {
 
     // ]);
   });
+
+  it('test: R.remove and __', () => {
+    const removeOne = R.remove(__, 1, __);
+    // console.log(removeOne(2, [1, 2, 3, 4, 5, 6, 7]));
+
+    expect(removeOne(2, [1, 2, 3, 4, 5, 6, 7])).toEqual([1, 2, 4, 5, 6, 7]);
+  });
 });
 

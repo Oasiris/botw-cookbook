@@ -7,9 +7,9 @@
  */
 import C from '../data/all.json';
 import isNumber from 'isnumber';
-import R, { curry, compose, __ } from 'ramda';
+import R, { curry, compose, pipe, __ } from 'ramda';
 
-import { exists, xor } from './utility';
+import { exists, xor, match, arrayify, dearrayify, matchK } from './utility';
 
 // module.exports = {};
 
@@ -233,17 +233,77 @@ export default class CookingUtil {
   /**
    * 
    * @param {Mat[]} mats 
-   * @param {Rcp} recipe
+   * @param {Rcp} rcp
    * @param {{ exact?: boolean }} options Options object. The `exact` property 
    *  determines whether or not the materials must exactly match the recipe.
    * @return {boolean} Whether or not the materials could cook into the given
    *  recipe.
    */
-  static canCookInto(mats, recipe, options) {
+  static canCookInto(mats, rcp, options) {
+    console.log(mats.map(m => m.name), rcp);
+    const { exact } = exists(options) ? options : {};
+    const removeOne = R.remove(__, 1, __); // Helper lambdas
 
+    const lessMatsThanRecipe = (mats.length < rcp.ingredients.length);
+    const sameMatsAsRecipe = (mats.length === rcp.ingredients.length);
+    if (lessMatsThanRecipe || (exact && !sameMatsAsRecipe)) return false;
+
+    const isCopiousRecipe = rcp.uniq_ingred === true;
+    if (isCopiousRecipe) {
+      const family = R.uniq(isCopiousRecipe)[0][1]; // Food family name
+      const isInFamily = mat => mat.familes.includes(family);
+      const atLeastLength = arr => arr.length >= rcp.ingredients.length;
+
+      // return pipe(
+      //   R.filter(isInFamily),
+      //   R.map(R.prop('idx')),
+      //   R.uniq,
+      //   atLeastLength
+      // )(mats);
+      return compose(
+        atLeastLength, 
+        R.uniq, 
+        R.map(R.prop('idx')), 
+        R.filter(isInFamily)
+      )(mats);
+    } 
+
+    // Normal recipes:    
+    let fulfillsIngredient = 
+    R.curry(
+      (mat, ingred) => dearrayify(matchK(mat, ingred)
+        // The _ prefix denotes unused arguments
+        .on((_mat, [ type, _desc ]) => R.equals(type, 'name'),
+            ( mat, [ _type, desc ]) => R.equals(desc, mat.name))
+        .on((_mat, [ type, _desc ]) => R.equals(type, 'family'),
+            // In this case, desc can be either a string or an array of strings
+            ( mat, [ _type, desc ]) => R.any(__, arrayify(desc))
+              (d => mat.families.includes(d)))
+        .otherwise(() => false))
+      );
+    mats = R.clone(mats);
+    console.log(rcp.ingredients.length);
+
+    return R.all(__, rcp.ingredients)((ingred) => {
+      
+      // return R.all(__, rcp.ingredients)(ingred => {
+      const matchedMatIdx = R.findIndex(fulfillsIngredient(__, ingred), mats);
+      // const matchedMatIdx = R.findIndex(mat => fulfillsIngredient(mat, ingred), mats);
+
+        const onMatch = matchedIdx => {
+          console.log(mats[matchedMatIdx], ingred); 
+          mats = R.remove(__, 1, mats)(matchedIdx); // Remove element at matchedIdx
+          return true;
+        };
+        const onNoMatch = () => {
+          console.log('NO');
+          return false;
+        }
+        
+        return (matchedMatIdx > -1) ? onMatch(matchedMatIdx) : onNoMatch();
+      // });
+    });
   }
-
-
 }
 
 // /**

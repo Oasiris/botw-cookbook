@@ -8,9 +8,9 @@
 
 import CookingUtil, { Mat, Rcp } from './CookingUtil'
 
-import R from 'ramda'
+import R, { curry, compose, pipe, __ } from 'ramda';
 
-import { exists } from './utility'
+import { exists, match, matchK, ifExists } from './utility'
 
 // —————————————————————————————————————
 // Helpers
@@ -21,7 +21,7 @@ import { exists } from './utility'
  *  a heart) corresponding to the input number of hearts.
  * @param {number} numHearts
  */
-const hearts = (numHearts) => 4 * numHearts;
+const hearts = (numHearts) => 4 * numHearts; 
 
 // —————————————————————————————————————
 // Testing Data
@@ -164,7 +164,35 @@ const matSets = [
     _notes: { hpRestore: ['Nut Rule'] },
     names: 'Acorn, Spicy Pepper, Stamella Shroom',
     hpRestore: hearts(0.5 + 1 + 1) + 2
-  }
+  },
+
+
+  // canCookInto
+
+  { // Totally wrong
+    names: 'Bird Egg',
+    canCookInto: { false: ['Fruitcake'] }
+  },
+  { // Totally wrong; same number of ingredients
+    names: 'Bird Egg, Bird Egg, Bird Egg, Bird Egg',
+    canCookInto: { false: ['Fruitcake'] }
+  },
+  {
+    names: 'Fresh Milk, Tabantha Wheat, Goat Butter, Hearty Blueshell Snail',
+    canCookInto: { true: ['Clam Chowder'] }
+  },
+  {
+    names: 'Hearty Durian, Cane Sugar, Apple, Tabantha Wheat',
+    canCookInto: { true: ['Fruitcake'] }
+  },
+  {
+    names: 'Goat Butter, Apple, Fresh Milk, Raw Gourmet Meat, Tabantha Wheat',
+    canCookInto: { false: ['Prime Meat Stew'] }
+  },
+  {
+    names: 'Goat Butter, Fresh Milk, Raw Bird Thigh, Tabantha Wheat',
+    canCookInto: { true: ['Prime Meat Stew'] }
+  },
 ];
 
 // —————————————————————————————————————
@@ -285,24 +313,50 @@ const testA = (testingProp, testingFunc) => {
   // Get all matSets which have expected values for the specified prop
   R.filter(set => exists(set[testingProp]))(matSets)
   .forEach(set => {
-    let itString = '';
+    let testDesc = '';
     // If the testing set has notes for tests of this type, show them
     const hasNotes = (set._notes && set._notes[testingProp]);
-    itString += hasNotes ? `[${set._notes[testingProp].join('][')}] ` : '';
+    testDesc += hasNotes ? `[${set._notes[testingProp].join('][')}] ` : '';
     // Describe test by its alias unless otherwise specified
     const hasAlias = (set._alias);
-    itString += hasAlias ? set._alias : set.names;
+    testDesc += hasAlias ? set._alias : set.names;
     // Describe output
-    itString += ` => ${set[testingProp]}`;
+    testDesc += ` => ${set[testingProp]}`;
 
     // console.log(itString);
-    it(itString, () => {
+    it(testDesc, () => {
+      if (!exists(set[testingProp])) return false;
+
+      // let actual, expected;
       const matNameArray = set.names.split(',').map(m => m.trim());
       const matArray = matNameArray.map(m => Mat.ofName(m));
       
-      const actual = testingFunc(matArray);
-      const expected = set[testingProp];
-      expect(actual).toEqual(expected);
+      matchK(matArray, testingProp)
+        .on((_mats, prop) => prop === 'canCookInto', 
+          (mats, prop) => {
+            const expectTrueArr = ifExists(set[prop]['true']);
+            const expectFalseArr = ifExists(set[prop]['false']);
+            const testArr = (rcpNameArr, expectedValue) => {
+              R.forEach(__, rcpNameArr)(rcpName => {
+                const rcp = Rcp.ofName(rcpName);
+                const actual = testingFunc(mats, rcp);
+                expect(actual).toEqual(expectedValue);
+              });
+            };
+            if (exists(expectTrueArr)) {
+              testArr(expectTrueArr, true);
+            }
+            if (exists(expectFalseArr)) {
+              testArr(expectFalseArr, false);
+            }
+          } 
+        )
+        // For functions with signature (mats) => propValue
+        .otherwise((mats, prop) => {
+          const actual = testingFunc(mats);
+          const expected = set[prop];
+          expect(actual).toEqual(expected);
+        });
     });
   });
 };
@@ -316,6 +370,11 @@ describe('CookingUtil', () => {
   describe('getHpRestore', () => {
     const testingProp = 'hpRestore';
     testA(testingProp, CookingUtil.getHpRestore);
+  });
+
+  describe('canCookInto', () => {
+    const testingProp = 'canCookInto';
+    testA(testingProp, CookingUtil.canCookInto);
   });
 });
 
