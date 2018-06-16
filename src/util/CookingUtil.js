@@ -23,7 +23,6 @@ import { exists, xor, match, arrayify, dearrayify, matchK } from './utility';
  * the React component named 'Material'.)
  */
 export class Mat {
-
   /**
    * Constructor.
    * 
@@ -196,26 +195,27 @@ export default class CookingUtil {
     if (R.any(mat => ['Mineral', 'Wood'].includes(mat.type))(mats))
       return ROCK_HARD;
     
-    const hasCritter = R.any(R.propEq('usage', 'Critter'));
-    const hasMonsterPart = R.any(R.propEq('usage', 'Monster Part'));
+    const hasCritter = R.any(R.propEq('usage', 'Critter'))(mats);
+    const hasMonsterPart = R.any(R.propEq('usage', 'Monster Part'))(mats);
     // Has monster part(s) but no critter, or vice versa
     if (xor(hasCritter, hasMonsterPart)) {
       return DUBIOUS;
     }
     if (hasCritter && hasMonsterPart) {
       // If no/conflicting effects across ingred., Dubious Food replaces Elixir
-      return (getDishEffect(mats) === 'no effect') ? DUBIOUS : ELIXIR;
+      return (CookingUtil.getDishEffect(mats) === 'no effect') ? DUBIOUS : ELIXIR;
     }
     if (!hasCritter && !hasMonsterPart) {
       // If includes a Nutrition ingredient (usage: Food)
       if (R.any(R.propEq('usage', 'Food'))(mats)) {
         return FOOD;
       } else { // If NO Food ingredients (basically, has only additives now)
-
-        
+        const yieldsFood = R.any(__, C.additiveOnlyRecipes)(
+          curry(CookingUtil.canCookInto)(mats, __, {})
+        );
+        return yieldsFood ? FOOD : DUBIOUS; 
       }
     }
-    
   }
 
   /**
@@ -240,7 +240,6 @@ export default class CookingUtil {
    *  recipe.
    */
   static canCookInto(mats, rcp, options) {
-    console.log(mats.map(m => m.name), rcp);
     const { exact } = exists(options) ? options : {};
     const removeOne = R.remove(__, 1, __); // Helper lambdas
 
@@ -254,12 +253,6 @@ export default class CookingUtil {
       const isInFamily = mat => mat.familes.includes(family);
       const atLeastLength = arr => arr.length >= rcp.ingredients.length;
 
-      // return pipe(
-      //   R.filter(isInFamily),
-      //   R.map(R.prop('idx')),
-      //   R.uniq,
-      //   atLeastLength
-      // )(mats);
       return compose(
         atLeastLength, 
         R.uniq, 
@@ -282,27 +275,57 @@ export default class CookingUtil {
         .otherwise(() => false))
       );
     mats = R.clone(mats);
-    console.log(rcp.ingredients.length);
 
     return R.all(__, rcp.ingredients)((ingred) => {
-      
-      // return R.all(__, rcp.ingredients)(ingred => {
       const matchedMatIdx = R.findIndex(fulfillsIngredient(__, ingred), mats);
-      // const matchedMatIdx = R.findIndex(mat => fulfillsIngredient(mat, ingred), mats);
 
         const onMatch = matchedIdx => {
-          console.log(mats[matchedMatIdx], ingred); 
           mats = R.remove(__, 1, mats)(matchedIdx); // Remove element at matchedIdx
           return true;
         };
-        const onNoMatch = () => {
-          console.log('NO');
-          return false;
-        }
+        const onNoMatch = () => false;
         
         return (matchedMatIdx > -1) ? onMatch(matchedMatIdx) : onNoMatch();
       // });
     });
+  }
+}
+
+export default class DataUtil {
+  
+  /**
+   * @param {*} effectName Name of an effect. Example: 'Energizing'.
+   * @param {*} tierName Name of the effect's tier. Either 'low', 'medium', 
+   * or 'high'. Default 'low'.
+   * @param {*} rcpType Either 'food' or 'elixir'. Default 'food'.
+   * @return {String} Effect-specific recipe description, to be appended to the
+   * base recipe description.
+   */
+  static getEffectDesc(effectName, tierName = 'low', rcpType = 'food') {
+    return C.effectDescriptions[effectName.toLowerCase()][rcpType + 'Desc']
+      .replace('%s', tierName);
+  }
+
+  /**
+   * TODO
+   * 
+   * @param {*} matName The name of the material for which to retrieve a description.
+   * @return {String} The description for the material of the given name.
+   */
+  static getMatDesc(matName) {
+
+  }
+
+  /**
+   * TODO
+   * 
+   * @param {*} rcpName The name of the recipe for which to retrieve a description.
+   * @return {String} The base description for the recipe of the given name.
+   */
+  static getRcpBaseDesc(rcpName) {
+    if (!exists(rcpName)) throw new Error('Invalid recipe name: ' + rcpName);
+    if (rcpName.includes('Elixir')) return ''; // Elixirs have no base description
+    // ...
   }
 }
 

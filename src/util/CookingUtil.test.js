@@ -46,20 +46,24 @@ const matSets = [
     names: 'Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat',
     _alias: 'Raw Gourmet Meat x4',
     rupeePrice: 340,
+    recipeType: 'Food'
   }, 
   {
     names: 'Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat',
     _alias: 'Raw Gourmet Meat x5',    
-    rupeePrice: 490
+    rupeePrice: 490,
+    recipeType: 'Food'
   },
   {
     _notes: { rupeePrice: ['Edge case'] },
     names: 'Acorn',
-    rupeePrice: 8
+    rupeePrice: 8,
+    recipeType: 'Food'
   },
   {
     names: 'Chickaloo Tree Nut',
-    rupeePrice: 10
+    rupeePrice: 10,
+    recipeType: 'Food'
   },
 
   // Relating to calculating restored HP.
@@ -166,6 +170,12 @@ const matSets = [
     hpRestore: hearts(0.5 + 1 + 1) + 2
   },
 
+  // getRecipeType
+  { // Nothing
+    names: '',
+    _alias: '(nothing)',
+    recipeType: 'Dubious'
+  },
 
   // canCookInto
 
@@ -187,11 +197,23 @@ const matSets = [
   },
   {
     names: 'Goat Butter, Apple, Fresh Milk, Raw Gourmet Meat, Tabantha Wheat',
-    canCookInto: { false: ['Prime Meat Stew'] }
+    canCookInto: { false: ['Prime Meat Stew'] },
+    recipeType: 'Food'
   },
   {
     names: 'Goat Butter, Fresh Milk, Raw Bird Thigh, Tabantha Wheat',
-    canCookInto: { true: ['Prime Meat Stew'] }
+    canCookInto: { true: ['Prime Meat Stew'] },
+    recipeType: 'Food'
+  },
+  { // Additive Only Recipe
+    names: 'Hylian Rice, Goron Spice, Monster Extract',
+    canCookInto: { true: ['Monster Curry'] },
+    recipeType: 'Food'
+  },
+  { // Additive Only Recipe: slightly off
+    names: 'Hylian Rice, Tabantha Wheat, Monster Extract',
+    canCookInto: { false: ['Monster Curry', 'Nutcake'] },
+    recipeType: 'Dubious'
   },
 ];
 
@@ -306,10 +328,11 @@ describe('Rcp', () => {
 /**
  * 
  * @param {string} testingProp 
- * @param {Function} testingFunc 
+ * @param {Function} testingFunc Function which takes mats, and possibly more,
+ *  and returns a specified output.
  * @sig (string, (Mats[] -> any)) -> null
  */
-const testA = (testingProp, testingFunc) => {
+const renderMatTests = (testingProp, testingFunc) => {
   // Get all matSets which have expected values for the specified prop
   R.filter(set => exists(set[testingProp]))(matSets)
   .forEach(set => {
@@ -328,7 +351,7 @@ const testA = (testingProp, testingFunc) => {
       if (!exists(set[testingProp])) return false;
 
       // let actual, expected;
-      const matNameArray = set.names.split(',').map(m => m.trim());
+      const matNameArray = set.names.split(',').map(m => m.trim()).filter(s => s !== '');
       const matArray = matNameArray.map(m => Mat.ofName(m));
       
       matchK(matArray, testingProp)
@@ -364,17 +387,22 @@ const testA = (testingProp, testingFunc) => {
 describe('CookingUtil', () => {
   describe('getRupeePrice', () => {
     const testingProp = 'rupeePrice';
-    testA(testingProp, CookingUtil.getRupeePrice);
+    renderMatTests(testingProp, CookingUtil.getRupeePrice);
   });
 
   describe('getHpRestore', () => {
     const testingProp = 'hpRestore';
-    testA(testingProp, CookingUtil.getHpRestore);
+    renderMatTests(testingProp, CookingUtil.getHpRestore);
   });
 
   describe('canCookInto', () => {
     const testingProp = 'canCookInto';
-    testA(testingProp, CookingUtil.canCookInto);
+    renderMatTests(testingProp, CookingUtil.canCookInto);
+  });
+
+  describe('getRecipeType', () => {
+    const testingProp = 'recipeType';
+    renderMatTests(testingProp, CookingUtil.getRecipeType);
   });
 });
 
