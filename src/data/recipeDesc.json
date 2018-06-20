@@ -325,6 +325,10 @@
         "A simple dish made by cooking skewered, fresh fish alongside fragrant mushrooms."
       ],
       [
+        "Meat and Mushroom Skewer",
+        "A filling dish made by grilling various mountain ingredients with either Raw Meat or Bird Meat."
+      ],
+      [
         "Fish Pie",
         "A mainstay in any fisherman's home, the crisp crust pairs well with the fishy flavor."
       ],
@@ -401,7 +405,7 @@
         "The rich aroma and juicy texture of this high-quality meat puts it in a league of its own."
       ],
       [
-        "Hearty Clam Chowder",
+        "Clam Chowder",
         "The nutritional value of hearty blueshell snail combines with butter and milk in a rich soup."
       ],
       [
@@ -497,7 +501,7 @@
         "This simple mushroom-packed skewer has its colorful presentation to thank for its appeal."
       ],
       [
-        "Copious Mushrooms Skewers",
+        "Copious Mushroom Skewers",
         "Fans of fungal cuisine can't resist this simple mushroom-skewer dish. Very filling."
       ],
       [
@@ -613,6 +617,10 @@
         "Various seafood has been saut\u00e9ed with rice. The stronger the flame, the tastier the dish!"
       ],
       [
+        "Salmon Meuni\u00e8re",
+        "The crispy skin of this fried hearty salmon puts its texture in a class all its own."
+      ],
+      [
         "Seafood Meuni\u00e8re",
         "Rich butter flanks fresh seafood. The secret ingredient is lots and lots of love."
       ],
@@ -645,6 +653,14 @@
         "A dish made by cooking meat in crushed peppers, suppressing the gamy taste while accentuating its flavor."
       ],
       [
+        "Pepper Seafood",
+        "The pepper seeds grilled with this seafood draw out its taste and pleasant aroma."
+      ],
+      [
+        "Fairy Tonic",
+        "This powerful recovery elixir harnesses the power of fairies. It has a sweet fragrance."
+      ],
+      [
         "Spicy Saut\u00e9ed Peppers",
         "The spiciness of these saut\u00e9ed peppers has been broken by the heat for a sweeter taste."
       ],
@@ -665,8 +681,8 @@
         "A healthy vegetable dish achieved by steaming mushrooms in plant leaves."
       ],
       [
-        "Tough Meat-Stuffed Pumpkin",
-        "Grants a low-level defense boost. This hollow, meat-filled fortified pumpkin is a local specialty or Kakariko Village."
+        "Meat-Stuffed Pumpkin",
+        "This hollow, meat-filled fortified pumpkin is a local specialty or Kakariko Village."
       ],
       [
         "Vegetable Curry",

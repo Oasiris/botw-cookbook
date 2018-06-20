@@ -1143,10 +1143,10 @@
             "Porgy"
          ]
       ]
-   },
-   {
+  },
+  {
       "idx": 53,
-      "name": "Fish Meunière",
+      "name": "Seafood Meunière",
       "notes": "",
       "ingredients": [
          [
@@ -1680,7 +1680,7 @@
    },
    {
       "idx": 87,
-      "name": "Copious Meat Skewer",
+      "name": "Copious Meat Skewers",
       "uniq_ingred": true,
       "ingredients": [
          [
@@ -1749,7 +1749,7 @@
    },
    {
       "idx": 90,
-      "name": "Copious Mushroom Skewer",
+      "name": "Copious Mushroom Skewers",
       "uniq_ingred": true,
       "ingredients": [
          [
@@ -1870,7 +1870,7 @@
    },
    {
       "idx": 97,
-      "name": "Spicy Pepper Seafood",
+      "name": "Pepper Seafood",
       "notes": "",
       "ingredients": [
          [
@@ -2034,7 +2034,7 @@
    },
    {
       "idx": 109,
-      "name": "Milk",
+      "name": "Warm Milk",
       "notes": "",
       "ingredients": [
          [
@@ -2161,7 +2161,7 @@
    },
    {
       "idx": 118,
-      "name": "Sautéed Peppers",
+      "name": "Spicy Sautéed Peppers",
       "notes": "",
       "ingredients": [
          [

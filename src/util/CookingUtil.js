@@ -307,23 +307,40 @@ export default class DataUtil {
   }
 
   /**
-   * TODO
+   * Returns the description of the input material. The input can be either a 
+   * Mat object or a name referring to said Mat.
    * 
-   * @param {*} matName The name of the material for which to retrieve a description.
-   * @return {String} The description for the material of the given name.
+   * @param {Mat|String} mat The Mat for which to retrieve a name, or the 
+   * name of the material for which to retrieve a description.
+   * @return {String} The description for the described material.
    */
-  static getMatDesc(matName) {
-
+  static getMatDesc(mat) {
+    if (!exists(mat)) 
+      throw new Error(`Invalid input "${mat}": must be Mat or mat name`);
+    
+    if (R.is(Mat, mat)) {
+      return mat.desc;
+    } else if (R.is(String, mat)) {
+      // Get material with name property equal to input string
+      const matObj = R.find(R.propEq('name', mat), C.materials);
+      if (!exists(matObj)) 
+        throw new Error (`Invalid mat name "${mat}".`);
+      return matObj.desc;
+    } else {
+      throw new Error(`Invalid input type "${typeof mat}": must be Mat or mat name`);
+    }
   }
 
   /**
-   * TODO
+   * Returns the description of the input recipe. The input can be either a
+   * 
    * 
    * @param {*} rcpName The name of the recipe for which to retrieve a description.
    * @return {String} The base description for the recipe of the given name.
    */
   static getRcpBaseDesc(rcpName) {
     if (!exists(rcpName)) throw new Error('Invalid recipe name: ' + rcpName);
+    if (R.is(Rcp, rcpName))
     if (rcpName.includes('Elixir')) return ''; // Elixirs have no base description
     // ...
   }

@@ -18,7 +18,15 @@ That's it! You're ready to build and run.
 
 ## Available Scripts
 
-In the project directory, you can run:
+First, you should build the main data file in the `src/data/` directory. To do this, while in the repo's root directory, enter
+
+```
+node src/data/exporter.js
+```
+
+This runs a script that parses and exports the data needed by the application into one big JSON file, `src/data/all.json`.
+
+Now, in the project directory, you can run one or more of the following:
 
 ### `yarn start`
 

@@ -16,6 +16,14 @@ let materials = require('./materials')
 let recipes = require('./recipes')
 
 // ——————————————————————————————————————————————————————————————————————————
+// Normalizing indices for recipes
+// ——————————————————————————————————————————————————————————————————————————
+
+recipes.forEach((rcp, idx) => {
+  rcp.idx = Number(idx) + 1;
+});
+
+// ——————————————————————————————————————————————————————————————————————————
 // Adding descriptions
 // ——————————————————————————————————————————————————————————————————————————
 
@@ -36,7 +44,7 @@ let recipes = require('./recipes')
     for (let i in recipes) {
       if (recipes[i].name === recName) {
         recipes[i] = { ...recipes[i], desc };
-        break;
+        // break; // There are multiple recipes of the same name
       }
     }
   });
@@ -68,7 +76,7 @@ let recipes = require('./recipes')
       for (let i in recipes) {
         if (recipes[i].name === el.name) {
           recipes[i] = { ...recipes[i], thumb: el.thumb };
-          break;
+          // break; // There are multiple recipes of the same name
         }
       }
       // recipes.forEach((mat, i) => {
