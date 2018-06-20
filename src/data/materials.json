@@ -325,7 +325,7 @@
   },
   {
     "idx": 20,
-    "name": "Iron Shroom",
+    "name": "Ironshroom",
     "price": 5,
     "price_mon": null,
     "hp": 4,
@@ -999,7 +999,7 @@
   },
   {
     "idx": 57,
-    "name": "Dinraal's Fang",
+    "name": "Shard of Dinraal's Fang",
     "price": 250,
     "price_mon": 110,
     "hp": 10,
@@ -1017,7 +1017,7 @@
   },
   {
     "idx": 58,
-    "name": "Dinraal's Horn",
+    "name": "Shard of Dinraal's Horn",
     "price": 300,
     "price_mon": 200,
     "hp": 15,
@@ -1071,7 +1071,7 @@
   },
   {
     "idx": 61,
-    "name": "Naydra's Fang",
+    "name": "Shard of Naydra's Fang",
     "price": 250,
     "price_mon": 110,
     "hp": 10,
@@ -1089,7 +1089,7 @@
   },
   {
     "idx": 62,
-    "name": "Naydra's Horn",
+    "name": "Shard of Naydra's Horn",
     "price": 300,
     "price_mon": 200,
     "hp": 15,
@@ -1143,7 +1143,7 @@
   },
   {
     "idx": 65,
-    "name": "Farosh's Fang",
+    "name": "Shard of Farosh's Fang",
     "price": 250,
     "price_mon": 110,
     "hp": 10,
@@ -1161,7 +1161,7 @@
   },
   {
     "idx": 66,
-    "name": "Farosh's Horn",
+    "name": "Shard of Farosh's Horn",
     "price": 300,
     "price_mon": 200,
     "hp": 15,
@@ -1839,7 +1839,7 @@
   },
   {
     "idx": 103,
-    "name": "Silex",
+    "name": "Flint",
     "price": 5,
     "price_mon": null,
     "hp": 0,
@@ -2162,7 +2162,7 @@
   },
   {
     "idx": 122,
-    "name": "Electric Lizalfos Tail",
+    "name": "Yellow Lizalfos Tail",
     "price": 35,
     "price_mon": 16,
     "hp": 0,
@@ -2417,7 +2417,7 @@
   },
   {
     "idx": 137,
-    "name": "Octorok Balloon",
+    "name": "Octo Balloon",
     "price": 5,
     "price_mon": 1,
     "hp": 0,

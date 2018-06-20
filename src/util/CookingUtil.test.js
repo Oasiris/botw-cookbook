@@ -13,7 +13,7 @@ import R, { curry, compose, pipe, __ } from 'ramda';
 import { exists, match, matchK, ifExists } from './utility'
 
 // —————————————————————————————————————
-// Helpers
+// Helpers 
 // —————————————————————————————————————
 
 /**
@@ -366,7 +366,7 @@ const renderMatTests = (testingProp, testingFunc) => {
                 expect(actual).toEqual(expectedValue);
               });
             };
-            if (exists(expectTrueArr)) {
+            if (exists(expectTrueArr)) { 
               testArr(expectTrueArr, true);
             }
             if (exists(expectFalseArr)) {

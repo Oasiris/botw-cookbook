@@ -36,7 +36,7 @@ export default class DataUtil {
    * base recipe description.
    */
   static getEffectDesc(effectName, tierName = 'low', rcpType = 'food') {
-    return C.effectDescriptions[effectName.toLowerCase()][rcpType + 'Desc']
+    return C.effectDescriptions[effectName.toLowerCase()][rcpType.toLowerCase() + 'Desc']
       .replace('%s', tierName);
   }
 

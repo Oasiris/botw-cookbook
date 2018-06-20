@@ -2,8 +2,16 @@
  * A place to test the utility functions provided in 'utility.js'.
  */
 
+// —————————————————————————————————————
+// Dependencies
+// —————————————————————————————————————
+
 import R, { curry, pipe, compose, __ } from 'ramda'
 import { exists, xor, match, matchK } from './utility'
+
+// —————————————————————————————————————
+// Tests
+// —————————————————————————————————————
 
 describe('exists', () => {
   it('""', () => {
