@@ -260,13 +260,13 @@ const effectDescriptions = {
  * "Timed" effects also have the following fields:
  *  * `title`: The name of the timed effect, like "Attack Up" or "Cold 
  *    Resistance".
- *  * `metadata`: contains three fields:
+ *  * `timedData`: contains three fields:
  *     * `tierBps`: An array whose elements represent the sum of effect points 
  *       needed to break into the next effect tier (higher tier = more intense 
- *       effect.)
+ *       effect.) 
  *     * `potencyLevels`: The number of effect points yielded from an ingredient
  *       of tier 0 or 1 (or 2, in some cases.)
- *     * `baseTimeInc`: "Base time increase". The base number of seconds during 
+ *     * `contribFactor`: "Base time increase". The base number of seconds during 
  *       which an effect lasts. This number is increased via more ingredients.
  */
 const effectData = {
@@ -286,80 +286,80 @@ const effectData = {
     prefix: 'Sneaky',
     fxType: 'timed',
     title: 'Stealth Up',
-    metadata: {
+    timedData: {
       tierBps: [0, 30, 45], // breakpoints for low, mid, & high
       potencyLevels: [5, 10, 15], // reagants: Rank 1: 5, Rank 2: 10, Rank 3: 15
-      baseTimeInc: 90, // in seconds
+      contribFactor: 90, // in seconds
     }
   },
   hasty: {
     prefix: 'Hasty',
     fxType: 'timed',
     title: 'Speed Up',
-    metadata: {
+    timedData: {
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [7, 14],
-      baseTimeInc: 30, // in seconds
+      contribFactor: 30, // in seconds
     }
   },
   mighty: {
     prefix: 'Mighty',
     fxType: 'timed',
     title: 'Attack Up',
-    metadata: {
+    timedData: {
       tierBps: [0, 30, 45], // breakpoints for low, mid, & high
       potencyLevels: [7, 14, 21],
-      baseTimeInc: 20, // in seconds
+      contribFactor: 20, // in seconds
     }
   },
   tough: {
     prefix: 'Tough',
     fxType: 'timed',
     title: 'Defense Up',
-    metadata: {
+    timedData: {
       tierBps: [0, 30, 45], // breakpoints for low, mid, & high
       potencyLevels: [7, 14, 21],
-      baseTimeInc: 20, // in seconds
+      contribFactor: 20, // in seconds
     }
   },
   spicy: {
     prefix: 'Spicy',
     fxType: 'timed',
     title: 'Cold Resistance',
-    metadata: {
+    timedData: {
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [5, 10, 15],
-      baseTimeInc: 120, // in seconds
+      contribFactor: 120, // in seconds
     }
   },
   chilly: {
     prefix: 'Chilly',
     fxType: 'timed',
     title: 'Heat Resistance',
-    metadata: {
+    timedData: {
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [5, 10, 15],
-      baseTimeInc: 120, // in seconds
+      contribFactor: 120, // in seconds
     }
   },
   electro: {
     prefix: 'Electro',
     fxType: 'timed',
     title: 'Shock Resistance',
-    metadata: {
+    timedData: {
       tierBps: [0, 30, 45], // breakpoints for low & mid
       potencyLevels: [8, 16, 24],
-      baseTimeInc: 120, // in seconds
+      contribFactor: 120, // in seconds
     }
   },
   fireproof: {
     prefix: 'Fireproof',
     fxType: 'timed',
     title: 'Fireproof',
-    metadata: {
+    timedData: {
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [4, 9],
-      baseTimeInc: 120, // in seconds
+      contribFactor: 120, // in seconds
     }
   }
 };

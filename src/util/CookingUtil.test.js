@@ -215,6 +215,22 @@ const matSets = [
     canCookInto: { false: ['Monster Curry', 'Nutcake'] },
     recipeType: 'Dubious'
   },
+
+  // getDishEffectInfo
+
+  {
+    names: 'Apple',
+    getDishEffectInfo: null
+  },
+  {
+    names: 'Hearty Durian, Hearty Durian, Hearty Truffle, Hearty Truffle, Apple',
+    getDishEffectInfo: {
+      prefix: 'Hearty',
+      fxType: 'points',
+      points: 10,
+      extraHearts: 10
+    }
+  }
 ];
 
 // —————————————————————————————————————
@@ -252,13 +268,13 @@ describe('Mat', () => {
     it('ofId: Naydra\'s Horn (id: 62)', () => {
       const naydrasHorn = Mat.ofId(62);
       expect(R.is(Mat, naydrasHorn)).toBe(true);
-      expect(naydrasHorn.name).toEqual('Naydra\'s Horn');
+      expect(naydrasHorn.name).toEqual('Shard of Naydra\'s Horn');
     });
 
     it('ofId: Naydra\'s Horn w/ input "62"', () => {
       const naydrasHorn = Mat.ofId('62');
       expect(R.is(Mat, naydrasHorn)).toBe(true);
-      expect(naydrasHorn.name).toEqual('Naydra\'s Horn');
+      expect(naydrasHorn.name).toEqual('Shard of Naydra\'s Horn');
     });
 
     it('ofId fails for misspelled input', () => {
@@ -403,6 +419,38 @@ describe('CookingUtil', () => {
   describe('getRecipeType', () => {
     const testingProp = 'recipeType';
     renderMatTests(testingProp, CookingUtil.getRecipeType);
+  });
+
+  describe('getDishEffectInfo', () => {
+    const fn = CookingUtil.getDishEffectInfo;
+
+    let mats = [ Mat.ofName('Hearty Durian') ];
+    fn(mats);
+
+    mats = [ Mat.ofName('Silent Princess') ];
+    fn(mats);
+
+    const testingProp = 'getDishEffectInfo';
+    renderMatTests(testingProp, fn);
+
+
+
+    // it('...', () => {
+    //   const expected = {
+    //       prefix: 'Hearty',
+    //       fxType: 'points',
+    //       points: 10, 
+    //       extraHearts: 10
+    //   };
+    //   const mats = [
+    //     Mat.ofName('Hearty Durian'), 
+    //     Mat.ofName('Hearty Durian'), 
+    //     Mat.ofName('Hearty Truffle'), 
+    //     Mat.ofName('Hearty Truffle'),
+    //     Mat.ofName('Apple') 
+    //   ];
+    //   expect(CookingUtil.getDishEffectInfo(mats)).toEqual(expected);
+    // });
   });
 });
 

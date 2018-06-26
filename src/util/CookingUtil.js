@@ -11,6 +11,8 @@ import R, { curry, compose, pipe, __ } from 'ramda';
 
 import { exists, xor, match, arrayify, dearrayify, matchK } from './utility';
 
+import DataUtil from './DataUtil';
+import EffectUtil from './EffectUtil';
 // module.exports = {};
 
 // ——————————————————————————————————————————————————————————————————————————
@@ -205,7 +207,7 @@ export default class CookingUtil {
     }
     if (hasCritter && hasMonsterPart) {
       // If no/conflicting effects across ingred., Dubious Food replaces Elixir
-      return (CookingUtil.getDishEffect(mats) === 'no effect') ? DUBIOUS : ELIXIR;
+      return (CookingUtil.getEffect(mats) === 'no effect') ? DUBIOUS : ELIXIR;
     }
     if (!hasCritter && !hasMonsterPart) {
       // If includes a Nutrition ingredient (usage: Food)
@@ -227,9 +229,9 @@ export default class CookingUtil {
    * effect (occurs when there are either 0 or 2+ unique effects across all 
    * input ingredients.)
    */
-  static getDishEffect(mats) {
-    const uniqueEffects = R.uniq(R.map(R.prop('effect'))(mats));
-    return (uniqueEffects.length === 1) ? uniqueEffects[0] : 'no effect';
+  static getEffect(mats) {
+    // REPLACE SOON
+    return EffectUtil.getEffect(mats);
   }
 
   /**
@@ -291,6 +293,67 @@ export default class CookingUtil {
       // });
     });
   }
+
+  /**
+   * Returns null if mats yield no effect.
+   * 
+   * @param {Mat[]} mats 
+   */
+  static getDishEffectInfo(mats) {
+    const effectName = CookingUtil.getEffect(mats);
+    console.log(effectName)
+    if (effectName === 'no effect') return null;
+    const effectData = C.effectData[effectName.toLowerCase()];
+    const { prefix, fxType, title } = effectData;
+
+
+    const effContributors = R.filter(R.propEq('effect', effectName))(mats); 
+    
+    let effectInfo = { prefix, fxType };
+    let calculated = {};
+
+    switch(fxType) {
+      case 'points':
+        const points = R.reduce(
+          (sum, m) => exists(m.potency) ? sum + m.potency : sum, 0,
+          effContributors
+        );
+        effectInfo.points = points;
+        
+        // Bonuses based on effect name
+        const potentialBonuses = {
+          Hearty:     { extraHearts: points },
+          Energizing: { stamina: C.energizingLevels[points] },
+          Enduring:   { extraStamina: C.enduringLevels[R.min(points, 20)] }
+        };
+        effectInfo = Object.assign(effectInfo, potentialBonuses[effectName]);
+
+        // switch(effectName) {
+        //   case 'Hearty':
+        //     effectInfo.extraHearts = points;
+        //     break;
+        //   case 'Energizing':
+        //     effectInfo.stamina = C.energizingLevels[points];
+        //     break;
+        //   case 'Enduring':
+        //     effectInfo.extraStamina = C.enduringLevels[R.min(points, 20)];
+        //     break;
+        // }
+        break;
+      case 'timed':
+        effectInfo.title = effectData.title;  
+        // const tierBreakpoints = effectData.SVGMetadataElement.tierBps; 
+
+
+
+
+        break;
+      default:
+        throw new Error(`Invalid fxType ${fxType}`);
+    }
+    return effectInfo;
+  }
+  
 }
 
 

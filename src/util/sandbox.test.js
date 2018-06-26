@@ -4,6 +4,13 @@
 
 import R, { curry, compose, __ } from 'ramda'
 
+describe('Boolean tests', () => {
+  it('Empty object is truthy', () => {
+    const bool = (!!{});
+    expect(bool).toEqual(true);
+  });
+
+});
 
 describe('ramda tests', () => {
   it('test 1', () => {
