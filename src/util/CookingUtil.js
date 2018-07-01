@@ -305,19 +305,14 @@ export default class CookingUtil {
     const effectName = CookingUtil.getEffect(mats);
     if (effectName === 'no effect') return 'no effect';
     const effectData = C.effectData[effectName.toLowerCase()];
-    const { prefix, fxType, title } = effectData;
+    const { prefix, fxType } = effectData;
 
     const effContributors = R.filter(R.propEq('effect', effectName))(mats); 
     
     let effectInfo = { prefix, fxType };
-    // let calculated = {};
 
     switch(fxType) {
       case 'points':
-        // const points = R.reduce(
-          // (sum, m) => exists(m.potency) ? sum + m.potency : sum, 0,
-          // effContributors
-        // );
         const points = compose(
           R.sum,
           R.map(R.prop('potency')),
@@ -345,17 +340,117 @@ export default class CookingUtil {
     return effectInfo;
   }
 
-
-  
+  /**
+   * @typedef {Object} CookedDish
+   * @prop {Rcp} rcp
+   * @prop {Mat[]} mats
+   * @prop {String} name
+   * @prop {String} thumb Local URL string for the dish thumbnail.
+   * @prop {String} desc
+   * @prop {EffectData} effectData
+   * @prop {Number} hpRestore
+   * @prop {Number} rupeePrice
+   */
 
   /**
    * @param {Mat[]} mats 
-   * @return {Dish}
+   * @return {CookedDish}
    */
   static cook(mats) {
+    let dish = { mats };
+    // Mat validation
+    let rcpType = CookingUtil.getRecipeType(mats);
+    return match(rcpType)
+      .on(R.equals('Elixir'),    mats => CookingUtil.cookElixir(mats))
+      .on(R.equals('Food'),      mats => CookingUtil.cookFood(mats))
+      .on(R.equals('Rock-Hard'), mats => CookingUtil.cookRockHardFood(mats))
+      .on(R.equals('Dubious'),   mats => CookingUtil.cookDubiousFood(mats))
+      .otherwise(() => {
+        throw new Error('cook() error: unknown getRecipeType output');
+      });
+  }
 
+  /**
+   * 
+   * @param {*} mats 
+   */
+  static cookElixir(mats) {
+    const effectName = CookingUtil.getEffect(mats); // Will not be 'no effect'
 
-    return {};
+    const rcp = 'Elixir';
+    const name = `${effectName} Elixir`;
+    const thumb = 'elixir-placeholder.jpg'; // TODO: What to do about elixir thumbs?
+    const desc = C.effectDescriptions[effectName.toLowerCase()].elixirDesc;
+    const effectData = CookingUtil.getDishEffectInfo(mats);
+    const hpRestore = CookingUtil.getHpRestore(mats);
+    const rupeePrice = CookingUtil.getRupeePrice(mats);
+    
+    return { 
+      mats, rcp, name, thumb, desc, effectData, hpRestore, rupeePrice
+    };
+  }
+
+  /**
+   * 
+   * @param {*} mats 
+   */
+  static cookFood(mats) {
+    // It's important that the recipes array is traversed in indexed order!!
+    const rcp = R.find(__, C.recipes)(rcp => canCookInto(mats, rcp));
+    // Error handle for null rcp here
+
+    let { name, thumb, desc } = rcp;
+    const effectData = CookingUtil.getDishEffectInfo(mats);
+    const hpRestore = CookingUtil.getHpRestore(mats);
+    const rupeePrice = CookingUtil.getRupeePrice(mats);
+    
+    const effectName = EffectUtil.getEffect(mats);
+    if (effectName !== 'no effect') { // If has effect
+      name = `${effectName} ${name}`;
+      const fxDesc = C.effectDescriptions[effectName.toLowerCase()].foodDesc;
+      desc = fxDesc + '\n' + desc;
+    }
+
+    return {
+      mats, rcp, name, thumb, desc, effectData, hpRestore, rupeePrice
+    };
+  }
+
+  /**
+   * TODO: Test
+   * 
+   * @param {Mat[]} mats
+   * @return {CookedDish} 
+   */
+  static cookRockHardFood(mats) {
+    const rcp = Rcp.ofName('Rock-Hard Food');
+    const { name, thumb, desc } = rcp;
+    return {
+      mats, rcp, name, thumb, desc,
+      effectData: 'no effect',
+      hpRestore: 1,
+      rupeePrice: 2
+    };
+  }
+
+  /**
+   * TODO: Test
+   * 
+   * @param {Mat[]} mats
+   * @return {CookedDish} 
+   */
+  static cookDubiousFood(mats) {
+    const rcp = Rcp.ofName('Dubious Food');
+    const { name, thumb, desc } = rcp;
+
+    const hpRestore = CookingUtil.getHpRestore(mats, false, false) / 2;
+    const effectData = 'no effect';
+    const rupeePrice = 2;
+
+    let dish = { 
+      mats, rcp, name, thumb, desc, hpRestore, effectData, rupeePrice 
+    };    
+    return dish;
   }
 }
 
@@ -370,16 +465,6 @@ class Dish { }
 
 /**
  * Class representing a dish cooked in a cooking pot.
- * 
- * @typedef {Object} CookedDish
- * @prop {Rcp} rcp
- * @prop {Mat[]} mats
- * @prop {String} name
- * @prop {String} imgUrl
- * @prop {String} description
- * @prop {EffectData} effectData
- * @prop {Number} hpRestore
- * @prop {Number} rupeePrice
  */
 export class CookedDish extends Dish {
   /**
@@ -410,34 +495,4 @@ export class CookedDish extends Dish {
     const dish = CookingUtil.cook(mats);
     return new Dish({ ...dish, _filled: true });
   }
-
-  // /**
-  //  * Factory method for mats. Returns a newly constructed Mat object from the
-  //  * specified material name.
-  //  * 
-  //  * @param {string} name Material's name.
-  //  */
-  // static ofName(name) {
-  //   const found = R.find(R.propEq('name', name))(C.materials);
-  //   if (exists(found)) {
-  //     return new Mat({ ...found, filled: true })
-  //   }
-  //   throw new Error(`Can't create Mat from name "${name}"`);
-  // }
-
-  // /**
-  //  * Factory method for mats. Returns a newly constructed Mat object from the
-  //  * specified material ID.
-  //  * 
-  //  * @param {string|number} id Material's ID or index in the records.
-  //  */
-  // static ofId(id) {
-  //   if (!isNumber(id)) throw new Error(`id "${id}" is NaN`);
-  //   const idAsInteger = parseInt(id, 10);
-  //   const found = R.find(R.propEq('idx', idAsInteger))(C.materials);
-  //   if (!exists(found)) {
-  //     throw new Error(`Can't create Mat from id "${idAsInteger}"`);
-  //   }
-  //   return new Mat({ ...found, filled: true });
-  // }
 }
