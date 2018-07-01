@@ -115,10 +115,10 @@ describe('getEffectDuration', () => {
     // https://photos.app.goo.gl/QhP1kbPVuPw5XoFH6
     const mats = [
       Mat.ofName('Hightail Lizard'), // +30 (base); +30 (contrib)
-      Mat.ofName('Bokoblin Fang'), // +30 (base); + 80 (T2 Reagant)
-      Mat.ofName('Bokoblin Fang'), // +30 (base); + 80 (T2 Reagant)
-      Mat.ofName('Bokoblin Fang'), // +30 (base); + 80 (T2 Reagant)
-      Mat.ofName('Bokoblin Fang'), // +30 (base); + 80 (T2 Reagant)
+      Mat.ofName('Bokoblin Fang'), // +30 (base); +80 (T2 Reagant)
+      Mat.ofName('Bokoblin Fang'), // +30 (base); +80 (T2 Reagant)
+      Mat.ofName('Bokoblin Fang'), // +30 (base); +80 (T2 Reagant)
+      Mat.ofName('Bokoblin Fang'), // +30 (base); +80 (T2 Reagant)
     ];
     const manual = (30 + 30) + 4 * (30 + 80);
     const expected = 8 * 60 + 20;
@@ -131,7 +131,7 @@ describe('getEffectDuration', () => {
 describe('calcDishPotency', () => {
   const fn = EffectUtil.calcDishPotency;
 
-  it('first', () => {
+  it('first: 4 fleet-lotus seeds', () => {
     const mats = R.repeat(Mat.ofName('Fleet-Lotus Seeds'), 4);
     const expected = {
       tierName: 'mid',
@@ -144,6 +144,11 @@ describe('calcDishPotency', () => {
 
 describe('getTierFromPotency', () => {
   const fn = EffectUtil.getTierFromPotency;
+
+  it('Doc examples', () => {
+    expect(fn(2, [0, 5, 10])).toBe(1);
+    expect(fn(300, [0, 50, 120, 190])).toBe(4);
+  });
 
   it('Breakpoint tests with generic breakpoint table', () => {
     const breakpointTable = [ 0, 15, 30, 100, 2000, 8000 ];

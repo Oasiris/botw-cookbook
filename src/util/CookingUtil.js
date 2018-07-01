@@ -295,22 +295,20 @@ export default class CookingUtil {
   }
 
   /**
-   * Returns null if mats yield no effect.
+   * Returns 'no effect' if mats yield no effect.
    * 
    * @param {Mat[]} mats 
    */
   static getDishEffectInfo(mats) {
     const effectName = CookingUtil.getEffect(mats);
-    console.log(effectName)
-    if (effectName === 'no effect') return null;
+    if (effectName === 'no effect') return 'no effect';
     const effectData = C.effectData[effectName.toLowerCase()];
     const { prefix, fxType, title } = effectData;
-
 
     const effContributors = R.filter(R.propEq('effect', effectName))(mats); 
     
     let effectInfo = { prefix, fxType };
-    let calculated = {};
+    // let calculated = {};
 
     switch(fxType) {
       case 'points':
@@ -318,7 +316,7 @@ export default class CookingUtil {
           (sum, m) => exists(m.potency) ? sum + m.potency : sum, 0,
           effContributors
         );
-        effectInfo.points = points;
+        // effectInfo.points = points;
         
         // Bonuses based on effect name
         const potentialBonuses = {
@@ -326,27 +324,17 @@ export default class CookingUtil {
           Energizing: { stamina: C.energizingLevels[points] },
           Enduring:   { extraStamina: C.enduringLevels[R.min(points, 20)] }
         };
-        effectInfo = Object.assign(effectInfo, potentialBonuses[effectName]);
-
-        // switch(effectName) {
-        //   case 'Hearty':
-        //     effectInfo.extraHearts = points;
-        //     break;
-        //   case 'Energizing':
-        //     effectInfo.stamina = C.energizingLevels[points];
-        //     break;
-        //   case 'Enduring':
-        //     effectInfo.extraStamina = C.enduringLevels[R.min(points, 20)];
-        //     break;
-        // }
+        // effectInfo = Object.assign(effectInfo, potentialBonuses[effectName]);
+        effectInfo = { ...effectInfo, points, ...potentialBonuses[effectName] };
         break;
       case 'timed':
-        effectInfo.title = effectData.title;  
+        // effectInfo.title = effectData.title;  
         // const tierBreakpoints = effectData.SVGMetadataElement.tierBps; 
-
-
-
-
+        effectInfo = {
+          ...effectInfo,
+          title: effectData.title,
+          ...EffectUtil.calcDishPotency(mats, effectData, {})
+        };
         break;
       default:
         throw new Error(`Invalid fxType ${fxType}`);

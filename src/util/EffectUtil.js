@@ -24,12 +24,6 @@ import assert from 'assert';
 // Data Definitions: VS Code
 // ——————————————————————————————————————————————————————————————————————————
 
-/**
- * @typedef {Object} qerewtwase
- * @prop {{ year: number, month: number, day: number }} date
- * @prop {{ hour: number, minute: number, second: number, nano: number }} time
- */
-
  /**
   * @typedef {Object} EffectData
   * @prop {String} prefix
@@ -163,6 +157,12 @@ export default class EffectUtil {
    * @param {Number} potency 
    * @param {Number[]} tierBreakpoints 
    * @return {Number}
+   * @example
+   * // returns 1
+   * EffectUtil.getTierFromPotency(2, [ 0, 5, 10 ])
+   * @example
+   * // returns 4
+   * EffectUtil.getTierFromPotency(300, [ 0, 50, 120, 190 ])
    */
   static getTierFromPotency(potency, tierBreakpoints) {
     let idxes      = R.range(0, tierBreakpoints.length);
@@ -175,6 +175,10 @@ export default class EffectUtil {
     return 1;
   }
 
+  /**
+   * @param {Number} tierNumber 
+   * @return {String}
+   */
   static getTierName(tierNumber) {
     const table = { '1': 'low', '2': 'mid', '3': 'high' };
     return table[tierNumber];

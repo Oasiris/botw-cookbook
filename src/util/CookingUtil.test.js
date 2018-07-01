@@ -213,14 +213,19 @@ const matSets = [
   { // Additive Only Recipe: slightly off
     names: 'Hylian Rice, Tabantha Wheat, Monster Extract',
     canCookInto: { false: ['Monster Curry', 'Nutcake'] },
-    recipeType: 'Dubious'
+    recipeType: 'Dubious',
+    getDishEffectInfo: 'no effect'
+  },
+  {
+    names: 'Hylian Rice',
+    getDishEffectInfo: 'no effect'
   },
 
   // getDishEffectInfo
 
   {
     names: 'Apple',
-    getDishEffectInfo: null
+    getDishEffectInfo: 'no effect'
   },
   {
     names: 'Hearty Durian, Hearty Durian, Hearty Truffle, Hearty Truffle, Apple',
@@ -350,7 +355,7 @@ describe('Rcp', () => {
  */
 const renderMatTests = (testingProp, testingFunc) => {
   // Get all matSets which have expected values for the specified prop
-  R.filter(set => exists(set[testingProp]))(matSets)
+  R.filter(set => !(set[testingProp] === undefined))(matSets)
   .forEach(set => {
     let testDesc = '';
     // If the testing set has notes for tests of this type, show them
@@ -425,32 +430,32 @@ describe('CookingUtil', () => {
     const fn = CookingUtil.getDishEffectInfo;
 
     let mats = [ Mat.ofName('Hearty Durian') ];
-    fn(mats);
+    console.log(fn(mats));
 
-    mats = [ Mat.ofName('Silent Princess') ];
-    fn(mats);
+    mats = [Mat.ofName('Silent Princess'), Mat.ofName('Silent Princess') ];
+    console.log(fn(mats));
 
     const testingProp = 'getDishEffectInfo';
     renderMatTests(testingProp, fn);
 
 
 
-    // it('...', () => {
-    //   const expected = {
-    //       prefix: 'Hearty',
-    //       fxType: 'points',
-    //       points: 10, 
-    //       extraHearts: 10
-    //   };
-    //   const mats = [
-    //     Mat.ofName('Hearty Durian'), 
-    //     Mat.ofName('Hearty Durian'), 
-    //     Mat.ofName('Hearty Truffle'), 
-    //     Mat.ofName('Hearty Truffle'),
-    //     Mat.ofName('Apple') 
-    //   ];
-    //   expect(CookingUtil.getDishEffectInfo(mats)).toEqual(expected);
-    // });
+    it('points: Hearty 1', () => {
+      const expected = {
+          prefix: 'Hearty',
+          fxType: 'points',
+          points: 10, 
+          extraHearts: 10
+      };
+      const mats = [
+        Mat.ofName('Hearty Durian'), 
+        Mat.ofName('Hearty Durian'), 
+        Mat.ofName('Hearty Truffle'), 
+        Mat.ofName('Hearty Truffle'),
+        Mat.ofName('Apple') 
+      ];
+      expect(CookingUtil.getDishEffectInfo(mats)).toEqual(expected);
+    });
   });
 });
 
