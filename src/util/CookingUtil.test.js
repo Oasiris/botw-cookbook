@@ -432,7 +432,7 @@ describe('CookingUtil', () => {
     let mats = [ Mat.ofName('Hearty Durian') ];
     console.log(fn(mats));
 
-    mats = [Mat.ofName('Silent Princess'), Mat.ofName('Silent Princess') ];
+    mats = [ Mat.ofName('Silent Princess'), Mat.ofName('Silent Princess') ];
     console.log(fn(mats));
 
     const testingProp = 'getDishEffectInfo';

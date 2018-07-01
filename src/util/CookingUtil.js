@@ -34,7 +34,7 @@ export class Mat {
    * @param {Object} data 
    */
   constructor(data) {
-    if (data.filled === true) {
+    if (data._filled === true) {
       for (let k of R.keys(data)) {
         this[k] = data[k];
       }
@@ -53,7 +53,7 @@ export class Mat {
   static ofName(name) {
     const found = R.find(R.propEq('name', name))(C.materials);
     if (exists(found)) {
-      return new Mat({ ...found, filled: true })
+      return new Mat({ ...found, _filled: true })
     }
     throw new Error(`Can't create Mat from name "${name}"`);
   }
@@ -71,7 +71,7 @@ export class Mat {
     if (!exists(found)) {
       throw new Error(`Can't create Mat from id "${idAsInteger}"`);
     }
-    return new Mat({ ...found, filled: true });
+    return new Mat({ ...found, _filled: true });
   }
 }
 
@@ -87,7 +87,7 @@ export class Rcp {
    * @param {Object} data 
    */
   constructor(data) {
-    if (data.filled === true) {
+    if (data._filled === true) {
       for (let k of R.keys(data)) {
         this[k] = data[k];
       }
@@ -106,7 +106,7 @@ export class Rcp {
   static ofName(name) {
     const found = R.find(R.propEq('name', name))(C.recipes);
     if (exists(found)) {
-      return new Rcp({ ...found, filled: true })
+      return new Rcp({ ...found, _filled: true })
     }
     throw new Error(`Can't create Rcp from name "${name}"`);
   }
@@ -124,7 +124,7 @@ export class Rcp {
     if (!exists(found)) {
       throw new Error(`Can't create Rcp from id "${idAsInteger}"`);
     }
-    return new Rcp({ ...found, filled: true });
+    return new Rcp({ ...found, _filled: true });
   }
 }
 
@@ -157,13 +157,13 @@ export default class CookingUtil {
    *   that the cooked material will restore.
    *   Can be Infinity ("Full recovery").
    */
-  static getHpRestore(mats) {
+  static getHpRestore(mats, isHeartyAware = true, usesNutRule = true) {
     /*
      * "Hearty rule": if materials include any hearty ingredients, they provide
      *  full recovery, indicated by a return value of Infinity.
      */
     const hasHearty = R.any(R.propEq('effect', 'Hearty'))(mats);
-    if (hasHearty) return Infinity;
+    if (hasHearty && isHeartyAware) return Infinity;
 
     let base = 0,
         bonus = 0;
@@ -173,11 +173,13 @@ export default class CookingUtil {
      *                and at least one non-nut materials
      *             = 0, otherwise
      */
-    const uniqueNuts = 
-      compose(R.uniq, R.filter(mat => mat.families.includes('Nut')))(mats).length;
-    const justOneNut = uniqueNuts === 1;
-    const hasNonNut = R.any(mat => !mat.families.includes('Nut'))(mats);
-    bonus += (uniqueNuts === 2) ? 4 : ((justOneNut && hasNonNut) ? 2 : 0);
+    if (usesNutRule) {
+      const uniqueNuts = 
+        compose(R.uniq, R.filter(mat => mat.families.includes('Nut')))(mats).length;
+      const justOneNut = uniqueNuts === 1;
+      const hasNonNut = R.any(mat => !mat.families.includes('Nut'))(mats);
+      bonus += (uniqueNuts === 2) ? 4 : ((justOneNut && hasNonNut) ? 2 : 0);
+    }
 
     // Normal calculation: sum heart bonuses from each item.
     base = R.sum(R.map(m => exists(m.hp) ? m.hp : 0)(mats));
@@ -312,11 +314,15 @@ export default class CookingUtil {
 
     switch(fxType) {
       case 'points':
-        const points = R.reduce(
-          (sum, m) => exists(m.potency) ? sum + m.potency : sum, 0,
-          effContributors
-        );
-        // effectInfo.points = points;
+        // const points = R.reduce(
+          // (sum, m) => exists(m.potency) ? sum + m.potency : sum, 0,
+          // effContributors
+        // );
+        const points = compose(
+          R.sum,
+          R.map(R.prop('potency')),
+          R.filter(m => exists(m.potency))
+        )(effContributors);
         
         // Bonuses based on effect name
         const potentialBonuses = {
@@ -324,12 +330,9 @@ export default class CookingUtil {
           Energizing: { stamina: C.energizingLevels[points] },
           Enduring:   { extraStamina: C.enduringLevels[R.min(points, 20)] }
         };
-        // effectInfo = Object.assign(effectInfo, potentialBonuses[effectName]);
         effectInfo = { ...effectInfo, points, ...potentialBonuses[effectName] };
         break;
       case 'timed':
-        // effectInfo.title = effectData.title;  
-        // const tierBreakpoints = effectData.SVGMetadataElement.tierBps; 
         effectInfo = {
           ...effectInfo,
           title: effectData.title,
@@ -341,21 +344,100 @@ export default class CookingUtil {
     }
     return effectInfo;
   }
+
+
   
+
+  /**
+   * @param {Mat[]} mats 
+   * @return {Dish}
+   */
+  static cook(mats) {
+
+
+    return {};
+  }
 }
-
-
-
-// /**
-//  * 
-//  * @param {Material[]} mats 
-//  * @return {number} Numeric price in Rupees.
-//  */
-// module.exports.getRupeePrice = mats => {
-  
-
-// }
 
 // ——————————————————————————————————————————————————————————————————————————
 // Exporting
 // ——————————————————————————————————————————————————————————————————————————
+
+/**
+ * Class representing a Dish.
+ */
+class Dish { }
+
+/**
+ * Class representing a dish cooked in a cooking pot.
+ * 
+ * @typedef {Object} CookedDish
+ * @prop {Rcp} rcp
+ * @prop {Mat[]} mats
+ * @prop {String} name
+ * @prop {String} imgUrl
+ * @prop {String} description
+ * @prop {EffectData} effectData
+ * @prop {Number} hpRestore
+ * @prop {Number} rupeePrice
+ */
+export class CookedDish extends Dish {
+  /**
+   * Constructor.
+   * 
+   * Meant to be called from factory methods `ofName` and `ofId`.
+   * @param {Object} data 
+   */
+  constructor(data) {
+    if (data._filled === true) {
+      for (let k of R.keys(data)) {
+        this[k] = data[k];
+      }
+    } else {
+      throw new Error('Don\'t use this constructor; create new Dishes using ' + 
+        'factory methods.');
+    }
+  }
+
+  /**
+   * Factory method for a Dish. Returns a new CookedDish based on the input
+   * ingredient materials.
+   * 
+   * @param {Mat[]} mats 
+   */
+  static ofMats(mats) {
+    // Validate mats here
+    const dish = CookingUtil.cook(mats);
+    return new Dish({ ...dish, _filled: true });
+  }
+
+  // /**
+  //  * Factory method for mats. Returns a newly constructed Mat object from the
+  //  * specified material name.
+  //  * 
+  //  * @param {string} name Material's name.
+  //  */
+  // static ofName(name) {
+  //   const found = R.find(R.propEq('name', name))(C.materials);
+  //   if (exists(found)) {
+  //     return new Mat({ ...found, filled: true })
+  //   }
+  //   throw new Error(`Can't create Mat from name "${name}"`);
+  // }
+
+  // /**
+  //  * Factory method for mats. Returns a newly constructed Mat object from the
+  //  * specified material ID.
+  //  * 
+  //  * @param {string|number} id Material's ID or index in the records.
+  //  */
+  // static ofId(id) {
+  //   if (!isNumber(id)) throw new Error(`id "${id}" is NaN`);
+  //   const idAsInteger = parseInt(id, 10);
+  //   const found = R.find(R.propEq('idx', idAsInteger))(C.materials);
+  //   if (!exists(found)) {
+  //     throw new Error(`Can't create Mat from id "${idAsInteger}"`);
+  //   }
+  //   return new Mat({ ...found, filled: true });
+  // }
+}
