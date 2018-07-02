@@ -5,11 +5,11 @@
 $font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 
-.grow { transition: all .0625s ease-in-out; }
-.grow:hover { transform: scale(1.075); }
+.grow { transition: all .055s ease-in-out; }
+.grow:hover { transform: scale(1.065); }
 
-.grow-slight { transition: all .0625s ease-in-out; }
-.grow-slight:hover { transform: scale(1.03); }
+.grow-slight { transition: all .055s ease-in-out; }
+.grow-slight:hover { transform: scale(1.035); }
 
 .text-pop {
   color: $text-pop-color;

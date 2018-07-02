@@ -1,3 +1,9 @@
+@-webkit-keyframes neon1 {
+  from {
+    box-shadow: 0 0 calc(3.75px * 1) rgba(255, 255, 255, 0.55), 0 0 calc(3.75px * 2) rgba(255, 255, 255, 0.55), 0 0 calc(3.75px * 3) rgba(255, 255, 255, 0.55), 0 0 calc(3.75px * 4) rgba(228, 215, 141, 0.55), 0 0 calc(3.75px * 7) rgba(228, 215, 141, 0.55), 0 0 calc(3.75px * 8) rgba(228, 215, 141, 0.55), 0 0 calc(3.75px * 10) rgba(228, 215, 141, 0.55), 0 0 calc(3.75px * 15) rgba(228, 215, 141, 0.55); }
+  to {
+    box-shadow: 0 0 calc(4.5px * 0.5) rgba(255, 255, 255, 0.55), 0 0 calc(4.5px * 1.0) rgba(255, 255, 255, 0.55), 0 0 calc(4.5px * 1.5) rgba(255, 255, 255, 0.55), 0 0 calc(4.5px * 2.0) rgba(228, 215, 141, 0.55), 0 0 calc(4.5px * 3.5) rgba(228, 215, 141, 0.55), 0 0 calc(4.5px * 4.0) rgba(228, 215, 141, 0.55), 0 0 calc(4.5px * 5.0) rgba(228, 215, 141, 0.55), 0 0 calc(4.5px * 7.5) rgba(228, 215, 141, 0.55); } }
+
 .fancy-card-outer {
   border: 2px solid rgba(5, 5, 5, 0.7);
   margin: 0;
@@ -5,6 +11,8 @@
   border-radius: 3px;
   display: flex;
   height: 100%; }
+  .fancy-card-outer:hover {
+    animation: neon1 1.275s ease-in-out infinite alternate; }
 
 .fancy-card-inner {
   background-color: rgba(5, 5, 5, 0.7);

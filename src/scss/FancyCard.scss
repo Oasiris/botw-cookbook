@@ -1,6 +1,8 @@
 @import 'colors';
+@import 'animation';
 
 $font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 
 
 .fancy-card-outer {
@@ -13,6 +15,11 @@ $font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
   display: flex;
   // display: inline-block;
   height: 100%;
+
+  &:hover {
+    // background-color: blue;
+    animation: neon1 1.275s ease-in-out infinite alternate;
+  }
 }
 
 .fancy-card-inner {

@@ -104,9 +104,9 @@ export class MaterialList extends Component {
     
     let sortedMaterials;
     if (sortBy === 'default') {
-      sortedMaterials = [ ...materials ];
+      sortedMaterials = [...materials];
     } else if (sortBy === 'name') {
-      sortedMaterials = [ ...materials ];
+      sortedMaterials = [...materials];
       sortedMaterials.sort((m1, m2) => {
         return (m1.name > m2.name ? 1 : (m1.name === m2.name ? 0 : -1));
       });
@@ -120,8 +120,6 @@ export class MaterialList extends Component {
         sortedMaterials.map(mat => (
           <Material
           data={mat}
-          // name={name}
-          // imgSrc={thumb ? `img/thumb/tiny/${thumb}` : undefined}
           key={mat.idx}
           showText={showText} />
         ))

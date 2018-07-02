@@ -1,0 +1,52 @@
+@import 'colors';
+
+@mixin neon-from($color, $size: 10px, $opacity: 1) {
+  box-shadow: 
+    0 0 calc(#{$size} * 1) rgba(#fff, $opacity), 
+    0 0 calc(#{$size} * 2) rgba(#fff, $opacity), 
+    0 0 calc(#{$size} * 3) rgba(#fff, $opacity), 
+    0 0 calc(#{$size} * 4) rgba($color, $opacity), 
+    0 0 calc(#{$size} * 7) rgba($color, $opacity), 
+    0 0 calc(#{$size} * 8) rgba($color, $opacity), 
+    0 0 calc(#{$size} * 10) rgba($color, $opacity), 
+    0 0 calc(#{$size} * 15) rgba($color, $opacity);
+}
+
+@mixin neon-to($color, $size: 10px, $opacity: 1) {
+  box-shadow: 
+  0 0 calc(#{$size} * 0.5) rgba(#fff, $opacity), 
+  0 0 calc(#{$size} * 1.0) rgba(#fff, $opacity), 
+  0 0 calc(#{$size} * 1.5) rgba(#fff, $opacity), 
+  0 0 calc(#{$size} * 2.0) rgba($color, $opacity), 
+  0 0 calc(#{$size} * 3.5) rgba($color, $opacity), 
+  0 0 calc(#{$size} * 4.0) rgba($color, $opacity), 
+  0 0 calc(#{$size} * 5.0) rgba($color, $opacity), 
+  0 0 calc(#{$size} * 7.5) rgba($color, $opacity);
+}
+
+@-webkit-keyframes neon1 {
+  from {
+    @include neon-from($text-pop-lighter-color, 3.75px, 0.55);
+  }
+  to {
+    @include neon-to($text-pop-lighter-color, 4.5px, 0.55);
+  }
+}
+
+
+// @function neon-from($color) {
+//   @return 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px $color, 0 0 70px $color, 0 0 80px $color, 0 0 100px $color, 0 0 150px $color;
+// }
+
+// @function neon-to($color) {
+//   @return 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px $color, 0 0 35px $color, 0 0 40px $color, 0 0 50px $color, 0 0 75px $color;
+// }
+
+// @-webkit-keyframes neon1 {
+//   from {
+//     box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+//   }
+//   to {
+//     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+//   }
+// }
