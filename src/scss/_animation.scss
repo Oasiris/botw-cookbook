@@ -26,27 +26,18 @@
 
 @-webkit-keyframes neon1 {
   from {
-    @include neon-from($text-pop-lighter-color, 3.75px, 0.55);
+    @include neon-from($text-pop-lighter-color, 3.25px, 0.50);
   }
   to {
-    @include neon-to($text-pop-lighter-color, 4.5px, 0.55);
+    @include neon-to($text-pop-lighter-color, 4.0px, 0.50);
   }
 }
 
-
-// @function neon-from($color) {
-//   @return 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px $color, 0 0 70px $color, 0 0 80px $color, 0 0 100px $color, 0 0 150px $color;
-// }
-
-// @function neon-to($color) {
-//   @return 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px $color, 0 0 35px $color, 0 0 40px $color, 0 0 50px $color, 0 0 75px $color;
-// }
-
-// @-webkit-keyframes neon1 {
-//   from {
-//     box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
-//   }
-//   to {
-//     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
-//   }
-// }
+@-webkit-keyframes neon-passive {
+  from {
+    @include neon-from($text-pop-lighter-color, 2px, 0.35);
+  }
+  to {
+    @include neon-to($text-pop-lighter-color, 2.75px, 0.35);
+  }
+}

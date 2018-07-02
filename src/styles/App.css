@@ -6,8 +6,8 @@
 .App {
   text-align: center; }
   .App .App-header {
-    background-color: rgba(5, 5, 5, 0.7);
-    border-bottom: 2px double rgba(5, 5, 5, 0.7);
+    background-color: rgba(5, 5, 5, 0.725);
+    border-bottom: 2px double rgba(5, 5, 5, 0.725);
     padding: 20px;
     color: white; }
     .App .App-header .App-logo {
@@ -33,7 +33,7 @@
   margin-top: 50px;
   padding-top: 25px;
   padding-bottom: 10px;
-  background: rgba(5, 5, 5, 0.7);
+  background: rgba(5, 5, 5, 0.725);
   color: white;
   line-height: 1.375; }
   .footer div {

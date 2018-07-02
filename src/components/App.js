@@ -10,7 +10,7 @@ import Recipe, { RecipeList } from './Recipe'
 import Button from './Button';
 import Footer from './Footer'
 
-import FancyCard from './FancyCard'
+import FancyCard, { SelectedFancyCard } from './FancyCard'
 
 import data from '../data/all'
 
@@ -21,7 +21,9 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
-          <FancyCard />
+          {/* <SelectedFancyCard content={(
+            <h2>Hello</h2>
+          )} /> */}
           {/* <Button onClick={() => alert('hey')}>asdfghjfdsfgh</Button> */}
         
           {/* <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />         */}
