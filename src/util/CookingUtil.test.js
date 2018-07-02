@@ -137,7 +137,7 @@ const matSets = [
       mats: [Mat.ofName('Acorn')],
       rcp: Rcp.ofName('Sautéed Nuts'),
       name: 'Sautéed Nuts',
-      thumb: undefined,
+      thumb: 'thumb-12-12.png',
       desc: 'These sautéed tree seeds are the perfect snack for the busy adventurer on the go!',
       effectData: 'no effect',
       hpRestore: 2,

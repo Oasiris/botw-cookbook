@@ -99,17 +99,20 @@ describe('item descriptions', () => {
 describe('thumbs', () => {
 
   describe('general', () => {
-    // it('every material has a thumbnail', () => {
-    //   bundler.materials.forEach(el => {
-    //     expect(exists(el.thumb)).toBe(true);
-    //   });
-    // });
+    it('every material has a thumbnail', () => {
+      bundler.materials.forEach(el => {
+        if (el.thumb === undefined) {
+          console.log(el);
+        }
+        expect(el.thumb).not.toBe(undefined);
+      });
+    });
 
-    // it('every recipe has a thumbnail', () => {
-    //   bundler.recipes.forEach(el => {
-    //     expect(exists(el.thumb)).toBe(true);
-    //   });
-    // });
+    it('every recipe has a thumbnail', () => {
+      bundler.recipes.forEach(el => {
+        expect(exists(el.thumb)).toBe(true);
+      });
+    });
 
     it('every elixir has a thumbnail', () => {
       bundler.elixirs.forEach(el => {

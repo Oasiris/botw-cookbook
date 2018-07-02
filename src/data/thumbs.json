@@ -7,7 +7,7 @@
   {
     "thumb": "thumb-0-2.png",
     "type": "material",
-    "name": "Electric Rhino Beetle"
+    "name": "Energetic Rhino Beetle"
   }, 
   {
     "thumb": "thumb-0-3.png",
@@ -247,7 +247,7 @@
   {
     "thumb": "thumb-3-7.png",
     "type": "cookedDish",
-    "name": "Fragrant Mushroom Sauté"
+    "name": "Salt-Grilled Mushrooms"
   },
   {
     "thumb": "thumb-3-8.png",
@@ -282,7 +282,7 @@
   {
     "thumb": "thumb-3-14.png",
     "type": "cookedDish",
-    "name": "Spicy Peppered Seafood"
+    "name": "Pepper Seafood"
   },
   {
     "thumb": "thumb-3-15.png",
@@ -317,17 +317,17 @@
   {
     "thumb": "thumb-4-2.png",
     "type": "cookedDish",
-    "name": "Seafood Meuniere"
+    "name": "Seafood Meunière"
   },
   {
     "thumb": "thumb-4-3.png",
     "type": "cookedDish",
-    "name": "Porgy Meuniere"
+    "name": "Porgy Meunière"
   },
   {
     "thumb": "thumb-4-4.png",
     "type": "cookedDish",
-    "name": "Salmon Meuniere"
+    "name": "Salmon Meunière"
   },
   {
     "thumb": "thumb-4-5.png",
@@ -441,7 +441,7 @@
   },
   {
     "thumb": "thumb-5-8.png",
-    "type": "material",
+    "type": "cookedDish",
     "name": "Fruitcake"
   },
   {
@@ -617,7 +617,7 @@
   {
     "thumb": "thumb-7-6.png",
     "type": "material",
-    "name": "Mighty Carp"
+    "name": "Sanke Carp"
   },
   {
     "thumb": "thumb-7-7.png",
@@ -673,6 +673,11 @@
     "thumb": "thumb-7-18.png",
     "type": "material",
     "name": "Acorn"
+  },
+  {
+    "thumb": "thumb-8-0.png",
+    "type": "material",
+    "name": "Stamella Shroom"
   },
   {
     "thumb": "thumb-8-1.png",
@@ -737,7 +742,7 @@
   {
     "thumb": "thumb-8-13.png",
     "type": "material",
-    "name": "Endurashroom"
+    "name": "Endura Shroom"
   },
   {
     "thumb": "thumb-8-14.png",
@@ -862,12 +867,12 @@
   {
     "thumb": "thumb-11-0.png",
     "type": "material",
-    "name": "???"
+    "name": "Warm Darner"
   },
   {
     "thumb": "thumb-11-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Fireproof Lizard"
   },
   {
     "thumb": "thumb-11-2.png",
@@ -1087,12 +1092,12 @@
   {
     "thumb": "thumb-13-8.png",
     "type": "cookedDish",
-    "name": "Mushroom RIce Balls"
+    "name": "Mushroom Rice Balls"
   },
   {
     "thumb": "thumb-13-9.png",
     "type": "cookedDish",
-    "name": "Meat and RIce Bowl"
+    "name": "Meat and Rice Bowl"
   },
   {
     "thumb": "thumb-13-10.png",
@@ -1237,137 +1242,147 @@
   {
     "thumb": "thumb-15-0.png",
     "type": "material",
-    "name": "???"
+    "name": "Bokoblin Fang"
   },
   {
     "thumb": "thumb-15-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Bokoblin Guts"
   },
   {
     "thumb": "thumb-15-2.png",
     "type": "material",
-    "name": "???"
+    "name": "Lizalfos Horn"
   },
   {
     "thumb": "thumb-15-3.png",
     "type": "material",
-    "name": "???"
+    "name": "Lizalfos Talon"
   },
   {
     "thumb": "thumb-15-4.png",
     "type": "material",
-    "name": "???"
+    "name": "Lizalfos Tail"
   },
   {
     "thumb": "thumb-15-5.png",
     "type": "material",
-    "name": "???"
+    "name": "Moblin Horn"
   },
   {
     "thumb": "thumb-15-6.png",
     "type": "material",
-    "name": "???"
+    "name": "Moblin Fang"
   },
   {
     "thumb": "thumb-15-7.png",
     "type": "material",
-    "name": "???"
+    "name": "Moblin Guts"
   },
   {
     "thumb": "thumb-15-8.png",
     "type": "material",
-    "name": "???"
+    "name": "Lynel Horn"
   },
   {
     "thumb": "thumb-15-9.png",
     "type": "material",
-    "name": "???"
+    "name": "Lynel Hoof"
   },
   {
     "thumb": "thumb-15-10.png",
     "type": "material",
-    "name": "???"
+    "name": "Lynel Guts"
   },
   {
     "thumb": "thumb-15-11.png",
     "type": "material",
-    "name": "???"
+    "name": "Red Chuchu Jelly"
   },
   {
     "thumb": "thumb-15-12.png",
     "type": "material",
-    "name": "???"
+    "name": "Yellow Chuchu Jelly"
   },
   {
     "thumb": "thumb-15-13.png",
     "type": "material",
-    "name": "???"
+    "name": "White Chuchu Jelly"
   },
   {
     "thumb": "thumb-15-14.png",
     "type": "material",
-    "name": "???"
+    "name": "Keese Wing"
   },
   {
     "thumb": "thumb-15-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Keese Eyeball"
   },
   {
     "thumb": "thumb-15-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Octorok Tentacle"
   },
   {
     "thumb": "thumb-15-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Octorok Eyeball"
   },
   {
     "thumb": "thumb-15-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Molduga Fin"
+  },
+  {
+    "thumb": "thumb-15-19.png",
+    "type": "material",
+    "name": "Molduga Guts"
+  },
+  {
+    "thumb": "thumb-16-0.png",
+    "type": "material",
+    "name": "Shard of Dinraal's Horn"
   },
   {
     "thumb": "thumb-16-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Naydra's Scale"
   },
   {
     "thumb": "thumb-16-2.png",
     "type": "material",
-    "name": "???"
+    "name": "Naydra's Claw"
   },
   {
     "thumb": "thumb-16-3.png",
     "type": "material",
-    "name": "???"
+    "name": "Shard of Naydra's Fang"
   },
   {
     "thumb": "thumb-16-4.png",
     "type": "material",
-    "name": "???"
+    "name": "Shard of Naydra's Horn"
   },
   {
     "thumb": "thumb-16-5.png",
     "type": "material",
-    "name": "???"
+    "name": "Farosh's Scale"
   },
   {
     "thumb": "thumb-16-6.png",
     "type": "material",
-    "name": "???"
+    "name": "Farosh's Claw"
   },
   {
     "thumb": "thumb-16-7.png",
     "type": "material",
-    "name": "???"
+    "name": "Shard of Farosh's Fang"
   },
   {
     "thumb": "thumb-16-8.png",
     "type": "material",
-    "name": "???"
+    "name": "Shard of Farosh's Horn"
   },
   {
     "thumb": "thumb-16-9.png",
@@ -1377,225 +1392,250 @@
   {
     "thumb": "thumb-16-10.png",
     "type": "material",
-    "name": "???"
+    "name": "Octo Balloon"
   },
   {
     "thumb": "thumb-16-11.png",
     "type": "material",
-    "name": "???"
+    "name": "Hyrule Bass"
   },
   {
     "thumb": "thumb-16-12.png",
     "type": "material",
-    "name": "???"
+    "name": "Hearty Bass"
   },
   {
     "thumb": "thumb-16-13.png",
     "type": "material",
-    "name": "???"
+    "name": "Chillfin Trout"
   },
   {
     "thumb": "thumb-16-14.png",
     "type": "material",
-    "name": "???"
+    "name": "Voltfin Trout"
   },
   {
     "thumb": "thumb-16-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Mighty Carp"
   },
   {
     "thumb": "thumb-16-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Mighty Porgy"
   },
   {
     "thumb": "thumb-16-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Armored Porgy"
   },
   {
     "thumb": "thumb-16-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Armored Carp"
+  },
+  {
+    "thumb": "thumb-16-19.png",
+    "type": "material",
+    "name": "Hearty Salmon"
+  },
+  {
+    "thumb": "thumb-17-0.png",
+    "type": "material",
+    "name": "Chickaloo Tree Nut"
   },
   {
     "thumb": "thumb-17-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Razorclaw Crab"
   },
   {
     "thumb": "thumb-17-2.png",
     "type": "material",
-    "name": "???"
+    "name": "Ironshell Crab"
   },
   {
     "thumb": "thumb-17-3.png",
     "type": "material",
-    "name": "???"
+    "name": "Bright-Eyed Crab"
   },
   {
     "thumb": "thumb-17-4.png",
     "type": "material",
-    "name": "???"
+    "name": "Cane Sugar"
   },
   {
     "thumb": "thumb-17-5.png",
     "type": "material",
-    "name": "???"
+    "name": "Goron Spice"
   },
   {
     "thumb": "thumb-17-6.png",
     "type": "material",
-    "name": "???"
+    "name": "Hylian Rice"
   },
   {
     "thumb": "thumb-17-7.png",
     "type": "material",
-    "name": "???"
+    "name": "Bird Egg"
   },
   {
     "thumb": "thumb-17-8.png",
     "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-17-9.png",
-    "type": "material",
-    "name": "???"
+    "name": "Fresh Milk"
   },
   {
     "thumb": "thumb-17-10.png",
     "type": "material",
-    "name": "???"
+    "name": "Goat Butter"
   },
   {
     "thumb": "thumb-17-11.png",
     "type": "material",
-    "name": "???"
+    "name": "Tabantha Wheat"
   },
   {
     "thumb": "thumb-17-12.png",
     "type": "material",
-    "name": "???"
+    "name": "Monster Extract"
   },
   {
     "thumb": "thumb-17-13.png",
     "type": "material",
-    "name": "???"
+    "name": "Raw Meat"
   },
   {
     "thumb": "thumb-17-14.png",
     "type": "material",
-    "name": "???"
+    "name": "Raw Prime Meat"
   },
   {
     "thumb": "thumb-17-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Raw Bird Drumstick"
   },
   {
     "thumb": "thumb-17-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Raw Bird Thigh"
   },
   {
     "thumb": "thumb-17-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Raw Gourmet Meat"
   },
   {
     "thumb": "thumb-17-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Raw Whole Bird"
+  },
+  {
+    "thumb": "thumb-17-19.png",
+    "type": "material",
+    "name": "Rushroom"
+  },
+  {
+    "thumb": "thumb-18-0.png",
+    "type": "material",
+    "name": "Opal"
   },
   {
     "thumb": "thumb-18-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Amber"
   },
   {
     "thumb": "thumb-18-2.png",
     "type": "material",
-    "name": "???"
+    "name": "Luminous Stone"
   },
   {
     "thumb": "thumb-18-3.png",
     "type": "material",
-    "name": "???"
+    "name": "Rock Salt"
   },
   {
     "thumb": "thumb-18-4.png",
     "type": "material",
-    "name": "???"
+    "name": "Flint"
   },
   {
     "thumb": "thumb-18-5.png",
     "type": "material",
-    "name": "???"
+    "name": "Star Fragment"
   },
   {
     "thumb": "thumb-18-6.png",
     "type": "material",
-    "name": "???"
+    "name": "Hyrule Herb"
   },
   {
     "thumb": "thumb-18-7.png",
     "type": "material",
-    "name": "???"
+    "name": "Hearty Radish"
   },
   {
     "thumb": "thumb-18-8.png",
     "type": "material",
-    "name": "???"
+    "name": "Big Hearty Radish"
   },
   {
     "thumb": "thumb-18-9.png",
     "type": "material",
-    "name": "???"
+    "name": "Cool Safflina"
   },
   {
     "thumb": "thumb-18-10.png",
     "type": "material",
-    "name": "???"
+    "name": "Warm Safflina"
   },
   {
     "thumb": "thumb-18-11.png",
     "type": "material",
-    "name": "???"
+    "name": "Mighty Thistle"
   },
   {
     "thumb": "thumb-18-12.png",
     "type": "material",
-    "name": "???"
+    "name": "Armoranth"
   },
   {
     "thumb": "thumb-18-13.png",
     "type": "material",
-    "name": "???"
+    "name": "Blue Nightshade"
   },
   {
     "thumb": "thumb-18-14.png",
     "type": "material",
-    "name": "???"
+    "name": "Silent Princess"
   },
   {
     "thumb": "thumb-18-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Electric Safflina"
   },
   {
     "thumb": "thumb-18-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Swift Carrot"
   },
   {
     "thumb": "thumb-18-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Swift Violet"
   },
   {
     "thumb": "thumb-18-18.png",
+    "type": "material",
+    "name": "Endura Carrot"
+  },
+  {
+    "thumb": "thumb-18-19.png",
+    "type": "material",
+    "name": "???"
+  },
+  {
+    "thumb": "thumb-19-0.png",
     "type": "material",
     "name": "???"
   },
@@ -1688,5 +1728,10 @@
     "thumb": "thumb-19-18.png",
     "type": "material",
     "name": "???"
+  },
+  {
+    "thumb": "wood-icon.png",
+    "type": "material",
+    "name": "Wood"
   }
 ]

@@ -35,6 +35,8 @@ export default class App extends Component {
           {/* <MaterialList materials={data.materials} /> */}
           <ThumbedMaterials />
 
+          <hr />
+
           <RecipeList recipes={data.recipes} />
         </div>
         
