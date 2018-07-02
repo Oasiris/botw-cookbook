@@ -265,9 +265,10 @@ export default class CookingUtil {
         R.map(R.prop('idx')), 
         R.filter(isInFamily)
       )(mats);
-    } 
+    }
 
     // Normal recipes:    
+    // console.log(mats.map(m => m.name), mats.length);
     let fulfillsIngredient = 
     R.curry(
       (mat, ingred) => dearrayify(matchK(mat, ingred)
@@ -361,10 +362,10 @@ export default class CookingUtil {
     // Mat validation
     let rcpType = CookingUtil.getRecipeType(mats);
     return match(rcpType)
-      .on(R.equals('Elixir'),    mats => CookingUtil.cookElixir(mats))
-      .on(R.equals('Food'),      mats => CookingUtil.cookFood(mats))
-      .on(R.equals('Rock-Hard'), mats => CookingUtil.cookRockHardFood(mats))
-      .on(R.equals('Dubious'),   mats => CookingUtil.cookDubiousFood(mats))
+      .on(R.equals('Elixir'),    () => CookingUtil.cookElixir(mats))
+      .on(R.equals('Food'),      () => CookingUtil.cookFood(mats))
+      .on(R.equals('Rock-Hard'), () => CookingUtil.cookRockHardFood(mats))
+      .on(R.equals('Dubious'),   () => CookingUtil.cookDubiousFood(mats))
       .otherwise(() => {
         throw new Error('cook() error: unknown getRecipeType output');
       });
@@ -382,7 +383,7 @@ export default class CookingUtil {
     const thumb = 'elixir-placeholder.jpg'; // TODO: What to do about elixir thumbs?
     const desc = C.effectDescriptions[effectName.toLowerCase()].elixirDesc;
     const effectData = CookingUtil.getDishEffectInfo(mats);
-    const hpRestore = CookingUtil.getHpRestore(mats);
+    const hpRestore  = CookingUtil.getHpRestore(mats);
     const rupeePrice = CookingUtil.getRupeePrice(mats);
     
     return { 
@@ -396,12 +397,13 @@ export default class CookingUtil {
    */
   static cookFood(mats) {
     // It's important that the recipes array is traversed in indexed order!!
-    const rcp = R.find(__, C.recipes)(rcp => canCookInto(mats, rcp));
+    const rcpObj = R.find(__, C.recipes)(rcp => CookingUtil.canCookInto(mats, rcp));
+    const rcp = Rcp.ofId(rcpObj.idx);
     // Error handle for null rcp here
 
     let { name, thumb, desc } = rcp;
     const effectData = CookingUtil.getDishEffectInfo(mats);
-    const hpRestore = CookingUtil.getHpRestore(mats);
+    const hpRestore  = CookingUtil.getHpRestore(mats);
     const rupeePrice = CookingUtil.getRupeePrice(mats);
     
     const effectName = EffectUtil.getEffect(mats);
@@ -441,16 +443,17 @@ export default class CookingUtil {
    */
   static cookDubiousFood(mats) {
     const rcp = Rcp.ofName('Dubious Food');
+
     const { name, thumb, desc } = rcp;
-
-    const hpRestore = CookingUtil.getHpRestore(mats, false, false) / 2;
-    const effectData = 'no effect';
-    const rupeePrice = 2;
-
-    let dish = { 
-      mats, rcp, name, thumb, desc, hpRestore, effectData, rupeePrice 
-    };    
-    return dish;
+    // const effectData = 'no effect';
+    // const hpRestore  = CookingUtil.getHpRestore(mats, false, false) / 2;
+    // const rupeePrice = 2;
+    return {
+      mats, rcp, name, thumb, desc,
+      effectData: 'no effect',
+      hpRestore:  CookingUtil.getHpRestore(mats, false, false) / 2,
+      rupeePrice: 2
+    };  
   }
 }
 
@@ -474,6 +477,7 @@ export class CookedDish extends Dish {
    * @param {Object} data 
    */
   constructor(data) {
+    super();
     if (data._filled === true) {
       for (let k of R.keys(data)) {
         this[k] = data[k];
@@ -493,6 +497,6 @@ export class CookedDish extends Dish {
   static ofMats(mats) {
     // Validate mats here
     const dish = CookingUtil.cook(mats);
-    return new Dish({ ...dish, _filled: true });
+    return new CookedDish({ ...dish, _filled: true });
   }
 }

@@ -16,6 +16,17 @@ import R from 'ramda';
 // Tests
 // —————————————————————————————————————
 
+describe('recipes', () => {
+
+  it('all recipes are objects', () => {
+    const { recipes } = bundler;
+    recipes.forEach(recipe => {
+      expect(typeof recipe).toBe('object');
+    });
+  });
+
+});
+
 /**
  * Testing the exported variable 'additiveOnlyRecipes'.
  * 

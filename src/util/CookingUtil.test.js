@@ -6,7 +6,7 @@
 // Dependencies
 // —————————————————————————————————————
 
-import CookingUtil, { Mat, Rcp } from './CookingUtil'
+import CookingUtil, { Mat, Rcp, CookedDish } from './CookingUtil'
 
 import R, { curry, compose, pipe, __ } from 'ramda';
 
@@ -132,7 +132,17 @@ const matSets = [
   {
     _notes: { hpRestore: ['Nut Rule'] },
     names: 'Acorn',
-    hpRestore: hearts(0.5)
+    hpRestore: hearts(0.5),
+    cook: {
+      mats: [Mat.ofName('Acorn')],
+      rcp: Rcp.ofName('Sautéed Nuts'),
+      name: 'Sautéed Nuts',
+      thumb: undefined,
+      desc: 'These sautéed tree seeds are the perfect snack for the busy adventurer on the go!',
+      effectData: 'no effect',
+      hpRestore: 2,
+      rupeePrice: 8
+    }
   },
   {
     _notes: { hpRestore: ['Nut Rule'] },
@@ -459,6 +469,12 @@ describe('CookingUtil', () => {
   });
 });
 
+describe('Dish', () => {
+  describe('CookingUtil.cook', () => {
+    const testingProp = 'cook';
+    renderMatTests(testingProp, CookingUtil.cook);
+  }); 
+});
 
 /*
 
