@@ -1,0 +1,29 @@
+.small-counter-corner {
+  position: absolute;
+  bottom: -4px;
+  right: -4px; }
+
+.small-counter-outer {
+  color: yellow;
+  display: inline-block; }
+
+.small-counter {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 5px;
+  font-size: 17px; }
+
+.small-corner-x-outer {
+  font-weight: 800;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  z-index: 3; }
+
+.small-corner-x {
+  padding: 0px 6px;
+  line-height: 1;
+  padding-bottom: 4px; }

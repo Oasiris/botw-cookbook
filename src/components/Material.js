@@ -6,38 +6,66 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import '../styles/Material.css'
 import '../styles/global.css'
+import '../styles/Card.css'
+import '../styles/SmallCounter.css'
 
 import FancyCard from './FancyCard';
+import SimpleCard from './SimpleCard';
+import SmallCounter from './SmallCounter';
 
 import data from '../data/all'
 
 export default class Material extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { numInPot: 0 };
+    this.addToPot = this.addToPot.bind(this);
+    this.removeAllFromPot = this.removeAllFromPot.bind(this);
+  }
 
   static propTypes = {
     // name: PropTypes.string.isRequired,
     // imgSrc: PropTypes.string.isRequired
     // imgSrc: PropTypes.string,
     showText: PropTypes.bool,
-    data: PropTypes.object
+    data: PropTypes.object.isRequired
   }
 
   static defaultProps = {
     showText: true
   }
 
+  addToPot() {
+    console.log('adding');
+    console.log('log numInPot as ' + this.state.numInPot);
+    this.setState(state => ({ numInPot: state.numInPot + 1 }));
+  }
+
+  removeAllFromPot(e) {
+    // e.preventDefault();
+    console.log('removing');
+    console.log('log numInPot as ' + this.state.numInPot);
+    this.setState(() => ({ numInPot: 0 }));
+  }
+
   render() {
 
-
+    const highlighted = (this.state.numInPot > 0);
+    
     
     return (
       <div className="mat-card-wrapper">
-        <FancyCard content={(
+        <button onClick={this.addToPot}>+</button>
+        <button onClick={this.removeAllFromPot}>×</button>
+        <FancyCard 
+          clickable={true} 
+          highlighted={highlighted} 
+          onClick={this.addToPot}>
+
           <div className="mat-card">
             <div className="mat-icon-wrapper">
               {
@@ -47,20 +75,36 @@ export default class Material extends Component {
                   className="mat-icon unselectable"
                   alt="" />
               }
-              
             </div>
 
             {
               this.props.showText && 
               <div className="mat-name-wrapper">
-                <div className="mat-name">
+                <div className="mat-name unselectable">
                   {this.props.data.name}
                 </div>
               </div>
             }
-            
+
+            {
+              highlighted &&
+              <React.Fragment>
+                <div className="small-counter-corner">
+                  <SmallCounter count={this.state.numInPot} />
+                </div>
+                <div className="small-corner-x-outer">
+                  <SimpleCard clickable={true} onClick={this.removeAllFromPot}>
+                    <div className="small-corner-x">
+                      × 
+                    </div>
+                  </SimpleCard>
+                </div>
+              </React.Fragment>
+              
+              
+            }
           </div>
-        )} />
+        </FancyCard>
       </div>
      
     );

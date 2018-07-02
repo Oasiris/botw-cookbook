@@ -1,50 +1,67 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 // import PropTypes from 'prop-types'
 
-import '../styles/FancyCard.css'
+import '../styles/Card.css'
 import '../styles/global.css'
 
 
+/**
+ * Element representing a card. Children to this Element will appear inside of
+ * the card.
+ * 
+ * @prop {Boolean} growOnHover -- Whether or not the card will grow slightly when moused over.
+ */
 export default class FancyCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { highlighted: false };
-    this.toggleHighlight = this.toggleHighlight.bind(this);
+    // this.state = { highlighted: false };
+    // this.toggleHighlight = this.toggleHighlight.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  toggleHighlight() {
-    this.setState(({ highlighted }) => ({ highlighted: !highlighted }));
+  static propTypes = {
+    growOnHover:  PropTypes.bool,
+    angelOnHover: PropTypes.bool,
+    highlighted:  PropTypes.bool,
+    clickable:    PropTypes.bool,
+    handleClick:  PropTypes.func
   }
+
+  static defaultProps = {
+    growOnHover:  true,
+    angelOnHover: true,
+    highlighted:  false,
+    clickable:    false
+  }
+
+  handleClick() {
+    if (this.props.onClick)
+      this.props.onClick();
+  }
+
+  // toggleHighlight() {
+  //   this.setState(({ highlighted }) => ({ highlighted: !highlighted }));
+  // }
 
   render() {
-    const { highlighted } = this.state;
-    const adtnOuterClass = highlighted ? 'selected-fancy-card-outer' : '';
-    const adtnInnerClass = highlighted ? 'selected-fancy-card-inner' : '';
+    const { highlighted, growOnHover, angelOnHover } = this.props;
+    const hiliteOut = highlighted ? ' selected-fancy-card-outer' : '';
+    const hiliteInr = highlighted ? ' selected-fancy-card-inner' : '';
+
+    const clickable = this.props.clickable ? ' clickable-fancy-card' : '';
+    const maybeGrow = growOnHover ? ' grow-slight' : '';
+    const maybeAngel = angelOnHover ? ' angel-on-hover' : '';
 
     return (
-        <div className={"fancy-card-outer grow-slight " + adtnOuterClass}>
-          <div className={"fancy-card-inner " + adtnInnerClass}>
-            {this.props.content}
+        <div 
+        className={"fancy-card-outer" + maybeGrow + maybeAngel + hiliteOut + clickable}
+          onClick={this.handleClick}>
+          <div className={"fancy-card-inner " + hiliteInr}>
+            {this.props.children}
           </div>
           {/* <button onClick={this.toggleHighlight}>Weee</button> */}
         </div>
     );
   }
 }
-
-// export class SelectedFancyCard extends Component {
-//   render() {
-//     return (
-//       <div className="fancy-card-outer grow-slight selected-fancy-card-outer">
-//         <div className="fancy-card-inner selected-fancy-card-inner">
-//           {this.props.content}
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// Material.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   imgSrc: PropTypes.string.isRequired
-// }

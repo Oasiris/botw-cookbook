@@ -13,6 +13,7 @@ import Footer from './Footer'
 import FancyCard, { SelectedFancyCard } from './FancyCard'
 
 import data from '../data/all'
+import SmallCounter from './SmallCounter';
 
 
 export default class App extends Component {
@@ -21,6 +22,8 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
+
+          {/* <SmallCounter count={3} /> */}
           {/* <SelectedFancyCard content={(
             <h2>Hello</h2>
           )} /> */}
