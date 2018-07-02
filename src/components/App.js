@@ -5,6 +5,7 @@ import './../styles/global.css';
 import './../static/css/fontello.css';
 
 import Material, { ThumbedMaterials, MaterialList } from './Material';
+import Recipe, { RecipeList } from './Recipe'
 import Button from './Button';
 
 import data from '../data/all'
@@ -33,6 +34,8 @@ export default class App extends Component {
           {/* <ThumbedMaterials /> */}
           {/* <MaterialList materials={data.materials} /> */}
           <ThumbedMaterials />
+
+          <RecipeList recipes={data.recipes} />
         </div>
         
         <Footer />

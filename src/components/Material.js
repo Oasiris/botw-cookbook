@@ -23,7 +23,8 @@ export default class Material extends Component {
     // name: PropTypes.string.isRequired,
     // imgSrc: PropTypes.string.isRequired
     // imgSrc: PropTypes.string,
-    showText: PropTypes.bool
+    showText: PropTypes.bool,
+    data: PropTypes.object
   }
 
   static defaultProps = {
@@ -155,7 +156,10 @@ export class ThumbedMaterials extends Component {
 
   render() {
     return (
-      <MaterialList materials={data.materials.filter(mat => mat.thumb)} />
+      <div>
+        <h2>Materials</h2>
+        <MaterialList materials={data.materials.filter(mat => mat.thumb)} />        
+      </div>
       // <div>
       //   <div>
       //     <button onClick={this.onButtonClick}>Toggle Names</button>

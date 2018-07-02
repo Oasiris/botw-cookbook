@@ -89,7 +89,7 @@ let elixirs = [
       //     materials[i] = { ...materials[i], thumb: el.thumb };
       //   }
       // });
-    } else if (el.type === 'recipe') {
+    } else if (el.type === 'cookedDish') {
       for (let i in recipes) {
         if (recipes[i].name === el.name) {
           recipes[i] = { ...recipes[i], thumb: el.thumb };

@@ -131,82 +131,82 @@
   },
   {
     "thumb": "thumb-2-1.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Mushroom Skewer"
   },
   {
     "thumb": "thumb-2-2.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Steamed Mushrooms"
   },
   {
     "thumb": "thumb-2-3.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Steamed Fruit"
   },
   {
     "thumb": "thumb-2-4.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Steamed Fish"
   },
   {
     "thumb": "thumb-2-5.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Steamed Meat"
   },
   {
     "thumb": "thumb-2-6.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fruit and Mushroom Mix"
   },
   {
     "thumb": "thumb-2-7.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fish and Mushroom Skewer"
   },
   {
     "thumb": "thumb-2-8.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Meat and Mushroom Skewer"
   },
   {
     "thumb": "thumb-2-9.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Omelet"
   },
   {
     "thumb": "thumb-2-10.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Glazed Mushrooms"
   },
   {
     "thumb": "thumb-2-11.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Glazed Meat"
   },
   {
     "thumb": "thumb-2-12.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Glazed Seafood"
   },
   {
     "thumb": "thumb-2-13.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Glazed Veggies"
   },
   {
     "thumb": "thumb-2-14.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fried Wild Greens"
   },
   {
     "thumb": "thumb-2-15.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Simmered Fruit"
   },
   {
     "thumb": "thumb-2-18.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fish Skewer"
   },
   {
@@ -246,247 +246,247 @@
   },
   {
     "thumb": "thumb-3-7.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fragrant Mushroom Sauté"
   },
   {
     "thumb": "thumb-3-8.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Salt-Grilled Greens"
   },
   {
     "thumb": "thumb-3-9.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Salt-Grilled Fish"
   },
   {
     "thumb": "thumb-3-10.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Salt-Grilled Meat"
   },
   {
     "thumb": "thumb-3-11.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Salt-Grilled Prime Meat"
   },
   {
     "thumb": "thumb-3-12.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Salt-Grilled Gourmet Meat"
   },
   {
     "thumb": "thumb-3-13.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Pepper Steak"
   },
   {
     "thumb": "thumb-3-14.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Spicy Peppered Seafood"
   },
   {
     "thumb": "thumb-3-15.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Salt-Grilled Crab"
   },
   {
     "thumb": "thumb-3-16.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Crab Stir-Fry"
   },
   {
     "thumb": "thumb-3-17.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Poultry Pilaf"
   },
   {
     "thumb": "thumb-3-18.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Prime Poultry Pilaf"
   },
   {
     "thumb": "thumb-4-0.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Crab Omelet with Rice"
   },
   {
     "thumb": "thumb-4-1.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Crab Risotto"
   },
   {
     "thumb": "thumb-4-2.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Seafood Meuniere"
   },
   {
     "thumb": "thumb-4-3.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Porgy Meuniere"
   },
   {
     "thumb": "thumb-4-4.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Salmon Meuniere"
   },
   {
     "thumb": "thumb-4-5.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fruit Pie"
   },
   {
     "thumb": "thumb-4-6.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Apple Pie"
   },
   {
     "thumb": "thumb-4-7.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Egg Tart"
   },
   {
     "thumb": "thumb-4-8.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Meat Pie"
   },
   {
     "thumb": "thumb-4-9.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Carrot Cake"
   },
   {
     "thumb": "thumb-4-10.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Pumpkin Pie"
   },
   {
     "thumb": "thumb-4-11.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Hot Buttered Apple"
   },
   {
     "thumb": "thumb-4-12.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Honeyed Apple"
   },
   {
     "thumb": "thumb-4-13.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Honeyed Fruits"
   },
   {
     "thumb": "thumb-4-14.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Plain Crepe"
   },
   {
     "thumb": "thumb-4-15.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Wildberry Crepe"
   },
   {
     "thumb": "thumb-4-16.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Nutcake"
   },
   {
     "thumb": "thumb-4-17.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fried Bananas"
   },
   {
     "thumb": "thumb-4-18.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Egg Pudding"
   },
   {
     "thumb": "thumb-5-0.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Warm Milk"
   },
   {
     "thumb": "thumb-5-1.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Monster Stew"
   },
   {
     "thumb": "thumb-5-2.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Monster Soup"
   },
   {
     "thumb": "thumb-5-3.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Monster Cake"
   },
   {
     "thumb": "thumb-5-4.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Monster Rice Balls"
   },
   {
     "thumb": "thumb-5-5.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Monster Curry"
   },
   {
     "thumb": "thumb-5-6.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Wheat Bread"
   },
   {
     "thumb": "thumb-5-7.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Seafood Paella"
   },
   {
     "thumb": "thumb-5-8.png",
     "type": "material",
-    "name": "???"
+    "name": "Fruitcake"
   },
   {
     "thumb": "thumb-5-9.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Vegetable Omelet"
   },
   {
     "thumb": "thumb-5-10.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Mushroom Omelet"
   },
   {
     "thumb": "thumb-5-11.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Dubious Food"
   },
   {
     "thumb": "thumb-5-12.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Rock-Hard Food"
   },
   {
     "thumb": "thumb-5-13.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Fragrant Mushroom Sauté"
   },
   {
     "thumb": "thumb-5-14.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Herb Sauté"
   },
   {
     "thumb": "thumb-5-15.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Spiced Meat Skewer"
   },
   {
     "thumb": "thumb-5-16.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Prime Spiced Meat Skewer"
   },
   {
     "thumb": "thumb-5-17.png",
-    "type": "recipe",
+    "type": "cookedDish",
     "name": "Gourmet Spiced Meat Skewer"
   },
   {
@@ -527,17 +527,17 @@
   {
     "thumb": "thumb-6-6.png",
     "type": "material",
-    "name": "???"
+    "name": "Hinox Toenail"
   },
   {
     "thumb": "thumb-6-7.png",
     "type": "material",
-    "name": "???"
+    "name": "Hinox Tooth"
   },
   {
     "thumb": "thumb-6-8.png",
     "type": "material",
-    "name": "???"
+    "name": "Hinox Guts"
   },
   {
     "thumb": "thumb-6-9.png",
@@ -677,27 +677,27 @@
   {
     "thumb": "thumb-8-1.png",
     "type": "material",
-    "name": "???"
+    "name": "Chillshroom"
   },
   {
     "thumb": "thumb-8-2.png",
     "type": "material",
-    "name": "???"
+    "name": "Sunshroom"
   },
   {
     "thumb": "thumb-8-3.png",
     "type": "material",
-    "name": "???"
+    "name": "Rushroom"
   },
   {
     "thumb": "thumb-8-4.png",
     "type": "material",
-    "name": "???"
+    "name": "Hylian Shroom"
   },
   {
     "thumb": "thumb-8-5.png",
     "type": "material",
-    "name": "???"
+    "name": "Hearty Truffle"
   },
   {
     "thumb": "thumb-8-6.png",
@@ -707,240 +707,160 @@
   {
     "thumb": "thumb-8-7.png",
     "type": "material",
-    "name": "???"
+    "name": "Zapshroom"
   },
   {
     "thumb": "thumb-8-8.png",
     "type": "material",
-    "name": "???"
+    "name": "Silent Shroom"
   },
   {
     "thumb": "thumb-8-9.png",
     "type": "material",
-    "name": "???"
+    "name": "Razorshroom"
   },
   {
     "thumb": "thumb-8-10.png",
     "type": "material",
-    "name": "???"
+    "name": "Ironshroom"
   },
   {
     "thumb": "thumb-8-11.png",
     "type": "material",
-    "name": "???"
+    "name": "Big Hearty Truffle"
   },
   {
     "thumb": "thumb-8-12.png",
     "type": "material",
-    "name": "???"
+    "name": "Big Hearty Truffle"
   },
   {
     "thumb": "thumb-8-13.png",
     "type": "material",
-    "name": "???"
+    "name": "Endurashroom"
   },
   {
     "thumb": "thumb-8-14.png",
     "type": "material",
-    "name": "???"
+    "name": "Diamond"
   },
   {
     "thumb": "thumb-8-15.png",
     "type": "material",
-    "name": "???"
+    "name": "Diamond"
   },
   {
     "thumb": "thumb-8-16.png",
     "type": "material",
-    "name": "???"
+    "name": "Ruby"
   },
   {
     "thumb": "thumb-8-17.png",
     "type": "material",
-    "name": "???"
+    "name": "Sapphire"
   },
   {
     "thumb": "thumb-8-18.png",
     "type": "material",
-    "name": "???"
+    "name": "Topaz"
+  },
+  {
+    "thumb": "thumb-9-0.png",
+    "type": "roastedDish",
+    "name": "Roasted Hearty Bass"
   },
   {
     "thumb": "thumb-9-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Trout"
   },
   {
     "thumb": "thumb-9-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Hearty Salmon"
   },
   {
     "thumb": "thumb-9-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Carp"
   },
   {
     "thumb": "thumb-9-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Porgy"
   },
   {
     "thumb": "thumb-9-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Blueshell Escargot"
   },
   {
     "thumb": "thumb-9-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Sneaky River Escargot"
   },
   {
     "thumb": "thumb-9-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Blackened Crab"
   },
   {
     "thumb": "thumb-9-8.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Seared Steak"
   },
   {
     "thumb": "thumb-9-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Bird Drumstick"
   },
   {
     "thumb": "thumb-9-10.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Baked Apple"
   },
   {
     "thumb": "thumb-9-11.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Toasty Stamella Shroom"
   },
   {
     "thumb": "thumb-9-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Toasted Hearty Truffle"
   },
   {
     "thumb": "thumb-9-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Toasty Hylian Shroom"
   },
   {
     "thumb": "thumb-9-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Wildberry"
   },
   {
     "thumb": "thumb-9-15.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Voltfruit"
   },
   {
     "thumb": "thumb-9-16.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Hearty Durian"
   },
   {
     "thumb": "thumb-9-17.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Baked Palm Fruit"
   },
   {
     "thumb": "thumb-9-18.png",
-    "type": "material",
-    "name": "???"
+    "type": "roastedDish",
+    "name": "Roasted Mighty Bananas"
   },
   {
-    "thumb": "thumb-10-1.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-2.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-3.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-4.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-5.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-6.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-7.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-8.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-9.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-10.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-11.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-12.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-13.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-14.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-15.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-16.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-17.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-10-18.png",
+    "thumb": "thumb-11-0.png",
     "type": "material",
     "name": "???"
   },
@@ -1035,79 +955,74 @@
     "name": "???"
   },
   {
+    "thumb": "thumb-12-0.png",
+    "type": "cookedDish",
+    "name": "Meat Skewer"
+  },
+  {
     "thumb": "thumb-12-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Copious Fried Wild Greens"
   },
   {
     "thumb": "thumb-12-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Copious Simmered Fruit"
   },
   {
     "thumb": "thumb-12-3.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-12-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Copious Mushroom Skewers"
   },
   {
     "thumb": "thumb-12-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Copious Fish Skewers"
   },
   {
     "thumb": "thumb-12-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Copious Meat Skewers"
   },
   {
     "thumb": "thumb-12-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Meat and Seafood Fry"
   },
   {
     "thumb": "thumb-12-8.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Prime Meat and Seafood Fry"
   },
   {
     "thumb": "thumb-12-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Gourmet Meat and Seafood Fry"
   },
   {
     "thumb": "thumb-12-10.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Meat-Stuffed Pumpkin"
   },
   {
     "thumb": "thumb-12-11.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Sautéed Peppers"
   },
   {
     "thumb": "thumb-12-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Sautéed Nuts"
   },
   {
     "thumb": "thumb-12-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Seafood Skewer"
   },
   {
     "thumb": "thumb-12-14.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-12-15.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Fairy Tonic"
   },
   {
     "thumb": "thumb-12-16.png",
@@ -1125,182 +1040,202 @@
     "name": "Tough Elixir"
   },
   {
-    "thumb": "thumb-13-1.png",
+    "thumb": "thumb-12-19.png",
     "type": "elixir",
     "name": "Enduring Elixir"
   },
   {
+    "thumb": "thumb-13-0.png",
+    "type": "cookedDish",
+    "name": "Gourmet Poultry Pilaf"
+  },
+  {
+    "thumb": "thumb-13-1.png",
+    "type": "cookedDish",
+    "name": "Fried Egg and Rice"
+  },
+  {
     "thumb": "thumb-13-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Creamy Meat Soup"
   },
   {
     "thumb": "thumb-13-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Creamy Seafood Soup"
   },
   {
     "thumb": "thumb-13-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Veggie Cream Soup"
   },
   {
     "thumb": "thumb-13-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Creamy Heart Soup"
   },
   {
     "thumb": "thumb-13-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Seafood Rice Balls"
   },
   {
     "thumb": "thumb-13-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Veggie Rice Balls"
   },
   {
     "thumb": "thumb-13-8.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Mushroom RIce Balls"
   },
   {
     "thumb": "thumb-13-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Meat and RIce Bowl"
   },
   {
     "thumb": "thumb-13-10.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-13-11.png",
-    "type": "material",
-    "name": "???"
-  },
-  {
-    "thumb": "thumb-13-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Prime Meat and Rice Bowl"
   },
   {
     "thumb": "thumb-13-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Gourmet Meat and Rice Bowl"
   },
   {
     "thumb": "thumb-13-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Seafood Fried Rice"
   },
   {
     "thumb": "thumb-13-15.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Curry Pilaf"
   },
   {
     "thumb": "thumb-13-16.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Mushroom Risotto"
   },
   {
     "thumb": "thumb-13-17.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Vegetable Risotto"
   },
   {
     "thumb": "thumb-13-18.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Salmon Risotto"
+  },
+  {
+    "thumb": "thumb-13-19.png",
+    "type": "cookedDish",
+    "name": "Meaty Rice Balls"
+  },
+  {
+    "thumb": "thumb-14-0.png",
+    "type": "cookedDish",
+    "name": "Fish Pie"
   },
   {
     "thumb": "thumb-14-1.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Honey Candy"
   },
   {
     "thumb": "thumb-14-2.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Honey Crepe"
   },
   {
     "thumb": "thumb-14-3.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Curry Rice"
   },
   {
     "thumb": "thumb-14-4.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Vegetable Curry"
   },
   {
     "thumb": "thumb-14-5.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Seafood Curry"
   },
   {
     "thumb": "thumb-14-6.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Poultry Curry"
   },
   {
     "thumb": "thumb-14-7.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Prime Poultry Curry"
   },
   {
     "thumb": "thumb-14-8.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Meat Curry"
   },
   {
     "thumb": "thumb-14-9.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Prime Meat Curry"
   },
   {
     "thumb": "thumb-14-10.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Gourmet Poultry Curry"
   },
   {
     "thumb": "thumb-14-11.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Gourmet Meat Curry"
   },
   {
     "thumb": "thumb-14-12.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Meat Stew"
   },
   {
     "thumb": "thumb-14-13.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Prime Meat Stew"
   },
   {
     "thumb": "thumb-14-14.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Pumpkin Stew"
   },
   {
     "thumb": "thumb-14-15.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Clam Chowder"
   },
   {
     "thumb": "thumb-14-16.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Gourmet Meat Stew"
   },
   {
     "thumb": "thumb-14-17.png",
-    "type": "material",
-    "name": "???"
+    "type": "cookedDish",
+    "name": "Cream of Mushroom Soup"
   },
   {
     "thumb": "thumb-14-18.png",
+    "type": "cookedDish",
+    "name": "Cream of Vegetable Soup"
+  },
+  {
+    "thumb": "thumb-14-19.png",
+    "type": "cookedDish",
+    "name": "Carrot Stew"
+  },
+  {
+    "thumb": "thumb-15-0.png",
     "type": "material",
     "name": "???"
   },

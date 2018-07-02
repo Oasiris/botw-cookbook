@@ -380,7 +380,8 @@ export default class CookingUtil {
 
     const rcp = 'Elixir';
     const name = `${effectName} Elixir`;
-    const thumb = 'elixir-placeholder.jpg'; // TODO: What to do about elixir thumbs?
+    const thumb = R.find(R.propEq('name', name), C.elixirs).thumb;
+    // const thumb = 'elixir-placeholder.jpg'; // TODO: What to do about elixir thumbs?
     const desc = C.effectDescriptions[effectName.toLowerCase()].elixirDesc;
     const effectData = CookingUtil.getDishEffectInfo(mats);
     const hpRestore  = CookingUtil.getHpRestore(mats);
