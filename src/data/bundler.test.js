@@ -27,6 +27,19 @@ describe('recipes', () => {
 
 });
 
+describe('elixirs', () => {
+  it('exists', () => {
+    expect(exists(bundler.elixirs)).toBe(true);
+  });
+
+  it('has as many entries as there are effects', () => {
+    const elixirNum = bundler.elixirs.length;
+    const effectNum = Object.keys(bundler.effectData).length;
+
+    expect(elixirNum).toEqual(effectNum);
+  });
+});
+
 /**
  * Testing the exported variable 'additiveOnlyRecipes'.
  * 
@@ -58,7 +71,7 @@ describe('item descriptions', () => {
     const val = R.all(rcp => exists(rcp.desc), bundler.recipes);
     
     if (val === false) {
-      console.log(R.filter(rcp => !exists(rcp.desc), bundler.recipes));
+      // console.log(R.filter(rcp => !exists(rcp.desc), bundler.recipes));
     }
 
     expect(val).toBe(true);
@@ -68,7 +81,7 @@ describe('item descriptions', () => {
     const val = R.all(mat => exists(mat.desc), bundler.materials);
     
     if (val === false) {
-      console.log(R.filter(mat => !exists(mat.desc), bundler.materials));
+      // console.log(R.filter(mat => !exists(mat.desc), bundler.materials));
     }
     
     expect(val).toBe(true);
@@ -84,23 +97,48 @@ describe('item descriptions', () => {
 });
 
 describe('thumbs', () => {
-  it('thumbs works -- material -- Hightail Lizard', () => {
-    const ele = bundler.materials.filter(m => m.name === 'Hightail Lizard');
-    expect(ele.length).toBe(1);
-    expect(ele[0].thumb).toBe('thumb-0-18.png');
+
+  describe('general', () => {
+    it('every material has a thumbnail', () => {
+      bundler.materials.forEach(el => {
+        expect(exists(el.thumb)).toBe(true);
+      });
+    });
+
+    it('every recipe has a thumbnail', () => {
+      bundler.recipes.forEach(el => {
+        expect(exists(el.thumb)).toBe(true);
+      });
+    });
+
+    it('every elixir has a thumbnail', () => {
+      bundler.elixirs.forEach(el => {
+        expect(exists(el.thumb)).toBe(true);
+      });
+    });
+
   });
 
-  it('thumbs works -- recipe -- Salt-Grilled Greens', () => {
-    const ele = bundler.recipes.filter(m => m.name === 'Salt-Grilled Greens');
-    expect(ele.length).toBe(1);
-    expect(ele[0].thumb).toBe('thumb-3-8.png');
-  });
+  describe('units', () => {
+    it('thumbs works -- material -- Hightail Lizard', () => {
+      const ele = bundler.materials.filter(m => m.name === 'Hightail Lizard');
+      expect(ele.length).toBe(1);
+      expect(ele[0].thumb).toBe('thumb-0-18.png');
+    });
 
-  it('thumbs works -- recipe -- Herb Sauté', () => {
-    const ele = bundler.recipes.filter(m => m.name === 'Herb Sauté');
-    expect(ele.length).toBe(1);
-    expect(ele[0].thumb).toBe('thumb-5-14.png');
+    it('thumbs works -- recipe -- Salt-Grilled Greens', () => {
+      const ele = bundler.recipes.filter(m => m.name === 'Salt-Grilled Greens');
+      expect(ele.length).toBe(1);
+      expect(ele[0].thumb).toBe('thumb-3-8.png');
+    });
+
+    it('thumbs works -- recipe -- Herb Sauté', () => {
+      const ele = bundler.recipes.filter(m => m.name === 'Herb Sauté');
+      expect(ele.length).toBe(1);
+      expect(ele[0].thumb).toBe('thumb-5-14.png');
+    });
   });
+  
 });
 
 // console.log(bundler.recipes.filter(m => m.name.indexOf('é') !== -1))

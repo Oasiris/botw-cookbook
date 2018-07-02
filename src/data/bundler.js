@@ -8,7 +8,7 @@
 // Source: https://gaming.stackexchange.com/questions/302414/what-are-the-most-profitable-meals-and-elixirs-i-can-cook
 
 // ——————————————————————————————————————————————————————————————————————————
-// Dependencies
+// Basic Dependencies
 // ——————————————————————————————————————————————————————————————————————————
 
 // Bundle the JSONs in this folder for exporting
@@ -22,6 +22,24 @@ let recipes = require('./recipes')
 recipes.forEach((rcp, idx) => {
   rcp.idx = Number(idx) + 1;
 });
+
+// ——————————————————————————————————————————————————————————————————————————
+// Elixirs
+// ——————————————————————————————————————————————————————————————————————————
+
+let elixirs = [
+  { name: 'Hearty Elixir'     },
+  { name: 'Energizing Elixir' },
+  { name: 'Enduring Elixir'   },
+  { name: 'Sneaky Elixir'     },
+  { name: 'Hasty Elixir'      },
+  { name: 'Mighty Elixir'     },
+  { name: 'Tough Elixir'      },
+  { name: 'Spicy Elixir'      },
+  { name: 'Chilly Elixir'     },
+  { name: 'Electro Elixir'    },
+  { name: 'Fireproof Elixir'  }   
+];
 
 // ——————————————————————————————————————————————————————————————————————————
 // Adding descriptions
@@ -48,7 +66,6 @@ recipes.forEach((rcp, idx) => {
       }
     }
   });
-
 }
 
 // ——————————————————————————————————————————————————————————————————————————
@@ -88,6 +105,12 @@ recipes.forEach((rcp, idx) => {
       // recipes = recipes
       //   .filter(obj => obj.name === el.name)
       //   .map(obj => ({ ...obj, thumb: el.thumb }));
+    } else if (el.type === 'elixir') {
+      for (let i in elixirs) {
+        if (elixirs[i].name === el.name) {
+          elixirs[i] = { ...elixirs[i], thumb: el.thumb };
+        }
+      }
     }
   }); 
 }
@@ -371,6 +394,7 @@ const effectData = {
 module.exports = {
   materials,
   recipes,
+  elixirs,
   // matDescs,
   // recipeDescs,
   additiveOnlyRecipes,
