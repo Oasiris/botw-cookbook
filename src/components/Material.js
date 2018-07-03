@@ -46,7 +46,9 @@ export default class Material extends Component {
   }
 
   removeAllFromPot(e) {
+    console.log(e);
     // e.preventDefault();
+    e.stopPropagation();
     console.log('removing');
     console.log('log numInPot as ' + this.state.numInPot);
     this.setState(() => ({ numInPot: 0 }));
@@ -59,8 +61,8 @@ export default class Material extends Component {
     
     return (
       <div className="mat-card-wrapper">
-        <button onClick={this.addToPot}>+</button>
-        <button onClick={this.removeAllFromPot}>×</button>
+        {/* <button onClick={this.addToPot}>+</button> */}
+        {/* <button onClick={this.removeAllFromPot}>×</button> */}
         <FancyCard 
           clickable={true} 
           highlighted={highlighted} 

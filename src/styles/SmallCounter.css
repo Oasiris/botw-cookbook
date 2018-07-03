@@ -18,8 +18,8 @@
   font-weight: 800;
   font-size: 18px;
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  right: 0;
   display: inline-block;
   z-index: 3; }
 

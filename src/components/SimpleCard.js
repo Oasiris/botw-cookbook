@@ -34,9 +34,9 @@ export default class SimpleCard extends Component {
     clickable: false
   }
 
-  handleClick() {
+  handleClick(...args) {
     if (this.props.onClick)
-      this.props.onClick();
+      this.props.onClick(...args);
   }
 
   // toggleHighlight() {
