@@ -38,7 +38,7 @@ import { exists, match, matchK, ifExists } from './utility'
  * The testing sets in this array are for instances like those.
  */
 const partialTestingSets = [
-  {
+  { // Additive based
     mats: 'Fairy',
     output: {
       name: 'Fairy Tonic'
@@ -48,6 +48,22 @@ const partialTestingSets = [
     mats: 'Fresh Milk',
     output: {
       name: 'Warm Milk'
+    }
+  },
+  {
+    mats: 'Palm Fruit, Palm Fruit, Palm Fruit, Palm Fruit, Palm Fruit',
+    output: {
+      name: 'Simmered Fruit',
+      desc: 'This sweet dish is made by heaping tasty fruits into a pan and simmering until tender.',
+      hpRestore: 40
+    }
+  },
+
+  // Let's try to make one of every single dish
+  {
+    mats: 'Tabantha Wheat, Cane Sugar, Apple, Apple',
+    output: {
+      name: 'Fruitcake'
     }
   }
 
