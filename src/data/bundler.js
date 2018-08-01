@@ -16,6 +16,18 @@ let materials = require('./materials')
 let recipes = require('./recipes')
 
 // ——————————————————————————————————————————————————————————————————————————
+// Dubious Food
+// ——————————————————————————————————————————————————————————————————————————
+
+let dubiousFood = {
+  name: 'Dubious Food',
+  desc: "It's too gross to even look at. A bizarre smell issues forth from " + 
+    "this heap. Eating it won't hurt you though... probably.",
+  thumb: undefined // To be assigned in the 'thumbs' section of this code
+}
+
+
+// ——————————————————————————————————————————————————————————————————————————
 // Normalizing indices for recipes
 // ——————————————————————————————————————————————————————————————————————————
 
@@ -95,6 +107,10 @@ let elixirs = [
           recipes[i] = { ...recipes[i], thumb: el.thumb };
           // break; // There are multiple recipes of the same name
         }
+      }
+
+      if (el.name === 'Dubious Food') {
+        dubiousFood = { ...dubiousFood, thumb: el.thumb };
       }
       // recipes.forEach((mat, i) => {
       //   if (mat.name === el.name) {
@@ -395,6 +411,7 @@ module.exports = {
   materials,
   recipes,
   elixirs,
+  dubiousFood,
   // matDescs,
   // recipeDescs,
   additiveOnlyRecipes,

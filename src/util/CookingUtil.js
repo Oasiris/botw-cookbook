@@ -443,9 +443,11 @@ export default class CookingUtil {
    * @return {CookedDish} 
    */
   static cookDubiousFood(mats) {
-    const rcp = Rcp.ofName('Dubious Food');
+    // const rcp = Rcp.ofName('Dubious Food');
 
-    const { name, thumb, desc } = rcp;
+    // const { name, thumb, desc } = rcp;
+    const { name, thumb, desc } = C.dubiousFood;
+    const rcp = null;
     // const effectData = 'no effect';
     // const hpRestore  = CookingUtil.getHpRestore(mats, false, false) / 2;
     // const rupeePrice = 2;

@@ -28,20 +28,35 @@ const hearts = (numHearts) => 4 * numHearts;
 // —————————————————————————————————————
 
 /**
- * This is a big ol' array of inputs and expected outputs.
+ * An array of "Mat testing sets." Here, a testing set is defined as a set 
+ * of:
+ * - A list of materials, and
+ * - The expected outputs for functions to be tested with the materials as 
+ *    the expected input.
  * 
- * Comments here will reference multiple sources, abbreviated as S# for some
- * number #. Those can be found here:
+ * ——————————————————————————————
+ * 
+ * There are other properties to testing sets, preceded by underscores.
+ * 
+ * - _notes: Any supplemental notes or information worth noting about a
+ *    a particular input/output set for this Mat testing set. Notes will appear
+ *    at the beginning of a description for an `it` testing block in the 
+ *    terminal.
+ * - _alias: A string to replace the property 'names' for the descriptions in
+ *    the set's 'it' testing blocks, for readability's sake.
+ * - _source: Currently, a note for the developer's eyes only. The data source
+ *    from which the test has arisen.
+ * 
+ * ——————————————————————————————
+ * 
+ * The following is a list of _testing data sources_ that the testing data
+ * will arise from.
  * 
  * * S0: `_old` test file.
  * * S1: Spreadsheet: ["Zelda: Breath of the Wild Recipes"](http://docs.google.com/spreadsheets/d/1LskydTTg92HeJpJnCTQxqxBL89Ebh6J6ZYQ5VQ40D-c)
  * * S2: Spreadsheet: ["BREATH OF THE WILD - RECIPES"](http://docs.google.com/spreadsheets/d/13Cvmddd5m3R0ht4ZmE1L4RRXqaPMPvLh7FoW4TKI7mk)
  */
-const matSets = [
-  /* From _old test file. */
-
-  // Relating to calculating rupee price.
-
+const matTestingSets = [
   {
     names: 'Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat',
     _alias: 'Raw Gourmet Meat x4',
@@ -134,7 +149,7 @@ const matSets = [
     names: 'Acorn',
     hpRestore: hearts(0.5),
     cook: {
-      mats: [Mat.ofName('Acorn')],
+      mats: [ Mat.ofName('Acorn') ],
       rcp: Rcp.ofName('Sautéed Nuts'),
       name: 'Sautéed Nuts',
       thumb: 'thumb-12-12.png',
@@ -238,6 +253,26 @@ const matSets = [
     getDishEffectInfo: 'no effect'
   },
   {
+    names: 'Hearty Durian',
+    getDishEffectInfo: {
+      prefix: 'Hearty', fxType: 'points', points: 4, extraHearts: 4
+    },
+    _source: { getDishEffectInfo: 'Basic mechanics and data' }
+  },
+  {
+    names: 'Silent Princess, Silent Princess',
+    getDishEffectInfo: {
+      prefix: 'Sneaky',
+      fxType: 'timed',
+      title: 'Stealth Up',
+      potency: 30,
+      tierNumber: 2,
+      tierName: 'mid'
+    },
+    _source: { getDishEffectInfo: 'Memory/basic' }
+  },
+  {
+    _notes: { getDishEffectInfo: ['Very hearty'] },
     names: 'Hearty Durian, Hearty Durian, Hearty Truffle, Hearty Truffle, Apple',
     getDishEffectInfo: {
       prefix: 'Hearty',
@@ -249,17 +284,81 @@ const matSets = [
 ];
 
 // —————————————————————————————————————
+// Tests: Helper Functions
+// —————————————————————————————————————
+
+/**
+ * A helper function related to the matTestingSets variable above.
+ * 
+ * For example, if a testing set is { name: 'Acorn', hpRestore: 2 }, and
+ * we want to test the CookingUtil.getHpRestore function, we would call:
+ * `renderMatTests('hpRestore', CookingUtil.getHpRestore)`.
+ * 
+ * @param {string} testingProp The property name in the mat testing set.
+ * @param {Function} testingFunc Function which takes mats, and possibly more,
+ *  and returns a specified output.
+ * 
+ * @sig (string, (Mats[] -> any)) -> null
+ */
+const renderMatTests = (testingProp, testingFunc) => {
+  // Get all matSets which have expected values for the specified prop
+  R.filter(set => !(set[testingProp] === undefined))(matTestingSets)
+    .forEach(set => {
+      let testDesc = '';
+      // If the testing set has notes for tests of this type, show them
+      const hasNotes = (set._notes && set._notes[testingProp]);
+      testDesc += hasNotes ? `[${set._notes[testingProp].join('][')}] ` : '';
+      // Describe test by its alias unless otherwise specified
+      const hasAlias = (set._alias);
+      testDesc += hasAlias ? set._alias : set.names;
+      // Describe output
+      testDesc += ` => ${set[testingProp]}`;
+
+      // console.log(itString);
+      it(testDesc, () => {
+        if (!exists(set[testingProp])) return false;
+
+        // let actual, expected;
+        const matNameArray = set.names.split(',').map(m => m.trim()).filter(s => s !== '');
+        const matArray = matNameArray.map(m => Mat.ofName(m));
+
+        matchK(matArray, testingProp)
+          .on((_mats, prop) => prop === 'canCookInto',
+            (mats, prop) => {
+              const expectTrueArr = ifExists(set[prop]['true']);
+              const expectFalseArr = ifExists(set[prop]['false']);
+              const testArr = (rcpNameArr, expectedValue) => {
+                R.forEach(__, rcpNameArr)(rcpName => {
+                  const rcp = Rcp.ofName(rcpName);
+                  const actual = testingFunc(mats, rcp);
+                  expect(actual).toEqual(expectedValue);
+                });
+              };
+              if (exists(expectTrueArr)) {
+                testArr(expectTrueArr, true);
+              }
+              if (exists(expectFalseArr)) {
+                testArr(expectFalseArr, false);
+              }
+            }
+          )
+          // For functions with signature (mats) => propValue
+          .otherwise((mats, prop) => {
+            const actual = testingFunc(mats);
+            const expected = set[prop];
+            expect(actual).toEqual(expected);
+          });
+      });
+    });
+};
+
+// —————————————————————————————————————
 // Tests: Drivers
 // —————————————————————————————————————
 
-
-it('sandbox', () => {
-  const m20 = Mat.ofId(20);
-  const m40 = Mat.ofId(40);
-  const price = CookingUtil.getRupeePrice([m20, m40]);
-});
-
-
+/**
+ * Tests related to the 'Mat' object, which represents a material.
+ */
 describe('Mat', () => {
 
   // —————————————————————————————————————
@@ -301,9 +400,13 @@ describe('Mat', () => {
     });
   });
   // —————————————————————————————————————
-
 });
 
+/**
+ * Tests related to the 'Rcp' object, which represents a recipe.
+ * 
+ * At the moment, there's just the one section: instantiation and construction.
+ */
 describe('Rcp', () => {
 
   it('TODO', () => {
@@ -352,69 +455,17 @@ describe('Rcp', () => {
   //     }
   //   });
   });
-  // // —————————————————————————————————————
-
 });
 
 /**
+ * Tests related to the individual functions of the rather large 'CookingUtil'
+ * utility class. 
  * 
- * @param {string} testingProp 
- * @param {Function} testingFunc Function which takes mats, and possibly more,
- *  and returns a specified output.
- * @sig (string, (Mats[] -> any)) -> null
+ * Many of the functions in this class take an array of Materials, or "mats",
+ * as input. As such, many of these tests are represented as mat testing sets
+ * which are described above and simply rendered in the describe blocks
+ * immediately below.
  */
-const renderMatTests = (testingProp, testingFunc) => {
-  // Get all matSets which have expected values for the specified prop
-  R.filter(set => !(set[testingProp] === undefined))(matSets)
-  .forEach(set => {
-    let testDesc = '';
-    // If the testing set has notes for tests of this type, show them
-    const hasNotes = (set._notes && set._notes[testingProp]);
-    testDesc += hasNotes ? `[${set._notes[testingProp].join('][')}] ` : '';
-    // Describe test by its alias unless otherwise specified
-    const hasAlias = (set._alias);
-    testDesc += hasAlias ? set._alias : set.names;
-    // Describe output
-    testDesc += ` => ${set[testingProp]}`;
-
-    // console.log(itString);
-    it(testDesc, () => {
-      if (!exists(set[testingProp])) return false;
-
-      // let actual, expected;
-      const matNameArray = set.names.split(',').map(m => m.trim()).filter(s => s !== '');
-      const matArray = matNameArray.map(m => Mat.ofName(m));
-      
-      matchK(matArray, testingProp)
-        .on((_mats, prop) => prop === 'canCookInto', 
-          (mats, prop) => {
-            const expectTrueArr = ifExists(set[prop]['true']);
-            const expectFalseArr = ifExists(set[prop]['false']);
-            const testArr = (rcpNameArr, expectedValue) => {
-              R.forEach(__, rcpNameArr)(rcpName => {
-                const rcp = Rcp.ofName(rcpName);
-                const actual = testingFunc(mats, rcp);
-                expect(actual).toEqual(expectedValue);
-              });
-            };
-            if (exists(expectTrueArr)) { 
-              testArr(expectTrueArr, true);
-            }
-            if (exists(expectFalseArr)) {
-              testArr(expectFalseArr, false);
-            }
-          } 
-        )
-        // For functions with signature (mats) => propValue
-        .otherwise((mats, prop) => {
-          const actual = testingFunc(mats);
-          const expected = set[prop];
-          expect(actual).toEqual(expected);
-        });
-    });
-  });
-};
-
 describe('CookingUtil', () => {
   describe('getRupeePrice', () => {
     const testingProp = 'rupeePrice';
@@ -438,47 +489,79 @@ describe('CookingUtil', () => {
 
   describe('getDishEffectInfo', () => {
     const fn = CookingUtil.getDishEffectInfo;
-
-    let mats = [ Mat.ofName('Hearty Durian') ];
-    console.log(fn(mats));
-
-    mats = [ Mat.ofName('Silent Princess'), Mat.ofName('Silent Princess') ];
-    console.log(fn(mats));
-
     const testingProp = 'getDishEffectInfo';
     renderMatTests(testingProp, fn);
-
-
-
-    it('points: Hearty 1', () => {
-      const expected = {
-          prefix: 'Hearty',
-          fxType: 'points',
-          points: 10, 
-          extraHearts: 10
-      };
-      const mats = [
-        Mat.ofName('Hearty Durian'), 
-        Mat.ofName('Hearty Durian'), 
-        Mat.ofName('Hearty Truffle'), 
-        Mat.ofName('Hearty Truffle'),
-        Mat.ofName('Apple') 
-      ];
-      expect(CookingUtil.getDishEffectInfo(mats)).toEqual(expected);
-    });
   });
-});
 
-describe('Dish', () => {
+  /**
+   * The breadwinner of the CookingUtil is its function 'cook', which uses
+   * all other functions in the class to calculate all details of the output
+   * dish for an input array of one to five materials.
+   * 
+   * 
+   */
   describe('CookingUtil.cook', () => {
+    const fn = CookingUtil.cook;
     const testingProp = 'cook';
-    renderMatTests(testingProp, CookingUtil.cook);
+    renderMatTests(testingProp, fn);
   }); 
 });
 
+describe('CookedDish', () => {
+  it('exists', () => {
+    expect(exists(CookedDish)).toBe(true);
+  });
+
+
+  
+
+  it('...', () => {
+    const acorn = Mat.ofName('Acorn');
+
+    const a = [
+      CookedDish.ofMats([ acorn ])
+    ];
+    console.log(a);
+
+    expect(true).toBe(true);
+  });
+});
+
+const someVar = {
+  _notes: { hpRestore: ['Nut Rule'] },
+  names: 'Acorn',
+  hpRestore: hearts(0.5),
+  cook: {
+    mats: [ Mat.ofName('Acorn') ],
+    rcp: Rcp.ofName('Sautéed Nuts'),
+    name: 'Sautéed Nuts',
+    thumb: 'thumb-12-12.png',
+    desc: 'These sautéed tree seeds are the perfect snack for the busy adventurer on the go!',
+    effectData: 'no effect',
+    hpRestore: 2,
+    rupeePrice: 8
+  }
+};
+
+// —————————————————————————————————————
+// Tests: Sandbox
+// —————————————————————————————————————
+/**
+ * For quick and dirty tests. Tests for testing. Test-tests?
+ */
+
+it('sandbox', () => {
+  // When it comes time to play, play here
+});
+
+// ——————————————————————————————
+
 /*
+  Other Notes:
 
-COMMON MISSPELLINGS
+  COMMON MISSPELLINGS
 
-Tabantha Wheat <-> Tanbantha Wheat
+  Tabantha Wheat <-> Tanbantha Wheat
 */
+
+// End of file
