@@ -85,12 +85,60 @@ const partialTestingSets = [
       effectData: { prefix: 'Hearty', extraHearts: 4 }
     }
   },
+  {
+    mats: 'Big Hearty Radish, Big Hearty Radish',
+    output: {
+      name: 'Hearty Fried Wild Greens',
+      hpRestore: Infinity,
+      effectData: { prefix: 'Hearty', extraHearts: 10 }
+    }
+  },
+  {
+    mats: 'Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom',
+    output: {
+      name: 'Energizing Mushroom Skewer',
+      hpRestore: 4 * 5,
+      effectData: { prefix: 'Energizing', stamina: 1.4 },
+    }
+  },
+  {
+    mats: 'Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom, Bright-Eyed Crab',
+    output: {
+      name: 'Energizing Fish and Mushroom Skewer',
+      hpRestore: 4 * 6,
+      effectData: { prefix: 'Energizing', stamina: 1.6 }
+    }
+  },
 
 
   {
     mats: 'Hightail Lizard',
     output: {
       name: 'Dubious Food',
+    }
+  },
+
+  // Cemu save file test
+  {
+    mats: 'Apple, Hylian Shroom, Hyrule Herb',
+    output: {
+      name: 'Steamed Mushrooms',
+      hpRestore: 4 * 4,
+      effectData: 'no effect'
+    }
+  },
+  {
+    mats: 'Hot-Footed Frog, Hot-Footed Frog, Lizalfos Tail',
+    output: {
+      name: 'Hasty Elixir',
+      hpRestore: 0,
+      effectData: { 
+        prefix: 'Hasty',
+        fxType: 'timed',
+        tierName: 'low',
+        duration: 5 * 60 + 10
+      },
+      // apple: true
     }
   },
 

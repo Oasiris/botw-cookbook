@@ -332,7 +332,8 @@ export default class CookingUtil {
         effectInfo = {
           ...effectInfo,
           title: effectData.title,
-          ...EffectUtil.calcDishPotency(mats, effectData, {})
+          ...EffectUtil.calcDishPotency(mats, effectData, {}),
+          duration: EffectUtil.getEffectDuration(mats, effectData)
         };
         break;
       default:
