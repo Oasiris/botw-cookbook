@@ -50,21 +50,60 @@ const partialTestingSets = [
       name: 'Warm Milk'
     }
   },
+  // Alex Ren's boring dishes
   {
     mats: 'Palm Fruit, Palm Fruit, Palm Fruit, Palm Fruit, Palm Fruit',
     output: {
       name: 'Simmered Fruit',
       desc: 'This sweet dish is made by heaping tasty fruits into a pan and simmering until tender.',
       hpRestore: 40
+    },
+    source: "Alex Ren's Save"
+  },
+  {
+    mats: 'Apple, Apple, Apple, Palm Fruit, Palm Fruit',
+    output: {
+      name: 'Simmered Fruit',
+      hpRestore: 7 * 4,
+      effectData: 'no effect'
     }
   },
+  {
+    mats: 'Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat',
+    output: {
+      name: 'Meat Skewer',
+      effectData: 'no effect',
+      hpRestore: 24 * 4,
+      desc: 'A juicy, filling snack made by grilling small chunks of meat on a skewer.'
+    }
+  },
+  {
+    mats: 'Big Hearty Truffle',
+    output: {
+      name: 'Hearty Mushroom Skewer',
+      hpRestore: Infinity, // Full recovery
+      effectData: { prefix: 'Hearty', extraHearts: 4 }
+    }
+  },
+
+
+  {
+    mats: 'Hightail Lizard',
+    output: {
+      name: 'Dubious Food',
+    }
+  },
+
+
+  // Cooking recipes
 
   // Let's try to make one of every single dish
   {
     mats: 'Tabantha Wheat, Cane Sugar, Apple, Apple',
     output: {
       name: 'Fruitcake'
-    }
+    },
+    source: 'Not tested'
   }
 
 ];
@@ -93,6 +132,13 @@ const matsFromString = str => {
   const matNameArray = str.split(',').map(m => m.trim()).filter(s => s !== '');
   const matArray = matNameArray.map(m => Mat.ofName(m));
   return matArray;
+}
+
+const describeSet = set => {
+  const matNameArray = str.split(',').map(m => m.trim()).filter(s => s !== '');
+  // const 
+
+
 }
 
 // Tests
@@ -131,8 +177,24 @@ describe('CookedDish', () => {
 
         it(set.mats, () => {
           const dish = CookedDish.ofMats(mats);
+          // We expect every property that's described in the p. testing set
+          // to match with the actual output, `dish`.
           Object.keys(set.output).forEach(property => {
-            expect(dish[property]).toEqual(set.output[property]);
+            if (R.is(Object, set.output[property])) {
+              // If the property itself is an object: instead of directly
+              // comparing the real and expected properties, we'll compare
+              // each property in that object.
+              Object.keys(set.output[property]).forEach(pp => {
+                expect(dish[property][pp]).toEqual(set.output[property][pp]);
+              })
+            } else {
+              // Smarter debugging -- display full "actual" dish in case of an error
+              if (dish[property] !== set.output[property]) {
+                console.log(dish);
+              }
+
+              expect(dish[property]).toEqual(set.output[property]);
+            }
           });
         });
       });
