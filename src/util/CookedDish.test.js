@@ -38,7 +38,7 @@ import { exists, match, matchK, ifExists } from './utility'
  * The testing sets in this array are for instances like those.
  */
 const partialTestingSets = [
-  {
+  { // Additive based
     mats: 'Fairy',
     output: {
       name: 'Fairy Tonic'
@@ -49,6 +49,147 @@ const partialTestingSets = [
     output: {
       name: 'Warm Milk'
     }
+  },
+  // Alex Ren's boring dishes
+  {
+    mats: 'Palm Fruit, Palm Fruit, Palm Fruit, Palm Fruit, Palm Fruit',
+    output: {
+      name: 'Simmered Fruit',
+      desc: 'This sweet dish is made by heaping tasty fruits into a pan and simmering until tender.',
+      hpRestore: 40
+    },
+    source: "Alex Ren's Save"
+  },
+  {
+    mats: 'Apple, Apple, Apple, Palm Fruit, Palm Fruit',
+    output: {
+      name: 'Simmered Fruit',
+      hpRestore: 7 * 4,
+      effectData: 'no effect'
+    }
+  },
+  {
+    mats: 'Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat, Raw Gourmet Meat',
+    output: {
+      name: 'Meat Skewer',
+      effectData: 'no effect',
+      hpRestore: 24 * 4,
+      desc: 'A juicy, filling snack made by grilling small chunks of meat on a skewer.'
+    }
+  },
+  {
+    mats: 'Big Hearty Truffle',
+    output: {
+      name: 'Hearty Mushroom Skewer',
+      hpRestore: Infinity, // Full recovery
+      effectData: { prefix: 'Hearty', extraHearts: 4 }
+    }
+  },
+  {
+    mats: 'Big Hearty Radish, Big Hearty Radish',
+    output: {
+      name: 'Hearty Fried Wild Greens',
+      hpRestore: Infinity,
+      effectData: { prefix: 'Hearty', extraHearts: 10 }
+    }
+  },
+  {
+    mats: 'Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom',
+    output: {
+      name: 'Energizing Mushroom Skewer',
+      hpRestore: 4 * 5,
+      effectData: { prefix: 'Energizing', stamina: 1.4 },
+    }
+  },
+  {
+    mats: 'Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom, Bright-Eyed Crab',
+    output: {
+      name: 'Energizing Fish and Mushroom Skewer',
+      hpRestore: 4 * 6,
+      effectData: { prefix: 'Energizing', stamina: 1.6 }
+    }
+  },
+
+
+  {
+    mats: 'Hightail Lizard',
+    output: {
+      name: 'Dubious Food',
+    }
+  },
+
+  // Cemu save file test
+  {
+    mats: 'Apple, Hylian Shroom, Hyrule Herb',
+    output: {
+      name: 'Steamed Mushrooms',
+      hpRestore: 4 * 4,
+      effectData: 'no effect'
+    }
+  },
+  {
+    mats: 'Hot-Footed Frog, Hot-Footed Frog, Lizalfos Tail',
+    output: {
+      name: 'Hasty Elixir',
+      hpRestore: 0,
+      effectData: { 
+        prefix: 'Hasty',
+        fxType: 'timed',
+        tierName: 'low',
+        duration: 5 * 60 + 10
+      },
+      // apple: true
+    }
+  },
+  {
+    mats: 'Hightail Lizard, Bokoblin Horn',
+    output: {
+      name: 'Hasty Elixir',
+      hpRestore: 0,
+      effectData: {
+        prefix: 'Hasty',
+        fxType: 'timed',
+        tierName: 'low',
+        duration: 2 * 60 + 10,
+        title: 'Speed Up'
+      }
+    }
+  },
+  {
+    mats: 'Fireproof Lizard, Fireproof Lizard, Bokoblin Horn',
+    output: {
+      name: 'Fireproof Elixir',
+      hpRestore: 0,
+      effectData: {
+        prefix: 'Fireproof',
+        fxType: 'timed',
+        tierName: 'low',
+        duration: 6 * 60 + 10,
+        title: 'Flame Guard'
+      }
+    }
+  },
+  {
+    mats: 'Fireproof Lizard, Bokoblin Horn',
+    output: {
+      name: 'Fireproof Elixir',
+      hpRestore: 0,
+      effectData: {
+        duration: 3 * 60 + 40,
+      }
+    }
+  },
+
+
+  // Cooking recipes
+
+  // Let's try to make one of every single dish
+  {
+    mats: 'Tabantha Wheat, Cane Sugar, Apple, Apple',
+    output: {
+      name: 'Fruitcake'
+    },
+    source: 'Not tested'
   }
 
 ];
@@ -77,6 +218,13 @@ const matsFromString = str => {
   const matNameArray = str.split(',').map(m => m.trim()).filter(s => s !== '');
   const matArray = matNameArray.map(m => Mat.ofName(m));
   return matArray;
+}
+
+const describeSet = set => {
+  const matNameArray = str.split(',').map(m => m.trim()).filter(s => s !== '');
+  // const 
+
+
 }
 
 // Tests
@@ -115,8 +263,28 @@ describe('CookedDish', () => {
 
         it(set.mats, () => {
           const dish = CookedDish.ofMats(mats);
+          // We expect every property that's described in the p. testing set
+          // to match with the actual output, `dish`.
           Object.keys(set.output).forEach(property => {
-            expect(dish[property]).toEqual(set.output[property]);
+            if (R.is(Object, set.output[property])) {
+              // If the property itself is an object: instead of directly
+              // comparing the real and expected properties, we'll compare
+              // each property in that object.
+              Object.keys(set.output[property]).forEach(pp => {
+                // Smarter debugging -- display full "actual" dish in case of an error
+                if (dish[property][pp] !== set.output[property][pp]) {
+                  console.log(dish);
+                }
+                expect(dish[property][pp]).toEqual(set.output[property][pp]);
+              })
+            } else {
+              // Smarter debugging -- display full "actual" dish in case of an error
+              if (dish[property] !== set.output[property]) {
+                console.log(dish);
+              }
+
+              expect(dish[property]).toEqual(set.output[property]);
+            }
           });
         });
       });

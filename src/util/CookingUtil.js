@@ -255,8 +255,8 @@ export default class CookingUtil {
 
     const isCopiousRecipe = rcp.uniq_ingred === true;
     if (isCopiousRecipe) {
-      const family = R.uniq(isCopiousRecipe)[0][1]; // Food family name
-      const isInFamily = mat => mat.familes.includes(family);
+      const family = R.uniq(rcp.ingredients[0][1]); // Food family name
+      const isInFamily = mat => mat.families.includes(family);
       const atLeastLength = arr => arr.length >= rcp.ingredients.length;
 
       return compose(
@@ -332,7 +332,8 @@ export default class CookingUtil {
         effectInfo = {
           ...effectInfo,
           title: effectData.title,
-          ...EffectUtil.calcDishPotency(mats, effectData, {})
+          ...EffectUtil.calcDishPotency(mats, effectData, {}),
+          duration: EffectUtil.getEffectDuration(mats, effectData)
         };
         break;
       default:

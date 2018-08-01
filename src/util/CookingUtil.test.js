@@ -267,7 +267,8 @@ const matTestingSets = [
       title: 'Stealth Up',
       potency: 30,
       tierNumber: 2,
-      tierName: 'mid'
+      tierName: 'mid',
+      duration: 4 * 60
     },
     _source: { getDishEffectInfo: 'Memory/basic' }
   },
