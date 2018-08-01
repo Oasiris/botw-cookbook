@@ -6,7 +6,7 @@
 // Dependencies
 // —————————————————————————————————————
 
-import CookingUtil, { Mat, Rcp, CookedDish } from './CookingUtil'
+import CookingUtil, { Mat, Rcp } from './CookingUtil'
 
 import R, { curry, compose, pipe, __ } from 'ramda';
 
@@ -314,6 +314,7 @@ const renderMatTests = (testingProp, testingFunc) => {
       // Describe output
       testDesc += ` => ${set[testingProp]}`;
 
+
       // console.log(itString);
       it(testDesc, () => {
         if (!exists(set[testingProp])) return false;
@@ -322,32 +323,29 @@ const renderMatTests = (testingProp, testingFunc) => {
         const matNameArray = set.names.split(',').map(m => m.trim()).filter(s => s !== '');
         const matArray = matNameArray.map(m => Mat.ofName(m));
 
-        matchK(matArray, testingProp)
-          .on((_mats, prop) => prop === 'canCookInto',
-            (mats, prop) => {
-              const expectTrueArr = ifExists(set[prop]['true']);
-              const expectFalseArr = ifExists(set[prop]['false']);
-              const testArr = (rcpNameArr, expectedValue) => {
-                R.forEach(__, rcpNameArr)(rcpName => {
-                  const rcp = Rcp.ofName(rcpName);
-                  const actual = testingFunc(mats, rcp);
-                  expect(actual).toEqual(expectedValue);
-                });
-              };
-              if (exists(expectTrueArr)) {
-                testArr(expectTrueArr, true);
-              }
-              if (exists(expectFalseArr)) {
-                testArr(expectFalseArr, false);
-              }
-            }
-          )
-          // For functions with signature (mats) => propValue
-          .otherwise((mats, prop) => {
-            const actual = testingFunc(mats);
-            const expected = set[prop];
-            expect(actual).toEqual(expected);
-          });
+        // For most functions, which demand (mats) as an argument
+        if (testingProp !== 'canCookInto') {
+          const actual = testingFunc(matArray);
+          const expected = set[testingProp];
+          expect(actual).toEqual(expected);
+        // For `canCookInto`, which demands (mats, rcp, options) as arguments
+        } else {
+          const expectTrueArr = ifExists(set[testingProp]['true']);
+          const expectFalseArr = ifExists(set[testingProp]['false']);
+          const testArr = (rcpNameArr, expectedValue) => {
+            R.forEach(__, rcpNameArr)(rcpName => {
+              const rcp = Rcp.ofName(rcpName);
+              const actual = testingFunc(matArray, rcp);
+              expect(actual).toEqual(expectedValue);
+            });
+          };
+          if (exists(expectTrueArr)) {
+            testArr(expectTrueArr, true);
+          }
+          if (exists(expectFalseArr)) {
+            testArr(expectFalseArr, false);
+          }
+        }
       });
     });
 };
@@ -506,42 +504,6 @@ describe('CookingUtil', () => {
     renderMatTests(testingProp, fn);
   }); 
 });
-
-describe('CookedDish', () => {
-  it('exists', () => {
-    expect(exists(CookedDish)).toBe(true);
-  });
-
-
-  
-
-  it('...', () => {
-    const acorn = Mat.ofName('Acorn');
-
-    const a = [
-      CookedDish.ofMats([ acorn ])
-    ];
-    console.log(a);
-
-    expect(true).toBe(true);
-  });
-});
-
-const someVar = {
-  _notes: { hpRestore: ['Nut Rule'] },
-  names: 'Acorn',
-  hpRestore: hearts(0.5),
-  cook: {
-    mats: [ Mat.ofName('Acorn') ],
-    rcp: Rcp.ofName('Sautéed Nuts'),
-    name: 'Sautéed Nuts',
-    thumb: 'thumb-12-12.png',
-    desc: 'These sautéed tree seeds are the perfect snack for the busy adventurer on the go!',
-    effectData: 'no effect',
-    hpRestore: 2,
-    rupeePrice: 8
-  }
-};
 
 // —————————————————————————————————————
 // Tests: Sandbox

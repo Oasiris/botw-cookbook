@@ -358,6 +358,7 @@ export default class CookingUtil {
    * @return {CookedDish}
    */
   static cook(mats) {
+    mats = arrayify(mats); // In case a Mat was input, instead of a Mat array
     let dish = { mats };
     // Mat validation
     let rcpType = CookingUtil.getRecipeType(mats);
@@ -457,49 +458,5 @@ export default class CookingUtil {
       hpRestore:  CookingUtil.getHpRestore(mats, false, false) / 2,
       rupeePrice: 2
     };  
-  }
-}
-
-// ——————————————————————————————————————————————————————————————————————————
-// Exporting
-// ——————————————————————————————————————————————————————————————————————————
-
-/**
- * Class representing a Dish.
- */
-class Dish { }
-
-/**
- * Class representing a dish cooked in a cooking pot.
- */
-export class CookedDish extends Dish {
-  /**
-   * Constructor.
-   * 
-   * Meant to be called from factory methods `ofName` and `ofId`.
-   * @param {Object} data 
-   */
-  constructor(data) {
-    super();
-    if (data._filled === true) {
-      for (let k of R.keys(data)) {
-        this[k] = data[k];
-      }
-    } else {
-      throw new Error('Don\'t use this constructor; create new Dishes using ' + 
-        'factory methods.');
-    }
-  }
-
-  /**
-   * Factory method for a Dish. Returns a new CookedDish based on the input
-   * ingredient materials.
-   * 
-   * @param {Mat[]} mats 
-   */
-  static ofMats(mats) {
-    // Validate mats here
-    const dish = CookingUtil.cook(mats);
-    return new CookedDish({ ...dish, _filled: true });
   }
 }
