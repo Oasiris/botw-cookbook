@@ -1,0 +1,56 @@
+// Global styles.
+
+@import 'colors';
+
+$font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+
+.grow { transition: transform .05s ease-in-out; }
+.grow:hover { transform: scale(1.065); }
+
+.grow-slight { transition: transform .05s ease-in-out; }
+.grow-slight:hover { transform: scale(1.035); }
+
+.text-pop {
+  color: $text-pop-color;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+// —————————————————————————————————————
+// Buttons
+// —————————————————————————————————————
+
+button {
+  padding: 20px 26.25px;
+  font-family: $font-stack;
+  font-weight: bold;
+  font-size: 20px;
+  
+  border: 0;
+  border-radius: 2px;
+
+  background: $button-color;
+  color: white;
+
+  transition: background-color 0.1s, box-shadow 0.2s;
+
+  &:hover {
+    background: $button-hover-color;
+    box-shadow: 0 0 15px rgba($pale-light, 1);
+  }
+
+  &:active {
+    background: $button-active-color;
+    transition: background-color 0s;
+    
+  }
+}

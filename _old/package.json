@@ -1,0 +1,23 @@
+{
+  "name": "botw-cookbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha || true"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.2",
+    "glob": "^7.1.2",
+    "globby": "^8.0.1",
+    "ramda": "^0.25.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "mocha": "^4.1.0"
+  }
+}
