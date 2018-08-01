@@ -395,7 +395,7 @@ const effectData = {
   fireproof: {
     prefix: 'Fireproof',
     fxType: 'timed',
-    title: 'Fireproof',
+    title: 'Flame Guard',
     timedData: {
       tierBps: [0, 30], // breakpoints for low & mid
       potencyLevels: [4, 9],

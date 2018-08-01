@@ -141,6 +141,44 @@ const partialTestingSets = [
       // apple: true
     }
   },
+  {
+    mats: 'Hightail Lizard, Bokoblin Horn',
+    output: {
+      name: 'Hasty Elixir',
+      hpRestore: 0,
+      effectData: {
+        prefix: 'Hasty',
+        fxType: 'timed',
+        tierName: 'low',
+        duration: 2 * 60 + 10,
+        title: 'Speed Up'
+      }
+    }
+  },
+  {
+    mats: 'Fireproof Lizard, Fireproof Lizard, Bokoblin Horn',
+    output: {
+      name: 'Fireproof Elixir',
+      hpRestore: 0,
+      effectData: {
+        prefix: 'Fireproof',
+        fxType: 'timed',
+        tierName: 'low',
+        duration: 6 * 60 + 10,
+        title: 'Flame Guard'
+      }
+    }
+  },
+  {
+    mats: 'Fireproof Lizard, Bokoblin Horn',
+    output: {
+      name: 'Fireproof Elixir',
+      hpRestore: 0,
+      effectData: {
+        duration: 3 * 60 + 40,
+      }
+    }
+  },
 
 
   // Cooking recipes
@@ -233,6 +271,10 @@ describe('CookedDish', () => {
               // comparing the real and expected properties, we'll compare
               // each property in that object.
               Object.keys(set.output[property]).forEach(pp => {
+                // Smarter debugging -- display full "actual" dish in case of an error
+                if (dish[property][pp] !== set.output[property][pp]) {
+                  console.log(dish);
+                }
                 expect(dish[property][pp]).toEqual(set.output[property][pp]);
               })
             } else {
