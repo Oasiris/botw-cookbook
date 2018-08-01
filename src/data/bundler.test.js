@@ -52,7 +52,7 @@ describe('additiveOnlyRecipes', () => {
   });
 
   it('additiveOnlyRecipes is the correct length', () => {
-    const aoRecipeNames = [ // 3, 4, 5, 28, 55, 70, 84, 113
+    const aoRecipeNames = [ // 3, 4, 5, 28, 55, 70, 84, 113, 114-117
       'Monster Curry',
       'Monster Rice Balls',
       'Monster Cake',
@@ -60,9 +60,10 @@ describe('additiveOnlyRecipes', () => {
       'Curry Pilaf',
       'Curry Rice',
       'Wheat Bread',
-      'Sautéed Nuts'
+      'Sautéed Nuts',
+      'Fairy Tonic' // Note: there are 4 'recipes' total named this!
     ];
-    expect(bundler.additiveOnlyRecipes.length).toBe(aoRecipeNames.length);
+    expect(bundler.additiveOnlyRecipes.length).toBe(aoRecipeNames.length + 3);
   });
 });
 

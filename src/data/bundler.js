@@ -144,7 +144,7 @@ let additiveOnlyRecipes;
 
 {
   // Names of recipes whose ingredients contain only additives.
-  const aoRecipeNames = [ // 3, 4, 5, 28, 55, 70, 84, 113
+  const aoRecipeNames = [ // 3, 4, 5, 28, 55, 70, 84, 113, 114-117
     'Monster Curry',
     'Monster Rice Balls',
     'Monster Cake',
@@ -152,7 +152,8 @@ let additiveOnlyRecipes;
     'Curry Pilaf',
     'Curry Rice',
     'Wheat Bread',
-    'Sautéed Nuts'
+    'Sautéed Nuts',
+    'Fairy Tonic' // Note: there are multiple 'recipes' named this!
   ];
   additiveOnlyRecipes = recipes.filter(r => aoRecipeNames.includes(r.name));
 }

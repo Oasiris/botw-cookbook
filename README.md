@@ -1,8 +1,8 @@
 # Breath of the Wild Cookbook
 
-This is a work-in-progress web application and cooking companion to _The Legend of Zelda: Breath of the Wild_.
+This is a work-in-progress web application and cooking companion to _The Legend of Zelda: Breath of the Wild (2017)_.
 
-Predict the full data, effects, and selling price of any recipe! Just pick 1-5 ingredients and click "Cook!"
+Predict the full data, effects, and selling price of any dish or elixir recipe! Just pick one to five ingredients and click "Cook!"
 
 ## Getting Started
 
@@ -51,3 +51,7 @@ The app is ready to be deployed!
 ## Contributing
 
 This is intended to be a solo project to develop and show off my skills in ES6, React, and web development. For this reason, I'm currently not accepting contributions.
+
+## Other Notes
+
+This project was developed using VSCode. I highly recommend using the VSCode software when browsing and navigating this code.
