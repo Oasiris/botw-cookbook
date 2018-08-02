@@ -92,10 +92,12 @@ export default class EffectUtil {
     const contribTimeBoost = contribFactor * effContributors.length;
 
     // Certain foods we call 'time boosters' because they add a flat amount of
-    // time to an effect.
+    // time to an effect. (If the same food is included in multi, its boost will
+    // only occur once.)
     const foodTimeBoost = compose(
-      R.sum(),
+      R.sum,
       R.map(R.prop('time_boost')),
+      R.uniq,
       R.filter(m => exists(m.time_boost))
     )(mats);
 

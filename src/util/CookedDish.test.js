@@ -312,9 +312,47 @@ const partialTestingSets = [
       name: 'Fruitcake',
       hpRestore: 5 * 4,
       effectData: 'no effect'
-    }
-
+    },
+    source: 'Cemu direct',
+    _notes: 'I expected this to be 4 hearts but it was 5. Is the Cane Sugar adding a heart???'
   },
+
+
+  // More Cane Sugar testing to see what's up with Fruitcakes
+  {
+    mats: 'Fortified Pumpkin, Tabantha Wheat, Cane Sugar, Goat Butter',
+    output: {
+      name: 'Tough Pumpkin Pie', // Pumpkin Pie -- #22,
+      hpRestore: 3 * 4,
+      effectData: { tierName: 'low', duration: 4 * 60 + 30 }
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Fortified Pumpkin, Tabantha Wheat, Cane Sugar, Cane Sugar, Goat Butter',
+    output: {
+      name: 'Tough Pumpkin Pie', // Pumpkin Pie -- #22,
+      hpRestore: 3 * 4,
+      effectData: { tierName: 'low', duration: 5 * 60 }
+    },
+    source: 'Cemu direct',
+    _note: 'Actually uncovered a bug where including the same duration-extending ingredient twice would cause the duration extension to happen twice'
+  },
+  // ...and back to Fruitcakes
+  {
+    mats: 'Wildberry, Hydromelon, Tabantha Wheat, Cane Sugar',
+    output: {
+      name: 'Chilly Fruitcake',
+      hpRestore: 5 * 4,
+      effectData: { 
+        tierName: 'low', 
+        title: 'Heat Resistance', 
+        duration: 4 * 60 + 30 
+      }
+    },
+    source: 'Cemu direct'
+  },
+
   // Testing additives
   {
     mats: 'Courser Bee Honey, Cane Sugar',
@@ -329,6 +367,17 @@ const partialTestingSets = [
     output: {
       name: 'Dubious Food',
       hpRestore: 2 * 4
+    },
+    source: 'Cemu direct'
+  },
+  // Generic honey tests
+  {
+    mats: 'Stamella Shroom, Stamella Shroom, Courser Bee Honey',
+    output: {
+      name: 'Energizing Glazed Mushrooms',
+      desc: 'Instantly refills some of your Stamina Wheel.\nThe honey in this mushroom dish gives it a sweet, complex taste and a savory finish.',
+      hpRestore: 6 * 4,
+      effectData: { stamina: 1.0 }
     },
     source: 'Cemu direct'
   },
