@@ -633,6 +633,93 @@ const partialTestingSets = [
   },
 
   // Test 1+ of each dish
+
+  {
+    mats: 'Cool Safflina, Fresh Milk, Voltfruit, Hydromelon, Hearty Radish',
+    output: {
+      name: 'Creamy Heart Soup',
+      hpRestore: 8 * 4,
+      effectData: 'no effect'
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Fresh Milk, Tabantha Wheat, Goat Butter, Fortified Pumpkin',
+    output: {
+      name: 'Tough Pumpkin Stew',
+      hpRestore: 4 * 4,
+      effectData: { tierNumber: 1, duration: 4 * 60 + 30 }
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Hylian Rice, Goron Spice, Raw Gourmet Meat',
+    output: {
+      name: 'Gourmet Meat Curry',
+      hpRestore: 8 * 4,
+      effectData: 'no effect'
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Hylian Rice, Goron Spice, Mighty Porgy',
+    output: {
+      name: 'Mighty Seafood Curry',
+      hpRestore: 4 * 4,
+      effectData: { tierNumber: 1, duration: 3 * 60 + 20 }
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Hylian Rice, Goron Spice, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Seafood Curry',
+      hpRestore: Infinity,
+      effectData: { extraHearts: 3 }
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Voltfruit, Tabantha Wheat, Cane Sugar, Goat Butter',
+    output: {
+      name: 'Electro Fruit Pie',
+      hpRestore: 3 * 4,
+      effectData: { tierNumber: 1, duration: 6 * 60 + 10 }
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Cool Safflina, Hylian Rice, Goat Butter, Rock Salt, Hearty Salmon',
+    output: {
+      name: 'Salmon Risotto',
+      hpRestore: 10 * 4,
+      effectData: 'no effect'
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Tabantha Wheat, Goat Butter, Mighty Porgy',
+    output: {
+      name: 'Mighty Porgy Meunière',
+      hpRestore: 4 * 4,
+      effectData: { tierNumber: 1, duration: 3 * 60 + 10 }
+    },
+    source: 'Cemu direct'
+  },
+
+
+  {
+    // Attempt to make Seafood Curry but switch out Porgy/Blueshell w/ Trout
+    mats: 'Hylian Rice, Goron Spice, Sizzlefin Trout',
+    output: {
+      name: 'Spicy Seafood Rice Balls',
+      hpRestore: 4 * 4,
+      effectData: { tierNumber: 1, duration: 5 * 60 }
+    },
+    source: 'Cemu direct'
+  },
+
+  // Monster series and forced +3 heart bonus testing
   {
     mats: 'Hylian Rice, Goron Spice, Monster Extract',
     output: {
@@ -689,6 +776,7 @@ const partialTestingSets = [
       hpRestore: 5 * 4,
       effectData: 'no effect'
     },
+    _note: "Can't get +3 heart bonus (it's as though it's built in.) Often gets 1/4 heart deficit."
   },
 
 

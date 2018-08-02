@@ -163,6 +163,7 @@
         "idx": 8,
         "name": "Creamy Heart Soup",
         "notes": "",
+        "heartBonus": 0,
         "ingredients": [
             [
                 "name",
@@ -186,6 +187,7 @@
         "idx": 9,
         "name": "Clam Chowder",
         "notes": "",
+        "heartBonus": 0,
         "ingredients": [
             [
                 "name",
@@ -301,6 +303,7 @@
         "idx": 14,
         "name": "Gourmet Meat Curry",
         "notes": "",
+        "heartBonus": 0,
         "ingredients": [
             [
                 "name",
@@ -320,6 +323,7 @@
         "idx": 15,
         "name": "Gourmet Poultry Curry",
         "notes": "",
+        "heartBonus": 0,
         "ingredients": [
             [
                 "name",
@@ -694,6 +698,7 @@
         "idx": 32,
         "name": "Fruit Pie",
         "notes": "",
+        "heartBonus": 0,
         "ingredients": [
             [
                 "name",
@@ -782,6 +787,7 @@
         "idx": 36,
         "name": "Salmon Risotto",
         "notes": "",
+        "heartBonus": 0,
         "ingredients": [
             [
                 "name",
