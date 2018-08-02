@@ -352,8 +352,95 @@ const partialTestingSets = [
       }
     },
     source: 'Cemu direct'
-  },
+  }, 
   
+  // Testing more pastries
+  {
+    // Carrot Cake
+    mats: 'Endura Carrot, Tabantha Wheat, Cane Sugar, Goat Butter',
+    output: {
+      name: 'Enduring Carrot Cake',
+      hpRestore: 6 * 4,
+      effectData: { extraStamina: 0.4 }
+    },
+    _note: 'No error thrown => no heart bonus'
+  },
+  {
+    // Wildberry Crepe
+    mats: 'Wildberry, Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat',
+    output: {
+      name: 'Wildberry Crepe',
+      hpRestore: 10 * 4,
+      effectData: 'no effect'
+    },
+    _note: '10 hearts restored (4 heart bonus). Confirmed online. https://www.youtube.com/watch?v=Ca8LTqlY38o #1'
+  },
+  {
+    // Honey Crepe
+    mats: 'Courser Bee Honey, Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat',
+    output: {
+      name: 'Energizing Honey Crepe',
+      hpRestore: 10 * 4,
+      effectData: { extraStamina: 0.4 }
+    },
+    _note: '10 hearts restored (1 heart bonus). Confirmed online.'
+  },
+  {
+    // Plain Crepe
+    mats: 'Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat',
+    output: {
+      name: 'Plain Crepe',
+      hpRestore: 5 * 4,
+    },
+    _note: 'No heart bonus'
+  },
+  {
+    // Plain Crepe (w/ added stuff, in this case a Palm Fruit)
+    mats: 'Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat, Palm Fruit',
+    output: {
+      name: 'Plain Crepe',
+      hpRestore: 7 * 4,
+    },
+    _note: 'No heart bonus'
+  },
+  {
+    // Apple Pie
+    mats: 'Apple, Cane Sugar, Tabantha Wheat, Goat Butter',
+    output: {
+      name: 'Apple Pie',
+      hpRestore: 3 * 4,
+    },
+    _note: 'No heart bonus'
+  },
+  {
+    // Nutcake
+    mats: 'Chickaloo Tree Nut, Cane Sugar, Tabantha Wheat, Goat Butter',
+    output: {
+      name: 'Nutcake',
+      hpRestore: 3 * 4,
+    },
+    _note: 'No heart bonus'
+  },
+  {
+    // Egg Tart
+    mats: 'Bird Egg, Cane Sugar, Tabantha Wheat, Goat Butter',
+    output: {
+      name: 'Egg Tart',
+      hpRestore: 4 * 4,
+    },
+    _note: 'No heart bonus'
+  },
+  {
+    // Egg Tart
+    mats: 'Bird Egg, Cane Sugar, Fresh Milk',
+    output: {
+      name: 'Egg Pudding',
+      hpRestore: 3 * 4,
+    },
+    _note: 'No heart bonus'
+  },
+
+
 
 
 
@@ -573,8 +660,6 @@ const matsFromString = str => {
 const describeSet = set => {
   let description = '';
   const matNameArray = set.mats.split(',').map(m => m.trim()).filter(s => s !== '');
-  // const 
-  console.log(matNameArray);
 
   const matNicknames = [
     ['Hearty', 'Hty.'],
@@ -587,7 +672,8 @@ const describeSet = set => {
     ['Hylian Rice', 'H. Rice'],
     ['Cane Sugar', 'C. Sugar'],
     ['Courser Bee Honey', 'C.B. Honey'],
-    ['Bird Egg', 'B. Egg']
+    ['Bird Egg', 'B. Egg'],
+    ['Chickaloo Tree Nut', 'C. Tree Nut']
   ];
 
   // Replace names of mats with nicknames here
