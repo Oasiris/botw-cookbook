@@ -159,11 +159,11 @@ export default class CookingUtil {
    */
   static getHpRestore(mats, isHeartyAware = true, usesNutRule = true) {
     /*
-     * "Hearty rule": if materials include any hearty ingredients, they provide
+     * "Hearty rule": If the effect is Hearty, the dish will provide
      *  full recovery, indicated by a return value of Infinity.
      */
-    const hasHearty = R.any(R.propEq('effect', 'Hearty'))(mats);
-    if (hasHearty && isHeartyAware) return Infinity;
+    const hasHeartyEffect = (CookingUtil.getEffect(mats) === 'Hearty');
+    if (hasHeartyEffect && isHeartyAware) return Infinity;
 
     let base = 0,
         bonus = 0;
@@ -255,7 +255,12 @@ export default class CookingUtil {
 
     const isCopiousRecipe = rcp.uniq_ingred === true;
     if (isCopiousRecipe) {
-      const family = R.uniq(rcp.ingredients[0][1]); // Food family name
+      const family = R.uniq(rcp.ingredients)[0][1]; // Food family name
+      // if (rcp.name === 'Copious Seafood Skewers') {
+      //   console.log(family);
+      //   console.log(typeof family);
+      //   console.log(rcp.ingredients);
+      // }
       const isInFamily = mat => mat.families.includes(family);
       const atLeastLength = arr => arr.length >= rcp.ingredients.length;
 

@@ -284,6 +284,16 @@ const partialTestingSets = [
     }
   },
 
+  // Related to effect cancelling
+  {
+    mats: 'Hydromelon, Voltfruit, Hearty Radish, Fresh Milk',
+    output: {
+      name: 'Creamy Heart Soup',
+      hpRestore: 8 * 4,
+      effectData: 'no effect'
+    }
+  },
+
   // Cooking recipes
 
   // Let's try to make one of every single dish

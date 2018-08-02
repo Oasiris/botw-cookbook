@@ -90,10 +90,11 @@ const matTestingSets = [
   },
   {
     names: 'Hydromelon, Voltfruit, Hearty Radish, Fresh Milk',
-    hpRestore: Infinity,
+    hpRestore: 4 * 8,
+    getDishEffectInfo: 'no effect',
     _source: 'S1 Row 5',
     _naive: {
-      hpRestore: hearts(8)
+      hpRestore: Infinity
     }
   },
   {
