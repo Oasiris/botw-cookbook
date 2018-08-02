@@ -178,8 +178,111 @@ const partialTestingSets = [
         duration: 3 * 60 + 40,
       }
     }
+
   },
 
+  // Some other tests
+  {
+    mats: 'Raw Prime Meat, Monster Extract, Bright-Eyed Crab',
+    output: {
+      name: 'Energizing Monster Stew',
+      hpRestore: 4 * 5,
+      effectData: {
+        stamina: 0.4
+      }
+    }
+  },
+
+  // Cemu test: Targeted at seafood/crab/fish
+  {
+    mats: 'Hylian Rice, Bright-Eyed Crab',
+    output: {
+      name: 'Energizing Seafood Rice Balls',
+      hpRestore: 4 * 4,
+      effectData: {
+        stamina: 0.4
+      }
+    }
+  },
+  {
+    mats: 'Hylian Rice, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Seafood Rice Balls',
+      hpRestore: Infinity,
+      effectData: {
+        extraHearts: 3
+      }
+    }
+  },
+  {
+    mats: 'Rock Salt, Razorclaw Crab',
+    output: {
+      name: 'Mighty Salt-Grilled Crab',
+      hpRestore: 2 * 4,
+      effectData: {
+        tierNumber: 1,
+        duration: 1 * 60 + 50
+      }
+    }
+  },
+  {
+    mats: 'Rock Salt, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Salt-Grilled Fish',
+      hpRestore: Infinity,
+      effectData: {
+        extraHearts: 3
+      }
+    }
+  },
+  {
+    mats: 'Hearty Blueshell Snail, Razorclaw Crab, Ironshell Crab, Bright-Eyed Crab',
+    output: {
+      name: 'Copious Seafood Skewers',
+      hpRestore: 12 * 4,
+      effectData: 'no effect'
+    }
+  },
+  {
+    mats: 'Chillfin Trout, Sizzlefin Trout, Voltfin Trout, Stealthfin Trout',
+    output: {
+      name: 'Copious Seafood Skewers',
+      hpRestore: 8 * 4,
+      effectData: 'no effect'
+    }
+  },
+  {
+    mats: 'Hyrule Herb, Sneaky River Snail',
+    output: {
+      name: 'Sneaky Steamed Fish',
+      hpRestore: 4 * 4,
+      effectData: { tierNumber: 1, tierName: 'low', duration: 2 * 60 + 30 }
+    }
+  },
+  {
+    mats: 'Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Seafood Skewer',
+      hpRestore: Infinity,
+      effectData: { prefix: 'Hearty', extraHearts: 3 }
+    }
+  },
+  {
+    mats: 'Sizzlefin Trout',
+    output: {
+      name: 'Spicy Fish Skewer',
+      hpRestore: 2 * 4,
+      effectData: { prefix: 'Spicy', tierName: 'low', duration: 2 * 60 + 30 }
+    }
+  },
+  {
+    mats: 'Spicy Pepper, Ironshell Crab',
+    output: {
+      name: 'Pepper Seafood',
+      hpRestore: 3 * 4,
+      effectData: 'no effect'
+    }
+  },
 
   // Cooking recipes
 
