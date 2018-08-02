@@ -338,6 +338,25 @@ const partialTestingSets = [
     source: 'Cemu direct',
     _note: 'Actually uncovered a bug where including the same duration-extending ingredient twice would cause the duration extension to happen twice'
   },
+
+  // ...and back to Fruitcakes
+  {
+    mats: 'Wildberry, Hydromelon, Tabantha Wheat, Cane Sugar',
+    output: {
+      name: 'Chilly Fruitcake',
+      hpRestore: 5 * 4,
+      effectData: {
+        tierName: 'low',
+        title: 'Heat Resistance',
+        duration: 4 * 60 + 30
+      }
+    },
+    source: 'Cemu direct'
+  },
+  
+
+
+
   // Making sure that duration-extending additives' effects kick in only once per unique additive
   {
     mats: 'Hydromelon, Cane Sugar',
@@ -374,20 +393,14 @@ const partialTestingSets = [
     source: 'Cemu direct',
   },
 
-
-  // ...and back to Fruitcakes
+  // Seafood Paella with Armored Porgy
   {
-    mats: 'Wildberry, Hydromelon, Tabantha Wheat, Cane Sugar',
+    mats: 'Hylian Rice, Goat Butter, Rock Salt, Armored Porgy, Hearty Blueshell Snail',
     output: {
-      name: 'Chilly Fruitcake',
-      hpRestore: 5 * 4,
-      effectData: { 
-        tierName: 'low', 
-        title: 'Heat Resistance', 
-        duration: 4 * 60 + 30 
-      }
-    },
-    source: 'Cemu direct'
+      name: 'Seafood Paella',
+      hpRestore: 12 * 4,
+      effectData: 'no effect'
+    }
   },
 
   // Testing additives
@@ -419,13 +432,112 @@ const partialTestingSets = [
     source: 'Cemu direct'
   },
 
+  // Confirming that Clam Chowder can only be made with Hearty Blueshell Snail and not Sneaky River Snail
+  {
+    mats: 'Fresh Milk, Tabantha Wheat, Goat Butter, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Clam Chowder'
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Fresh Milk, Tabantha Wheat, Goat Butter, Sneaky River Snail',
+    output: {
+      name: 'Sneaky Seafood Meunière',
+      hpRestore: 5 * 4,
+      effectData: { tierNumber: 1, duration: 5 * 60 + 40 }
+    },
+    source: 'Cemu direct'
+  },
+
+  // Ignore this now, but I was testing behavior related to dishes w/ additives 
+  // and picking which dish to output
+  {
+    mats: 'Hearty Radish, Fresh Milk, Tabantha Wheat, Goat Butter, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Clam Chowder',
+      hpRestore: Infinity,
+      effectData: { extraHearts: 6 }
+    },
+    source: 'Cemu direct',
+  },
+  {
+    mats: 'Fresh Milk, Tabantha Wheat, Goat Butter, Sneaky River Snail, Hearty Blueshell Snail',
+    output: {
+      name: 'Clam Chowder'
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Acorn, Fresh Milk, Tabantha Wheat, Goat Butter, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Clam Chowder',
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Hylian Rice, Fresh Milk, Tabantha Wheat, Goat Butter, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Clam Chowder',
+    },
+    source: 'Cemu direct'
+  }, 
+  {
+    mats: 'Fresh Milk, Tabantha Wheat, Goat Butter, Courser Bee Honey, Hearty Blueshell Snail',
+    output: {
+      name: 'Clam Chowder',
+      hpRestore: 13 * 4,
+      effectData: 'no effect'
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Raw Bird Drumstick, Fresh Milk, Tabantha Wheat, Goat Butter, Hearty Blueshell Snail',
+    output: {
+      name: 'Hearty Clam Chowder',
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Fresh Milk, Tabantha Wheat, Goat Butter, Courser Bee Honey, Monster Extract',
+    output: {
+      name: 'Energizing Monster Soup',
+      effectData: { prefix: 'Energizing' }
+    },
+    source: 'Cemu direct',
+  },
+  {
+    mats: 'Fresh Milk, Tabantha Wheat, Goat Butter, Raw Bird Drumstick, Monster Extract',
+    output: {
+      name: 'Monster Soup',
+    },
+    source: 'Cemu direct',
+  },
+
   // Other misc dishes
+  
   {
     mats: 'Bird Egg, Courser Bee Honey, Courser Bee Honey, Courser Bee Honey',
     output: {
       name: 'Energizing Omelet',
       hpRestore: 14 * 4,
       effectData: { fxType: 'points', stamina: 1.6 }
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Apple, Wildberry, Fleet-Lotus Seeds, Tabantha Wheat, Goat Butter',
+    output: {
+      name: 'Hasty Hot Buttered Apple',
+      hpRestore: 6 * 4,
+      effectData: { tierNumber: 1, duration: 9 * 60 + 20 }
+    }
+  },
+  {
+    mats: 'Apple, Wildberry',
+    output: {
+      name: 'Simmered Fruit',
+      hpRestore: 2 * 4
     },
     source: 'Cemu direct'
   },
@@ -459,10 +571,36 @@ const matsFromString = str => {
 }
 
 const describeSet = set => {
-  const matNameArray = str.split(',').map(m => m.trim()).filter(s => s !== '');
+  let description = '';
+  const matNameArray = set.mats.split(',').map(m => m.trim()).filter(s => s !== '');
   // const 
+  console.log(matNameArray);
 
+  const matNicknames = [
+    ['Hearty', 'Hty.'],
+    ['Tabantha Wheat', 'T. Wheat'],
+    ['Fresh Milk', 'F. Milk'],
+    ['Goat Butter', 'G. Butter'],
+    ['Goron Spice', 'G. Spice'],
+    ['Monster', 'Mon'],
+    ['Rock Salt', 'R. Salt'],
+    ['Hylian Rice', 'H. Rice'],
+    ['Cane Sugar', 'C. Sugar'],
+    ['Courser Bee Honey', 'C.B. Honey'],
+    ['Bird Egg', 'B. Egg']
+  ];
 
+  // Replace names of mats with nicknames here
+  const abbrevNameArray = matNameArray.map(matName => {
+    let abbrevName = String(matName);
+    matNicknames.forEach(([ longStr, shortStr ]) => {
+      abbrevName = abbrevName.replace(new RegExp(longStr, 'g'), shortStr);
+    });
+    return abbrevName;
+  });
+    
+  description += abbrevNameArray.join(', ');
+  return description;
 }
 
 // Tests
@@ -499,7 +637,9 @@ describe('CookedDish', () => {
       partialTestingSets.forEach(set => {
         const mats = matsFromString(set.mats);
 
-        it(set.mats, () => {
+        const testDescription = describeSet(set);
+        // it(set.mats, () => {
+        it(testDescription, () => {
           const dish = CookedDish.ofMats(mats);
           // We expect every property that's described in the p. testing set
           // to match with the actual output, `dish`.
@@ -511,14 +651,14 @@ describe('CookedDish', () => {
               Object.keys(set.output[property]).forEach(pp => {
                 // Smarter debugging -- display full "actual" dish in case of an error
                 if (dish[property][pp] !== set.output[property][pp]) {
-                  console.log(dish);
+                  // console.log(dish);
                 }
                 expect(dish[property][pp]).toEqual(set.output[property][pp]);
               })
             } else {
               // Smarter debugging -- display full "actual" dish in case of an error
               if (dish[property] !== set.output[property]) {
-                console.log(dish);
+                // console.log(dish);
               }
 
               expect(dish[property]).toEqual(set.output[property]);
