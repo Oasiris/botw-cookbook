@@ -1355,6 +1355,7 @@
         "idx": 64,
         "name": "Hot Buttered Apple",
         "notes": "",
+        "heartBonus": 1,
         "ingredients": [
             [
                 "name",

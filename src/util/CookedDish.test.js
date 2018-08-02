@@ -348,7 +348,7 @@ const partialTestingSets = [
       effectData: {
         tierName: 'low',
         title: 'Heat Resistance',
-        duration: 4 * 60 + 30
+        duration: 5 * 60 + 20
       }
     },
     source: 'Cemu direct'
@@ -381,7 +381,7 @@ const partialTestingSets = [
     output: {
       name: 'Energizing Honey Crepe',
       hpRestore: 10 * 4,
-      effectData: { extraStamina: 0.4 }
+      effectData: { stamina: 0.4 }
     },
     _note: '10 hearts restored (1 heart bonus). Confirmed online.'
   },
@@ -441,6 +441,26 @@ const partialTestingSets = [
   },
 
 
+  {
+    // Hot Buttered Apple
+    // Now I need to test more than just pastries -- I should test _everything_
+    mats: 'Apple, Wildberry, Fleet-Lotus Seeds, Tabantha Wheat, Goat Butter',
+    output: {
+      name: 'Hasty Hot Buttered Apple',
+      hpRestore: 6 * 4,
+      effectData: { tierNumber: 1, duration: 9 * 60 + 20 }
+    },
+    _note: '1 heart more than expected'
+  },
+  {
+    mats: 'Apple, Goat Butter',
+    output: {
+      name: 'Hot Buttered Apple',
+      hpRestore: 2 * 4
+    },
+    _note: '1 heart bonus'
+  },
+
 
 
 
@@ -487,7 +507,8 @@ const partialTestingSets = [
       name: 'Seafood Paella',
       hpRestore: 12 * 4,
       effectData: 'no effect'
-    }
+    },
+    _note: 'Restores 2 more hearts than it should -- 2 heart bonus'
   },
 
   // Testing additives
@@ -611,14 +632,6 @@ const partialTestingSets = [
       effectData: { fxType: 'points', stamina: 1.6 }
     },
     source: 'Cemu direct'
-  },
-  {
-    mats: 'Apple, Wildberry, Fleet-Lotus Seeds, Tabantha Wheat, Goat Butter',
-    output: {
-      name: 'Hasty Hot Buttered Apple',
-      hpRestore: 6 * 4,
-      effectData: { tierNumber: 1, duration: 9 * 60 + 20 }
-    }
   },
   {
     mats: 'Apple, Wildberry',

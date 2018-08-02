@@ -412,7 +412,14 @@ export default class CookingUtil {
 
     let { name, thumb, desc } = rcp;
     const effectData = CookingUtil.getDishEffectInfo(mats);
-    const hpRestore  = CookingUtil.getHpRestore(mats);
+    let hpRestore = CookingUtil.getHpRestore(mats);
+    if (hpRestore !== Infinity) { // Bonus/set hearts on certain recipes
+      if (rcp.heartsRestore) {
+        hpRestore = rcp.heartsRestore * 4;
+      } else if (rcp.heartBonus) {
+        hpRestore += rcp.heartBonus * 4;
+      }
+    }
     const rupeePrice = CookingUtil.getRupeePrice(mats);
     
     const effectName = EffectUtil.getEffect(mats);
