@@ -126,6 +126,15 @@ export class Rcp {
     }
     return new Rcp({ ...found, _filled: true });
   }
+
+  /**
+   * Returns true if the recipe calls for Monster Extract.
+   * @param {Rcp} rcp
+   * @return {Boolean} 
+   */
+  static isMonsterRcp(rcp) {
+    return exists(R.find(R.propEq('1', 'Monster Extract'), rcp.ingredients));
+  }
 }
 
 // ——————————————————————————————————————————————————————————————————————————
@@ -413,11 +422,16 @@ export default class CookingUtil {
     let { name, thumb, desc } = rcp;
     const effectData = CookingUtil.getDishEffectInfo(mats);
     let hpRestore = CookingUtil.getHpRestore(mats);
-    if (hpRestore !== Infinity) { // Bonus/set hearts on certain recipes
+    if (hpRestore !== Infinity) {
+      // Accounts for recipes that include bonus hearts or set the # of hearts 
       if (rcp.heartsRestore) {
         hpRestore = rcp.heartsRestore * 4;
       } else if (rcp.heartBonus) {
         hpRestore += rcp.heartBonus * 4;
+      // Accounts for Monster _recipes_
+      } else if (Rcp.isMonsterRcp(rcp) === true 
+        && rcp.heartsAlwaysAffectedByExtract) {
+        hpRestore += 3 * 4;
       }
     }
     const rupeePrice = CookingUtil.getRupeePrice(mats);
@@ -462,7 +476,7 @@ export default class CookingUtil {
 
     // const { name, thumb, desc } = rcp;
     const { name, thumb, desc } = C.dubiousFood;
-    const rcp = null;
+    const rcp = { name, thumb, desc };
     // const effectData = 'no effect';
     // const hpRestore  = CookingUtil.getHpRestore(mats, false, false) / 2;
     // const rupeePrice = 2;

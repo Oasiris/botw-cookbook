@@ -6,6 +6,8 @@
 // Dependencies
 // —————————————————————————————————————
 
+import C from '../data/all.json';
+
 import CookingUtil, { Mat, Rcp } from './CookingUtil'
 import CookedDish from './CookedDish'
 
@@ -179,18 +181,6 @@ const partialTestingSets = [
       }
     }
 
-  },
-
-  // Some other tests
-  {
-    mats: 'Raw Prime Meat, Monster Extract, Bright-Eyed Crab',
-    output: {
-      name: 'Energizing Monster Stew',
-      hpRestore: 4 * 5,
-      effectData: {
-        stamina: 0.4
-      }
-    }
   },
 
   // Cemu test: Targeted at seafood/crab/fish
@@ -448,7 +438,7 @@ const partialTestingSets = [
     output: {
       name: 'Hasty Hot Buttered Apple',
       hpRestore: 6 * 4,
-      effectData: { tierNumber: 1, duration: 9 * 60 + 20 }
+      effectData: { tierNumber: 1, duration: 4 * 60 + 20 }
     },
     _note: '1 heart more than expected'
   },
@@ -642,6 +632,66 @@ const partialTestingSets = [
     source: 'Cemu direct'
   },
 
+  // Test 1+ of each dish
+  {
+    mats: 'Hylian Rice, Goron Spice, Monster Extract',
+    output: {
+      name: 'Monster Curry',
+      hpRestore: 5 * 4
+    },
+    source: "Cemu direct",
+    _note: "Can't get +3 heart bonus (it's as though it's built in.) Often gets 1/4 heart deficit."
+  },
+  {
+    mats: 'Hylian Rice, Rock Salt, Monster Extract',
+    output: {
+      name: 'Monster Rice Balls',
+      hpRestore: 5 * 4
+    },
+    source: 'Cemu direct',
+    _note: "Can't get +3 heart bonus (it's as though it's built in.) Often gets 1/4 heart deficit."
+  },
+  {
+    mats: 'Apple, Palm Fruit, Hylian Rice, Rock Salt, Monster Extract',
+    output: {
+      name: 'Monster Rice Balls',
+      hpRestore: 8 * 4
+    },
+    source: 'Cemu direct',
+    _note: "Can't get +3 heart bonus (it's as though it's built in.) Often gets 1/4 heart deficit."
+  },
+  {
+    mats: 'Raw Prime Meat, Monster Extract, Bright-Eyed Crab',
+    output: {
+      name: 'Energizing Monster Stew',
+      hpRestore: 5 * 4,
+      effectData: {
+        stamina: 0.4
+      }
+    },
+    _note: "Can get both +3 heart bonus and 1/4 heart deficit."
+  },
+  {
+    mats: 'Raw Meat, Monster Extract, Armored Porgy',
+    output: {
+      name: 'Tough Monster Stew',
+      hpRestore: 4 * 4,
+      effectData: {
+        prefix: 'Tough'
+      }
+    },
+    _note: "Can get both +3 heart bonus and 1/4 heart deficit."
+  },
+  {
+    mats: 'Cane Sugar, Tabantha Wheat, Goat Butter, Monster Extract',
+    output: {
+      name: 'Monster Cake',
+      hpRestore: 5 * 4,
+      effectData: 'no effect'
+    },
+  },
+
+
 ];
 
 const fullTestingSets = [
@@ -672,21 +722,25 @@ const matsFromString = str => {
 
 const describeSet = set => {
   let description = '';
+  if (set.output && set.output.name) {
+    description += `[${set.output.name}] `;
+  }
+ 
   const matNameArray = set.mats.split(',').map(m => m.trim()).filter(s => s !== '');
 
   const matNicknames = [
-    ['Hearty', 'Hty.'],
-    ['Tabantha Wheat', 'T. Wheat'],
-    ['Fresh Milk', 'F. Milk'],
-    ['Goat Butter', 'G. Butter'],
-    ['Goron Spice', 'G. Spice'],
+    ['Hearty', 'Hty'],
+    ['Tabantha Wheat', 'T-Wheat'],
+    ['Fresh Milk', 'F-Milk'],
+    ['Goat Butter', 'G-Butter'],
+    ['Goron Spice', 'G-Spice'],
     ['Monster', 'Mon'],
-    ['Rock Salt', 'R. Salt'],
-    ['Hylian Rice', 'H. Rice'],
-    ['Cane Sugar', 'C. Sugar'],
-    ['Courser Bee Honey', 'C.B. Honey'],
-    ['Bird Egg', 'B. Egg'],
-    ['Chickaloo Tree Nut', 'C. Tree Nut']
+    ['Rock Salt', 'R-Salt'],
+    ['Hylian Rice', 'H-Rice'],
+    ['Cane Sugar', 'C-Sugar'],
+    ['Courser Bee Honey', 'C.B.Honey'],
+    ['Bird Egg', 'B-Egg'],
+    ['Chickaloo Tree Nut', 'C-Tree Nut']
   ];
 
   // Replace names of mats with nicknames here
@@ -785,4 +839,16 @@ describe('CookedDish', () => {
     });
 
   });
+});
+
+// End results
+it('《Final test analysis》', () => {
+  let testedRecipes = [];
+  partialTestingSets.forEach(set => {
+    const dish = CookedDish.ofMats(matsFromString(set.mats));
+    testedRecipes.push(dish.rcp.name);
+  });
+  testedRecipes = R.uniq(testedRecipes);
+
+  console.log(`You've tested ${testedRecipes.length} out of ${C.recipes.length} recipes so far.`);
 });

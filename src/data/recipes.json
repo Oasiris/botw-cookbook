@@ -55,6 +55,7 @@
         "idx": 3,
         "name": "Monster Curry",
         "notes": "",
+        "heartsAlwaysAffectedByExtract": true,
         "ingredients": [
             [
                 "name",
@@ -74,6 +75,7 @@
         "idx": 4,
         "name": "Monster Rice Balls",
         "notes": "",
+        "heartsAlwaysAffectedByExtract": true,
         "ingredients": [
             [
                 "name",
@@ -93,6 +95,7 @@
         "idx": 5,
         "name": "Monster Cake",
         "notes": "",
+        "heartsAlwaysAffectedByExtract": true,
         "ingredients": [
             [
                 "name",
@@ -116,6 +119,7 @@
         "idx": 6,
         "name": "Monster Soup",
         "notes": "",
+        "heartsAlwaysAffectedByExtract": true,
         "ingredients": [
             [
                 "name",
@@ -139,6 +143,7 @@
         "idx": 7,
         "name": "Monster Stew",
         "notes": "",
+        "heartsAlwaysAffectedByExtract": false,
         "ingredients": [
             [
                 "family",

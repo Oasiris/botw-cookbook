@@ -12,6 +12,25 @@ describe('Boolean tests', () => {
 
 });
 
+describe('Array tests', () => {
+  /**
+   * Like objects that aren't the same object won't be counted as equals in Array.prototype.includes.
+   */
+  it('`includes` and arrays of objects', () => {
+    const arr = [ {a: 1}, {b: 2}, {c: 3} ];
+    const ele = {a: 1};
+    expect(arr.includes(ele)).toEqual(false);
+  });
+
+  /**
+   * Reference index number as if it's a key
+   */
+  it('Reference index number as if by key', () => {
+    const arr = [10, 11, 12, 13, 14];
+    expect(arr[2]).toEqual(arr['2']);
+  });
+});
+
 describe('ramda tests', () => {
   it('test 1', () => {
     const arr = [{ a: 4 }, { a: 7 }, { a: 10 }];
