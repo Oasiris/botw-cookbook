@@ -315,6 +315,34 @@ const partialTestingSets = [
     }
 
   },
+  // Testing additives
+  {
+    mats: 'Courser Bee Honey, Cane Sugar',
+    output: {
+      name: 'Dubious Food',
+      hpRestore: 2 * 4
+    },
+    source: 'Cemu direct'
+  },
+  {
+    mats: 'Courser Bee Honey, Goat Butter',
+    output: {
+      name: 'Dubious Food',
+      hpRestore: 2 * 4
+    },
+    source: 'Cemu direct'
+  },
+
+  // Other misc dishes
+  {
+    mats: 'Bird Egg, Courser Bee Honey, Courser Bee Honey, Courser Bee Honey',
+    output: {
+      name: 'Energizing Omelet',
+      hpRestore: 14 * 4,
+      effectData: { fxType: 'points', stamina: 1.6 }
+    },
+    source: 'Cemu direct'
+  },
 
 ];
 
