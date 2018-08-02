@@ -338,6 +338,43 @@ const partialTestingSets = [
     source: 'Cemu direct',
     _note: 'Actually uncovered a bug where including the same duration-extending ingredient twice would cause the duration extension to happen twice'
   },
+  // Making sure that duration-extending additives' effects kick in only once per unique additive
+  {
+    mats: 'Hydromelon, Cane Sugar',
+    output: {
+      name: 'Chilly Simmered Fruit',
+      hpRestore: 1 * 4,
+      effectData: { duration: 3 * 60 + 50 }
+    },
+    source: 'Cemu direct',
+  },
+  {
+    mats: 'Hydromelon, Cane Sugar, Cane Sugar',
+    output: {
+      hpRestore: 1 * 4,
+      effectData: { duration: 4 * 60 + 20 }
+    },
+    source: 'Cemu direct',
+    _notes: 'Notice the duration only goes up by 30 -- the Cane Sugar duration bonus doesn\'t kick in again.'
+  },
+  {
+    mats: 'Hydromelon, Cane Sugar, Cane Sugar, Goat Butter',
+    output: {
+      hpRestore: 1 * 4,
+      effectData: { duration: 5 * 60 + 40 }
+    },
+    source: 'Cemu direct',
+  },
+  {
+    mats: 'Hydromelon, Cane Sugar, Cane Sugar, Goat Butter, Goat Butter',
+    output: {
+      hpRestore: 1 * 4,
+      effectData: { duration: 6 * 60 + 10 }
+    },
+    source: 'Cemu direct',
+  },
+
+
   // ...and back to Fruitcakes
   {
     mats: 'Wildberry, Hydromelon, Tabantha Wheat, Cane Sugar',
