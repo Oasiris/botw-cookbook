@@ -296,14 +296,25 @@ const partialTestingSets = [
 
   // Cooking recipes
 
-  // Let's try to make one of every single dish
+  // Unique ingredients when trying to make dishes of certain recipes
   {
     mats: 'Tabantha Wheat, Cane Sugar, Apple, Apple',
     output: {
-      name: 'Fruitcake'
+      name: 'Simmered Fruit',
+      hpRestore: 4 * 4,
+      effectData: 'no effect'
     },
-    source: 'Not tested'
-  }
+    source: 'Cemu direct test'
+  },
+  {
+    mats: 'Tabantha Wheat, Cane Sugar, Apple, Wildberry',
+    output: {
+      name: 'Fruitcake',
+      hpRestore: 5 * 4,
+      effectData: 'no effect'
+    }
+
+  },
 
 ];
 

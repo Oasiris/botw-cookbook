@@ -246,6 +246,7 @@ export default class CookingUtil {
    *  recipe.
    */
   static canCookInto(mats, rcp, options) {
+    mats = R.uniq(mats);
     const { exact } = exists(options) ? options : {};
     const removeOne = R.remove(__, 1, __); // Helper lambdas
 
