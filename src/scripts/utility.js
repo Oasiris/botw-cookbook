@@ -24,9 +24,10 @@ export function def(x, d) { return (exists(x)) ? x : d; }
 
 /**
  * @param {any} x
+ * @param {any} defaultVal The value to be returned should exists(x) be false.
  * @return False if the input variable is undefined or null. Input otherwise.
  */
-export function ifExists(x) { return def(x, false); }
+export function ifExists(x, defaultVal = false) { return def(x, defaultVal); }
 // export function ifExists(x) { return (exists(x)) ? x : false; }
 
 /* —————————————————————————————————————— */

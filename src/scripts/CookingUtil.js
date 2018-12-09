@@ -20,7 +20,6 @@ import EffectUtil from './EffectUtil';
 // Helpers
 // ——————————————————————————————————————————————————————————————————————————
 
-
 /**
  * Class representing a material.
  * 

@@ -3,7 +3,11 @@
 .material {
     display: inline-block;
     padding: 15px 30px;
-    min-width: 80px;
+    // min-width: 80px;
     background: $bkgd;
+
+    h1, h2, h3, h4, h5, p {
+        margin-bottom: 3px;
+    }
 }
 
