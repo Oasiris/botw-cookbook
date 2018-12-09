@@ -8,6 +8,7 @@ body:before {
   z-index: -1;
   
   display: block;
+  background: rgb(154, 177, 105);
   background-image: url('../img/bkgd/sunset_field_1920.jpg');
   background-size: cover;
   /* background-position: top center; */
