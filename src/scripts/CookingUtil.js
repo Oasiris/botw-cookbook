@@ -5,9 +5,10 @@
 /**
  * C for 'Constants'.
  */
-import C from '../data/all.json';
-import isNumber from 'isnumber';
-import R, { curry, compose, pipe, __ } from 'ramda';
+import C from '../data/all.json'
+import isNumber from 'isnumber'
+import * as R from 'ramda'
+import { curry, compose, pipe, __ } from 'ramda'
 
 import { exists, xor, match, arrayify, dearrayify, matchK } from './utility';
 

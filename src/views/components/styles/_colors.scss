@@ -1,0 +1,32 @@
+// Default react colors
+
+// $default-nav-color: #222; // React's default
+$default-nav-color: #333; 
+$nav-c: #191919; 
+
+// $general-text-color: #333; // React's default
+$general-text-color: #333;
+
+$selection-color: #bbb;
+
+$softer-grey: #666;
+
+$text-pop-color: rgb(255, 217, 0);
+$text-pop-darker-color: rgb(173, 155, 48);
+
+$text-pop-lighter-color: rgb(228, 215, 141);
+
+$lightest-gold: rgb(255, 248, 211);
+$lightestest-gold: rgb(255, 252, 236);
+
+$bkgd-color: rgb(5, 5, 5);
+$bkgd: rgba($bkgd-color, 0.725);
+$selected-bkgd: rgba($lightestest-gold, 0.725);
+$active-bkgd: rgba(white, 0.875);
+
+$pale-light: rgb(255, 255, 233);
+
+$button-color: $bkgd;
+$button-hover-color: rgba($bkgd, 0.825);
+$button-active-color: rgba(white, 0.7);
+$button-toggled-color: rgba($softer-grey, 0.825);

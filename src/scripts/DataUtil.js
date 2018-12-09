@@ -14,7 +14,8 @@
  */
 import C from '../data/all.json';
 import isNumber from 'isnumber';
-import R, { curry, compose, pipe, __ } from 'ramda';
+import * as R from 'ramda'
+import { curry, compose, pipe, __ } from 'ramda'
 
 import { exists, xor, match, arrayify, dearrayify, matchK } from './utility';
 
