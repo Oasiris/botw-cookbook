@@ -8,6 +8,3 @@
       - `"thumb": "17-0"`, or
       - `"img": "17-0"`?
 - Assign ID's for families.
-
-- Write a short script that will minify all of the png images in a folder. Apply that script to the `thumbs` folder (nested somewhere within `public`).
-  - These thumbs are quite large -- they take up 3-5kb each, and there are 371 of them, for 1000-1600kb. I can't remember if I already attempted to minify them, but another go would not hurt.
