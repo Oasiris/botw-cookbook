@@ -9,17 +9,21 @@ import React, { Component } from 'react';
 
 // import Header from './Header'
 // import Footer from './Footer'
-import Material, { ThumbedMaterials, MaterialList } from './Material';
+import Material, { ThumbedMaterials, MaterialList } from './Material'
 import Recipe, { RecipeList } from './Recipe'
-import Button from './Button';
+import Button from './Button'
 import FancyCard, { SelectedFancyCard } from './FancyCard'
-import SmallCounter from './SmallCounter';
+import SmallCounter from './SmallCounter'
 
 import { recipes } from '../../data'
 
-import '../styles/global.scss';
-import '../styles/App.scss';
-import '../static/css/fontello.css';
+import '../styles/global.scss'
+import '../styles/App.scss'
+import '../static/css/fontello.css'
+
+// —————————————————————————————————————
+// Static Components
+// —————————————————————————————————————
 
 
 const Header = () => (
@@ -27,6 +31,7 @@ const Header = () => (
     <h1 className="App-title unselectable">Breath of the Wild Cookbook</h1>
   </header>
 );
+
 
 const Footer = () => (
   <div className="footer">
@@ -50,27 +55,37 @@ const Footer = () => (
 )
 
 
+const Sandbox = () => (
+  <>
+    {/* <SmallCounter count={3} /> */}
+    {/* <SelectedFancyCard content={(
+      <h2>Hello</h2>
+    )} /> */}
+    {/* <Button onClick={() => alert('hey')}>asdfghjfdsfgh</Button> */}
+  
+    {/* <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />         */}
+    {/* <ThumbedMaterials /> */}
+    {/* <MaterialList materials={data.materials} /> */}
+  </>
+)
+
+
+// —————————————————————————————————————
+// Main/Export Component
+// —————————————————————————————————————
+
 export default class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
         <div className="container">
-
-          {/* <SmallCounter count={3} /> */}
-          {/* <SelectedFancyCard content={(
-            <h2>Hello</h2>
-          )} /> */}
-          {/* <Button onClick={() => alert('hey')}>asdfghjfdsfgh</Button> */}
-        
-          {/* <Material name="Goat Butter" imgSrc="img/thumb/tiny/thumb-17-10.png" />         */}
-          {/* <ThumbedMaterials /> */}
-          {/* <MaterialList materials={data.materials} /> */}
+          <Sandbox />
           
           <ThumbedMaterials />
           <hr />
           {/* <RecipeList recipes={data.recipes} /> */}
-          <RecipeList recipes={recipes} />
+          {/* <RecipeList recipes={recipes} /> */}
         </div>
         <Footer />
       </div>
