@@ -10,7 +10,7 @@
 
 ### Major-minor
 
-
+- **Solve `gh-pages` problem.**
 
 - Clean `scripts` code by using `mathjs` NPM library for operations.
 
