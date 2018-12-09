@@ -7,16 +7,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import '../styles/Material.css'
-import '../styles/global.css'
-import '../styles/Card.css'
-import '../styles/SmallCounter.css'
+import '../styles/Material.scss'
+import '../styles/global.scss'
+import '../styles/Card.scss'
+import '../styles/SmallCounter.scss'
 
 import FancyCard from './FancyCard';
 import SimpleCard from './SimpleCard';
 import SmallCounter from './SmallCounter';
 
-import data from '../data/all'
+import data from '../../data'
 
 export default class Material extends Component {
 

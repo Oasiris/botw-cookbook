@@ -6,14 +6,15 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import '../styles/Material.css'
-import '../styles/global.css'
-import '../styles/Card.css'
 
 import FancyCard from './FancyCard';
 
+import data from '../../data'
 
-import data from '../data/all'
+import '../styles/Material.scss'
+import '../styles/global.scss'
+import '../styles/Card.scss'
+
 
 export default class Recipe extends Component {
 

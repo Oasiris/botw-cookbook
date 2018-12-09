@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import FancyCard from './FancyCard'
 
-import '../styles/SmallCounter.css'
-import '../styles/global.css'
+import '../styles/SmallCounter.scss'
+import '../styles/global.scss'
 
 const SmallCounter = props => {
 

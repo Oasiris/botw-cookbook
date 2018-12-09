@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // import PropTypes from 'prop-types'
 
-import '../styles/Card.css'
-import '../styles/global.css'
+import '../styles/Card.scss'
+import '../styles/global.scss'
 
 
 /**

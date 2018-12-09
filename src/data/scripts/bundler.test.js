@@ -8,7 +8,7 @@
 
 import bundler from './bundler';
 
-import { exists, match, matchK, ifExists } from './../util/utility'
+import { exists, match, matchK, ifExists } from '../../scripts/utility'
 
 import R from 'ramda';
 

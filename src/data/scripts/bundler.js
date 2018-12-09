@@ -12,8 +12,8 @@
 // ——————————————————————————————————————————————————————————————————————————
 
 // Bundle the JSONs in this folder for exporting
-let materials = require('./materials')
-let recipes = require('./recipes')
+const materials = require('../json/materials.json')
+const recipes   = require('../json/recipes.json')
 
 // ——————————————————————————————————————————————————————————————————————————
 // Dubious Food
@@ -58,8 +58,8 @@ let elixirs = [
 // ——————————————————————————————————————————————————————————————————————————
 
 {
-  const matDescs = require('./matDesc')
-  const recipeDescs = require('./recipeDesc')
+  const matDescs    = require('../json/matDesc.json')
+  const recipeDescs = require('../json/recipeDesc.json')
   
   matDescs.forEach(([ matName, desc ]) => {
     for (let i in materials) {
@@ -85,7 +85,7 @@ let elixirs = [
 // ——————————————————————————————————————————————————————————————————————————
 
 {
-  const thumbs = require('./thumbs')
+  const thumbs = require('../json/thumbs.json')
 
   thumbs.forEach(el => {
     if (el.name === '???') return;

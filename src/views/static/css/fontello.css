@@ -1,3 +1,12 @@
+/**
+ * Note by Oasiris:
+ * 
+ * Fontello is a tool to quickly pack vector images into webfonts. Consider it 
+ * like Twitter Bootstrap, but for images. It builds everything necessary to 
+ * include graphics into your web pages. Also, fontello has a big built-in 
+ * collection of open source artworks.
+ */
+
 @font-face {
   font-family: 'fontello';
   src: url('../fonts/fontello.eot?89674733');

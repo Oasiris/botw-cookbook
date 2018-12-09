@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FancyCard from './FancyCard'
 
-import '../styles/global.css'
+import '../styles/global.scss'
 
 export default class Button extends Component {
 
