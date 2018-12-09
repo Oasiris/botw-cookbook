@@ -8,3 +8,5 @@
       - `"thumb": "17-0"`, or
       - `"img": "17-0"`?
 - Assign ID's for families.
+
+- Clean `scripts` code by using `mathjs` NPM library for operations.
