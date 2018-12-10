@@ -4,7 +4,7 @@ import { exists, ifExists } from '../../scripts/utility'
 // import PropTypes from 'prop-types'
 
 import data from '../../data'
-import { Mat } from '../../scripts/CookingUtil'
+import { OldMat } from '../../scripts/CookingUtil'
 
 import style from './styles/Material.module.scss'
 

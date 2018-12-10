@@ -6,8 +6,9 @@
 // Dependencies
 // —————————————————————————————————————
 
-import R, { curry, pipe, compose, __ } from 'ramda'
-import { exists, xor, match, matchK } from './utility'
+import * as R from 'ramda'
+import { is, curry, pipe, compose, __ } from 'ramda'
+import { exists, isNumber, isString, xor, match, matchK } from './utility'
 
 // —————————————————————————————————————
 // Tests
@@ -23,6 +24,47 @@ describe('exists', () => {
     expect(exists(undefined)).toBe(false);
   });
 });
+
+// TODO: Test ifExists
+
+describe('isNumber', () => {
+  const fn = isNumber;
+
+  it('""', () => {
+    expect(fn(1)).toBe(true);
+    expect(fn('200')).toBe(true);
+    
+    expect(fn("Hello World!")).toBe(false);
+    expect(fn({ '1': 1 })).toBe(false);
+
+    expect(fn(null)).toBe(true);
+    expect(fn(undefined)).toBe(true);
+
+    expect(fn(null, true)).toBe(false);
+    expect(fn(undefined, true)).toBe(false);
+  })
+})
+
+describe('isString', () => {
+  const fn = isString;
+
+  it('""', () => {
+    expect(fn('')).toBe(true);
+    expect(fn('We Are Fighting Dreamers')).toBe(true);
+    
+    expect(fn(10000)).toBe(false);
+    expect(fn({ 'Stringy': 'mcString-string' })).toBe(false);
+
+    expect(fn(null)).toBe(true);
+    expect(fn(undefined)).toBe(true);
+
+    expect(fn(null, true)).toBe(false);
+    expect(fn(undefined, true)).toBe(false);
+  })
+})
+
+
+
 
 describe('xor', () => {
   it('""', () => {

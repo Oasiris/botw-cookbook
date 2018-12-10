@@ -2,7 +2,11 @@
  * A place to test functions and logic in JavaScript.
  */
 
-import R, { curry, compose, __ } from 'ramda'
+// import R, { curry, compose, __ } from 'ramda'
+import * as R from 'ramda'
+import { curry, compose, __ } from 'ramda'
+
+/* —————————————————————————————————————— */
 
 describe('Boolean tests', () => {
   it('Empty object is truthy', () => {
@@ -11,6 +15,8 @@ describe('Boolean tests', () => {
   });
 
 });
+
+/* —————————————————————————————————————— */
 
 describe('Array tests', () => {
   /**
@@ -30,6 +36,8 @@ describe('Array tests', () => {
     expect(arr[2]).toEqual(arr['2']);
   });
 });
+
+/* —————————————————————————————————————— */
 
 describe('ramda tests', () => {
   it('test 1', () => {
@@ -79,5 +87,18 @@ describe('ramda tests', () => {
 
     expect(removeOne(2, [1, 2, 3, 4, 5, 6, 7])).toEqual([1, 2, 4, 5, 6, 7]);
   });
+
+
+  it('currying', () => {
+    // const fn1 = (a, b) => a + b
+    // const curry1 = curry(fn1)
+
+    const curry1 = curry((a, b) => { return a + b })
+
+    let a = 7
+    let b = 28
+    expect(curry1(__, b)(a)).toBe(curry1(a, b))
+    expect(curry1(a)(b)).toBe(curry1(a, b))
+  })
 });
 

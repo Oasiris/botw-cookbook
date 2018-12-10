@@ -7,28 +7,71 @@
 
 // Dependencies
 
-import R from 'ramda'
+// import * as R from 'ramda'
+import { is, curry } from 'ramda'
+import is_number from 'isnumber'
 
 /**
  * @param {any} x
  * @return False if the input variable is undefined or null. True otherwise.
  */
-export function exists(x) { return (x !== undefined) && (x !== null); }
+export const exists = (x) => { return (x !== undefined) && (x !== null); }
+
+
 
 /**
  * @param {any} x
  * @param {any} val
  * @return x if x exists. Val otherwise.
  */
-export function def(x, d) { return (exists(x)) ? x : d; }
+export const def = curry(
+  (x, d) => { return (exists(x)) ? x : d; }
+)
 
 /**
  * @param {any} x
  * @param {any} defaultVal The value to be returned should exists(x) be false.
  * @return False if the input variable is undefined or null. Input otherwise.
  */
-export function ifExists(x, defaultVal = false) { return def(x, defaultVal); }
+export const ifExists = curry(
+  (x, defaultVal = false) => { return def(x, defaultVal); }
+)
 // export function ifExists(x) { return (exists(x)) ? x : false; }
+
+/* —————————————————————————————————————— */
+
+/**
+ * Returns true if `val` is a number.
+ * Returns false if `val` is some other class.
+ * Returns the opposite boolean value of `strict` if `val` is undefined/null.
+ * @param {any} val 
+ * @param {Boolean} strict 
+ */
+const isNumber = (val, strict = false) => {
+  const bIs = is_number(val);
+  const bEx =    exists(val);
+  if ( bIs) return true;
+  if (!bEx) return !strict;
+  return false;
+}
+export { isNumber };
+
+/**
+ * Returns true if `val` is a string.
+ * Returns false if `val` is some other class.
+ * Returns the opposite boolean value of `strict` if `val` is undefined/null.
+ * @param {any} val 
+ * @param {Boolean} strict 
+ */
+const isString = (val, strict = false) => {
+  const bIs = is(String)(val);
+  const bEx =     exists(val);
+  if ( bIs) return true;
+  if (!bEx) return !strict;
+  return false;
+}
+
+export { isString };
 
 /* —————————————————————————————————————— */
 
@@ -37,7 +80,9 @@ export function ifExists(x, defaultVal = false) { return def(x, defaultVal); }
  * @param {boolean} b
  * @return True if exactly one of the two input booleans evaluates to true.
  */
-export function xor(a, b) { return (a ? !b : b); }
+export const xor = curry(
+  (a, b) => { return (a ? !b : b); }
+)
 
 
 /* —————————————————————————————————————— */

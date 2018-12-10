@@ -365,7 +365,7 @@ describe('Mat', () => {
   describe('Instantiation/construction', () => {
     it('ofName: acorn', () => {
       const acorn = Mat.ofName('Acorn');
-      expect(R.is(Mat, acorn)).toBe(true);
+      expect(Mat.is(acorn)).toBe(true);
       expect(acorn.name).toEqual('Acorn');
     });
 
@@ -381,13 +381,13 @@ describe('Mat', () => {
 
     it('ofId: Naydra\'s Horn (id: 62)', () => {
       const naydrasHorn = Mat.ofId(62);
-      expect(R.is(Mat, naydrasHorn)).toBe(true);
+      expect(Mat.is(naydrasHorn)).toBe(true);
       expect(naydrasHorn.name).toEqual('Shard of Naydra\'s Horn');
     });
 
     it('ofId: Naydra\'s Horn w/ input "62"', () => {
       const naydrasHorn = Mat.ofId('62');
-      expect(R.is(Mat, naydrasHorn)).toBe(true);
+      expect(Mat.is(naydrasHorn)).toBe(true);
       expect(naydrasHorn.name).toEqual('Shard of Naydra\'s Horn');
     });
 
@@ -417,7 +417,7 @@ describe('Rcp', () => {
   describe('Instantiation/construction', () => {
     it('ofName: Fried Wild Greens', () => {
       const wildGreens = Rcp.ofName('Fried Wild Greens');
-      expect(R.is(Rcp, wildGreens)).toBe(true);
+      expect(Rcp.is(wildGreens)).toBe(true);
       expect(wildGreens.name).toEqual('Fried Wild Greens');
 
       expect(wildGreens.idx).toEqual(expect.anything());

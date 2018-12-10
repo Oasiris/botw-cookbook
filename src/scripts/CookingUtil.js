@@ -6,14 +6,17 @@
  * C for 'Constants'.
  */
 import C from '../data/all.json'
-import isNumber from 'isnumber'
+// import isNumber from 'isnumber'
 import * as R from 'ramda'
 import { curry, compose, pipe, __ } from 'ramda'
+import { map } from 'ramda'
 
 import { exists, xor, match, arrayify, dearrayify, matchK } from './utility';
+import { isNumber, isString } from './utility'
 
 import DataUtil from './DataUtil';
 import EffectUtil from './EffectUtil';
+// import { isString } from 'util';
 // module.exports = {};
 
 // ——————————————————————————————————————————————————————————————————————————
@@ -21,121 +24,231 @@ import EffectUtil from './EffectUtil';
 // ——————————————————————————————————————————————————————————————————————————
 
 /**
- * Class representing a material.
- * 
- * Abbreviated to avoid a naming conflict with the React component named 
- * 'Material'.
+ * Utility data class for getting material info.
  */
 export class Mat {
   /**
-   * Constructor.
-   * 
-   * Meant to be called from factory methods `ofName` and `ofId`.
-   * @param {Object} data 
-   */
-  constructor(data) {
-    if (data._filled === true) {
-      for (let k of R.keys(data)) {
-        this[k] = data[k];
-      }
-    } else {
-      throw new Error('Don\'t use this constructor; create new Mats by ' 
-        + 'factory methods `ofName` or `ofId`.');
-    }
-  }
-
-  /**
-   * Factory method for mats. Returns a newly constructed Mat object from the
-   * specified material name.
-   * 
-   * @param {string} name Material's name.
+   * Returns new material JS object whose name matches the input.
+   * @param {String} name Name of material. 
    */
   static ofName(name) {
-    const found = R.find(R.propEq('name', name))(C.materials);
-    if (exists(found)) {
-      return new Mat({ ...found, _filled: true })
-    }
-    throw new Error(`Can't create Mat from name "${name}"`);
+    const found = R.find(R.propEq('name', name))(C.materials)
+    if (exists(found))
+      return Object.assign(R.clone(found), { _filled: true })
+    throw new Error(`Invalid mat name "${name}"`)
   }
 
   /**
-   * Factory method for mats. Returns a newly constructed Mat object from the
-   * specified material ID.
-   * 
-   * @param {string|number} id Material's ID or index in the records.
+   * Returns new material JS object whose ID matches the input.
+   * @param {String|Number} id ID of material. 
    */
   static ofId(id) {
-    if (!isNumber(id)) throw new Error(`id "${id}" is NaN`);
-    const idAsInteger = parseInt(id, 10);
-    const found = R.find(R.propEq('idx', idAsInteger))(C.materials);
-    if (!exists(found)) {
-      throw new Error(`Can't create Mat from id "${idAsInteger}"`);
+    if (!isNumber(id, true))
+      throw new Error(`NaN mat ID "${id}""`)
+    const intId = parseInt(id, 10)
+
+    const found = R.find(R.propEq('idx', intId))(C.materials)
+    if (exists(found))
+      return Object.assign(R.clone(found), { _filled: true })
+    throw new Error(`Invalid mat ID "${id}"`)
+  }
+
+  /**
+   * Returns whether or not `obj` is a material object.
+   * @param {Object} obj Object to be analyzed.
+   */
+  static is(obj) {
+    // TODO
+    // DO THIS LATER -- IT IS A **LOT** OF WORK
+
+    // Dummy for now: always return true
+    if (R.is(Object, obj)) {
+      return true;
     }
-    return new Mat({ ...found, _filled: true });
+
+    // const strictNumberProps = ['idx'];
+    // const       numberProps = [
+    //   'price', 'price_mon', 'hp', 'potency', 'crit_chance', 'hp_raw'
+    // ];
+    // const       stringProps = [
+    //   'name', 'effect', 'rank', 'type', 'usage', 'desc', 'thumb'
+    // ];
+
+    // let sNumberPropFns = map(__, strictNumberProps)(v => isNumber(v, true));
+    // let  numberPropFns = map(__,       numberProps)(v => isNumber(v, false));
+    // let  stringPropFns = map(__,       stringProps)(v => isString(v, false));
   }
 }
 
+
+// /**
+//  * Class representing a material.
+//  * 
+//  * Abbreviated to avoid a naming conflict with the React component named 
+//  * 'Material'.
+//  */
+// export class Mat {
+//   /**
+//    * Constructor.
+//    * 
+//    * Meant to be called from factory methods `ofName` and `ofId`.
+//    * @param {Object} data 
+//    */
+//   constructor(data) {
+//     if (data._filled === true) {
+//       for (let k of R.keys(data)) {
+//         this[k] = data[k];
+//       }
+//     } else {
+//       throw new Error('Don\'t use this constructor; create new Mats by ' 
+//         + 'factory methods `ofName` or `ofId`.');
+//     }
+//   }
+
+//   /**
+//    * Factory method for mats. Returns a newly constructed Mat object from the
+//    * specified material name.
+//    * 
+//    * @param {string} name Material's name.
+//    */
+//   static ofName(name) {
+//     const found = R.find(R.propEq('name', name))(C.materials);
+//     if (exists(found)) {
+//       return new Mat({ ...found, _filled: true })
+//     }
+//     throw new Error(`Can't create Mat from name "${name}"`);
+//   }
+
+//   /**
+//    * Factory method for mats. Returns a newly constructed Mat object from the
+//    * specified material ID.
+//    * 
+//    * @param {string|number} id Material's ID or index in the records.
+//    */
+//   static ofId(id) {
+//     if (!isNumber(id)) throw new Error(`id "${id}" is NaN`);
+//     const idAsInteger = parseInt(id, 10);
+//     const found = R.find(R.propEq('idx', idAsInteger))(C.materials);
+//     if (!exists(found)) {
+//       throw new Error(`Can't create Mat from id "${idAsInteger}"`);
+//     }
+//     return new Mat({ ...found, _filled: true });
+//   }
+// }
+
+
 /**
- * Class representing a recipe (abbreviated to avoid a naming conflict with
- * the React component named 'Recipe'.)
+ * Utility data class for getting recipe info.
  */
 export class Rcp {
   /**
-   * Constructor.
-   * 
-   * Meant to be called from factory methods `ofName` and `ofId`.
-   * @param {Object} data 
-   */
-  constructor(data) {
-    if (data._filled === true) {
-      for (let k of R.keys(data)) {
-        this[k] = data[k];
-      }
-    } else {
-      throw new Error('Don\'t use this constructor; create new Rcps by '
-        + 'factory methods `ofName` or `ofId`.');
-    }
-  }
-
-  /**
-   * Factory method for rcps. Returns a newly constructed Rcp object from the
-   * specified recipe name.
-   * 
-   * @param {string} name Recipe's name.
+   * Returns new recipe JS object whose name matches the input.
+   * @param {String} name Name of recipe. 
    */
   static ofName(name) {
-    const found = R.find(R.propEq('name', name))(C.recipes);
-    if (exists(found)) {
-      return new Rcp({ ...found, _filled: true })
-    }
-    throw new Error(`Can't create Rcp from name "${name}"`);
+    const found = R.find(R.propEq('name', name))(C.recipes)
+    if (exists(found))
+      return Object.assign(R.clone(found), { _filled: true })
+    throw new Error(`Invalid rcp name "${name}"`)
   }
 
   /**
-   * Factory method for rcps. Returns a newly constructed Rcp object from the
-   * specified material ID.
-   * 
-   * @param {string|number} id Recipe's ID or index in the records.
+   * Returns new recipe JS object whose ID matches the input.
+   * @param {String|Number} id ID of recipe. 
    */
   static ofId(id) {
-    if (!isNumber(id)) throw new Error(`id "${id}" is NaN`);
-    const idAsInteger = parseInt(id, 10);
-    const found = R.find(R.propEq('idx', idAsInteger))(C.recipes);
-    if (!exists(found)) {
-      throw new Error(`Can't create Rcp from id "${idAsInteger}"`);
-    }
-    return new Rcp({ ...found, _filled: true });
+    if (!isNumber(id, true))
+      throw new Error(`NaN rcp ID "${id}""`)
+    const intId = parseInt(id, 10)
+
+    const found = R.find(R.propEq('idx', intId))(C.recipes)
+    if (exists(found))
+      return Object.assign(R.clone(found), { _filled: true })
+    throw new Error(`Invalid rcp ID "${id}"`)
   }
 
   /**
-   * Returns true if the recipe calls for Monster Extract.
    * @param {Rcp} rcp
-   * @return {Boolean} 
+   * @return {Boolean} True if the recipe calls for monster extract.
    */
   static isMonsterRcp(rcp) {
     return exists(R.find(R.propEq('1', 'Monster Extract'), rcp.ingredients));
   }
+
+  /**
+   * Returns whether or not `obj` is a recipe object.
+   * @param {Object} obj Object to be analyzed.
+   */
+  static is(obj) {
+    // TODO: DO THIS LATER -- IT IS A **LOT** OF WORK
+    // Dummy for now: always return true
+    if (R.is(Object, obj)) {
+      return true;
+    }
+  }
 }
+
+// /**
+//  * Class representing a recipe (abbreviated to avoid a naming conflict with
+//  * the React component named 'Recipe'.)
+//  */
+// export class Rcp {
+//   /**
+//    * Constructor.
+//    * 
+//    * Meant to be called from factory methods `ofName` and `ofId`.
+//    * @param {Object} data 
+//    */
+//   constructor(data) {
+//     if (data._filled === true) {
+//       for (let k of R.keys(data)) {
+//         this[k] = data[k];
+//       }
+//     } else {
+//       throw new Error('Don\'t use this constructor; create new Rcps by '
+//         + 'factory methods `ofName` or `ofId`.');
+//     }
+//   }
+
+//   /**
+//    * Factory method for rcps. Returns a newly constructed Rcp object from the
+//    * specified recipe name.
+//    * 
+//    * @param {string} name Recipe's name.
+//    */
+//   static ofName(name) {
+//     const found = R.find(R.propEq('name', name))(C.recipes);
+//     if (exists(found)) {
+//       return new Rcp({ ...found, _filled: true })
+//     }
+//     throw new Error(`Can't create Rcp from name "${name}"`);
+//   }
+
+//   /**
+//    * Factory method for rcps. Returns a newly constructed Rcp object from the
+//    * specified material ID.
+//    * 
+//    * @param {string|number} id Recipe's ID or index in the records.
+//    */
+//   static ofId(id) {
+//     if (!isNumber(id)) throw new Error(`id "${id}" is NaN`);
+//     const idAsInteger = parseInt(id, 10);
+//     const found = R.find(R.propEq('idx', idAsInteger))(C.recipes);
+//     if (!exists(found)) {
+//       throw new Error(`Can't create Rcp from id "${idAsInteger}"`);
+//     }
+//     return new Rcp({ ...found, _filled: true });
+//   }
+
+//   /**
+//    * Returns true if the recipe calls for Monster Extract.
+//    * @param {Rcp} rcp
+//    * @return {Boolean} 
+//    */
+//   static isMonsterRcp(rcp) {
+//     return exists(R.find(R.propEq('1', 'Monster Extract'), rcp.ingredients));
+//   }
+// }
 
 // ——————————————————————————————————————————————————————————————————————————
 // Logic

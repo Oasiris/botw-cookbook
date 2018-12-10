@@ -2,9 +2,9 @@
 
 ## Major
 
-- **Refactor code so that `Mat` and `Rcp` return simple JS objects instead of classes.**
+<!-- - **Refactor code so that `Mat` and `Rcp` return simple JS objects instead of classes.**
   - `Mat` and `Rcp` should become utility classes, with methods like `static ofName`, `static ofId`, `static isMat`, and/or `static isRcp`. (Somewhat reminiscent of factory classes, but the key distinction is that they are _not returning Class objects, but rather simple JS objects._
-  - **This is important for cleanly incorporating Redux!** (And because the old `Mat`/`Rcp` objects didn't really serve any purpose other than `R.is(Mat, foo)` or `R.is(Rcp, bar)`.
+  - **This is important for cleanly incorporating Redux!** (And because the old `Mat`/`Rcp` objects didn't really serve any purpose other than `R.is(Mat, foo)` or `R.is(Rcp, bar)`. -->
 
 ---
 

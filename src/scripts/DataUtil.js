@@ -78,7 +78,7 @@ export default class DataUtil {
     if (!exists(rcp))
       throw new Error(`Invalid input "${rcp}": must be Rcp or rcp name`);
 
-    if (R.is(Rcp, rcp)) {
+    if (Rcp.is(rcp)) {
       return rcp.desc;
     } else if (R.is(String, rcp)) {
       if (rcp.includes('Elixir')) return ''; // Elixirs have no base description
