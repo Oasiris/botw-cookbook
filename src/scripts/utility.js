@@ -33,9 +33,8 @@ export const def = curry(
  * @param {any} defaultVal The value to be returned should exists(x) be false.
  * @return False if the input variable is undefined or null. Input otherwise.
  */
-export const ifExists = curry(
-  (x, defaultVal = false) => { return def(x, defaultVal); }
-)
+export const ifExists = (x, defaultVal = false) => def(x, defaultVal);
+
 // export function ifExists(x) { return (exists(x)) ? x : false; }
 
 /* —————————————————————————————————————— */

@@ -14,8 +14,9 @@
  */
 import C from '../data/all.json';
 import isNumber from 'isnumber';
-import * as R from 'ramda'
-import { curry, compose, pipe, __ } from 'ramda'
+// import * as R from 'ramda'
+// import { curry, compose, pipe, __ } from 'ramda'
+import { is, find, propEq } from 'ramda'
 
 import { exists, xor, match, arrayify, dearrayify, matchK } from './utility';
 
@@ -53,11 +54,11 @@ export default class DataUtil {
     if (!exists(mat))
       throw new Error(`Invalid input "${mat}": must be Mat or mat name`);
 
-    if (R.is(Mat, mat)) {
+    if (is(Mat, mat)) {
       return mat.desc;
-    } else if (R.is(String, mat)) {
+    } else if (is(String, mat)) {
       // Get material with name property equal to input string
-      const matObj = R.find(R.propEq('name', mat), C.materials);
+      const matObj = find(propEq('name', mat), C.materials);
       if (!exists(matObj))
         throw new Error(`Invalid mat name "${mat}".`);
       return matObj.desc;
@@ -80,10 +81,10 @@ export default class DataUtil {
 
     if (Rcp.is(rcp)) {
       return rcp.desc;
-    } else if (R.is(String, rcp)) {
+    } else if (is(String, rcp)) {
       if (rcp.includes('Elixir')) return ''; // Elixirs have no base description
       // Get recipe with name property equal to input string
-      const rcpObj = R.find(R.propEq('name', rcp), C.recipes);
+      const rcpObj = find(propEq('name', rcp), C.recipes);
       if (!exists(rcpObj))
         throw new Error(`Invalid rcp name "${rcp}".`);
       return rcpObj.desc;
