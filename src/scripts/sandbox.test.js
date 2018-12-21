@@ -86,6 +86,7 @@ describe('ramda tests', () => {
     // console.log(removeOne(2, [1, 2, 3, 4, 5, 6, 7]));
 
     expect(removeOne(2, [1, 2, 3, 4, 5, 6, 7])).toEqual([1, 2, 4, 5, 6, 7]);
+    expect(removeOne(0, ['a', 'b'])).toEqual(['b']);
   });
 
 

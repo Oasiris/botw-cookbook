@@ -44,6 +44,7 @@ function Material(props) {
 
 
 function mapStateToProps(state) {
+  console.log(state);
   const  { ingreds, hasIngreds, dish, hasDish } = state;
   return { ingreds, hasIngreds, dish, hasDish }
 }
@@ -53,11 +54,11 @@ function mapDispatchToProps(dispatch, ownProps) {
     onIncrementClick: () => {
       // console.log('evt', evt);
       // return { type: 'Add Item' }
-      console.log('+', ownProps.data)
+      console.log('clicked +:', ownProps.data.idx)
       dispatch({ type: 'Add Item', id: ownProps.data.idx })
     },
     onDecrementClick: () => {
-      dispatch({ type: 'Rmv Item', id: ownProps.data.idx })
+      dispatch({ type: 'Remove Item', id: ownProps.data.idx })
     },
     onRemoveClick: () => {
       dispatch({ type: 'Purge Item', id: ownProps.data.idx })
