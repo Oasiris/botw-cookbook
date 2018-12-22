@@ -45,8 +45,9 @@ function Material(props) {
 
 function mapStateToProps(state) {
   console.log('state:', state);
-  const  { ingreds, hasIngreds, dish, hasDish } = state;
-  return { ingreds, hasIngreds, dish, hasDish }
+  // const  { ingreds, hasIngreds, dish, hasDish } = state;
+  // return { ingreds, hasIngreds, dish, hasDish }
+  return { st: state }
 }
 
 function mapDispatchToProps(dispatch, ownProps) {

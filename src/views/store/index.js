@@ -42,11 +42,9 @@ export class Util {
     return out;
   }
 }
-// const hasIngred = (state, itemId) => {
-// }
+
 
 const reductions = {
-
   /**
    * Adds item to state. 
    * 
@@ -56,7 +54,7 @@ const reductions = {
    */
   addItem: (st, { id }) => {
     // Make sure the id exists
-    if (!exists(id)) return st;
+    if (!exists(id)) return st
     // TODO: Make sure the item exists
 
     // Check if we have that ingredient already
@@ -70,8 +68,7 @@ const reductions = {
       }
       st.ingreds.push(newIngred)
 
-    } else {  // Already have it
-      // ...find element of array, increment it by one...
+    } else {  // Already have it --> find ele in array, increment by one
       let ele = st.ingreds[ingredIdx];
       ele.count++;
     }
