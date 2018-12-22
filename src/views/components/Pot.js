@@ -6,22 +6,26 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { clone } from 'ramda'
+import { clone, append, until } from 'ramda'
 import { ifExists } from '../../scripts/utility';
 
+/* TODO: Figure out testing   */
 function Pot(props) {
   let ingreds = props.st.ingreds
 
   const numIngreds = ingreds.reduce((count, ing) => count + ing.count, 0)
 
-  const ingredItems = ingreds.map((ing) => (
+  let ingredItems = ingreds.map((ing) => (
     <li>
+      {/* <div style="display: inline-block"> */}
       <div>
         <div>{ing.data.name}</div>
         <div>{ing.count}</div>
       </div>
     </li>
   ))
+  const emptyListEle = <li></li>
+  ingredItems = until((v) => v.length >= 5, append(emptyListEle), ingredItems)
 
   // ingreds = JSON.stringify(ingreds)
 
@@ -45,7 +49,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-
+    // ...
   }
 }
 
