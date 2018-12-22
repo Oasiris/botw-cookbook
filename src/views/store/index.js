@@ -46,8 +46,13 @@ export class Util {
 // }
 
 const reductions = {
+
   /**
+   * Adds item to state. 
    * 
+   * If the ingredient is already in the `ingred` list with a non-zero count,
+   *  increments the count.
+   * Otherwise, adds it to the list with a count of 1.
    */
   addItem: (st, { id }) => {
     // Make sure the id exists
@@ -55,7 +60,7 @@ const reductions = {
     // TODO: Make sure the item exists
 
     // Check if we have that ingredient already
-    let ingredIdx = Util.getIngredIndex(st, id);
+    const ingredIdx = Util.getIngredIndex(st, id);
     if (ingredIdx === -1) {
       // If not, create and add it
       let newIngred = {
@@ -82,6 +87,20 @@ const reductions = {
     // Make sure the id exists
     if (!exists(id)) return st;
 
+    // Make sure the ingred is in the list
+    const idx = Util.getIngredIndex(st, id)
+    if (idx === -1) return st;
+
+    // Decrement that item's count
+    const target = st.ingreds[idx]
+    target.count--;
+    if (target.count === 0) {  // If that was the only one, remove from list
+      st.ingreds.splice(idx, 1);
+    }
+    if (st.ingreds.length === 0) {  // If list is empty, set hasIngreds to false
+      st.hasIngreds = false;
+    }
+
     return st;
   },
 
@@ -89,7 +108,20 @@ const reductions = {
    * 
    */
   purgeItem: (st, { id }) => {
-    // TODO
+    // Make sure the id exists
+    if (!exists(id)) return st;
+
+    // Make sure the ingred is in the list
+    const idx = Util.getIngredIndex(st, id)
+    if (idx === -1) return st;
+
+    // Remove that item
+    // Decrement that item's count
+    st.ingreds.splice(idx, 1);
+    if (st.ingreds.length === 0) {  // If list is empty, set hasIngreds to false
+      st.hasIngreds = false;
+    }
+
     return st;
   }
 
@@ -113,7 +145,6 @@ const reducer = (state = initialState, action) => {
     default:
       return state
   }
-  
 }
 
 const store = createStore(reducer)
