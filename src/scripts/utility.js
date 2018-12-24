@@ -8,7 +8,7 @@
 // Dependencies
 
 // import * as R from 'ramda'
-import { is, curry } from 'ramda'
+import { is, curry, range, zip } from 'ramda'
 import is_number from 'isnumber'
 
 /**
@@ -83,6 +83,42 @@ export const xor = curry(
   (a, b) => { return (a ? !b : b); }
 )
 
+/* —————————————————————————————————————— */
+
+/**
+ * TODO: Test.
+ * 
+ * 
+ * @func
+ * @sig (i, a -> *) -> [a] -> [a]
+ * @param {Function} fn The function to invoke. Receives two arguments, `index`
+ *  and `value`.
+ * @param {Array} list The list to iterate over.
+ * @return {Array} The original list.
+ * @see R.addIndex
+ * @example
+ * 
+ *    const printIndexAndEle = (i, x) => console.log(`${i}: ${x}`);
+ *    U.forEachIndexed(printIndexAndEle, ['app', 'ora', 'pin'])
+ *    // => ['app', 'ora', 'pin']
+ *    // logs "0: app"
+ *    // logs "1: ora"
+ *    // logs "2: pin"
+ */
+export const forEachIndexed = curry(
+  (fn, list) => {
+    const len = list.length;
+    // const idxList = range(0, len);
+    // const zipList = zip(idxList, list);
+
+    let idx = 0;
+    while (idx < len) {
+      fn(idx, list[idx]);
+      idx++;
+    }
+    return list;
+  }
+)
 
 /* —————————————————————————————————————— */
 // Courtesy of https://codeburst.io/alternative-to-javascripts-switch-statement-with-a-functional-twist-3f572787ba1c

@@ -120,6 +120,15 @@ const reductions = {
     }
 
     return st;
+  },
+
+  /**
+   * 
+   */
+  emptyPot: (st) => {
+    st.ingreds = [];
+    st.hasIngreds = false;
+    return st;
   }
 
 
@@ -139,6 +148,8 @@ const reducer = (state = initialState, action) => {
       return reductions.removeItem(st, action);
     case 'Purge Item':
       return reductions.purgeItem(st, action);
+    case 'Empty Pot':
+      return reductions.emptyPot(st);
     default:
       return state
   }

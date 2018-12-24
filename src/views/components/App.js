@@ -20,7 +20,7 @@ const Header = () => (
 const Footer = () => (
   <div id={style.footer}>
     Created by David Hong. Powered by React.
-    </div>
+  </div>
 )
 
 class Content extends React.Component {
@@ -31,7 +31,7 @@ class Content extends React.Component {
     // const mat3 = Mat.ofId(40)
 
     const idxes = range(1, 20)
-    const mats = idxes.map(idx => <Material data={Mat.ofId(idx)} />)
+    const mats = idxes.map(idx => <Material data={Mat.ofId(idx)} key={idx} />)
 
     return (
       <>

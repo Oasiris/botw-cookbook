@@ -6,8 +6,11 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { clone, append, until } from 'ramda'
-import { ifExists } from '../../scripts/utility';
+import { __, map, range, clone, append, until } from 'ramda'
+import { mapIndexed } from 'ramda-adjunct'
+import { ifExists, forEachIndexed, exists } from '../../scripts/utility';
+
+import style from './styles/Pot.module.scss'
 
 /* TODO: Figure out testing   */
 function Pot(props) {
@@ -15,41 +18,77 @@ function Pot(props) {
 
   const numIngreds = ingreds.reduce((count, ing) => count + ing.count, 0)
 
-  let ingredItems = ingreds.map((ing) => (
-    <li>
-      {/* <div style="display: inline-block"> */}
-      <div>
-        <div>{ing.data.name}</div>
+  let ingredItems = map(__, range(0, 5))((idx) => <li key={idx}></li>)
+  // forEachIndexed(console.log, ingredItems);
+  ingredItems = mapIndexed(__, ingredItems)((val, idx) => {
+    const ing = ingreds[idx];
+    if (!ing) return val;
+
+    return <li key={idx}>
+      <div className={style.potIngred}>
         <div>{ing.count}</div>
+        <div>{ing.data.name}</div>
       </div>
     </li>
-  ))
-  const emptyListEle = <li></li>
-  ingredItems = until((v) => v.length >= 5, append(emptyListEle), ingredItems)
+  })
+  
+
+  // let ingredItems = mapIndexed(__, ingreds)((ing, idx) => (
+    {/* <li key={idx}> */}
+      {/* <div className={style.potIngred}> */}
+        {/* <div>{ing.count}</div> */}
+        {/* <div>{ing.data.name}</div> */}
+      {/* </div> */}
+    {/* </li> */}
+  // ))
+
+  // let ingredItems = ingreds.map((ing) => (
+  //   <li>
+  //     <div className={style.potIngred}>
+  //       <div>{ing.count}</div>
+  //       <div>{ing.data.name}</div>
+  //     </div>
+  //   </li>
+  // ))
+  // const emptyListEle = <li></li>
+  // ingredItems = until((v) => v.length >= 5, append(emptyListEle), ingredItems)
+  // ingredItems = mapIndexed(__, ingredItems)()
+
+  
 
   // ingreds = JSON.stringify(ingreds)
 
   // const superState = JSON.stringify(props.st);
   return (
     <div>
-      <h3>Pot</h3>
-      <h5>{numIngreds}</h5>
-      <ul>
-        {/* {ingreds.} */}
-        {ingredItems}
-      </ul>
+      <h1>Pot</h1>
+
+      {/* Left */}
+      <div>
+        <div className={style.inlineList}>
+          <h5>{numIngreds}</h5>
+          { props.st.hasIngreds && (
+            <button onClick={props.onEmptyPotClick}>Empty the Pot</button>
+          )}
+        </div>
+        <ul>
+          {ingredItems}
+        </ul>
+      </div>
+
+      {/* Right */}
+      
     </div>
   )
 }
 
 function mapStateToProps(state) {
-  // state.hasIngreds = 'lol'
   return { st: state };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    // ...
+    onEmptyPotClick: () => dispatch({ type: 'Empty Pot' })
   }
 }
 
