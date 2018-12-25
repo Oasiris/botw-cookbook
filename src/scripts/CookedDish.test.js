@@ -915,7 +915,8 @@ describe('CookedDish', () => {
         
         it(set.mats, () => {
           const dish = CookedDish.ofMats(mats);
-          const expected = { ...set.output, _filled: true };
+          // const expected = { ...set.output, _filled: true };
+          const expected = { ...set.output };
           const actual = { ...dish };
           expect(actual).toEqual(expected);
         });

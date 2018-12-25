@@ -28,26 +28,26 @@ import CookingUtil, { Mat, Rcp } from './CookingUtil';
 class Dish { }
 
 /**
- * Class representing a dish cooked in a cooking pot.
+ * Utility data class for getting cooked dish info.
  */
 export default class CookedDish extends Dish {
-  /**
-   * Constructor.
-   * 
-   * Meant to be called from factory methods `ofName` and `ofId`.
-   * @param {Object} data 
-   */
-  constructor(data) {
-    super();
-    if (data._filled === true) {
-      for (let k of R.keys(data)) {
-        this[k] = data[k];
-      }
-    } else {
-      throw new Error('Don\'t use this constructor; create new Dishes using ' +
-        'factory methods.');
-    }
-  }
+  // /**
+  //  * Constructor.
+  //  * 
+  //  * Meant to be called from factory methods `ofName` and `ofId`.
+  //  * @param {Object} data 
+  //  */
+  // constructor(data) {
+  //   super();
+  //   if (data._filled === true) {
+  //     for (let k of R.keys(data)) {
+  //       this[k] = data[k];
+  //     }
+  //   } else {
+  //     throw new Error('Don\'t use this constructor; create new Dishes using ' +
+  //       'factory methods.');
+  //   }
+  // }
 
   /**
    * Factory method for a Dish. Returns a new CookedDish based on the input
@@ -58,6 +58,9 @@ export default class CookedDish extends Dish {
   static ofMats(mats) {
     // Validate mats here
     const dish = CookingUtil.cook(mats);
-    return new CookedDish({ ...dish, _filled: true });
+    // return new CookedDish({ ...dish, _filled: true });
+    return dish;
   }
+
+
 }

@@ -20,6 +20,8 @@ function Pot(props) {
 
   let ingredItems = map(__, range(0, 5))((idx) => <li key={idx}></li>)
   // forEachIndexed(console.log, ingredItems);
+
+  /* Map first (ingreds.len) <li>'s to contain ingredient information  */
   ingredItems = mapIndexed(__, ingredItems)((val, idx) => {
     const ing = ingreds[idx];
     if (!ing) return val;
@@ -67,8 +69,11 @@ function Pot(props) {
       <div>
         <div className={style.inlineList}>
           <h5>{numIngreds}</h5>
-          { props.st.hasIngreds && (
-            <button onClick={props.onEmptyPotClick}>Empty the Pot</button>
+          { (props.st.ingredCount > 0) && (
+            <>
+              <button onClick={props.onEmptyPotClick}>Empty the Pot</button>
+              <button onClick={props.onCookClick}>Cook!</button>
+            </>
           )}
         </div>
         <ul>
@@ -88,7 +93,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onEmptyPotClick: () => dispatch({ type: 'Empty Pot' })
+    onEmptyPotClick: () => dispatch({ type: 'Empty Pot' }),
+    onCookClick: () => dispatch({ type: 'Cook', keepPot: true })
   }
 }
 
