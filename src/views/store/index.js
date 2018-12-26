@@ -1,7 +1,17 @@
+/**
+ * Contains:
+ * 
+ *  - Initial state.
+ *  - Reduction helper functions.
+ *  - Reducer.
+ *  - Store (which is simply `store = createStore(reducer)`.)
+ */
+
 import { createStore } from 'redux'
 import { any, __, range, zip, filter, clone } from 'ramda'
 
 import { Mat, Rcp } from '../../scripts/CookingUtil'
+import CookedDish from '../../scripts/CookedDish'
 import { exists } from '../../scripts/utility';
 
 // Initial State
@@ -55,8 +65,32 @@ export class Util {
     if (!state.ingredCount) return 0;
     return state.ingreds.reduce((count, ing) => count + ing.count, 0)
   }
-}
 
+  /**
+   * Unpacks the ingreds list into a list of material objects.
+   * 
+   * @param {Array} ingreds Ingreds. Should be non-empty.
+   * @return API-friendly list of material objects.
+   * @example
+   * 
+   *  const ingreds = [
+   *    { count: 3, id: 8, data: Mat.ofId(8) },
+   *    { count: 2, id: 66, data: Mat.ofId(66) }
+   *  ]
+   *  const mats = unpackIngredsList(ingreds)
+   *  console.log(mats)
+   *  // => [Mat.ofId(8), Mat.ofId(8), Mat.ofId(8), Mat.ofId(66), Mat.ofId(66)]
+   */
+  static getMatsFromIngredsList(ingreds) {
+    let mats = []
+    ingreds.forEach(ing => {
+      // Append the material data {ing.count} times
+      range(0, ing.count).forEach(() => mats.push(ing.data))
+    })
+    return mats
+  }
+
+}
 
 const reductions = {
   /**
@@ -95,6 +129,7 @@ const reductions = {
 
     // st.hasIngreds = true;
     st.ingredCount++;
+    console.log(st.ingreds)
     return st;
   },
 
@@ -162,10 +197,18 @@ const reductions = {
    * @param {Boolean} keepPot -- If true, the ingredients in the pot are
    *  unmodified. If false, the ingredients in the pot are wiped.
    */
-  cook: (st, keepPot) => {
+  cook: (st, { keepPot }) => {
     if (st.ingredCount) {
-
+      const mats = Util.getMatsFromIngredsList(st.ingreds)
+      const dish = CookedDish.ofMats(mats)
+      const hasDish = true
+      st = { ...st, dish, hasDish }
+      console.log(st.dish)
     }
+    if (keepPot === false) {
+      st = reductions.emptyPot(st)
+    }
+    return st;
 
 
     
@@ -197,7 +240,7 @@ const reducer = (state = initialState, action) => {
     case 'Empty Pot':
       return reductions.emptyPot(st);
     case 'Cook':
-      return reductions.cook(st, st.keepPot);
+      return reductions.cook(st, action);
     default:
       return state
   }

@@ -1,8 +1,12 @@
 // General
-.inlineList > * { display: inline-block; padding: 0 5px; }
+%inlineList {
+  & > * { display: inline-block; padding: 0 5px; }
+}
 
 
-
+.pot {
+  & > div { display: inline-block; padding: 0; min-width: 40%; max-width: 50%; }
+}
 
 .potIngred {
   width: 300px;

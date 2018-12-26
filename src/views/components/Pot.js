@@ -62,7 +62,7 @@ function Pot(props) {
 
   // const superState = JSON.stringify(props.st);
   return (
-    <div>
+    <div className={style.pot}>
       <h1>Pot</h1>
 
       {/* Left */}
@@ -82,6 +82,11 @@ function Pot(props) {
       </div>
 
       {/* Right */}
+      <div>
+        { props.st.hasDish && (
+          <p>{JSON.stringify(props.st.dish)}</p>
+        )}
+      </div>
       
     </div>
   )
