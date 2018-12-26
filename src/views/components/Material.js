@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { exists, ifExists } from '../../scripts/utility'
 // import PropTypes from 'prop-types'
 
-import data from '../../data'
-import { OldMat } from '../../scripts/CookingUtil'
+// import data from '../../data'
+// import { OldMat } from '../../scripts/CookingUtil'
 
 import style from './styles/Material.module.scss'
+
+import { Util as StateUtil } from '../store'
 
 // export default class Material extends Component {
 //     constructor(props) {
@@ -31,10 +34,17 @@ import style from './styles/Material.module.scss'
 
 // }
 function Material(props) {
+  const { idx }   = props.data;
+  const ingredIdx = StateUtil.getIngredIndex(props.st, idx)
+  let count = 0
+  if (ingredIdx >= 0) {
+    count = props.st.ingreds[ingredIdx].count
+  }
+
   return (
     <div className={style.material}>
       <h5>{props.data.name}</h5>
-      <p>x{ifExists(props.count, 0)}</p>
+      <p>x{count}</p>
       <button onClick={props.onIncrementClick}>+</button>
       <button onClick={props.onDecrementClick}>-</button>
       <button onClick={props.onRemoveClick}>Remove</button>

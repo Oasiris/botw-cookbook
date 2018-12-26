@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Material from './Material'
+import MaterialList from './MaterialList'
 import Pot from './Pot'
 
 // import { materials } from '../../data'
@@ -30,13 +31,14 @@ class Content extends React.Component {
     // const mat2 = Mat.ofId(37);
     // const mat3 = Mat.ofId(40)
 
-    const idxes = range(1, 20)
-    const mats = idxes.map(idx => <Material data={Mat.ofId(idx)} key={idx} />)
+    // const idxes = range(1, 20)
+    // const mats = idxes.map(idx => <Material data={Mat.ofId(idx)} key={idx} />)
 
     return (
       <>
         <Pot />
-        {mats}
+        {/* {mats} */}
+        <MaterialList size={50} />
         {/* <Material data={mat1} />
         <Material data={mat2} />
         <Material data={mat3} /> */}

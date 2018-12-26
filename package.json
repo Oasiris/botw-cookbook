@@ -16,6 +16,7 @@
     "redux": "^4.0.1"
   },
   "scripts": {
+    "prep": "node src/data/scripts/exporter.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

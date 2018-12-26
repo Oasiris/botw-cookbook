@@ -10,5 +10,5 @@ export default data
     // energizingLevels, enduringLevels, reagantDurationBonuses, 
     // priceMultipliers, effectDescriptions, effectData }
 
-const  { materials, recipes, elixirs } = data
-export { materials, recipes, elixirs }
+const  { materials, recipes, info, elixirs } = data
+export { materials, recipes, info, elixirs }
