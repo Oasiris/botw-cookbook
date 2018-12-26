@@ -12,13 +12,44 @@ import { ifExists, forEachIndexed, exists } from '../../scripts/utility';
 
 import style from './styles/Pot.module.scss'
 
+
+function PotDish(props) {
+  if (!props.data) return <></>
+  const { name, thumb, desc, hpRestore, rupeePrice, effectData } = props.data;
+
+  let effectEle = <div></div>;
+  if (exists(effectData)) {
+    effectEle = <div>TODO: Effect</div>
+  }
+
+  return (
+    <>
+      <h2>{name}</h2>
+      <p>{desc}</p>
+      <ul>
+        <li>
+          <div>Restores HP:</div>
+          <div>{hpRestore}</div>
+        </li>
+        <li>
+          <div>Sells for (rupees):</div>
+          <div>{rupeePrice}</div>
+        </li>
+      </ul>
+      {effectEle}
+    </>
+  )
+}
+
 /* TODO: Figure out testing   */
 function Pot(props) {
   let ingreds = props.st.ingreds
 
   const numIngreds = ingreds.reduce((count, ing) => count + ing.count, 0)
 
-  let ingredItems = map(__, range(0, 5))((idx) => <li key={idx}></li>)
+  let ingredItems = map(__, range(0, 5))((idx) => (
+    <li key={idx}><div className={style.potIngred}><div /><div /></div></li>
+  ))
   // forEachIndexed(console.log, ingredItems);
 
   /* Map first (ingreds.len) <li>'s to contain ingredient information  */
@@ -68,7 +99,7 @@ function Pot(props) {
       {/* Left */}
       <div>
         <div className={style.inlineList}>
-          <h5>{numIngreds}</h5>
+          <h3>{numIngreds}</h3>
           { (props.st.ingredCount > 0) && (
             <>
               <button onClick={props.onEmptyPotClick}>Empty the Pot</button>
@@ -84,7 +115,8 @@ function Pot(props) {
       {/* Right */}
       <div>
         { props.st.hasDish && (
-          <p>{JSON.stringify(props.st.dish)}</p>
+          <PotDish data={props.st.dish} />
+          /* <p>{JSON.stringify(props.st.dish)}</p> */
         )}
       </div>
       

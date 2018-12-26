@@ -1,5 +1,5 @@
 // General
-%inlineList {
+.inlineList {
   & > * { display: inline-block; padding: 0 5px; }
 }
 
@@ -8,14 +8,22 @@
   & > div { display: inline-block; padding: 0; min-width: 40%; max-width: 50%; }
 }
 
-.potIngred {
+li {
+  height: 44px;
   width: 300px;
 
-  & > div {
-    display: inline-block;
-    padding: 0 5px;
-  }
+  div.potIngred {
+    font-size: 21px;
+    // min-height: 30px;
 
-  & > div:nth-child(2) { width: 83.333%; }
-  & > div:nth-child(1) { width: 16.666%; }
+    & > div {
+      display: inline-block;
+      line-height: 1;
+      padding: 8px 8px;
+      // min-height: calc(20px + 8px + 8px);
+    }
+
+    & > div:nth-child(2) { width: 83.333%; }
+    & > div:nth-child(1) { width: 16.666%; }
+  }
 }
