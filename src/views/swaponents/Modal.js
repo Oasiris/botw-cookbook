@@ -29,13 +29,15 @@ export default class Modal extends Component {
     if (!this.props.show) return null;
 
     return (
-      <div class={style.modal}>
-        {this.props.children}
-
-        <div>
-          <button onClick={e => this.onClose(e)}>Close</button>
+      <>
+        <div class={style.modal}>
+          <div class={style.modalGuts}>
+            <div>{this.props.children}</div>
+            <div><button onClick={e => this.onClose(e)}>Close</button></div>
+          </div>
         </div>
-      </div>
+        <div class={style.modalOverlay} />
+      </>
     )
   }
 }

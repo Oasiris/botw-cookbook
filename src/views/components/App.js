@@ -8,6 +8,7 @@ import Pot from './Pot'
 import { Mat } from '../../scripts/CookingUtil'
 import style from './styles/App.module.scss'
 import { range } from 'ramda';
+import loremIpsum from 'lorem-ipsum'
 
 import Modal from '../swaponents/Modal'
 
@@ -31,7 +32,15 @@ class Header extends Component {
         <Modal
           onClose={this.showModal}
           show={this.state.show}>
-          This message is from Modal!
+          <p>
+            
+            This message is from Modal!
+
+            <br />
+
+            {loremIpsum({count: 1, units: 'paragraphs'})}
+          
+          </p>
         </Modal>
 
       </div>
