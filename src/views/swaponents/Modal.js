@@ -12,7 +12,7 @@ Screen readers should also be trapped inside of the modal to prevent accidentall
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import style from '../styles/Modal.module.scss'
+import style from './styles/Modal.module.scss'
 
 export default class Modal extends Component {
   static defaultProps = { show: false }

@@ -10,9 +10,10 @@ import style from './styles/App.module.scss'
 import { range } from 'ramda';
 import loremIpsum from 'lorem-ipsum'
 import { IconContext } from 'react-icons'
-import { GoInfo } from 'react-icons/go'
+import { GoInfo, GoHeart } from 'react-icons/go'
 
 import Modal from '../swaponents/Modal'
+
 
 
 class Topbar extends Component {
@@ -32,7 +33,7 @@ class Topbar extends Component {
         {/* <button onClick={this.showModal}>Show Modal</button> */}
 
         <IconContext.Provider value={{ size: '26px' }}>
-          <div class={style.topbarIconWrapper}>
+          <div className={style.topbarIconWrapper}>
             <GoInfo onClick={this.showModal} />
           </div>
         </IconContext.Provider>
@@ -40,15 +41,9 @@ class Topbar extends Component {
         <Modal
           onClose={this.showModal}
           show={this.state.show}>
-          <p>
-            
-            This message is from Modal!
-
-            <br />
-
-            {loremIpsum({count: 1, units: 'paragraphs'})}
-          
-          </p>
+          Created with <GoHeart /> by David Hong. 
+          <br />
+          Powered by React.
         </Modal>
 
       </div>

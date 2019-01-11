@@ -29,28 +29,57 @@ $font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
 // Buttons
 // —————————————————————————————————————
 
-button {
-  padding: 20px 26.25px;
-  font-family: $font-stack;
-  font-weight: bold;
-  font-size: 20px;
+// button {
+//   padding: 20px 26.25px;
+//   font-family: $font-stack;
+//   font-weight: bold;
+//   font-size: 20px;
   
-  border: 0;
-  border-radius: 2px;
+//   border: 0;
+//   border-radius: 2px;
 
-  background: $button-color;
-  color: white;
+//   background: $button-color;
+//   color: white;
 
-  transition: background-color 0.1s, box-shadow 0.2s;
+//   transition: background-color 0.1s, box-shadow 0.2s;
 
-  &:hover {
-    background: $button-hover-color;
-    box-shadow: 0 0 15px rgba($pale-light, 1);
-  }
+//   &:hover {
+//     background: $button-hover-color;
+//     box-shadow: 0 0 15px rgba($pale-light, 1);
+//   }
 
-  &:active {
-    background: $button-active-color;
-    transition: background-color 0s;
+//   &:active {
+//     background: $button-active-color;
+//     transition: background-color 0s;
     
-  }
+//   }
+// }
+
+// —————————————————————————————————————
+// Scrollbar
+// —————————————————————————————————————
+// ::-webkit-scrollbar-track {
+//   // background: #f1f1f1; 
+//   background: transparent url('img/patterns/fancy-deboss.png') repeat-y !important;
+// }
+
+// ::-webkit-scrollbar-track-piece:start {
+//   background: transparent url('https://www.transparenttextures.com/patterns/fancy-deboss.png') repeat-y !important;
+// }
+
+// ::-webkit-scrollbar-track-piece:end {
+//   background: transparent url('https://www.transparenttextures.com/patterns/fancy-deboss.png') repeat-y !important;
+// }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:rgba(255, 255, 255, 0.825) !important;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar * {
+  background: transparent;
 }

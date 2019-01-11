@@ -6,6 +6,10 @@
     padding: 20px 50px;
     color: white;
 
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
     h1 { font-size: 27px; }
 }
 
@@ -24,6 +28,6 @@ h1#title {
 }
 
 #mainContent {
-    overflow-y: scroll;
-    max-height: 85vh;
+    // overflow-y: scroll;
+    // max-height: 85vh;
 }
