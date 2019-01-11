@@ -16,7 +16,7 @@ body:before {
   width: 110%;
   height: 110%;
 
-  filter: blur(12px) brightness(70%); 
+  filter: blur(12px) brightness(62.5%); 
 }
 
 body {
