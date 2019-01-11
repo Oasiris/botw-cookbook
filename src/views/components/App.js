@@ -33,7 +33,7 @@ class Topbar extends Component {
         {/* <button onClick={this.showModal}>Show Modal</button> */}
 
         <IconContext.Provider value={{ size: '26px' }}>
-          <div className={style.topbarIconWrapper}>
+          <div className={`${style.topbarIconWrapper}`}>
             <GoInfo onClick={this.showModal} />
           </div>
         </IconContext.Provider>

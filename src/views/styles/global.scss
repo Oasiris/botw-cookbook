@@ -10,6 +10,8 @@ $font-stack: 'Calamity', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
 
 .grow-slight { transition: transform .05s ease-in-out; }
 .grow-slight:hover { transform: scale(1.035); }
+.growSlight { transition: transform .1s ease-in-out; }
+.growSlight:hover { transform: scale(1.0225); }
 
 .text-pop {
   color: $text-pop-color;
