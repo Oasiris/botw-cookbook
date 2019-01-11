@@ -16,6 +16,8 @@
 
 - Add an NPM script to `package.json` that will run the bundler/exporter/whatever.
 
+- Add Acorn/Chickaloo Tree Nut HP Restore tests, if they're not already around...
+
 ---
 
 ### Minor

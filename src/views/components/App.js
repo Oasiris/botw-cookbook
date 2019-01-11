@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Material from './Material'
 import MaterialList from './MaterialList'
@@ -9,14 +9,42 @@ import { Mat } from '../../scripts/CookingUtil'
 import style from './styles/App.module.scss'
 import { range } from 'ramda';
 
+import Modal from '../swaponents/Modal'
 
 
+class Header extends Component {
 
-const Header = () => (
-  <div id={style.header}>
-    <h1>Breath of the Wild Cookbook</h1>
-  </div>
-)
+  constructor() {
+    super()
+    this.state = { show: false }
+  }
+
+  showModal = () => this.setState((prev, _) => ({...prev, show: !prev.show}))
+
+  render() {
+    return (
+      <div id={style.header}>
+        <h1>Breath of the Wild Cookbook</h1>
+
+        <button onClick={this.showModal}>Show Modal</button>
+
+        <Modal
+          onClose={this.showModal}
+          show={this.state.show}>
+          This message is from Modal!
+        </Modal>
+
+      </div>
+    );
+  }
+}
+
+
+// const Header = () => (
+//   <div id={style.header}>
+//     <h1>Breath of the Wild Cookbook</h1>
+//   </div>
+// )
 
 const Footer = () => (
   <div id={style.footer}>
@@ -24,7 +52,7 @@ const Footer = () => (
   </div>
 )
 
-class Content extends React.Component {
+class Content extends Component {
   render() {
     // const mat1 = materials[0];
     // const mat1 = Mat.ofId(24);
@@ -53,7 +81,7 @@ export default class App extends React.Component {
     return (
       <div className="app">
         <Header />
-        <div className="container">
+        <div className="container" id={style.mainContent}>
           <Content />
         </div>
         <Footer />

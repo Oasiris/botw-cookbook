@@ -6,3 +6,8 @@
     color: white;
     text-align: center;
 }
+
+#mainContent {
+    overflow-y: scroll;
+    max-height: 80vh;
+}
