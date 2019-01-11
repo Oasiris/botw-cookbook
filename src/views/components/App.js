@@ -9,11 +9,13 @@ import { Mat } from '../../scripts/CookingUtil'
 import style from './styles/App.module.scss'
 import { range } from 'ramda';
 import loremIpsum from 'lorem-ipsum'
+import { IconContext } from 'react-icons'
+import { GoInfo } from 'react-icons/go'
 
 import Modal from '../swaponents/Modal'
 
 
-class Header extends Component {
+class Topbar extends Component {
 
   constructor() {
     super()
@@ -24,10 +26,16 @@ class Header extends Component {
 
   render() {
     return (
-      <div id={style.header}>
-        <h1>Breath of the Wild Cookbook</h1>
+      <div id={style.topbar}>
+        <h1 id={style.title}>Breath of the Wild Cookbook</h1>
 
-        <button onClick={this.showModal}>Show Modal</button>
+        {/* <button onClick={this.showModal}>Show Modal</button> */}
+
+        <IconContext.Provider value={{ size: '26px' }}>
+          <div class={style.topbarIconWrapper}>
+            <GoInfo onClick={this.showModal} />
+          </div>
+        </IconContext.Provider>
 
         <Modal
           onClose={this.showModal}
@@ -89,11 +97,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header />
+        <Topbar />
         <div className="container" id={style.mainContent}>
           <Content />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
 

@@ -1,13 +1,29 @@
 @import 'colors';
 
-#header, #footer {
+// #header, #footer {
+#topbar {
     background: $bkgd;
-    padding: 30px;
+    padding: 20px 50px;
     color: white;
-    text-align: center;
+
+    h1 { font-size: 27px; }
+}
+
+h1#title { 
+    display: inline-block; margin: 0; 
+}
+
+.topbarIconWrapper {
+    display: inline-block;
+    margin-left: 10px;
+    transform: translate(0, -5px);
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 #mainContent {
     overflow-y: scroll;
-    max-height: 80vh;
+    max-height: 85vh;
 }

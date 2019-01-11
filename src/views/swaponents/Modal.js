@@ -18,11 +18,32 @@ export default class Modal extends Component {
   static defaultProps = { show: false }
   static propTypes = { show: PropTypes.bool }
 
+  constructor() {
+    super()
+    this.onClose = this.onClose.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
+
   /**
    * 
    */
-  onClose = e => {
+  onClose(e) {
     this.props.onClose && this.props.onClose(e);
+  }
+
+  /**
+   * 
+   */
+  handleKeyDown(e) {
+    console.log("Keypress caught")
+    if (e.key === 'Escape') this.onClose(e)
   }
 
   render() {
@@ -30,10 +51,14 @@ export default class Modal extends Component {
 
     return (
       <>
-        <div class={style.modal}>
-          <div class={style.modalGuts}>
+        <div className={style.modal}>
+          <div className={style.modalGuts}>
             <div>{this.props.children}</div>
-            <div><button onClick={e => this.onClose(e)}>Close</button></div>
+            <div>
+              <button onClick={this.onClose}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
         <div class={style.modalOverlay} />
