@@ -1,0 +1,131 @@
+/**
+ * A place to test the utility functions provided in 'utility.js'.
+ */
+
+// —————————————————————————————————————
+// Dependencies
+// —————————————————————————————————————
+
+import * as R from 'ramda'
+import { is, curry, pipe, compose, __ } from 'ramda'
+import { exists, isNumber, isString, xor, match, matchK } from './utility'
+
+// —————————————————————————————————————
+// Tests
+// —————————————————————————————————————
+
+describe('exists', () => {
+  it('""', () => {
+    expect(exists('b')).toBe(true);
+    expect(exists(5)).toBe(true);
+    expect(exists(false)).toBe(true);
+    expect(exists(0)).toBe(true);
+    expect(exists(null)).toBe(false);
+    expect(exists(undefined)).toBe(false);
+  });
+});
+
+// TODO: Test ifExists
+
+describe('isNumber', () => {
+  const fn = isNumber;
+
+  it('""', () => {
+    expect(fn(1)).toBe(true);
+    expect(fn('200')).toBe(true);
+    
+    expect(fn("Hello World!")).toBe(false);
+    expect(fn({ '1': 1 })).toBe(false);
+
+    expect(fn(null)).toBe(true);
+    expect(fn(undefined)).toBe(true);
+
+    expect(fn(null, true)).toBe(false);
+    expect(fn(undefined, true)).toBe(false);
+  })
+})
+
+describe('isString', () => {
+  const fn = isString;
+
+  it('""', () => {
+    expect(fn('')).toBe(true);
+    expect(fn('We Are Fighting Dreamers')).toBe(true);
+    
+    expect(fn(10000)).toBe(false);
+    expect(fn({ 'Stringy': 'mcString-string' })).toBe(false);
+
+    expect(fn(null)).toBe(true);
+    expect(fn(undefined)).toBe(true);
+
+    expect(fn(null, true)).toBe(false);
+    expect(fn(undefined, true)).toBe(false);
+  })
+})
+
+
+
+
+describe('xor', () => {
+  it('""', () => {
+    expect(xor(true, true)).toBe(false);
+    expect(xor(true, false)).toBe(true);
+    expect(xor(false, true)).toBe(true);
+    expect(xor(false, false)).toBe(false);
+  });
+});
+
+describe('match', () => {
+  it('exports correctly', () => {
+    expect(exists(match)).toBe(true);
+    
+    // Example: given by Hajime Yamasaki Vukelic
+    let input = match(50)
+      .on(x => x < 0, () => 0)
+      .on(x => x >= 0 && x <= 1, () => 1)
+      .otherwise(x => x * 10);
+    let expected = 500;
+    expect(input).toBe(expected);
+  });
+
+});
+
+describe('matchK', () => {
+  it('match functionality works', () => {
+    expect(exists(match)).toBe(true);
+
+    // Example: given by Hajime Yamasaki Vukelic
+    let input = matchK(50)
+      .on(x => x < 0, () => 0)
+      .on(x => x >= 0 && x <= 1, () => 1)
+      .otherwise(x => x * 10);
+    let expected = 500;
+    expect(input).toBe(expected);
+  });
+
+  it('two vars', () => {
+    expect(exists(match)).toBe(true);
+
+    let input = matchK(50, 100)
+      .on((x, y) => x > y, () => 0)
+      .on((x, y) => x >= 0 && y <= 1, () => 1)
+      .otherwise((x, y) => x + y + 3);
+    let expected = 153;
+    expect(input).toBe(expected);
+  });
+
+  // it('two vars and R.equals: an example of what not to do', () => {
+  //   const a = 5;
+  //   const b = 40;
+
+  //   const actual = (a, b) => match(a, b)
+  //     .on(R.equals(a * 8, b), 'You win')
+  //     .otherwise(() => 'You lose');
+  //   // const expected = 'You win';
+
+  //   expect(actual(a, b)).toThrow();
+
+
+  // });
+
+});
