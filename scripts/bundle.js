@@ -31,7 +31,7 @@ let dubiousFood = {
 }
 
 // ——————————————————————————————————————————————————————————————————————————
-// Normalizing indices for recipes
+// Normalize indices for recipes
 // ——————————————————————————————————————————————————————————————————————————
 
 recipes.forEach((rcp, idx) => {
@@ -57,7 +57,7 @@ let elixirs = [
 ]
 
 // ——————————————————————————————————————————————————————————————————————————
-// Adding descriptions
+// Add descriptions
 // ——————————————————————————————————————————————————————————————————————————
 
 {
@@ -84,7 +84,7 @@ let elixirs = [
 }
 
 // ——————————————————————————————————————————————————————————————————————————
-// Adding thumbnail sources
+// Add thumbnail sources
 // ——————————————————————————————————————————————————————————————————————————
 
 {
@@ -132,6 +132,21 @@ let elixirs = [
       }
     }
   })
+}
+
+// ——————————————————————————————————————————————————————————————————————————
+// Material tweaks
+// ——————————————————————————————————————————————————————————————————————————
+
+// Monster parts have integer rank.
+// Non-monster part materials have rank of null.
+for (let i in materials) {
+  const mat = materials[i]
+  if (mat.type === 'Monster Part') {
+    mat.rank = Number(mat.rank)
+  } else {
+    mat.rank = null
+  }
 }
 
 // ——————————————————————————————————————————————————————————————————————————
@@ -341,19 +356,19 @@ const effectDescriptions = {
  *       which an effect lasts. This number is increased via more ingredients.
  */
 const effectData = {
-  hearty: {
+  Hearty: {
     prefix: 'Hearty',
     fxType: 'points',
   },
-  energizing: {
+  Energizing: {
     prefix: 'Energizing',
     fxType: 'points',
   },
-  enduring: {
+  Enduring: {
     prefix: 'Enduring',
     fxType: 'points',
   },
-  sneaky: {
+  Sneaky: {
     prefix: 'Sneaky',
     fxType: 'timed',
     title: 'Stealth Up',
@@ -363,7 +378,7 @@ const effectData = {
       contribFactor: 90, // in seconds
     },
   },
-  hasty: {
+  Hasty: {
     prefix: 'Hasty',
     fxType: 'timed',
     title: 'Speed Up',
@@ -373,7 +388,7 @@ const effectData = {
       contribFactor: 30, // in seconds
     },
   },
-  mighty: {
+  Mighty: {
     prefix: 'Mighty',
     fxType: 'timed',
     title: 'Attack Up',
@@ -383,7 +398,7 @@ const effectData = {
       contribFactor: 20, // in seconds
     },
   },
-  tough: {
+  Tough: {
     prefix: 'Tough',
     fxType: 'timed',
     title: 'Defense Up',
@@ -393,7 +408,7 @@ const effectData = {
       contribFactor: 20, // in seconds
     },
   },
-  spicy: {
+  Spicy: {
     prefix: 'Spicy',
     fxType: 'timed',
     title: 'Cold Resistance',
@@ -403,7 +418,7 @@ const effectData = {
       contribFactor: 120, // in seconds
     },
   },
-  chilly: {
+  Chilly: {
     prefix: 'Chilly',
     fxType: 'timed',
     title: 'Heat Resistance',
@@ -413,7 +428,7 @@ const effectData = {
       contribFactor: 120, // in seconds
     },
   },
-  electro: {
+  Electro: {
     prefix: 'Electro',
     fxType: 'timed',
     title: 'Shock Resistance',
@@ -423,7 +438,7 @@ const effectData = {
       contribFactor: 120, // in seconds
     },
   },
-  fireproof: {
+  Fireproof: {
     prefix: 'Fireproof',
     fxType: 'timed',
     title: 'Flame Guard',

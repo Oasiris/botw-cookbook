@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "export": "npx babel-node export"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
