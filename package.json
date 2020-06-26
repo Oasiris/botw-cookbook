@@ -10,12 +10,17 @@
     "@types/node": "^12.12.47",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
+    "node-sass": "^4.14.1",
+    "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
+    "fmt": "prettier --write '**/*.ts' '**/*.tsx' '**/*.css' '**/*.scss' '**/*.json'",
+    "lint": "tslint --project tsconfig.json --config tslint.js",
+    "lint-fix": "tslint --fix --project tsconfig.json --config tslint.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,5 +40,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.27.6",
+    "cross-env": "^7.0.2",
+    "prettier": "^2.0.5",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^5.0.0"
   }
 }

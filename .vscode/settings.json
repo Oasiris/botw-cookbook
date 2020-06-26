@@ -1,0 +1,14 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  "tslint.configFile": "./tslint.js",
+
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#aa8e31",
+    "titleBar.inactiveBackground": "#aa8e31CC"
+  }
+}
