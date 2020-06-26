@@ -1,9 +1,21 @@
+// TODO: Thoroughly document this file with comments.
+
 export type Compendium = {
     info: {
         materials: { length: number }
         recipes: { length: number }
     }
     materials: MaterialEntry[]
+    recipes: RecipeEntry[]
+    additiveOnlyRecipes: RecipeEntry[]
+    elixirs: ElixirEntry[]
+    dubiousFood: DubiousFoodEntry[]
+    energizingLevels: number[]
+    enduringLevels: number[]
+    reagantDurationBonuses: [number, number, number]
+    priceMultipliers: [number, number, number, number, number]
+    effectDescriptions: Record<Effect, { foodDesc: string; elixirDesc: string }>
+    effectData: Record<Effect, EffectEntry>
 }
 
 export type MaterialEntry = {
@@ -26,6 +38,52 @@ export type MaterialEntry = {
     desc: string
     thumb: string
 }
+
+export type RecipeEntry = {
+    idx: number
+    name: string
+    notes: string
+    heartBonus?: number
+    heartsRestore?: number // See "Honey Crepe"
+    ingredients: IngredientEntry[]
+
+    desc: string
+    thumb: string
+}
+
+export type IngredientEntry =
+    | ['name', string]
+    | ['family', MaterialFamily]
+    | ['family', MaterialFamily[]]
+
+export type ElixirEntry = {
+    name: string
+    thumb: string
+    /* Note: the elexir descriptions can be found in the 'effectDescriptions' field in the Compendium. */
+}
+
+export type DubiousFoodEntry = {
+    name: string
+    desc: string
+    thumb: string
+}
+
+export type EffectEntry = {
+    prefix: Effect
+} & (
+    | {
+          fxType: 'points'
+      }
+    | {
+          fxType: 'timed'
+          title: string
+          timedData: {
+              tierBps: [number, number] | [number, number, number]
+              potencyLevels: [number, number] | [number, number, number]
+              contribFactor: number
+          }
+      }
+)
 
 export type Effect =
     | 'Hearty'
