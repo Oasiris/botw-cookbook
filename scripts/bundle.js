@@ -255,69 +255,69 @@ const priceMultipliers = [1, 1.5, 1.75, 2.05, 2.4, 2.8]
  * case of an elixir recipe.
  */
 const effectDescriptions = {
-  hearty: {
+  Hearty: {
     foodDesc: 'Restores your health and temporarily increases your maximum ' + 'hearts.',
     elixirDesc:
       'Restores you to full health and increases your maximum ' +
       'hearts. The additional hearts are lost as you take damage.',
   },
-  energizing: {
+  Energizing: {
     foodDesc: 'Instantly refills some of your Stamina Wheel.',
     elixirDesc:
       'Restores your Stamina, which is used when performing ' +
       'physical actions such as climbing walls and swimming.',
   },
-  enduring: {
+  Enduring: {
     foodDesc: 'Restores and overfills your Stamina Wheel.',
     elixirDesc:
       'Restores stamina and temporarily extends your Stamina ' +
       "Wheel. The additional stamina will disappear as it's used.",
   },
-  sneaky: {
+  Sneaky: {
     foodDesc: 'Grants a %s-level stealth boost.',
     elixirDesc:
       'Grants a %s-level stealth effect, which calms the nerves ' +
       'and silences footfalls. Allows you to move about undetected by ' +
       'monsters and animals.',
   },
-  hasty: {
+  Hasty: {
     foodDesc: 'Grants a %s-level movement-speed boost.',
     elixirDesc:
       'Grants a %s-level haste effect, which boosts your movement ' +
       'speed while running, swimming, or climbing.',
   },
-  mighty: {
+  Mighty: {
     foodDesc: 'Grants a %s-level attack-power boost.',
     elixirDesc:
       'Grants a %s-level might effect, which strengthens your body ' +
       'and mind to boost your attack power with all weapons.',
   },
-  tough: {
+  Tough: {
     foodDesc: 'Grants a %s-level defense boost.',
     elixirDesc:
       'Grants a %s-level toughness effect, which fortifies your ' +
       'bones to strengthen your defense. Best to use before facing off ' +
       'against hard-hitting enemies.',
   },
-  spicy: {
+  Spicy: {
     foodDesc: 'Grants %s-level cold resistance.',
     elixirDesc:
       'Warms your body from its core, increasing your resistance ' +
       'to cold environments. Very useful in the snow-covered mountains.',
   },
-  chilly: {
+  Chilly: {
     foodDesc: 'Grants %s-level heat resistance.',
     elixirDesc:
       "Grants a %s-level cooling effect, raising your body's " +
       'resistance to heat. Crucial for long journeys through the desert.',
   },
-  electro: {
+  Electro: {
     foodDesc: 'Grants %s-level electricity resistance.',
     elixirDesc:
       'Grants a %s-level resistance to electricity. Useful against ' +
       'enemies with electrical attacks.',
   },
-  fireproof: {
+  Fireproof: {
     foodDesc: '(This should never appear.)',
     elixirDesc:
       'Grants a fireproof effect, which prevents your body from ' +
@@ -357,19 +357,19 @@ const effectDescriptions = {
  */
 const effectData = {
   Hearty: {
-    prefix: 'Hearty',
+    name: 'Hearty',
     fxType: 'points',
   },
   Energizing: {
-    prefix: 'Energizing',
+    name: 'Energizing',
     fxType: 'points',
   },
   Enduring: {
-    prefix: 'Enduring',
+    name: 'Enduring',
     fxType: 'points',
   },
   Sneaky: {
-    prefix: 'Sneaky',
+    name: 'Sneaky',
     fxType: 'timed',
     title: 'Stealth Up',
     timedData: {
@@ -379,7 +379,7 @@ const effectData = {
     },
   },
   Hasty: {
-    prefix: 'Hasty',
+    name: 'Hasty',
     fxType: 'timed',
     title: 'Speed Up',
     timedData: {
@@ -389,7 +389,7 @@ const effectData = {
     },
   },
   Mighty: {
-    prefix: 'Mighty',
+    name: 'Mighty',
     fxType: 'timed',
     title: 'Attack Up',
     timedData: {
@@ -399,7 +399,7 @@ const effectData = {
     },
   },
   Tough: {
-    prefix: 'Tough',
+    name: 'Tough',
     fxType: 'timed',
     title: 'Defense Up',
     timedData: {
@@ -409,7 +409,7 @@ const effectData = {
     },
   },
   Spicy: {
-    prefix: 'Spicy',
+    name: 'Spicy',
     fxType: 'timed',
     title: 'Cold Resistance',
     timedData: {
@@ -419,7 +419,7 @@ const effectData = {
     },
   },
   Chilly: {
-    prefix: 'Chilly',
+    name: 'Chilly',
     fxType: 'timed',
     title: 'Heat Resistance',
     timedData: {
@@ -429,7 +429,7 @@ const effectData = {
     },
   },
   Electro: {
-    prefix: 'Electro',
+    name: 'Electro',
     fxType: 'timed',
     title: 'Shock Resistance',
     timedData: {
@@ -439,7 +439,7 @@ const effectData = {
     },
   },
   Fireproof: {
-    prefix: 'Fireproof',
+    name: 'Fireproof',
     fxType: 'timed',
     title: 'Flame Guard',
     timedData: {

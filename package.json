@@ -10,8 +10,8 @@
     "@types/node": "^12.12.47",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
+    "lodash": "^4.17.15",
     "node-sass": "^4.14.1",
-    "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -42,7 +42,7 @@
     ]
   },
   "devDependencies": {
-    "@types/ramda": "^0.27.6",
+    "@types/lodash": "^4.14.157",
     "cross-env": "^7.0.2",
     "prettier": "^2.0.5",
     "tslint": "^6.1.2",

@@ -9,7 +9,7 @@ export type Compendium = {
     recipes: RecipeEntry[]
     additiveOnlyRecipes: RecipeEntry[]
     elixirs: ElixirEntry[]
-    dubiousFood: DubiousFoodEntry[]
+    dubiousFood: DubiousFoodEntry
     energizingLevels: number[]
     enduringLevels: number[]
     reagantDurationBonuses: [number, number, number]
@@ -46,6 +46,8 @@ export type RecipeEntry = {
     heartBonus?: number
     heartsRestore?: number // See "Honey Crepe"
     ingredients: IngredientEntry[]
+    /** If `true`, all ingredients used in cooking this dish must be unique from one another. */
+    uniq_ingred?: boolean
 
     desc: string
     thumb: string
@@ -69,21 +71,22 @@ export type DubiousFoodEntry = {
 }
 
 export type EffectEntry = {
-    prefix: Effect
-} & (
-    | {
-          fxType: 'points'
-      }
-    | {
-          fxType: 'timed'
-          title: string
-          timedData: {
-              tierBps: [number, number] | [number, number, number]
-              potencyLevels: [number, number] | [number, number, number]
-              contribFactor: number
-          }
-      }
-)
+    name: Effect
+} & (PointsEffectEntry | TimedEffectEntry)
+
+export type PointsEffectEntry = {
+    fxType: 'points'
+}
+
+export type TimedEffectEntry = {
+    fxType: 'timed'
+    title: string
+    timedData: {
+        tierBps: [number, number] | [number, number, number]
+        potencyLevels: [number, number] | [number, number, number]
+        contribFactor: number
+    }
+}
 
 export type Effect =
     | 'Hearty'
