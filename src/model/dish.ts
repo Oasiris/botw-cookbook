@@ -1,6 +1,8 @@
 import { DubiousFoodEntry, Effect, ElixirEntry, MaterialEntry, RecipeEntry } from './compendium'
 import { DishEffect } from './dishEffect'
 
+export type DishType = 'Dubious' | 'RockHard' | 'Food' | 'Elixir'
+
 export type Dish = {
     materials: MaterialEntry[]
     name: string

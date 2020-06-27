@@ -1,6 +1,17 @@
-// import * as fp from 'lodash/fp'
-import { curry, filter } from 'lodash'
-import { any, clone, findIndex, map, pipe, prop, propEq, uniq } from 'lodash/fp'
+import {
+    any,
+    clone,
+    curry,
+    filter,
+    findIndex,
+    get,
+    map,
+    pipe,
+    prop,
+    propEq,
+    sum,
+    uniq,
+} from 'lodash/fp'
 
 import data from '../data/all.json'
 import {
@@ -10,7 +21,7 @@ import {
     MaterialFamily,
     RecipeEntry,
 } from '../model/compendium'
-import { Dish } from '../model/dish'
+import { Dish, DishType } from '../model/dish'
 
 import * as DataUtil from './dataUtil'
 import * as EffectUtil from './effectUtil'
@@ -20,8 +31,10 @@ const DATA = (data as unknown) as Compendium
 
 export function cook(materials: MaterialEntry[]): Dish {
     // Determine the recipe type.
-    const recipeType = determineRecipeType(materials)
-    switch (recipeType) {
+    const dishType = determineDishType(materials)
+
+    const rupeePrice = determineRupeePrice(materials, dishType)
+    switch (dishType) {
         case 'Dubious':
             return {
                 materials,
@@ -32,7 +45,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 desc: DATA.dubiousFood.desc,
                 dishEffect: null,
                 hpRestore: 0, // TODO: Replace with real HP restore value,
-                rupeePrice: 2,
+                rupeePrice,
             }
         case 'RockHard':
             const recipe = DataUtil.getRecipe(DataUtil.NAME_ROCK_HARD_FOOD)!
@@ -45,7 +58,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 desc: recipe.desc,
                 dishEffect: null,
                 hpRestore: 1,
-                rupeePrice: 2,
+                rupeePrice,
             }
         case 'Elixir':
             // TODO: Finish 'Elixir' cooking
@@ -57,7 +70,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 name: 'TODO',
                 desc: 'TODO',
                 thumb: 'TODO',
-                rupeePrice: -1,
+                rupeePrice,
             }
         case 'Food':
         default:
@@ -70,14 +83,13 @@ export function cook(materials: MaterialEntry[]): Dish {
                 name: 'TODO',
                 desc: 'TODO',
                 thumb: 'TODO',
-                rupeePrice: -1,
+                rupeePrice,
             }
     }
 }
 
-function determineRecipeType(
-    materials: MaterialEntry[],
-): 'Dubious' | 'RockHard' | 'Food' | 'Elixir' {
+/** @returns Either 'Dubious', 'RockHard', 'Food', or 'Elixir' depending on what dish the materials yield. */
+function determineDishType(materials: MaterialEntry[]): DishType {
     // Contains wood or mineral. Higher priority than Dubious.
     if (any((mat) => ['Mineral', 'Wood'].includes(mat.type), materials)) {
         return 'RockHard'
@@ -130,15 +142,16 @@ function canCookRecipe(
     if (recipe.uniq_ingred === true) {
         const family = recipe.ingredients[0][1] as MaterialFamily
         // We can use a shortcut to check if this can be cooked.
-        return pipe(
+        const uniqueIngredients = pipe(
             filter((material: MaterialEntry) => material.families.includes(family)),
             map(prop('name')),
             uniq,
-            (list) => list.length >= recipe.ingredients.length,
         )(materials)
+        return uniqueIngredients.length >= recipe.ingredients.length
     }
 
     // Compute for typical recipes.
+    /** A temporary list of materials that will shorten in each loop iteration. */
     const unusedMaterials = clone(materials)
     for (const ingred of recipe.ingredients) {
         // Find the first fulfilling ingredient.
@@ -152,9 +165,20 @@ function canCookRecipe(
     return true
 }
 
-function determineRupeePrice(materials: MaterialEntry[]): number {
-    // TODO: Implement
-    return 0
+/** @returns Rupee price for a valid Elixir or Food. */
+function determineRupeePrice(materials: MaterialEntry[], dishType: DishType): number {
+    if (dishType === 'Dubious' || dishType === 'RockHard') {
+        return 2
+    }
+    // Exception for sole Acorn.
+    if (materials.length === 1 && materials[0].name === 'Acorn') {
+        return 8
+    }
+    const priceSum = pipe(get('price'), sum)(materials)
+    const MULTIPLIER = DATA.priceMultipliers[materials.length]
+
+    // Round to nearest 10 rupees.
+    return Math.ceil((priceSum * MULTIPLIER) / 10) * 10
 }
 
 function determineHpRestore(materials: MaterialEntry[]): number {
