@@ -16,15 +16,15 @@ export type DishTimedEffect = {
 }
 
 export type DishPointsEffect =
+    // Hearty
     | {
-          name: 'Hearty'
           heartsExtra: number
       }
+    // Energizing
     | {
-          name: 'Energizing'
           staminaRestore: number
       }
+    // Enduring
     | {
-          name: 'Enduring'
           staminaExtra: number
       }

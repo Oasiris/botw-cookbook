@@ -18,6 +18,9 @@ export type Compendium = {
     effectData: Record<Effect, EffectEntry>
 }
 
+/**
+ * Model for materials, or "ingredients", that are cooked to create dishes.
+ */
 export type MaterialEntry = {
     idx: number
     name: string
@@ -28,17 +31,48 @@ export type MaterialEntry = {
     families: MaterialFamily[]
     usage: MaterialUsage
 
-    hp: number
-    hp_raw: number
-    rank: MonsterPartRank | null
-    effect: Effect | null
-    potency: number | null
-    crit_chance: number
-
     desc: string
     thumb: string
+
+    /** The amount of HP that the ingredient restores _when included in a dish_. */
+    hp: number
+    hp_raw: number
+    time_boost?: number
+    crit_chance: number
+} & (
+    | EffectlessMaterialEntry
+    | TimedEffectMaterialEntry
+    | PointsEffectMaterialEntry
+    | MonsterPartEntry
+)
+
+type EffectlessMaterialEntry = {
+    effect: null
+    rank: null
+    potency: null
 }
 
+type TimedEffectMaterialEntry = {
+    effect: TimedEffect
+    rank: TimedEffectRank
+    potency: number
+}
+
+type PointsEffectMaterialEntry = {
+    effect: PointsEffect
+    rank: null
+    potency: number
+}
+
+type MonsterPartEntry = {
+    effect: null
+    rank: MonsterPartRank
+    potency: null
+}
+
+/**
+ * Information regarding recipes, or the blueprints to create food dishes.
+ */
 export type RecipeEntry = {
     idx: number
     name: string
@@ -88,10 +122,9 @@ export type TimedEffectEntry = {
     }
 }
 
-export type Effect =
-    | 'Hearty'
-    | 'Energizing'
-    | 'Enduring'
+export type Effect = TimedEffect | PointsEffect
+
+export type TimedEffect =
     | 'Sneaky'
     | 'Hasty'
     | 'Mighty'
@@ -100,6 +133,15 @@ export type Effect =
     | 'Chilly'
     | 'Electro'
     | 'Fireproof'
+export type PointsEffect = 'Hearty' | 'Energizing' | 'Enduring'
+
+export function isPointsEffect(effect: Effect): effect is PointsEffect {
+    return ['Hearty', 'Energizing', 'Enduring'].includes(effect)
+}
+
+export function isTimedEffect(effect: Effect): effect is TimedEffect {
+    return !isPointsEffect
+}
 
 export type MaterialType =
     // Foods
@@ -203,3 +245,5 @@ export type MaterialUsage =
     | 'Lit fire!'
 
 export type MonsterPartRank = 1 | 2 | 3
+/** Rank for _materials_ that induce timed effects (not for a final dish's effect.) */
+export type TimedEffectRank = 1 | 2 | 3

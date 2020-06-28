@@ -5,7 +5,18 @@
 import { find, propEq } from 'lodash/fp'
 
 import data from '../data/all.json'
-import { Compendium, Effect, ElixirEntry, MaterialEntry, RecipeEntry } from '../model/compendium'
+import {
+    Compendium,
+    Effect,
+    ElixirEntry,
+    MaterialEntry,
+    RecipeEntry,
+    EffectEntry,
+    PointsEffect,
+    TimedEffect,
+    isPointsEffect,
+    isTimedEffect,
+} from '../model/compendium'
 
 import { exists } from './util'
 
@@ -37,4 +48,30 @@ export function getMaterial(identifier: string | number): MaterialEntry | null {
 
 export function getElixir(effect: Effect): ElixirEntry {
     return find((elixir) => elixir.name.startsWith(effect), DATA.elixirs)!
+}
+
+export function getEffectEntry(effect: Effect): EffectEntry {
+    return DATA.effectData[effect]
+}
+
+export function getEffectDescription(effect: PointsEffect, dishType: 'Elixir' | 'Food'): string
+export function getEffectDescription(
+    effect: TimedEffect,
+    dishType: 'Elixir' | 'Food',
+    tierName: 'low' | 'mid' | 'high',
+): string
+export function getEffectDescription(
+    effect: Effect,
+    dishType: 'Elixir' | 'Food',
+    tierName?: 'low' | 'mid' | 'high',
+): string {
+    const baseDescription =
+        dishType === 'Elixir'
+            ? DATA.effectDescriptions[effect].elixirDesc
+            : DATA.effectDescriptions[effect].foodDesc
+    if (isTimedEffect(effect)) {
+        return baseDescription.replace(effect, tierName!)
+    } else {
+        return baseDescription
+    }
 }

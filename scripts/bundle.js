@@ -7,20 +7,22 @@
 // Source link 1:
 // Source: https://gaming.stackexchange.com/questions/302414/what-are-the-most-profitable-meals-and-elixirs-i-can-cook
 
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // Basic Dependencies
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
+
+const fs = require('fs')
 
 /** Base directory for JSON files to import. */
 const DATA_DIR = './data'
 
-// Bundle the JSONs in this folder for exporting
+// Bundle the JSONs in this folder for exporting.
 const materials = require(DATA_DIR + '/materials.json')
 const recipes = require(DATA_DIR + '/recipes.json')
 
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // Dubious Food
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 let dubiousFood = {
   name: 'Dubious Food',
@@ -30,17 +32,187 @@ let dubiousFood = {
   thumb: undefined, // To be assigned in the 'thumbs' section of this code
 }
 
-// ——————————————————————————————————————————————————————————————————————————
-// Normalize indices for recipes
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
+// Effect Entries
+// ———————————————————————————————————
+
+/**
+ * Data about the different types of recipe effects. Each effect has the
+ * following fields:
+ *  * `prefix`: a string that is prefixed to the title of the recipe. For
+ *    example, a "Meat Skewer" with Enduring ingredients would be named
+ *    "Enduring Meat Skewer".
+ *  * `fxType`: either `"points"` or `"timed"`.
+ *
+ * Recipes with *point*-based effects yield instant benefits upon consumption,
+ * with the intensity of those benefits able to be represented as the sum of its
+ * ingredients' points.
+ *
+ * Recipes with *time*-based effects yield benefits that last a certain
+ * duration, like "Attack Up" or "Cold Resistance". These effects can *also*
+ * vary in intensity depending on their ingredients, but these intensities are
+ * described as two or three "tiers" of potency.
+ *
+ * "Timed" effects also have the following fields:
+ *  * `title`: The name of the timed effect, like "Attack Up" or "Cold
+ *    Resistance".
+ *  * `timedData`: contains three fields:
+ *     * `tierBps`: An array whose elements represent the sum of effect points
+ *       needed to break into the next effect tier (higher tier = more intense
+ *       effect.)
+ *     * `potencyLevels`: The number of effect points yielded from an ingredient
+ *       of tier 0 or 1 (or 2, in some cases.)
+ *     * `contribFactor`: "Base time increase". The base number of seconds during
+ *       which an effect lasts. This number is increased via more ingredients.
+ */
+const effectData = {
+  Hearty: {
+    name: 'Hearty',
+    fxType: 'points',
+  },
+  Energizing: {
+    name: 'Energizing',
+    fxType: 'points',
+  },
+  Enduring: {
+    name: 'Enduring',
+    fxType: 'points',
+  },
+  Sneaky: {
+    name: 'Sneaky',
+    fxType: 'timed',
+    title: 'Stealth Up',
+    timedData: {
+      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
+      potencyLevels: [5, 10, 15], // reagants: Rank 1: 5, Rank 2: 10, Rank 3: 15
+      contribFactor: 90, // in seconds
+    },
+  },
+  Hasty: {
+    name: 'Hasty',
+    fxType: 'timed',
+    title: 'Speed Up',
+    timedData: {
+      tierBps: [0, 30], // breakpoints for low & mid
+      potencyLevels: [7, 14],
+      contribFactor: 30, // in seconds
+    },
+  },
+  Mighty: {
+    name: 'Mighty',
+    fxType: 'timed',
+    title: 'Attack Up',
+    timedData: {
+      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
+      potencyLevels: [7, 14, 21],
+      contribFactor: 20, // in seconds
+    },
+  },
+  Tough: {
+    name: 'Tough',
+    fxType: 'timed',
+    title: 'Defense Up',
+    timedData: {
+      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
+      potencyLevels: [7, 14, 21],
+      contribFactor: 20, // in seconds
+    },
+  },
+  Spicy: {
+    name: 'Spicy',
+    fxType: 'timed',
+    title: 'Cold Resistance',
+    timedData: {
+      tierBps: [0, 30], // breakpoints for low & mid
+      potencyLevels: [5, 10, 15],
+      contribFactor: 120, // in seconds
+    },
+  },
+  Chilly: {
+    name: 'Chilly',
+    fxType: 'timed',
+    title: 'Heat Resistance',
+    timedData: {
+      tierBps: [0, 30], // breakpoints for low & mid
+      potencyLevels: [5, 10, 15],
+      contribFactor: 120, // in seconds
+    },
+  },
+  Electro: {
+    name: 'Electro',
+    fxType: 'timed',
+    title: 'Shock Resistance',
+    timedData: {
+      tierBps: [0, 30, 45], // breakpoints for low & mid
+      potencyLevels: [8, 16, 24],
+      contribFactor: 120, // in seconds
+    },
+  },
+  Fireproof: {
+    name: 'Fireproof',
+    fxType: 'timed',
+    title: 'Flame Guard',
+    timedData: {
+      tierBps: [0, 30], // breakpoints for low & mid
+      potencyLevels: [4, 9],
+      contribFactor: 120, // in seconds
+    },
+  },
+}
+
+// ———————————————————————————————————
+// Idempotent changes
+// ———————————————————————————————————
+
+/*
+ * Normalize ranks for materials. All materials with timed effects should have a numeric rank.
+ */
+for (const material of materials) {
+  // (Timed effects: Any effect other than Hearty, Energizing, or Enduring.)
+  const TIMED_EFFECTS = [
+    'Sneaky',
+    'Hasty',
+    'Mighty',
+    'Tough',
+    'Spicy',
+    'Chilly',
+    'Electro',
+    'Fireproof',
+  ]
+  const POINTS_EFFECTS = ['Hearty', 'Energizing', 'Enduring']
+
+  if (TIMED_EFFECTS.includes(material.effect)) {
+    material.rank = material.potency
+    material.potency = effectData[material.effect]['timedData']['potencyLevels'][material.rank - 1]
+  } else if (POINTS_EFFECTS.includes(material.effect)) {
+    material.rank = null
+  }
+
+  // Monster parts have integer rank.
+  if (material.type === 'Monster Part') {
+    material.rank = Number(material.rank)
+  }
+}
+
+/* Normalize indices for recipes. */
 
 recipes.forEach((rcp, idx) => {
   rcp.idx = Number(idx) + 1
 })
 
-// ——————————————————————————————————————————————————————————————————————————
+/* Save changes back into the data folder with a new filename. */
+fs.writeFile(DATA_DIR + '/materials2.json', JSON.stringify(materials), 'utf8', (err) => {
+  if (err) console.error(err)
+  else console.log('completed with no errors')
+})
+fs.writeFile(DATA_DIR + '/recipes2.json', JSON.stringify(recipes), 'utf8', (err) => {
+  if (err) console.error(err)
+  else console.log('completed with no errors')
+})
+
+// ———————————————————————————————————
 // Elixirs
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 let elixirs = [
   { name: 'Hearty Elixir' },
@@ -56,9 +228,9 @@ let elixirs = [
   { name: 'Fireproof Elixir' },
 ]
 
-// ——————————————————————————————————————————————————————————————————————————
-// Add descriptions
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
+// Integrate descriptions
+// ———————————————————————————————————
 
 {
   const matDescs = require(DATA_DIR + '/matDesc.json')
@@ -83,9 +255,9 @@ let elixirs = [
   })
 }
 
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // Add thumbnail sources
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 {
   const thumbs = require(DATA_DIR + '/thumbs.json')
@@ -134,24 +306,9 @@ let elixirs = [
   })
 }
 
-// ——————————————————————————————————————————————————————————————————————————
-// Material tweaks
-// ——————————————————————————————————————————————————————————————————————————
-
-// Monster parts have integer rank.
-// Non-monster part materials have rank of null.
-for (let i in materials) {
-  const mat = materials[i]
-  if (mat.type === 'Monster Part') {
-    mat.rank = Number(mat.rank)
-  } else {
-    mat.rank = null
-  }
-}
-
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // Other
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 // All materials have a 'Usage', and one of those Usage types is 'Additive'.
 // As a rule, recipes are often made of one or more Food use-materials and
@@ -326,142 +483,18 @@ const effectDescriptions = {
   },
 }
 
-/**
- * Data about the different types of recipe effects. Each effect has the
- * following fields:
- *  * `prefix`: a string that is prefixed to the title of the recipe. For
- *    example, a "Meat Skewer" with Enduring ingredients would be named
- *    "Enduring Meat Skewer".
- *  * `fxType`: either `"points"` or `"timed"`.
- *
- * Recipes with *point*-based effects yield instant benefits upon consumption,
- * with the intensity of those benefits able to be represented as the sum of its
- * ingredients' points.
- *
- * Recipes with *time*-based effects yield benefits that last a certain
- * duration, like "Attack Up" or "Cold Resistance". These effects can *also*
- * vary in intensity depending on their ingredients, but these intensities are
- * described as two or three "tiers" of potency.
- *
- * "Timed" effects also have the following fields:
- *  * `title`: The name of the timed effect, like "Attack Up" or "Cold
- *    Resistance".
- *  * `timedData`: contains three fields:
- *     * `tierBps`: An array whose elements represent the sum of effect points
- *       needed to break into the next effect tier (higher tier = more intense
- *       effect.)
- *     * `potencyLevels`: The number of effect points yielded from an ingredient
- *       of tier 0 or 1 (or 2, in some cases.)
- *     * `contribFactor`: "Base time increase". The base number of seconds during
- *       which an effect lasts. This number is increased via more ingredients.
- */
-const effectData = {
-  Hearty: {
-    name: 'Hearty',
-    fxType: 'points',
-  },
-  Energizing: {
-    name: 'Energizing',
-    fxType: 'points',
-  },
-  Enduring: {
-    name: 'Enduring',
-    fxType: 'points',
-  },
-  Sneaky: {
-    name: 'Sneaky',
-    fxType: 'timed',
-    title: 'Stealth Up',
-    timedData: {
-      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
-      potencyLevels: [5, 10, 15], // reagants: Rank 1: 5, Rank 2: 10, Rank 3: 15
-      contribFactor: 90, // in seconds
-    },
-  },
-  Hasty: {
-    name: 'Hasty',
-    fxType: 'timed',
-    title: 'Speed Up',
-    timedData: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [7, 14],
-      contribFactor: 30, // in seconds
-    },
-  },
-  Mighty: {
-    name: 'Mighty',
-    fxType: 'timed',
-    title: 'Attack Up',
-    timedData: {
-      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
-      potencyLevels: [7, 14, 21],
-      contribFactor: 20, // in seconds
-    },
-  },
-  Tough: {
-    name: 'Tough',
-    fxType: 'timed',
-    title: 'Defense Up',
-    timedData: {
-      tierBps: [0, 30, 45], // breakpoints for low, mid, & high
-      potencyLevels: [7, 14, 21],
-      contribFactor: 20, // in seconds
-    },
-  },
-  Spicy: {
-    name: 'Spicy',
-    fxType: 'timed',
-    title: 'Cold Resistance',
-    timedData: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [5, 10, 15],
-      contribFactor: 120, // in seconds
-    },
-  },
-  Chilly: {
-    name: 'Chilly',
-    fxType: 'timed',
-    title: 'Heat Resistance',
-    timedData: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [5, 10, 15],
-      contribFactor: 120, // in seconds
-    },
-  },
-  Electro: {
-    name: 'Electro',
-    fxType: 'timed',
-    title: 'Shock Resistance',
-    timedData: {
-      tierBps: [0, 30, 45], // breakpoints for low & mid
-      potencyLevels: [8, 16, 24],
-      contribFactor: 120, // in seconds
-    },
-  },
-  Fireproof: {
-    name: 'Fireproof',
-    fxType: 'timed',
-    title: 'Flame Guard',
-    timedData: {
-      tierBps: [0, 30], // breakpoints for low & mid
-      potencyLevels: [4, 9],
-      contribFactor: 120, // in seconds
-    },
-  },
-}
-
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // Higher level info
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 let info = {
   materials: { length: materials.length },
   recipes: { length: recipes.length },
 }
 
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // Exporting
-// ——————————————————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 module.exports = {
   info,

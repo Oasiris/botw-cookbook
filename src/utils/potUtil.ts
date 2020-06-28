@@ -34,6 +34,7 @@ export function cook(materials: MaterialEntry[]): Dish {
     const dishType = determineDishType(materials)
 
     const rupeePrice = determineRupeePrice(materials, dishType)
+    const hpRestore = determineHpRestore(materials, dishType)
     switch (dishType) {
         case 'Dubious':
             return {
@@ -44,7 +45,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 thumb: DATA.dubiousFood.thumb,
                 desc: DATA.dubiousFood.desc,
                 dishEffect: null,
-                hpRestore: 0, // TODO: Replace with real HP restore value,
+                hpRestore, // TODO: Replace with real HP restore value,
                 rupeePrice,
             }
         case 'RockHard':
@@ -57,7 +58,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 thumb: recipe.thumb,
                 desc: recipe.desc,
                 dishEffect: null,
-                hpRestore: 1,
+                hpRestore,
                 rupeePrice,
             }
         case 'Elixir':
@@ -70,6 +71,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 name: 'TODO',
                 desc: 'TODO',
                 thumb: 'TODO',
+                hpRestore: 0,
                 rupeePrice,
             }
         case 'Food':
@@ -83,6 +85,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 name: 'TODO',
                 desc: 'TODO',
                 thumb: 'TODO',
+                hpRestore,
                 rupeePrice,
             }
     }
@@ -94,15 +97,15 @@ function determineDishType(materials: MaterialEntry[]): DishType {
     if (any((mat) => ['Mineral', 'Wood'].includes(mat.type), materials)) {
         return 'RockHard'
     }
+
     const hasCritter = any(propEq('usage', 'Critter'), materials)
     const hasMonsterPart = any(propEq('usage', 'Monster Part'), materials)
-
     // Has monster part but no critter, or vice versa.
     if (xor(hasCritter, hasMonsterPart)) {
         return 'Dubious'
     } else if (hasCritter && hasMonsterPart) {
         // An elixir with no effect becomes Dubious Food.
-        const hasEffect = EffectUtil.determineEffect(materials) !== null
+        const hasEffect = EffectUtil.determineEffectName(materials) !== null
         return hasEffect ? 'Elixir' : 'Dubious'
     } else {
         if (any(propEq('usage', 'Food'), materials)) {
@@ -181,7 +184,36 @@ function determineRupeePrice(materials: MaterialEntry[], dishType: DishType): nu
     return Math.ceil((priceSum * MULTIPLIER) / 10) * 10
 }
 
-function determineHpRestore(materials: MaterialEntry[]): number {
-    // TODO: Implement
-    return 0
+/** @returns How much HP the dish recovers. */
+function determineHpRestore(materials: MaterialEntry[], dishType: DishType): number {
+    const baseRestore = sum(
+        materials.map((material) => (material.hp !== undefined ? material.hp : 0)),
+    )
+
+    if (dishType === 'RockHard') {
+        return 1
+    }
+    if (dishType === 'Dubious') {
+        return baseRestore / 2
+    }
+
+    // "Hearty rule": If the effect is Hearty, the dish will provide full recovery.
+    if (EffectUtil.determineEffectName(materials) === 'Hearty') {
+        return Infinity
+    }
+
+    let bonusRestore = 0
+    /*
+     * "Nut rule": +4 HP if incldues both types of nut
+     *             +2 HP if includes one type of nut and one or more non-nuts
+     */
+    const uniqueNuts = uniq(materials.filter((mat) => mat.families.includes('Nut')))
+    const includesNonNut = materials.some((mat) => !mat.families.includes('Nut'))
+    if (uniqueNuts.length === 2) {
+        bonusRestore = 4
+    } else if (uniqueNuts.length === 1) {
+        bonusRestore = includesNonNut ? 2 : 0
+    }
+
+    return baseRestore + bonusRestore
 }

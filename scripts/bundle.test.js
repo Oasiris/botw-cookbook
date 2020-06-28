@@ -1,3 +1,10 @@
+/**
+ * Enforce some expected rules about our data, such as:
+ *
+ * * All ingredients with "Effects" also have "potency"
+ * * All monster parts have a non-nullable "rank" field
+ */
+
 // /**
 //  * Data tests.
 //  */
