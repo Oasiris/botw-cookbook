@@ -34,5 +34,5 @@ export type DishFood = {
 export type DishElixir = {
     recipe: ElixirEntry
     dishType: 'Elixir'
-    dishEffect: DishEffect | null
+    dishEffect: DishEffect
 }
