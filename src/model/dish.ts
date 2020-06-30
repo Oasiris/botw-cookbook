@@ -8,34 +8,31 @@ export type Dish = {
     name: string
     desc: string
     thumb: string
+    // Can be zero or positive.
+    hpRestore: number
     rupeePrice: number
 } & (DishDubious | DishRockHard | DishFood | DishElixir)
 
 export type DishDubious = {
     recipe: DubiousFoodEntry
     dishType: 'Dubious'
-    hpRestore: number
-    dishEffect: DishEffect | null
+    dishEffect: null
 }
 
 export type DishRockHard = {
     recipe: RecipeEntry
     dishType: 'RockHard'
-    hpRestore: number
-    dishEffect: DishEffect | null
+    dishEffect: null
 }
 
 export type DishFood = {
     recipe: RecipeEntry
     dishType: 'Food'
-    hpRestore?: number
     dishEffect: DishEffect | null
 }
 
 export type DishElixir = {
     recipe: ElixirEntry
     dishType: 'Elixir'
-    hpRestore?: 0
-    // dishEffect: DishEffect
-    dishEffect: DishEffect | 'TODO'
+    dishEffect: DishEffect | null
 }

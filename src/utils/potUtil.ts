@@ -3,6 +3,7 @@ import {
     clone,
     curry,
     filter,
+    find,
     findIndex,
     get,
     map,
@@ -34,7 +35,6 @@ export function cook(materials: MaterialEntry[]): Dish {
     const dishType = determineDishType(materials)
 
     const rupeePrice = determineRupeePrice(materials, dishType)
-    const hpRestore = determineHpRestore(materials, dishType)
     switch (dishType) {
         case 'Dubious':
             return {
@@ -45,7 +45,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 thumb: DATA.dubiousFood.thumb,
                 desc: DATA.dubiousFood.desc,
                 dishEffect: null,
-                hpRestore, // TODO: Replace with real HP restore value,
+                hpRestore: determineHpRestore(materials, dishType),
                 rupeePrice,
             }
         case 'RockHard':
@@ -58,34 +58,42 @@ export function cook(materials: MaterialEntry[]): Dish {
                 thumb: recipe.thumb,
                 desc: recipe.desc,
                 dishEffect: null,
-                hpRestore,
+                hpRestore: determineHpRestore(materials, dishType),
                 rupeePrice,
             }
         case 'Elixir':
             // TODO: Finish 'Elixir' cooking
+            const effectName = EffectUtil.determineEffectName(materials)!
+            const elixirRecipe = DataUtil.getElixir(effectName)
+            const elixirEffect = EffectUtil.determineEffect(materials, dishType)
             return {
                 materials,
-                recipe: DataUtil.getElixir('Energizing'),
+                recipe: elixirRecipe,
                 dishType: 'Elixir',
-                dishEffect: 'TODO',
-                name: 'TODO',
-                desc: 'TODO',
-                thumb: 'TODO',
-                hpRestore: 0,
+                dishEffect: elixirEffect,
+                name: elixirRecipe.name,
+                desc: elixirEffect.desc,
+                thumb: elixirRecipe.thumb,
+                hpRestore: determineHpRestore(materials, dishType),
                 rupeePrice,
             }
         case 'Food':
         default:
             // TODO: Finish 'Food' cooking
+            // Traverse `recipes` in indexed order and find the first cooked dish here.
+            const foodRecipe = find((rcp) => canCookRecipe(rcp, materials), DATA.recipes)!
+            const foodEffect = EffectUtil.determineEffect(materials, dishType)
+            const namePrefix = foodEffect ? `${foodEffect.name} ` : ''
+            const descriptionSuffix = foodEffect ? ` ${foodEffect.desc}` : ''
             return {
                 materials,
-                recipe: DataUtil.getRecipe('Apple')!,
+                recipe: foodRecipe,
                 dishType: 'Food',
-                dishEffect: null,
-                name: 'TODO',
-                desc: 'TODO',
-                thumb: 'TODO',
-                hpRestore,
+                dishEffect: foodEffect,
+                name: namePrefix + foodRecipe.name,
+                desc: foodRecipe.desc + descriptionSuffix,
+                thumb: foodRecipe.thumb,
+                hpRestore: determineHpRestore(materials, dishType, foodRecipe),
                 rupeePrice,
             }
     }
@@ -112,7 +120,7 @@ function determineDishType(materials: MaterialEntry[]): DishType {
             // If includes a nutritious ingredient, it's food.
             return 'Food'
         } else {
-            // Has only additives, so it's only food if it cooks into an additive-only recipe.
+            // If it's only additives, it must cook into an additive-only recipe to be food.
             const hasMatchingRecipe = any(
                 (recipe) => canCookRecipe(recipe, materials),
                 DATA.additiveOnlyRecipes,
@@ -185,28 +193,52 @@ function determineRupeePrice(materials: MaterialEntry[], dishType: DishType): nu
 }
 
 /** @returns How much HP the dish recovers. */
-function determineHpRestore(materials: MaterialEntry[], dishType: DishType): number {
+function determineHpRestore(mats: MaterialEntry[], dishType: 'Food', recipe: RecipeEntry): number
+function determineHpRestore(materials: MaterialEntry[], dishType: Exclude<DishType, 'Food'>): number
+function determineHpRestore(
+    materials: MaterialEntry[],
+    dishType: DishType,
+    foodRecipe?: RecipeEntry,
+): number {
     const baseRestore = sum(
         materials.map((material) => (material.hp !== undefined ? material.hp : 0)),
     )
 
     if (dishType === 'RockHard') {
         return 1
-    }
-    if (dishType === 'Dubious') {
+    } else if (dishType === 'Dubious') {
         return baseRestore / 2
     }
 
-    // "Hearty rule": If the effect is Hearty, the dish will provide full recovery.
+    // If the dish has a Hearty effect, it will provide full recovery.
     if (EffectUtil.determineEffectName(materials) === 'Hearty') {
         return Infinity
     }
-
-    let bonusRestore = 0
+    // Non-Hearty elixirs will never restore hearts.
+    if (dishType === 'Elixir') {
+        return 0
+    }
+    // Some recipes restore a set number of hearts.
+    if (foodRecipe!.heartsRestore !== undefined) {
+        return foodRecipe!.heartsRestore * 4
+    }
     /*
-     * "Nut rule": +4 HP if incldues both types of nut
-     *             +2 HP if includes one type of nut and one or more non-nuts
+     * Bonus hearts
      */
+    let bonusRestore = 0
+    // Recipes with bonus hearts:
+    if (foodRecipe!.heartBonus !== undefined) {
+        bonusRestore += foodRecipe!.heartBonus * 4
+    }
+    // Monster recipes:
+    if (
+        foodRecipe!.ingredients.some((ingred) => ingred[1] === 'Monster Extract') &&
+        foodRecipe!.heartsAlwaysAffectedByExtract === true
+    ) {
+        bonusRestore += 3 * 4
+    }
+    // "Nut rule": +4 HP if incldues both types of nut
+    //             +2 HP if includes one type of nut and one or more non-nuts
     const uniqueNuts = uniq(materials.filter((mat) => mat.families.includes('Nut')))
     const includesNonNut = materials.some((mat) => !mat.families.includes('Nut'))
     if (uniqueNuts.length === 2) {

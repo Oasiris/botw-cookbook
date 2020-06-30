@@ -16,6 +16,8 @@ import * as DataUtil from './dataUtil'
 
 const DATA = (data as unknown) as Compendium
 
+export function determineEffect(materials: MaterialEntry[], dishType: 'Food'): DishEffect | null
+export function determineEffect(materials: MaterialEntry[], dishType: 'Elixir'): DishEffect
 export function determineEffect(
     materials: MaterialEntry[],
     dishType: 'Food' | 'Elixir',

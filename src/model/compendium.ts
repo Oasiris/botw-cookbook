@@ -82,6 +82,8 @@ export type RecipeEntry = {
     ingredients: IngredientEntry[]
     /** If `true`, all ingredients used in cooking this dish must be unique from one another. */
     uniq_ingred?: boolean
+    /** If `true`, hearts restored will be boosted from the Monster Extract present in the recipe. */
+    heartsAlwaysAffectedByExtract?: boolean
 
     desc: string
     thumb: string
@@ -140,7 +142,7 @@ export function isPointsEffect(effect: Effect): effect is PointsEffect {
 }
 
 export function isTimedEffect(effect: Effect): effect is TimedEffect {
-    return !isPointsEffect
+    return !isPointsEffect(effect)
 }
 
 export type MaterialType =
