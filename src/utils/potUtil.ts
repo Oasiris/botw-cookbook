@@ -28,7 +28,7 @@ import * as DataUtil from './dataUtil'
 import * as EffectUtil from './effectUtil'
 import { arrayify, xor } from './util'
 
-const DATA = (data as unknown) as Compendium
+const DATA = data as unknown as Compendium
 
 export function cook(materials: MaterialEntry[]): Dish {
     // Determine the recipe type.
@@ -144,7 +144,7 @@ function canCookRecipe(
                 return material.name === ingredient[1]
             } else {
                 const validFamilies = arrayify(ingredient[1])
-                return any((family) => material.families.includes(family), validFamilies)
+                return validFamilies.some((family) => material.families.includes(family))
             }
         },
     )
@@ -163,10 +163,11 @@ function canCookRecipe(
 
     // Compute for typical recipes.
     /** A temporary list of materials that will shorten in each loop iteration. */
-    const unusedMaterials = clone(materials)
+    const unusedMaterials = clone(uniq(materials))
     for (const ingred of recipe.ingredients) {
         // Find the first fulfilling ingredient.
-        const fulfillingMaterialIndex = findIndex(doesFulfillIngredient(ingred), unusedMaterials)
+        // const fulfillingMaterialIndex = findIndex(doesFulfillIngredient(ingred), unusedMaterials)
+        const fulfillingMaterialIndex = unusedMaterials.findIndex(doesFulfillIngredient(ingred))
         if (fulfillingMaterialIndex === -1) {
             return false
         } else {

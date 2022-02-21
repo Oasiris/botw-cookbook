@@ -1,17 +1,23 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
+import { render } from 'react-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-ReactDOM.render(
+import App from './components/App'
+
+import './styles/index.scss'
+
+/* 
+React Router v6 – Helpful docs:
+    https://reactrouter.com/docs/en/v6/getting-started/overview
+*/
+
+render(
     <React.StrictMode>
-        <App />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+            </Routes>
+        </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root'),
 )
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()

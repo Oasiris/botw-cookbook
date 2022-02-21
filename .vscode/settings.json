@@ -8,7 +8,8 @@
   "tslint.configFile": "./tslint.js",
 
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#aa8e31",
-    "titleBar.inactiveBackground": "#aa8e31CC"
+    "titleBar.activeBackground": "#947b0d",
+    "titleBar.inactiveBackground": "#947b0dBB",
+    "titleBar.activeForeground": "#ffffff"
   }
 }

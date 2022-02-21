@@ -85,8 +85,7 @@ const potTests: PotTestType[] = [
         },
     },
     {
-        input:
-            'Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom',
+        input: ditto(5, 'Stamella Shroom'),
         result: {
             name: 'Energizing Mushroom Skewer',
             hpRestore: 4 * 5,
@@ -94,8 +93,7 @@ const potTests: PotTestType[] = [
         },
     },
     {
-        input:
-            'Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom, Bright-Eyed Crab',
+        input: 'Stamella Shroom, Stamella Shroom, Stamella Shroom, Stamella Shroom, Bright-Eyed Crab',
         result: {
             name: 'Energizing Fish and Mushroom Skewer',
             hpRestore: 4 * 6,
@@ -275,6 +273,7 @@ const potTests: PotTestType[] = [
             dishEffect: null,
         },
         _source: 'Cemu direct test',
+        _note: 'Uncovered bug: was not checking cook-ability for unique lists of ingredients',
     },
     {
         input: 'Tabantha Wheat, Cane Sugar, Apple, Wildberry',
@@ -285,6 +284,182 @@ const potTests: PotTestType[] = [
         },
         _source: 'Cemu direct',
         _note: 'Fruitcake recipe: +1 heart bonus',
+    },
+    {
+        input: 'Fortified Pumpkin, Tabantha Wheat, Cane Sugar, Goat Butter',
+        result: {
+            name: 'Tough Pumpkin Pie', // Pumpkin Pie -- #22,
+            hpRestore: 3 * 4,
+            dishEffect: { potencyTierName: 'low', durationSeconds: 4 * 60 + 30 },
+        },
+        _source: 'Cemu direct',
+        _note:
+            'Uncovered bug: including the same duration-extending ingredient twice' +
+            ' would cause the duration extension to happen twice',
+    },
+    {
+        input: 'Wildberry, Hydromelon, Tabantha Wheat, Cane Sugar',
+        result: {
+            name: 'Chilly Fruitcake',
+            hpRestore: 5 * 4,
+            dishEffect: {
+                potencyTierName: 'low',
+                title: 'Heat Resistance',
+                durationSeconds: 5 * 60 + 20,
+            },
+        },
+        _source: 'Cemu direct',
+    },
+
+    // Testing more pastries
+    {
+        // Carrot Cake
+        input: 'Endura Carrot, Tabantha Wheat, Cane Sugar, Goat Butter',
+        result: {
+            name: 'Enduring Carrot Cake',
+            hpRestore: 6 * 4,
+            dishEffect: { staminaExtra: 0.4 },
+        },
+    },
+    {
+        // Wildberry Crepe
+        input: 'Wildberry, Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat',
+        result: {
+            name: 'Wildberry Crepe',
+            hpRestore: 10 * 4,
+            dishEffect: null,
+        },
+        _note: '10 hearts restored (4 heart bonus). Confirmed here: https://www.youtube.com/watch?v=Ca8LTqlY38o #1',
+    },
+    {
+        // Honey Crepe
+        input: 'Courser Bee Honey, Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat',
+        result: {
+            name: 'Energizing Honey Crepe',
+            hpRestore: 10 * 4,
+            dishEffect: { staminaRestore: 0.4 },
+        },
+        _note: '10 hearts restored (1 heart bonus). Confirmed online.',
+    },
+    {
+        // Plain Crepe
+        input: 'Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat',
+        result: {
+            name: 'Plain Crepe',
+            hpRestore: 5 * 4,
+        },
+        _note: 'No heart bonus',
+    },
+    {
+        // Plain Crepe (w/ added stuff, in this case a Palm Fruit)
+        input: 'Fresh Milk, Bird Egg, Cane Sugar, Tabantha Wheat, Palm Fruit',
+        result: {
+            name: 'Plain Crepe',
+            hpRestore: 7 * 4,
+        },
+        _note: 'No heart bonus',
+    },
+    {
+        // Apple Pie
+        input: 'Apple, Cane Sugar, Tabantha Wheat, Goat Butter',
+        result: {
+            name: 'Apple Pie',
+            hpRestore: 3 * 4,
+        },
+        _note: 'No heart bonus',
+    },
+    {
+        // Nutcake
+        input: 'Chickaloo Tree Nut, Cane Sugar, Tabantha Wheat, Goat Butter',
+        result: {
+            name: 'Nutcake',
+            hpRestore: 3 * 4,
+        },
+        _note: 'No heart bonus',
+    },
+    {
+        // Egg Tart
+        input: 'Bird Egg, Cane Sugar, Tabantha Wheat, Goat Butter',
+        result: {
+            name: 'Egg Tart',
+            hpRestore: 4 * 4,
+        },
+        _note: 'No heart bonus',
+    },
+    {
+        // Egg Tart
+        input: 'Bird Egg, Cane Sugar, Fresh Milk',
+        result: {
+            name: 'Egg Pudding',
+            hpRestore: 3 * 4,
+        },
+        _note: 'No heart bonus',
+    },
+    {
+        // Hot Buttered Apple
+        // Now I need to test more than just pastries -- I should test _everything_
+        input: 'Apple, Wildberry, Fleet-Lotus Seeds, Tabantha Wheat, Goat Butter',
+        result: {
+            name: 'Hasty Hot Buttered Apple',
+            hpRestore: 6 * 4,
+            dishEffect: { potencyTier: 1, durationSeconds: 4 * 60 + 20 },
+        },
+        _note: '1 heart more than expected',
+    },
+    {
+        input: 'Apple, Goat Butter',
+        result: {
+            name: 'Hot Buttered Apple',
+            hpRestore: 2 * 4,
+        },
+        _note: '1 heart bonus',
+    },
+
+    // Making sure that duration-extending additives' effects kick in only once per unique additive
+    {
+        input: 'Hydromelon, Cane Sugar',
+        result: {
+            name: 'Chilly Simmered Fruit',
+            hpRestore: 1 * 4,
+            dishEffect: { durationSeconds: 3 * 60 + 50 },
+        },
+        _source: 'Cemu direct',
+    },
+    {
+        input: 'Hydromelon, Cane Sugar, Cane Sugar',
+        result: {
+            hpRestore: 1 * 4,
+            dishEffect: { durationSeconds: 4 * 60 + 20 },
+        },
+        _source: 'Cemu direct',
+        _note: "Notice the duration only goes up by 30 -- the Cane Sugar duration bonus doesn't kick in again.",
+    },
+    {
+        input: 'Hydromelon, Cane Sugar, Cane Sugar, Goat Butter',
+        result: {
+            hpRestore: 1 * 4,
+            dishEffect: { durationSeconds: 5 * 60 + 40 },
+        },
+        _source: 'Cemu direct',
+    },
+    {
+        input: 'Hydromelon, Cane Sugar, Cane Sugar, Goat Butter, Goat Butter',
+        result: {
+            hpRestore: 1 * 4,
+            dishEffect: { durationSeconds: 6 * 60 + 10 },
+        },
+        _source: 'Cemu direct',
+    },
+
+    // Seafood Paella with Armored Porgy
+    {
+        input: 'Hylian Rice, Goat Butter, Rock Salt, Armored Porgy, Hearty Blueshell Snail',
+        result: {
+            name: 'Seafood Paella',
+            hpRestore: 12 * 4,
+            dishEffect: null,
+        },
+        _note: 'Restores 2 more hearts than it should -- 2 heart bonus',
     },
 ]
 
@@ -351,7 +526,9 @@ describe('PotUtil', () => {
                             }
                             break
                         default:
-                            it(`Unexpected field '${field}'`, () => `Unexpected field '${field}'`)
+                            it(`Unexpected field '${field}'`, () => {
+                                throw new Error(`Unexpected field '${field}'`)
+                            })
                     }
                 }
             })

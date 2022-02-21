@@ -1,18 +1,18 @@
 {
   "name": "botw-cookbook-scripts",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "export": "npx babel-node export"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.10.3",
     "@babel/core": "^7.10.3",
     "@babel/node": "^7.10.3",
     "@babel/preset-env": "^7.10.3"
-  }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

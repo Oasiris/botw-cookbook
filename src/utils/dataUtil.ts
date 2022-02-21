@@ -20,7 +20,7 @@ import {
 
 import { exists } from './util'
 
-const DATA = (data as unknown) as Compendium
+const DATA = data as unknown as Compendium
 
 export const NAME_ROCK_HARD_FOOD = 'Rock-Hard Food'
 
