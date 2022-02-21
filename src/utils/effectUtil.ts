@@ -1,7 +1,12 @@
+/**
+ * Effect-related functions.
+ */
+
 import assert from 'assert'
 import { filter, map, pipe, prop, sum, uniq } from 'lodash/fp'
 
 import data from '../data/all.json'
+
 import {
     isPointsEffect,
     isTimedEffect,
@@ -16,9 +21,12 @@ import * as DataUtil from './dataUtil'
 
 const DATA = data as unknown as Compendium
 
-export function determineEffect(materials: MaterialEntry[], dishType: 'Food'): DishEffect | null
-export function determineEffect(materials: MaterialEntry[], dishType: 'Elixir'): DishEffect
-export function determineEffect(
+/**
+ * @returns The effect of the dish yielded by the given materials.
+ */
+export function computeDishEffect(materials: MaterialEntry[], dishType: 'Food'): DishEffect | null
+export function computeDishEffect(materials: MaterialEntry[], dishType: 'Elixir'): DishEffect
+export function computeDishEffect(
     materials: MaterialEntry[],
     dishType: 'Food' | 'Elixir',
 ): DishEffect | null {

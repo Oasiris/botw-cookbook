@@ -1,29 +1,32 @@
 /**
- * Functions in this file exist to retrieve data from `all.json` for use elsewhere.
+ * Utility functions. Each fetches specific data from `all.json`.
  */
 
 import { find, propEq } from 'lodash/fp'
 
 import data from '../data/all.json'
 import {
-    Compendium,
-    Effect,
-    ElixirEntry,
-    MaterialEntry,
-    RecipeEntry,
-    EffectEntry,
-    PointsEffect,
-    TimedEffect,
     isPointsEffect,
     isTimedEffect,
+    Compendium,
+    Effect,
+    EffectEntry,
+    ElixirEntry,
+    MaterialEntry,
+    PointsEffect,
+    RecipeEntry,
+    TimedEffect,
 } from '../model/compendium'
 
-import { exists } from './util'
+// import { exists } from './util'
 
 const DATA = data as unknown as Compendium
 
 export const NAME_ROCK_HARD_FOOD = 'Rock-Hard Food'
 
+/**
+ * @returns The recipe as a RecipeEntry for the given dish name/ID.
+ */
 export function getRecipe(identifier: string | number): RecipeEntry | null {
     // Identifier is either a string ("name") or number ("index").
     if (typeof identifier === 'string') {
@@ -35,6 +38,9 @@ export function getRecipe(identifier: string | number): RecipeEntry | null {
     }
 }
 
+/**
+ * @returns The material as a MaterialEntry for the given material name/ID.
+ */
 export function getMaterial(identifier: string | number): MaterialEntry | null {
     // Identifier is either a string ("name") or number ("index").
     if (typeof identifier === 'string') {
@@ -46,10 +52,16 @@ export function getMaterial(identifier: string | number): MaterialEntry | null {
     }
 }
 
+/**
+ * @returns The elixir as an ElixirEntry for the given effect name.
+ */
 export function getElixir(effect: Effect): ElixirEntry {
     return find((elixir) => elixir.name.startsWith(effect), DATA.elixirs)!
 }
 
+/**
+ * @returns The effect entry for the given effect name.
+ */
 export function getEffectEntry(effect: Effect): EffectEntry {
     return DATA.effectData[effect]
 }

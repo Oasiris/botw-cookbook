@@ -1,20 +1,7 @@
-import {
-    any,
-    clone,
-    curry,
-    filter,
-    find,
-    findIndex,
-    get,
-    map,
-    pipe,
-    prop,
-    propEq,
-    sum,
-    uniq,
-} from 'lodash/fp'
+import { clone, curry, filter, find, get, map, pipe, prop, propEq, sum, uniq } from 'lodash/fp'
 
 import data from '../data/all.json'
+
 import {
     Compendium,
     IngredientEntry,
@@ -30,6 +17,9 @@ import { arrayify, xor } from './util'
 
 const DATA = data as unknown as Compendium
 
+/**
+ * @returns The completed Dish for the given material _entries_.
+ */
 export function cook(materials: MaterialEntry[]): Dish {
     // Determine the recipe type.
     const dishType = determineDishType(materials)
@@ -46,7 +36,7 @@ export function cook(materials: MaterialEntry[]): Dish {
                 desc: DATA.dubiousFood.desc,
                 dishEffect: null,
                 hpRestore: determineHpRestore(materials, dishType),
-                rupeePrice,
+                rupeePrice: 2,
             }
         case 'RockHard':
             const recipe = DataUtil.getRecipe(DataUtil.NAME_ROCK_HARD_FOOD)!
@@ -59,13 +49,12 @@ export function cook(materials: MaterialEntry[]): Dish {
                 desc: recipe.desc,
                 dishEffect: null,
                 hpRestore: determineHpRestore(materials, dishType),
-                rupeePrice,
+                rupeePrice: 2,
             }
         case 'Elixir':
-            // TODO: Finish 'Elixir' cooking
             const effectName = EffectUtil.determineEffectName(materials)!
             const elixirRecipe = DataUtil.getElixir(effectName)
-            const elixirEffect = EffectUtil.determineEffect(materials, dishType)
+            const elixirEffect = EffectUtil.computeDishEffect(materials, dishType)
             return {
                 materials,
                 recipe: elixirRecipe,
@@ -79,10 +68,9 @@ export function cook(materials: MaterialEntry[]): Dish {
             }
         case 'Food':
         default:
-            // TODO: Finish 'Food' cooking
             // Traverse `recipes` in indexed order and find the first cooked dish here.
             const foodRecipe = find((rcp) => canCookRecipe(rcp, materials), DATA.recipes)!
-            const foodEffect = EffectUtil.determineEffect(materials, dishType)
+            const foodEffect = EffectUtil.computeDishEffect(materials, dishType)
             const namePrefix = foodEffect ? `${foodEffect.name} ` : ''
             const descriptionSuffix = foodEffect ? ` ${foodEffect.desc}` : ''
             return {
@@ -101,43 +89,45 @@ export function cook(materials: MaterialEntry[]): Dish {
 
 /** @returns Either 'Dubious', 'RockHard', 'Food', or 'Elixir' depending on what dish the materials yield. */
 function determineDishType(materials: MaterialEntry[]): DishType {
-    // Contains wood or mineral. Higher priority than Dubious.
-    if (any((mat) => ['Mineral', 'Wood'].includes(mat.type), materials)) {
+    // If contains wood or mineral, RockHard. (Higher priority than Dubious.)
+    if (materials.some((mat) => ['Mineral', 'Wood'].includes(mat.type))) {
         return 'RockHard'
     }
 
-    const hasCritter = any(propEq('usage', 'Critter'), materials)
-    const hasMonsterPart = any(propEq('usage', 'Monster Part'), materials)
+    // Check if valid Food/Elixir.
+    const hasCritter = materials.some(propEq('usage', 'Critter'))
+    const hasMonsterPart = materials.some(propEq('usage', 'Monster Part'))
     // Has monster part but no critter, or vice versa.
     if (xor(hasCritter, hasMonsterPart)) {
         return 'Dubious'
     } else if (hasCritter && hasMonsterPart) {
-        // An elixir with no effect becomes Dubious Food.
+        // Check if dish has an effect; otherwise, dish is Dubious.
         const hasEffect = EffectUtil.determineEffectName(materials) !== null
         return hasEffect ? 'Elixir' : 'Dubious'
     } else {
-        if (any(propEq('usage', 'Food'), materials)) {
-            // If includes a nutritious ingredient, it's food.
+        // Check if dish has a nutritious ingredient.
+        if (materials.some(propEq('usage', 'Food'))) {
             return 'Food'
-        } else {
-            // If it's only additives, it must cook into an additive-only recipe to be food.
-            const hasMatchingRecipe = any(
-                (recipe) => canCookRecipe(recipe, materials),
-                DATA.additiveOnlyRecipes,
-            )
-            return hasMatchingRecipe ? 'Food' : 'Dubious'
         }
+
+        // If dish consists of only additives, check that it matches an additive-only recipe.
+        // Otherwise, it's Dubious.
+        const hasMatchingRecipe = DATA.additiveOnlyRecipes.some((recipe) =>
+            canCookRecipe(recipe, materials),
+        )
+        return hasMatchingRecipe ? 'Food' : 'Dubious'
     }
 }
 
 /**
- * @returns True if a dish for the given recipe could be cooked with the given materials.
+ * @returns `true` if a dish for the given recipe could be cooked with the given materials.
  */
 function canCookRecipe(
     recipe: RecipeEntry,
     materials: MaterialEntry[],
     // isExact?: boolean,
 ): boolean {
+    /** Returns true if the specified material fulfills the ingredient called in the reipce. */
     const doesFulfillIngredient = curry(
         (ingredient: IngredientEntry, material: MaterialEntry): boolean => {
             if (ingredient[0] === 'name') {
@@ -166,7 +156,6 @@ function canCookRecipe(
     const unusedMaterials = clone(uniq(materials))
     for (const ingred of recipe.ingredients) {
         // Find the first fulfilling ingredient.
-        // const fulfillingMaterialIndex = findIndex(doesFulfillIngredient(ingred), unusedMaterials)
         const fulfillingMaterialIndex = unusedMaterials.findIndex(doesFulfillIngredient(ingred))
         if (fulfillingMaterialIndex === -1) {
             return false
@@ -186,7 +175,8 @@ function determineRupeePrice(materials: MaterialEntry[], dishType: DishType): nu
     if (materials.length === 1 && materials[0].name === 'Acorn') {
         return 8
     }
-    const priceSum = pipe(get('price'), sum)(materials)
+    const prices = materials.map((mat) => mat.price)
+    const priceSum = sum(prices)
     const MULTIPLIER = DATA.priceMultipliers[materials.length]
 
     // Round to nearest 10 rupees.

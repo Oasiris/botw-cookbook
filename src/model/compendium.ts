@@ -13,7 +13,7 @@ export type Compendium = {
     energizingLevels: number[]
     enduringLevels: number[]
     reagantDurationBonuses: [number, number, number]
-    priceMultipliers: [number, number, number, number, number]
+    priceMultipliers: [number, number, number, number, number, number]
     effectDescriptions: Record<Effect, { foodDesc: string; elixirDesc: string }>
     effectData: Record<Effect, EffectEntry>
 }

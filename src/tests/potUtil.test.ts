@@ -43,7 +43,8 @@ const potTests: PotTestType[] = [
     },
 
     /*
-     * Tests from 2018: Alex Ren's dishes
+     * Tests From Software
+     * 2018: Alex Ren's dishes
      */
     {
         input: ditto(5, 'Palm Fruit'),
@@ -107,7 +108,8 @@ const potTests: PotTestType[] = [
     },
 
     /*
-     * Cemu save file test, from 2018
+     * Tests From Software
+     * 2018 Cemu save file test
      */
     {
         input: 'Apple, Hylian Shroom, Hyrule Herb',
@@ -260,10 +262,47 @@ const potTests: PotTestType[] = [
             dishEffect: null,
         },
     },
+    /*
+     * Reddit post: "Discovered an elixir that sells for 900+ rupees"
+     * https://www.reddit.com/r/Breath_of_the_Wild/comments/ch1tmq/
+     */
+    {
+        input: 'Lynel Guts, Lynel Guts, Lynel Guts, Lynel Guts, Tireless Frog',
+        result: {
+            name: 'Enduring Elixir',
+            rupeePrice: 2300,
+        },
+        _source: 'Reddit post',
+    },
+    {
+        input: 'Bokoblin Guts, Bokoblin Guts, Bokoblin Guts, Bokoblin Guts, Tireless Frog',
+        result: {
+            name: 'Enduring Elixir',
+            rupeePrice: 280,
+        },
+        _source: 'Reddit post',
+    },
+    {
+        input: 'Moblin Guts, Moblin Guts, Moblin Guts, Moblin Guts, Tireless Frog',
+        result: {
+            name: 'Enduring Elixir',
+            rupeePrice: 340,
+        },
+        _source: 'Reddit post',
+    },
 
     /*
      * Cooking recipes
      */
+    // Single acorn
+    {
+        input: 'Acorn',
+        result: {
+            name: 'Sautéed Nuts',
+            rupeePrice: 8,
+        },
+    },
+
     // Unique ingredients when trying to make dishes of certain recipes
     {
         input: 'Tabantha Wheat, Cane Sugar, Apple, Apple',
@@ -469,6 +508,7 @@ const potTests: PotTestType[] = [
 
 describe('PotUtil', () => {
     describe('cook()', () => {
+        // Iterate through every written test.
         for (const { input, result } of potTests) {
             // Generate list of materials from 'input'.
             const materialNames = Array.isArray(input)
@@ -480,6 +520,7 @@ describe('PotUtil', () => {
                 continue
             }
 
+            // Run the current test.
             describe(materialNames.join(', '), () => {
                 if (result === undefined) {
                     throw new Error(`'result' is undefined`)
@@ -504,6 +545,12 @@ describe('PotUtil', () => {
                             it(`hpRestore: ${expected}`, () => {
                                 expect(dish.hpRestore).toBeDefined()
                                 expect(dish.hpRestore).toBe(expected)
+                            })
+                            break
+                        case 'rupeePrice':
+                            it(`rupeePrice: ${expected}`, () => {
+                                console.log(dish)
+                                expect(dish.rupeePrice).toBe(expected)
                             })
                             break
                         case 'dishEffect':
